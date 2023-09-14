@@ -1,13 +1,11 @@
-# CodeIgniter 4 Application Starter
+# Manu creative Personal Site
 
-## What is CodeIgniter?
+## What is this?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+This is a CodeIgniter PHP full-stack web framework that is light, fast, flexible, and secure.
 
-This repository holds a composer-installable app starter.
+This repository holds a composer-installable
 It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
 
 More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
 
