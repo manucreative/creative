@@ -3,7 +3,7 @@
 /*******************************/
 body {
     color: #666666;
-    background: #ffffff;
+    background: #ebe9e9;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
@@ -102,6 +102,22 @@ a:focus {
     color: #000000;
     font-weight: 900;
     /* background: #f57f01; */
+}
+.myBox{
+    /* border: solid 3px #f57f01; */
+    background:#a10379;
+    border-radius: 50px;
+}
+.myBox:hover{
+    background:#f57f01;
+}
+.myBox a{
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 700;
+}
+.myBox a:hover{
+    color: #ffffff;
 }
 .details_section{
     background: #0e0d3e;
@@ -766,7 +782,7 @@ a:focus {
 
 .fact .fact-right {
     color: #0e0d3e;
-    background: #ff680a;
+    background: #0c8f00;
 }
 
 .fact .fact-left h2 {
@@ -1153,7 +1169,7 @@ a:focus {
     display: block;
     padding: 10px 25px;
     width: 100%;
-    color: #ffffff;
+    color: #ff9d00;
     font-size: 16px;
     line-height: 40px;
     border: 1px solid rgba(0, 0, 0, .1);
@@ -1168,7 +1184,7 @@ a:focus {
     font-family: 'font Awesome 5 Free';
     content: "\f067";
     float: right;
-    color: #ffffff;
+    color: #ff9d00;
     font-size: 12px;
     font-weight: 900;
     transition: .5s;
@@ -1178,7 +1194,7 @@ a:focus {
     font-family: 'font Awesome 5 Free';
     content: "\f068";
     float: right;
-    color: #0e0d3e;
+    color: #ff9d00;
     font-size: 12px;
     font-weight: 900;
     transition: .5s;

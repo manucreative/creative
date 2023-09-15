@@ -46,10 +46,10 @@
             <!-- Carousel End -->
 
               <!-- Feature Start-->
-              <div class="feature wow fadeInUp" data-wow-delay="0.1s">
+              <div class="feature ">
                 <div class="container-fluid">
                     <div class="row align-items-center">
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-4 col-md-12 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0.5s">
                             <div class="feature-item">
                                 <!-- <div class="feature-icon"> -->
                                 <img src="<?php echo base_url('frontend/media/general_images/coding4.png')?>" alt="Image" width="70" height="70">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-4 col-md-12 wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.2s">
                             <div class="feature-item">
                                 <!-- <div class="feature-icon"> -->
                                 <img src="<?php echo base_url('frontend/media/general_images/code1.png')?>" alt="Image" width="60" height="60">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-4 col-md-12 wow bounceInRight" data-wow-duration="2s" data-wow-delay="0.5s">
                             <div class="feature-item">
                                 <!-- <div class="feature-icon"> -->
                                 <img src="<?php echo base_url('frontend/media/general_images/code3.png')?>" alt="Image" width="70" height="70">
@@ -98,9 +98,9 @@
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6">
-                            <div class="section-header text-left">
-                                <p>Manu Creative Dev</p>
-                                <h2>With 3 Years Experience</h2>
+                        <div class="section-header text-left myHeader">
+                                <p class="subHeaderOnAboutMe">Manu Creative Dev</p>
+                                <h2 class="mainDeaderOnAboutMe">With 3 Years Experience</h2>
                             </div>
                             <div class="about-text">
                                 <p>
@@ -307,7 +307,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div id="accordion-1">
-                                <div class="card wow fadeInLeft" data-wow-delay="0.1s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.1s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
                                             Who are you?
@@ -320,7 +320,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.2s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.3s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
                                             What can you deliver as an Android developer?
@@ -336,7 +336,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.3s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.5s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree">
                                         What type and platforms are you specialized when creating e-commerce?
@@ -350,7 +350,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.4s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.7s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseFour">
                                             What technologies and the skill level do you have in software development?
@@ -381,7 +381,7 @@
                         </div>
                         <div class="col-md-6">
                             <div id="accordion-2">
-                                <div class="card wow fadeInRight" data-wow-delay="0.1s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.9s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
                                             What can you deliver as System admin Expert?
@@ -398,7 +398,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.2s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="1.1s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
                                             How Effectively can you deliver website?
@@ -412,7 +412,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="1.3s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
                                             How can you support during web hosting?
@@ -426,7 +426,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.4s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="1.4s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
                                             What Process do you use to create and deliver website to a client?

@@ -202,6 +202,10 @@
             
             <!-- Fact Start -->
             <div class="fact">
+            <div class="section-header text-center"style="background: #a10379; padding:10px">
+                        <p>Please Review</p>
+                        <h2 style="color: #ffffff;">My Pricing And The Packages</h2>
+                    </div>
                 <div class="container-fluid">
                     <div class="row counters">
                         <div class="col-md-6 fact-left wow slideInLeft">
@@ -211,8 +215,11 @@
                                         <i class="flaticon-worker"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">109</h2>
-                                        <p>Expert Workers</p>
+                                    <h5 style="color: orange;">Upto Two Pages website (package)</h5>
+                                        <h2 style="font-size: 24px; color:#ffffff"> Up to Ksh : <span data-toggle="counter-up">15000</span> </h2>
+                                        <p>The Prices are not fixed but negotiable depending with the complexity</p>
+                                        <hr>
+                                        <span style="color:#ffffff;">Feel Free to Conduct Me for any Queries just click the button below Now</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -220,10 +227,17 @@
                                         <i class="flaticon-building"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">485</h2>
-                                        <p>Happy Clients</p>
+                                    <h5 style="color: orange;">Upto Six Pages website (package)</h5>
+                                        <h2 style="font-size: 24px; color:#ffffff"> Up to Ksh : <span data-toggle="counter-up">30000</span> </h2>
+                                        <p>The Prices are not fixed but negotiable depending with the complexity</p>
+                                        <hr>
+                                        <h6 style="color:#ffffff;">Feel Free to Conduct Me for any Queries just click the button below Now</h6>
                                     </div>
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="myBox">
+                            <a href="<?php echo base_url('manucreative/contact')?>" class="btn nav-item nav-link">Contact me</a>
                             </div>
                         </div>
                         <div class="col-md-6 fact-right wow slideInRight">
@@ -233,8 +247,11 @@
                                         <i class="flaticon-address"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">789</h2>
-                                        <p>Completed Projects</p>
+                                    <h5 style="color: orange;">Up to 15 Pages website (package)</h5>
+                                        <h2 style="font-size: 24px; color:#ffffff"> Up to Ksh : <span data-toggle="counter-up">50000</span> </h2>
+                                        <p>The Prices are not fixed but negotiable depending with the complexity</p>
+                                        <hr>
+                                        <span style="color:#ffffff;">Feel Free to Conduct Me for any Queries just click the button below Now</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -242,10 +259,17 @@
                                         <i class="flaticon-crane"></i>
                                     </div>
                                     <div class="fact-text">
-                                        <h2 data-toggle="counter-up">890</h2>
-                                        <p>Running Projects</p>
+                                    <h5 style="color: orange;">Unlimited Pages website (Premium)</h5>
+                                        <h2 style="font-size: 24px; color:#ffffff"> Up to Ksh : <span data-toggle="counter-up">100000</span> </h2>
+                                        <p>The Prices are not fixed but negotiable depending with the complexity</p>
+                                        <hr>
+                                        <h6 style="color:#ffffff;">Feel Free to Conduct Me for any Queries just click the button below Now</h6>
                                     </div>
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="myBox">
+                            <a href="<?php echo base_url('manucreative/contact')?>" class="btn nav-item nav-link">Contact me</a>
                             </div>
                         </div>
                     </div>
@@ -253,8 +277,8 @@
             </div>
             <!-- Fact End -->
 
-                       <!-- FAQs Start -->
-                       <div class="faqs">
+             <!-- FAQs Start -->
+             <div class="faqs">
                 <div class="container">
                     <div class="section-header text-center">
                         <p>Frequently Asked Question</p>
@@ -263,7 +287,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div id="accordion-1">
-                                <div class="card wow fadeInLeft" data-wow-delay="0.1s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.1s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
                                             Who are you?
@@ -276,7 +300,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.2s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.3s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
                                             What can you deliver as an Android developer?
@@ -292,7 +316,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.3s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.5s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree">
                                         What type and platforms are you specialized when creating e-commerce?
@@ -306,7 +330,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.4s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.7s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseFour">
                                             What technologies and the skill level do you have in software development?
@@ -337,7 +361,7 @@
                         </div>
                         <div class="col-md-6">
                             <div id="accordion-2">
-                                <div class="card wow fadeInRight" data-wow-delay="0.1s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.9s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
                                             What can you deliver as System admin Expert?
@@ -354,7 +378,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.2s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="1.1s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
                                             How Effectively can you deliver website?
@@ -368,7 +392,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="1.3s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
                                             How can you support during web hosting?
@@ -382,7 +406,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.4s">
+                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="1.4s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
                                             What Process do you use to create and deliver website to a client?

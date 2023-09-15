@@ -24,22 +24,22 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-link wow fadeInDown">
                                 <h2>My Services Areas</h2>
-                                <a href="">Websites Development</a>
-                                <a href="">Android Development</a>
-                                <a href="">Graphic Design</a>
-                                <a href="">E-commerce Development</a>
-                                <a href="">Web Hosting Support</a>
-                                <a href="">System Administration</a>
+                                <a href="<?php echo base_url('manucreative/services')?>">Websites Development</a>
+                                <a href="<?php echo base_url('manucreative/services')?>">Android Development</a>
+                                <a href="<?php echo base_url('manucreative/services')?>">Graphic Design</a>
+                                <a href="<?php echo base_url('manucreative/services')?>">E-commerce Development</a>
+                                <a href="<?php echo base_url('manucreative/services')?>">Web Hosting Support</a>
+                                <a href="<?php echo base_url('manucreative/services')?>">System Administration</a>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-link wow fadeInDown">
                                 <h2>Useful Sites</h2>
-                                <a href="">My Profile</a>
-                                <a href="">Contact Me</a>
-                                <a href="">All Services</a>
-                                <a href="">My Projects</a>
-                                <a href="">My Blogs</a>
+                                <a href="<?php echo base_url('manucreative/about')?>">My Profile</a>
+                                <a href="<?php echo base_url('manucreative/contact')?>">Contact Me</a>
+                                <a href="<?php echo base_url('manucreative/services')?>">All Services</a>
+                                <a href="<?php echo base_url('manucreative/portfolio')?>">My Projects</a>
+                                <a href="<?php echo base_url('manucreative/myBlogs')?>">My Blogs</a>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
@@ -63,7 +63,7 @@
                         <a href="">Privacy policy</a>
                         <a href="">Cookies</a>
                         <a href="">Help</a>
-                        <a href="">FQAs</a>
+                        <a href="<?php echo base_url('manucreative/faqs')?>">FQAs</a>
                     </div>
                 </div>
                 <div class="container copyright">
@@ -72,7 +72,7 @@
                             <p>&copy; <a href="#">Manu Creative Dev</a>, All Right Reserved.</p>
                         </div>
                         <div class="col-md-6">
-                            <p>Developed and managed By :<a href="https://manucreative.co.ke">Emmanuel Kirui</a></p>
+                            <p>Developed and managed By :<a href="<?php echo base_url('manucreative')?>">Emmanuel Kirui</a></p>
                         </div>
                     </div>
                 </div>
