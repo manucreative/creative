@@ -7,17 +7,41 @@ use App\Controllers\frontend\PortfolioController;
 use App\Controllers\frontend\AboutController;
 use App\Controllers\frontend\BlogsController;
 use App\Controllers\frontend\ContactController;
+use App\Controllers\frontend\PricingController;
+
+//admins Controllers
+use App\Controllers\backend\DashboardController;
+use App\Controllers\backend\AdminLoginController;
+use App\Controllers\backend\AdminsController;
 
 /**
  * @var RouteCollection $routes
  */
 
- $routes->group('manucreative', ['namespace' => 'App\Controllers\frontend'],function ($routes){
+ $routes->group('', ['namespace' => 'App\Controllers\frontend'],function ($routes){
     $routes->get('/', [HomeController::class, 'index']);
     $routes->get('services', [ServicesController::class, 'index']);
     $routes->get('portfolio', [PortfolioController::class, 'index']);
     $routes->get('about', [AboutController::class, 'index']);
     $routes->get('myBlogs', [BlogsController::class, 'index']);
     $routes->get('contact', [ContactController::class, 'index']);
+    $routes->get('myPricing', [PricingController::class, 'index']);
+ });
+
+ // Admin Login
+ // 
+ $routes->group('creative', ['namespace' => 'App\Controllers\backend'], function ($routes) {
+   $routes->get('login', [AdminLoginController::class, 'index'],['filter' => 'ifLoggedIn']);
+   $routes->post('adminLogin', [AdminLoginController::class, 'adminLogin']); // Process login
+
+});
+ //admin Routing 
+ $routes->group('creative', ['namespace' => 'App\Controllers\backend', 'filter' => 'auth'],function ($routes){
+   $routes->get('/', [DashboardController::class, 'dashboard']);
+   $routes->get('dashboard', [DashboardController::class, 'dashboard']);
+   $routes->get('addAdminForm', [AdminsController::class, 'addAdminForm']);
+   $routes->post('addAdminAction', [AdminsController::class, 'addAdminAction']);
+  $routes->get('unAuthorized', [AdminLoginController::class, 'unAuthorized']);
+    $routes->get('logOut', [AdminLoginController::class, 'logOut']);
  });
 

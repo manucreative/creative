@@ -98,6 +98,10 @@
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                         <div class="section-header text-left myHeader">
                                 <p class="subHeaderOnAboutMe">Manu Creative Dev</p>
                                 <h2 class="mainDeaderOnAboutMe">With 3 Years Experience</h2>
@@ -114,7 +118,7 @@
                                         facilitating effective communication and project management. Additionally, I can provide thorough testing, debugging, and ongoing maintenance to ensure long-term reliability. 
                                         My commitment to staying updated with emerging technologies ensures that I can deliver innovative solutions that keep you ahead in the ever-evolving tech landscape.
                                 </p>
-                                <a class="btn" href="<?php echo base_url('manucreative/about')?>">Learn More</a>
+                                <a class="btn" href="<?php echo base_url('about')?>">Learn More</a>
                             </div>
                         </div>
                     </div>

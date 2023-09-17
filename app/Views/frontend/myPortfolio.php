@@ -53,7 +53,7 @@
                                     <img src="<?php echo base_url('frontend/media/portfolio_images/roomDb.png');?>" alt="Image">
                                     <div class="portfolio-overlay">
                                         <p>
-                                        Ia bound to different technologies in Android dev, using Room database to store cart items involves defining a data entity, creating a Room database instance, 
+                                        I am bound to different technologies in Android dev, using Room database to store cart items involves defining a data entity, creating a Room database instance, 
                                         and implementing data access objects (DAOs) to perform CRUD operations. Room utilizes SQLite technology, providing efficient and persistent 
                                         data storage. This approach ensures structured data handling, seamless retrieval, and synchronization between the app's UI and the database, 
                                         enhancing user experience in e-commerce and shopping apps.

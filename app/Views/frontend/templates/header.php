@@ -94,20 +94,20 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a href="<?php echo base_url('manucreative')?>" class="nav-item nav-link active">Home</a>
-                                <a href="<?php echo base_url('manucreative/about')?>" class="nav-item nav-link">My Profile</a>
-                                <a href="<?php echo base_url('manucreative/services')?>" class="nav-item nav-link">Services</a>
-                                <a href="<?php echo base_url('manucreative/portfolio')?>" class="nav-item nav-link">Projects</a>
+                                <a href="<?php echo base_url()?>" class="nav-item nav-link active">Home</a>
+                                <a href="<?php echo base_url('about')?>" class="nav-item nav-link">My Profile</a>
+                                <a href="<?php echo base_url('services')?>" class="nav-item nav-link">Services</a>
+                                <a href="<?php echo base_url('portfolio')?>" class="nav-item nav-link">Projects</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                                     <div class="dropdown-menu">
-                                        <a href="<?php echo base_url('manucreative/myBlogs')?>" class="dropdown-item">Recent Blogs</a>
-                                        <a href="#" class="dropdown-item">Blog Service</a>
+                                        <a href="<?php echo base_url('myBlogs')?>" class="dropdown-item">Recent Blogs</a>
+                                        <a href="<?php echo base_url('myPricing')?>" class="dropdown-item">My Pricing</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="ml-auto">
-                            <a href="<?php echo base_url('manucreative/contact')?>" class="btn nav-item nav-link">Contact me</a>
+                            <a href="<?php echo base_url('contact')?>" class="btn nav-item nav-link">Contact me</a>
                             </div>
                             </div>
                     </nav>
