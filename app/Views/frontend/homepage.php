@@ -1,39 +1,25 @@
  <!-- Carousel Start -->
+ <?php if(!empty($sliders)&& is_array($sliders)): ?>
+   
  <div id="carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
+                        <?php foreach ($sliders as $key => $slider): ?>
+                                <li data-target="#carousel" data-slide-to="<?php echo $key; ?>" <?php echo ($key === 0) ? 'class="active"' : ''; ?>></li>
+                            <?php endforeach; ?>
                 </ol>
+
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="<?php echo base_url('frontend/media/carousel_images/banner_forget_password.png')?>" alt="Carousel Image">
-                        <div class="carousel-caption">
-                            <p class="animated fadeInRight">I Emmanuel a Professional</p>
-                            <h1 class="animated fadeInLeft">For Your Dream Website</h1>
-                            <a class="btn animated fadeInUp" href="<?php echo base_url('manucreative/contact')?>">Contact me Now</a>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="<?php echo base_url('frontend/media/carousel_images/banner_contact.png')?>" alt="Carousel Image">
-                        <div class="carousel-caption">
-                            <p class="animated fadeInRight">Professional Software Developer</p>
-                            <h1 class="animated fadeInLeft">I build Websites and Apps From Scratch</h1>
-                            <a class="btn animated fadeInUp" href="<?php echo base_url('manucreative/contact')?>">Contact me Now</a>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="<?php echo base_url('frontend/media/carousel_images/service-banner-7.png')?>" alt="Carousel Image">
-                        <div class="carousel-caption">
-                            <p class="animated fadeInRight">I am 100% Trusted</p>
-                            <h1 class="animated fadeInLeft">For Your Project Construction</h1>
-                            <a class="btn animated fadeInUp" href="<?php echo base_url('manucreative/contact')?>">Contact me Now</a>
-                        </div>
+                <?php foreach ($sliders as $key => $slider): ?>
+                <div class="carousel-item <?php echo ($key === 0) ? 'active' : ''; ?>">
+                    <img src="<?php echo base_url('backend/media/slider_images/' . $slider['slider_img']); ?>" alt="Carousel Image">
+                    <div class="carousel-caption">
+                        <p class="animated fadeInRight"><?php echo $slider['sub_header']; ?></p>
+                        <h1 class="animated fadeInLeft"><?php echo $slider['main_header']; ?></h1>
+                        <a class="btn animated fadeInUp" href="<?php echo base_url('manucreative/contact'); ?>"><?php echo $slider['btn_mssage']; ?></a>
                     </div>
                 </div>
-
+            <?php endforeach; ?>
+            </div>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -43,8 +29,10 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+        <?php endif ?>
             <!-- Carousel End -->
 
+            
               <!-- Feature Start-->
               <div class="feature ">
                 <div class="container-fluid">

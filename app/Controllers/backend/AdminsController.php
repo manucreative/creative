@@ -51,7 +51,7 @@ class AdminsController extends BaseController{
         
         $adminModel = model(AdminModel::class);
         if($this->request->getMethod() === 'post'){
-            $rolesModel = model(RolesModel::class);
+          //  $rolesModel = model(RolesModel::class);
             $validations = [
                 'first_name' => [
                     'babel' => 'first_name',
@@ -102,6 +102,8 @@ class AdminsController extends BaseController{
                     return redirect()->back()->withInput()->with('error', $error);
                 }
             }else{
+                try{
+                  
             $first_name = $this->request->getPost('first_name');
             $middle_name = $this->request->getPost('middle_name');
             $last_name = $this->request->getPost('last_name');
@@ -135,14 +137,20 @@ class AdminsController extends BaseController{
 
             $inserted = $adminModel->insertAdmins($adminData);
             if($inserted){
+            
                 $avatar->move(ROOTPATH . 'public/backend/media/admin_images', $newName);
                 session()->setFlashdata('success', 'Administrator Insert successful');
                 return redirect()->to(base_url('creative/addAdminForm'));
             }else{
-               // session()->setFlashdata('error', 'Admin Insert Failed');
+               session()->setFlashdata('error', 'Admin Insert Failed');
                 return redirect()->to(base_url('creative/addAdminForm'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+            
+                throw new \Exception();
             }
+        }catch(\Exception $e){
+            echo "error has occurred".$e->getMessage();
         }
+    }
     }
     }
 

@@ -13,6 +13,7 @@ use App\Controllers\frontend\PricingController;
 use App\Controllers\backend\DashboardController;
 use App\Controllers\backend\AdminLoginController;
 use App\Controllers\backend\AdminsController;
+use App\Controllers\backend\SliderController;
 
 /**
  * @var RouteCollection $routes
@@ -43,5 +44,7 @@ use App\Controllers\backend\AdminsController;
    $routes->post('addAdminAction', [AdminsController::class, 'addAdminAction']);
   $routes->get('unAuthorized', [AdminLoginController::class, 'unAuthorized']);
     $routes->get('logOut', [AdminLoginController::class, 'logOut']);
+    $routes->get('addSliderContent', [SliderController::class, 'addSliderContent']);
+    $routes->POST('addSliderAction', [SliderController::class, 'addSliderAction']);
  });
 
