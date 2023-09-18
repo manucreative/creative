@@ -14,6 +14,7 @@ use App\Controllers\backend\DashboardController;
 use App\Controllers\backend\AdminLoginController;
 use App\Controllers\backend\AdminsController;
 use App\Controllers\backend\SliderController;
+use App\Controllers\backend\ConfigurationsController;
 
 /**
  * @var RouteCollection $routes
@@ -46,5 +47,6 @@ use App\Controllers\backend\SliderController;
     $routes->get('logOut', [AdminLoginController::class, 'logOut']);
     $routes->get('addSliderContent', [SliderController::class, 'addSliderContent']);
     $routes->POST('addSliderAction', [SliderController::class, 'addSliderAction']);
+    $routes->get('configurations', [ConfigurationsController::class, 'viewSettingsPage']);
  });
 

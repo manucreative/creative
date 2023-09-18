@@ -73,7 +73,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a href="#"><i class="fa fa-sitemap fa-3x"></i> More Controls<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                         <li>
-                        <a  href="#"><i class="fa fa-gear fa-3x"></i> Configurations</a>
+                        <a  href="<?php echo base_url('creative/configurations');?>"><i class="fa fa-gear fa-3x"></i> Configurations</a>
                         </li>
                         <li>
                         <a  href="#"><i class="fa fa-tag fa-3x"></i> Manage Quotes</a>
