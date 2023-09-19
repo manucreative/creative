@@ -48,5 +48,6 @@ use App\Controllers\backend\ConfigurationsController;
     $routes->get('addSliderContent', [SliderController::class, 'addSliderContent']);
     $routes->POST('addSliderAction', [SliderController::class, 'addSliderAction']);
     $routes->get('configurations', [ConfigurationsController::class, 'viewSettingsPage']);
+    $routes->post('featureConfigForm',[ConfigurationsController::class, 'featureConfigForm']);
  });
 

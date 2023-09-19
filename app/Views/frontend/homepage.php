@@ -37,36 +37,35 @@
               <div class="feature ">
                 <div class="container-fluid">
                     <div class="row align-items-center">
-                        <div class="col-lg-4 col-md-12 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0.5s">
+                        <div class="col-lg-4 col-md-12 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="0.5s" style="background-color:<?php echo $feature_background1;?>">
                             <div class="feature-item">
                                 <!-- <div class="feature-icon"> -->
-                                <img src="<?php echo base_url('frontend/media/general_images/coding4.png')?>" alt="Image" width="70" height="70">
+                                <img src="<?php echo base_url('backend/media/feature_icons/icon1/'.$feature_icon1)?>" alt="Image" width="70" height="70">
                                 <!-- </div> -->
                                 <div class="feature-text">
-                                    <h3>Satisfied Software Expert</h3>
-                                    <p>Building Android Applications, Web applications, bug corrections, and supports</p>
+                                    <h3><?php echo $feature_title1; ?></h3>
+                                    <p><?php echo $feature_desc1; ?></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+                        <div class="col-lg-4 col-md-12 wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.2s" style="background-color:<?php echo $feature_background2;?>">
                             <div class="feature-item">
                                 <!-- <div class="feature-icon"> -->
-                                <img src="<?php echo base_url('frontend/media/general_images/code1.png')?>" alt="Image" width="60" height="60">
-                                <!-- </div> -->
+                                <img src="<?php echo base_url('backend/media/feature_icons/icon2/'.$feature_icon2)?>" alt="Image" width="60" height="60">
+                
                                 <div class="feature-text">
-                                    <h3>Powerful Frameworks</h3>
-                                    <p>MVC based Frameworks like; CodeIgniter 4 and Magento 2 etc, are part of my Development consideration</p>
+                                    <h3><?php echo $feature_title2; ?></h3>
+                                    <p><?php echo $feature_desc2; ?></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 wow bounceInRight" data-wow-duration="2s" data-wow-delay="0.5s">
+                        </div> 
+                        <div class="col-lg-4 col-md-12 wow bounceInRight" data-wow-duration="2s" data-wow-delay="0.5s" style="background-color:<?php echo $feature_background3;?>">
                             <div class="feature-item">
                                 <!-- <div class="feature-icon"> -->
-                                <img src="<?php echo base_url('frontend/media/general_images/code3.png')?>" alt="Image" width="70" height="70">
-                                <!-- </div> -->
+                                <img src="<?php echo base_url('backend/media/feature_icons/icon3/'.$feature_icon3)?>" alt="Image" width="70" height="70">
                                 <div class="feature-text">
-                                    <h3>100% Maintenance & Support</h3>
-                                    <p>Normally after project is successfully delivered support becomes an essential factor to my clients</p>
+                                    <h3><?php echo $feature_title3; ?></h3>
+                                    <p><?php echo $feature_desc3; ?></p>
                                 </div>
                             </div>
                         </div>
