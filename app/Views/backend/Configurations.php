@@ -39,7 +39,7 @@
           				<div class="tab-pane active" id="tab_1">
 
 
-          					<?php echo form_open_multipart(base_url('creative/featureConfigForm'),array('class' => 'form-horizontal')); ?>
+          					<?php echo form_open_multipart(base_url('creative/featureConfigForm'),array('class' => 'updateFeatures')); ?>
           					<div class="box box-info">
 								<div class="box-body">
                                 <div class="modal-body">
@@ -100,13 +100,13 @@
                                             </div>
                                             </div>
                                         <div class="col-sm-1"></div>
-                                       
+
                                         <div class="col-sm-3">
                                         <h2> Feature Column 3 </h2>
                                         <div class = "form-group">
                                             <label for="feature_title3">Enter The Title</label>
                                                 <input type="text" id="feature_title3" name="feature_title3" value="<?php  echo $feature_title3; ?>" placeholder="Feature Title here"  class="form-control">
-                                                
+
                                             </div>
 
                                             <div class = "form-group">
@@ -130,7 +130,7 @@
                                         <div class="col-sm-1"></div>
                                         
                                         <div class="modal-footer">
-                                            <button type="submit" id="editTopUpsBtn" name="editTopUpsBtn" class="btn btn-success">Save Changes</button>
+                                            <button type="submit" id="btnUpdateFeatures" name="btnUpdateFeatures" class="btn btn-success">Save Changes</button>
                                             </div>
                                             
                                     </div>

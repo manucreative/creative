@@ -15,6 +15,7 @@ use App\Controllers\backend\AdminLoginController;
 use App\Controllers\backend\AdminsController;
 use App\Controllers\backend\SliderController;
 use App\Controllers\backend\ConfigurationsController;
+use App\Controllers\backend\ServiceController;
 
 /**
  * @var RouteCollection $routes
@@ -49,5 +50,11 @@ use App\Controllers\backend\ConfigurationsController;
     $routes->POST('addSliderAction', [SliderController::class, 'addSliderAction']);
     $routes->get('configurations', [ConfigurationsController::class, 'viewSettingsPage']);
     $routes->post('featureConfigForm',[ConfigurationsController::class, 'featureConfigForm']);
+    //Service Controls
+    $routes->get('addServiceForm', [ServiceController::class, 'addServiceForm']);
+    $routes->post('addService', [ServiceController::class, 'addService']);
+    $routes->post('deleteService', [ServiceController::class, 'deleteService']);
+    $routes->get('updateServiceForm/(:num)', [ServiceController::class, 'updateServiceForm/$1']);
+    $routes->post('updateService', [ServiceController::class, 'updateService/1$']);
  });
 

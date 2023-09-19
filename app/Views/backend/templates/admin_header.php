@@ -12,11 +12,15 @@
     <link href="<?php echo base_url('backend/assets/js/morris/morris-0.4.3.min.css');?>" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
     <link href="<?php echo base_url('backend/assets/css/custom.css');?>" rel="stylesheet" />
+    <link href="<?php echo base_url('backend/assets/css/styles.css');?>" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!-- <link rel="stylesheet" type="text/css" href="<?= base_url('backend/tinymce/js/tinymce/skins/content/tinymce-5-dark/content.min.css') ?>"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
+<div id="overlay"></div>
 <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -47,14 +51,11 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a class="active-menu"  href="<?php echo base_url('creative/dashboard');?>"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                      <li>
-                        <a  href="#"><i class="fa fa-desktop fa-3x"></i> Manage Services</</a>
+                        <a  href="<?php echo base_url('creative/addServiceForm');?>"><i class="fa fa-desktop fa-3x"></i> Manage Services</</a>
                     </li>
                     
 						   <li  >
                         <a   href="<?php echo base_url('creative/addSliderContent');?>"><i class="fa fa-bar-chart-o fa-3x"></i> Manage Slider</a>
-                    </li>
-                      <li >
-                        <a  href="#"><i class="fa fa-tags fa-3x"></i> Manage Features</a>
                     </li>
                     <li  >
                         <a  href="form.html"><i class="fa fa-user fa-3x"></i>Manage About me </a>
@@ -110,3 +111,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
             </div>
             
         </nav>
+        <center>
+    <img src = "<?= base_Url('backend/assets/img/loader.gif')?>" id="loaderBanner" style="width: 100px; height:100px; display: none" >
+    </center>
+    
