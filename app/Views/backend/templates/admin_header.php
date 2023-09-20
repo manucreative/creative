@@ -13,6 +13,7 @@
         <!-- CUSTOM STYLES-->
     <link href="<?php echo base_url('backend/assets/css/custom.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('backend/assets/css/styles.css');?>" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo base_url('backend/assets/js/dataTables/datatables.net-bs4/dataTables.bootstrap4.css')?>">
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <!-- <link rel="stylesheet" type="text/css" href="<?= base_url('backend/tinymce/js/tinymce/skins/content/tinymce-5-dark/content.min.css') ?>"> -->
@@ -51,11 +52,10 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a class="active-menu"  href="<?php echo base_url('creative/dashboard');?>"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                      <li>
-                        <a  href="<?php echo base_url('creative/addServiceForm');?>"><i class="fa fa-desktop fa-3x"></i> Manage Services</</a>
+                        <a  href="#" id="viewService" data-action="viewService"><i class="fa fa-desktop fa-3x"></i> Manage Services</a>
                     </li>
-                    
-						   <li  >
-                        <a   href="<?php echo base_url('creative/addSliderContent');?>"><i class="fa fa-bar-chart-o fa-3x"></i> Manage Slider</a>
+						   <li >
+                        <a   href="#"  id="viewSliders" data-action="viewSliders"><i class="fa fa-bar-chart-o fa-3x"></i> Manage Slider</a>
                     </li>
                     <li  >
                         <a  href="form.html"><i class="fa fa-user fa-3x"></i>Manage About me </a>
@@ -74,7 +74,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a href="#"><i class="fa fa-sitemap fa-3x"></i> More Controls<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                         <li>
-                        <a  href="<?php echo base_url('creative/configurations');?>"><i class="fa fa-gear fa-3x"></i> Configurations</a>
+                        <a  href="#" id="viewConfigs" data-action="viewConfigs"><i class="fa fa-gear fa-3x"></i> Configurations</a>
                         </li>
                         <li>
                         <a  href="#"><i class="fa fa-tag fa-3x"></i> Manage Quotes</a>

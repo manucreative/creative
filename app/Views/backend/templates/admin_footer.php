@@ -1,12 +1,86 @@
 
 
 </div>  <!-- /. WRAPPER  -->
+<script>
+      // All buttons Configurations
+    $(document).ready(function () {
+        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#btnViewAdmins,#btnAddProducts,#btnViewProducts,#btnBanner').click(function (e) {
+            e.preventDefault();
+            var action = $(this).data('action');
+            $('#overlay').show();
+            // Show the loading gif
+            $('#loaderBanner').show();
+    
+            setTimeout(function () {
+                // Hide the loading gif
+                $('#loaderBanner').hide();
+                $('#overlay').hide();
+    
+                switch(action){
+                 case 'viewService':
+                window.location.href = "<?php echo base_url('creative/viewServices');?>";
+                    break;
+                case 'btnAddService':
+                    window.location.href = "<?php echo base_url('creative/addServiceForm');?>";
+                    break;
+                case 'btnAddSlider':
+                    window.location.href = "<?php echo base_url('creative/addSliderContent');?>";
+                    break;
+                case 'viewConfigs':
+                    window.location.href = "<?php echo base_url('creative/configurations');?>";
+                    break;
+                case 'viewSliders':
+                    window.location.href = "<?php echo base_url('creative/viewSliders');?>";
+                    break;
+                case 'viewAdmin':
+                    window.location.href = "viewAdmins";
+                    break;
+                case 'addProduct':
+                    window.location.href = "product_addition_page";
+                    break;
+                case 'viewProduct':
+                    window.location.href = "view_products";
+                    break;
+                case 'viewProd':
+                    window.location.href = "../view_products";
+                    break;
+                case 'addBanner':
+                    window.location.href = "addBanners";
+                    break;
+                case 'editBanner':
+                    window.location.href = "../view_banners";
+                    break;
+                case 'viewBanner':
+                    window.location.href = "view_banners";
+                    break;
+                }
+            }, 1500);
+        });
+    
+        // for admin header dropdowns
+        var dropdown = $('.dropdown-menu');
+    
+        $('.admin_names').click(function () {
+          dropdown.fadeToggle('fast'); // Toggle with fade effect
+        });
+    
+        // Close the dropdown when clicking outside of it
+        $(document).click(function (event) {
+          if (!$(event.target).closest('.dropdown').length) {
+            dropdown.fadeOut('fast'); // Hide with fade effect
+          }
+        });
+    });
+    </script>
     <!-- Custom JS -->
     <script src="<?php echo base_url('backend/assets/js/myJs.js')?>"></script>
   <script src="<?php echo base_url('backend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
 
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
+  <script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net/jquery.dataTables.js')?>"></script>
+   <script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net-bs4/dataTables.bootstrap4.js')?>"></script>
+   <script src="<?php  echo base_url('backend/assets/js/dataTables/data-table.js')?>"></script>
+
+
     <script src="<?php echo base_url('backend/assets/js/jquery-1.10.2.js');?>"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="<?php echo base_url('backend/assets/js/bootstrap.min.js');?>"></script>
@@ -18,10 +92,11 @@
       <!-- CUSTOM SCRIPTS -->
     <script src="<?php echo base_url('backend/assets/js/custom.js');?>"></script>
     
+   
 
     <script>
     tinymce.init({
-    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content', // Change this to match your textarea's class or ID
+    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider', // Change this to match your textarea's class or ID
     height: 300,
     plugins: 'link image code',
     toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',

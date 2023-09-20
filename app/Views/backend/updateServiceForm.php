@@ -47,6 +47,7 @@
             <label for="service_title" class="col-sm-3 col-form-label" style="text-align: end;">Service Title Entry  <span style="color: red;">*</span></label>
             <div class="col-sm-5">
                 <input type="text" id="service_title" name="service_title" value="<?= $service_title ?>" class="form-control">
+                <input type="hidden" id="service_id" name="service_id" value="<?= $service_id ?>">
             </div>
             <div class="col-sm-3"></div>
         </div>
@@ -70,7 +71,12 @@
             <div class="col-sm-5">
                 <textarea type="text" id="service_main_content" name="service_main_content"   class="form-control"><?= $service_main_content ?></textarea>
             </div>
-            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+            <div class="existing_img">
+            <h2>Existing Service Image</h2>
+            <img src="<?php echo base_url('backend/media/service_images/'.$service_img);?>" alt="service_image" class ='img-fluid' height='150' width='150'>
+        </div>
+            </div>
         </div>
     </div>
 
@@ -82,17 +88,14 @@
           <input type="file" id="service_img" name="service_img" class="form-control" accept="image/*"  style="cursor:pointer">
       </div>
       <div class="col-sm-3">
-        <div class="existing_img">
-            <h2>Existing Service Image</h2>
-            <img src="<?php echo base_url('backend/media/service_images/'.$service_img);?>" alt="service_image">
-        </div>
+        
       </div>
       </div>
       </div>
 
       </div>
       <div class="modal-footer">
-        <button type="submit" value="" id="editServiceBtn" name="editServiceBtn" class="btn btn-success"><i class="btn btn-success btn-lg"></i>Update Service</button>
+        <button type="submit" value="" style="width: 100%;" id="editServiceBtn" name="editServiceBtn" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; Update Service</button>
       </div>
   <?= form_close() ?>
       

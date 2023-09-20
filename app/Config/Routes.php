@@ -46,15 +46,25 @@ use App\Controllers\backend\ServiceController;
    $routes->post('addAdminAction', [AdminsController::class, 'addAdminAction']);
   $routes->get('unAuthorized', [AdminLoginController::class, 'unAuthorized']);
     $routes->get('logOut', [AdminLoginController::class, 'logOut']);
+
+    //Sliders
     $routes->get('addSliderContent', [SliderController::class, 'addSliderContent']);
     $routes->POST('addSliderAction', [SliderController::class, 'addSliderAction']);
+    $routes->get('viewSliders', [SliderController::class, 'viewSliders']);
+    $routes->get('updateSliderForm/(:num)', [SliderController::class, 'updateSliderForm/$1']);
+    $routes->post('updateSlider', [SliderController::class, 'updateSlider']);
+    $routes->post('deleteSliders', [SliderController::class, 'deleteSliders']);
+
+    //Configurations
     $routes->get('configurations', [ConfigurationsController::class, 'viewSettingsPage']);
     $routes->post('featureConfigForm',[ConfigurationsController::class, 'featureConfigForm']);
+
     //Service Controls
     $routes->get('addServiceForm', [ServiceController::class, 'addServiceForm']);
     $routes->post('addService', [ServiceController::class, 'addService']);
-    $routes->post('deleteService', [ServiceController::class, 'deleteService']);
+    $routes->post('deleteServices', [ServiceController::class, 'deleteServices']);
     $routes->get('updateServiceForm/(:num)', [ServiceController::class, 'updateServiceForm/$1']);
-    $routes->post('updateService', [ServiceController::class, 'updateService/1$']);
+    $routes->get('viewServices', [ServiceController::class, 'viewServices']);
+    $routes->post('updateService', [ServiceController::class, 'updateService']);
  });
 

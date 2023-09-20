@@ -89,4 +89,61 @@ class SliderController extends BaseController{
 
         }
     }
+   public function viewSliders(){
+    $sliderModel = model(SliderModel::class);
+    $i = 1;
+    $data=[
+    'sliders' => $sliderModel->getSliders(),
+    'first_name' => session('first_name'),
+    'last_name' => session('last_name'),
+    'avatar' => session('avatar'),
+    'role' => session('role'),
+    'i'=> $i,
+    'title' => 'Viewing all Sliders'
+];
+return view('backend/templates/admin_header', $data)
+    . view('backend/viewAllSliders', $data)
+    . view('backend/templates/admin_footer');
+   }
+
+   
+   public function updateSliderForm($slider_id){
+    $sliderModel = model(SliderModel::class);
+
+    $sliders = $sliderModel->getSliders($slider_id);
+
+        // $slider_id = $sliders['slider_id'];
+        $sub_header = $sliders['sub_header'];
+        $main_header = $sliders['main_header'];
+        $short_desc = $sliders['short_desc'];
+        $btn_mssage = $sliders['btn_mssage'];
+        $slider_img = $sliders['slider_img'];
+
+    $data = [
+        'slider_id' => $slider_id,
+        'sub_header' => $sub_header,
+        'main_header' => $main_header,
+        'short_desc' => $short_desc,
+        'btn_mssage' => $btn_mssage,
+        'slider_img' => $slider_img,
+
+        'first_name' => session('first_name'),
+        'last_name' => session('last_name'),
+        'avatar' => session('avatar'),
+        'role' => session('role'),
+        'title' => 'Add Service',
+        'errors' => []
+    ];
+    return view('backend/templates/admin_header', $data)
+        . view('backend/updateSliderForm', $data)
+        . view('backend/templates/admin_footer');
+   }
+
+//    public function updateSlider(){
+
+//    }
+
+//    public function deleteSliders(){
+
+//    }
 }

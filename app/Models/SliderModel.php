@@ -56,4 +56,21 @@ class SliderModel extends Model
     public function insertSliders($data){
         return $this->insert($data);
     }
+
+    // public function updateSliders($slider_id, $data){
+    //     $existingSlider = $this->find($slider_id);
+    //     if (empty($existingSlider)) {
+    //         return false;
+    //     }
+    //             $existingImagePath = ROOTPATH . 'public/backend/media/slider_images/' . $existingSlider['slider_img'];
+    //             if (file_exists($existingImagePath)) {
+    //                 unlink($existingImagePath);
+    //             }
+    //             $affectedRows = $this->update($slider_id, $data);
+    //             if($affectedRows > 0){
+    //                 return true;
+    //             } else {
+    //                 return false;
+    //             }
+    // }
 }

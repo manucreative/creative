@@ -52,10 +52,38 @@ class ServiceModel extends Model
     }
 
     public function updateServices($service_id, $data){
-        return $this->update($service_id, $data);
+        $existingService = $this->find($service_id);
+        if (empty($existingService)) {
+            return false;
+        }
+                $existingImagePath = ROOTPATH . 'public/backend/media/service_images/' . $existingService['service_img'];
+                if (file_exists($existingImagePath)) {
+                    unlink($existingImagePath);
+                }
+                $affectedRows = $this->update($service_id, $data);
+                if($affectedRows > 0){
+                    return true;
+                } else {
+                    return false;
+                }
     }
 
-    public function deleteService($service_ids){
-
+    public function deleteService($ids){
+        $existingServices = $this->whereIn('service_id', $ids)->findAll();
+        if (empty($existingServices)) {
+            return false;
+        }
+        if ($this->db->table($this->table)->whereIn('service_id', $ids)->delete()) {
+            foreach ($existingServices as $existingService) {
+                $existingImagePath = ROOTPATH . 'public/backend/media/service_images/' . $existingService['service_img'];
+                if (file_exists($existingImagePath)) {
+                    unlink($existingImagePath);
+                }
+                $this->delete($existingService['service_id']);
+            }
+             return true;
+         } else {
+             return false;
+         }
     }
 }

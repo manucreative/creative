@@ -12,32 +12,32 @@
 
     $(function() {
         //If check_all checked then check all table rows
-        $("#check_all").on("click", function () {
+        $("#check_all_services").on("click", function () {
             if ($("input:checkbox").prop("checked")) {
-                $("input:checkbox[name='banners']").prop("checked", true);
+                $("input:checkbox[name='services']").prop("checked", true);
             } else {
-                $("input:checkbox[name='banners']").prop("checked", false);
+                $("input:checkbox[name='services']").prop("checked", false);
             }
         });
     
         // Check each table row checkbox
-        $("input:checkbox[name='banners']").on("change", function () {
-            var total_check_boxes = $("input:checkbox[name='banners']").length;
-            var total_checked_boxes = $("input:checkbox[name='banners']:checked").length;
+        $("input:checkbox[name='services']").on("change", function () {
+            var total_check_boxes = $("input:checkbox[name='services']").length;
+            var total_checked_boxes = $("input:checkbox[name='services']:checked").length;
     
-            // If all checked manually then check check_all checkbox
+            // If all checked manually then check check_all_services checkbox
             if (total_check_boxes === total_checked_boxes) {
-                $("#check_all").prop("checked", true);
+                $("#check_all_services").prop("checked", true);
             }
             else {
-                $("#check_all").prop("checked", false);
+                $("#check_all_services").prop("checked", false);
             }
         });
         
-        $("#delete_selected").on("click", function () {
+        $("#delete_selected_services").on("click", function () {
             var ids = '';
             var comma = '';
-            $("input:checkbox[name='banners']:checked").each(function() {
+            $("input:checkbox[name='services']:checked").each(function() {
                 ids = ids + comma + this.value;
                 comma = ',';
             });
@@ -45,12 +45,12 @@
             //console.log(ids);
             
             if(ids.length > 0) {
-                if (confirm("Are you sure you want to delete the selected banners?")) {
+                if (confirm("Are you sure you want to delete the selected services?")) {
                 $('#overlay').show();
                 $('#loaderBanner').show();
                 $.ajax({
                     type: "POST",
-                    url: "deleteBanners",
+                    url: "deleteServices",
                     data: {'ids': ids},
                     dataType: "html",
                     cache: false,
@@ -59,7 +59,7 @@
                          window.setTimeout(function(){
                             $('#loaderBanner').hide();
                            $('#overlay').hide();
-                           window.location.href = "view_banners";
+                           window.location.href = "viewServices";
                          }, 4000);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -70,42 +70,42 @@
                 });
             }
             } else {
-                $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one banner row for deletion</span>');
+                $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one row for deletion</span>');
             }
         });
     });
     
     
-    // Products Delete function start
+    // sliders Delete function start
     $(function(){
         //If check_all checked then check all table rows
-        $("#check_all_products").on("click", function () {
+        $("#check_all_sliders").on("click", function () {
             if ($("input:checkbox").prop("checked")) {
-                $("input:checkbox[name='products']").prop("checked", true);
+                $("input:checkbox[name='sliders']").prop("checked", true);
             } else {
-                $("input:checkbox[name='products']").prop("checked", false);
+                $("input:checkbox[name='sliders']").prop("checked", false);
             }
         });
     
-        // Check each table row checkbox for products
-        $("input:checkbox[name='products']").on("change", function () {
-            var total_check_boxes = $("input:checkbox[name='products']").length;
-            var total_checked_boxes = $("input:checkbox[name='products']:checked").length;
+        // Check each table row checkbox for sliders
+        $("input:checkbox[name='sliders']").on("change", function () {
+            var total_check_boxes = $("input:checkbox[name='sliders']").length;
+            var total_checked_boxes = $("input:checkbox[name='sliders']:checked").length;
     
             // If all checked manually then check check_all checkbox
             if (total_check_boxes === total_checked_boxes) {
-                $("#check_all_products").prop("checked", true);
+                $("#check_all_sliders").prop("checked", true);
             }
             else {
-                $("#check_all_products").prop("checked", false);
+                $("#check_all_sliders").prop("checked", false);
             }
         });
     
-        $("#delete_selected_products").on("click", function (e) {
+        $("#delete_selected_sliders").on("click", function (e) {
             e.preventDefault();
             var ids = '';
             var comma = '';
-            $("input:checkbox[name='products']:checked").each(function() {
+            $("input:checkbox[name='sliders']:checked").each(function() {
                 ids = ids + comma + this.value;
                 comma = ',';
             });
@@ -113,12 +113,12 @@
             //console.log(ids);
             
             if(ids.length > 0) {
-                if (confirm("Are you sure you want to delete the selected Products?")) {
+                if (confirm("Are you sure you want to delete the selected sliders?")) {
                 $('#overlay').show();
                 $('#loaderBanner').show();
                 $.ajax({
                     type: "POST",
-                    url: "deleteProducts",
+                    url: "deleteSliders",
                     data: {'ids': ids},
                     dataType: "html",
                     cache: false,
@@ -127,7 +127,7 @@
                          window.setTimeout(function(){
                             $('#loaderBanner').hide();
                            $('#overlay').hide();
-                           window.location.href = "view_products";
+                           window.location.href = "viewSliders";
                          }, 4000);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -142,7 +142,7 @@
             }
         });
     });
-    // product delete function end
+    // sliders delete function end
     
     // category delete function Start
     $(function(){
@@ -372,73 +372,5 @@
     });
 
 
-    // All buttons Configurations
-    $(document).ready(function () {
-        $('#addTopUpsBtn,#viewTopsBtn,#btnViewCats,#btnAddCats,#btnAddAdmin,#btnViewAdmins,#btnAddProducts,#btnViewProducts,#btnBanner').click(function (e) {
-            e.preventDefault();
-            var action = $(this).data('action');
-            $('#overlay').show();
-            // Show the loading gif
-            $('#loaderBanner').show();
     
-            setTimeout(function () {
-                // Hide the loading gif
-                $('#loaderBanner').hide();
-                $('#overlay').hide();
-    
-                switch(action){
-                 case 'addTopUps':
-                window.location.href = "viewTopUps";
-                    break;
-                case 'viewTopUps':
-                    window.location.href = "addTopUps";
-                    break;
-                case 'viewCats':
-                    window.location.href = "addCategories";
-                    break;
-                case 'addCats':
-                    window.location.href = "viewCategories";
-                    break;
-                case 'addAdmin':
-                    window.location.href = "addAdminForm";
-                    break;
-                case 'viewAdmin':
-                    window.location.href = "viewAdmins";
-                    break;
-                case 'addProduct':
-                    window.location.href = "product_addition_page";
-                    break;
-                case 'viewProduct':
-                    window.location.href = "view_products";
-                    break;
-                case 'viewProd':
-                    window.location.href = "../view_products";
-                    break;
-                case 'addBanner':
-                    window.location.href = "addBanners";
-                    break;
-                case 'editBanner':
-                    window.location.href = "../view_banners";
-                    break;
-                case 'viewBanner':
-                    window.location.href = "view_banners";
-                    break;
-                }
-            }, 1500);
-        });
-    
-        // for admin header dropdowns
-        var dropdown = $('.dropdown-menu');
-    
-        $('.admin_names').click(function () {
-          dropdown.fadeToggle('fast'); // Toggle with fade effect
-        });
-    
-        // Close the dropdown when clicking outside of it
-        $(document).click(function (event) {
-          if (!$(event.target).closest('.dropdown').length) {
-            dropdown.fadeOut('fast'); // Hide with fade effect
-          }
-        });
-    });
     
