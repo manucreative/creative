@@ -38,6 +38,7 @@ $data = [
      'feature_icon3' => $array3['feature_icon3'],
 
     'first_name' => session('first_name'),
+    'admin_id' => session('admin_id'),
     'last_name' => session('last_name'),
     'avatar' => session('avatar'),
     'role' => session('role'),

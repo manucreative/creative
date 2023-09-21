@@ -16,6 +16,7 @@ class AdminsController extends BaseController{
 
         $data = [
             'first_name' => session('first_name'),
+            'admin_id' => session('admin_id'),
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
@@ -34,6 +35,7 @@ class AdminsController extends BaseController{
         $rolesModel = model(RolesModel::class);
         $data = [
             'first_name' => session('first_name'),
+            'admin_id' => session('admin_id'),
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
@@ -173,5 +175,29 @@ class AdminsController extends BaseController{
             }else{
                 echo '<span style="background-color: red; color:black; padding:10px;">You must select at least one admin row for deletion</span>';
             }
+        }
+
+        public function profileUpdateForm($admin_id){
+            $adminModel = model(AdminModel::class);
+            $rolesModel = model(RolesModel::class);
+            $admins = $adminModel->getAdmins($admin_id);
+            
+           
+     
+             $data = [
+                 'first_name' => session('first_name'),
+                 'admin_id' => session('admin_id'),
+                 'last_name' => session('last_name'),
+                 'avatar' => session('avatar'),
+                 'role' => session('role'),
+                 'admins' => $admins,
+                 'admin_roles' => $rolesModel->getRoles(),
+                 'title' => 'All Administrators',
+                 'errors' => []
+             ];
+     
+             return view('backend/templates/admin_header', $data)
+                  . view('backend/profileUpdateForm', $data)
+                  . view('backend/templates/admin_footer');
         }
     }

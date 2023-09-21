@@ -8,7 +8,34 @@
                 flashMessage.addClass('fade-out');
             }, 3000); // 3000 milliseconds = 3 seconds
         }
+
+           // Get the current URL
+                var currentUrl = window.location.href;
+
+                // Check if the current URL matches a specific URL pattern (e.g., the dashboard URL)
+                if (currentUrl.indexOf("/creative/dashboard") !== -1) {
+                    document.getElementById("dashboard-link").classList.add("myNav");
+                } else if (currentUrl.indexOf("/creative/viewServices") !== -1) {
+                    document.getElementById("viewService").classList.add("myNav");
+                }else if (currentUrl.indexOf("/creative/addServiceForm") !== -1) {
+                    document.getElementById("viewService").classList.add("myNav");
+                } else if (currentUrl.indexOf("/creative/viewSliders") !== -1) {
+                    document.getElementById("viewSliders").classList.add("myNav");
+                }else if (currentUrl.indexOf("/creative/addSliderContent") !== -1) {
+                    document.getElementById("viewSliders").classList.add("myNav");
+                }else if (currentUrl.indexOf("/creative/configurations") !== -1) {
+                    document.getElementById("viewConfigs").classList.add("myNav");
+                }
+                else if (currentUrl.indexOf("/creative/configurations") !== 1) {
+                    document.getElementById("#moreControls").classList.add("myNav");
+                }
+
+                $("#moreControls").click(function() { 
+                    $(this).addClass("myNav2");
+                });
     });
+
+
 
     $(function() {
         //If check_all checked then check all table rows
@@ -353,7 +380,7 @@
     
     $(document).ready(function () {
         // ,#editTopUpsBtn,#editCat,#addAdminBtn
-        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp').click(function (e) {
+        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm').click(function (e) {
             // Prevent the form from submitting immediately
             e.preventDefault();
             $('#overlay').show();
@@ -366,11 +393,85 @@
                 $('#overlay').hide();
                 // Submit the form
                 // , .topUpsEditForm, .categoriesEditForm, .AdminAddForm'
-                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm').submit();
+                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm').submit();
             }, 4000);
         });
     });
 
+
+    // multiStep form
+    /**
+ * Define a function to navigate betweens form steps.
+ * It accepts one parameter. That is - step number.
+ */
+const navigateToFormStep = (stepNumber) => {
+    /**
+     * Hide all form steps.
+     */
+    document.querySelectorAll(".form-step").forEach((formStepElement) => {
+        formStepElement.classList.add("d-none");
+    });
+    /**
+     * Mark all form steps as unfinished.
+     */
+    document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
+        formStepHeader.classList.add("form-stepper-unfinished");
+        formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
+    });
+    /**
+     * Show the current form step (as passed to the function).
+     */
+    document.querySelector("#step-" + stepNumber).classList.remove("d-none");
+    /**
+     * Select the form step circle (progress bar).
+     */
+    const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
+    /**
+     * Mark the current form step as active.
+     */
+    formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+    formStepCircle.classList.add("form-stepper-active");
+    /**
+     * Loop through each form step circles.
+     * This loop will continue up to the current step number.
+     * Example: If the current step is 3,
+     * then the loop will perform operations for step 1 and 2.
+     */
+    for (let index = 0; index < stepNumber; index++) {
+        /**
+         * Select the form step circle (progress bar).
+         */
+        const formStepCircle = document.querySelector('li[step="' + index + '"]');
+        /**
+         * Check if the element exist. If yes, then proceed.
+         */
+        if (formStepCircle) {
+            /**
+             * Mark the form step as completed.
+             */
+            formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
+            formStepCircle.classList.add("form-stepper-completed");
+        }
+    }
+};
+/**
+ * Select all form navigation buttons, and loop through them.
+ */
+document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
+    /**
+     * Add a click event listener to the button.
+     */
+    formNavigationBtn.addEventListener("click", () => {
+        /**
+         * Get the value of the step.
+         */
+        const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
+        /**
+         * Call the function to navigate to the target form step.
+         */
+        navigateToFormStep(stepNumber);
+    });
+});
 
     
     

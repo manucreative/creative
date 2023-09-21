@@ -87,7 +87,7 @@
 
       </div>
       <div>
-        <button type="submit" value="" style="width: 100%;" id="addServiceBtn" name="addServiceBtn" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; Save Service</button>
+        <button type="submit" value="" style="width: 100%; font-weight:700" id="addServiceBtn" name="addServiceBtn" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; Save Service</button>
       </div>
   <?= form_close() ?>
       

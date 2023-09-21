@@ -95,7 +95,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="submit" value="" style="width: 100%;" id="editServiceBtn" name="editServiceBtn" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; Update Service</button>
+        <button type="submit" value="" style="width: 100%; font-weight:700" id="editServiceBtn" name="editServiceBtn" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; Update Service</button>
       </div>
   <?= form_close() ?>
       

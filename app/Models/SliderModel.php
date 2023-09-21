@@ -39,17 +39,11 @@ class SliderModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    /**
-     * Get All Sliders in the database
-     *
-     * @param boolean $slider_id
-     * @return array of sliders
-     */
     public function getSliders($slider_id = false){
         if($slider_id === false){
             return $this->findAll();
         }else{
-            return $this->where([$slider_id => 'slider_id'])->first();
+            return $this->where(['slider_id' => $slider_id])->first();
         }
     }
 
@@ -57,20 +51,39 @@ class SliderModel extends Model
         return $this->insert($data);
     }
 
-    // public function updateSliders($slider_id, $data){
-    //     $existingSlider = $this->find($slider_id);
-    //     if (empty($existingSlider)) {
-    //         return false;
-    //     }
-    //             $existingImagePath = ROOTPATH . 'public/backend/media/slider_images/' . $existingSlider['slider_img'];
-    //             if (file_exists($existingImagePath)) {
-    //                 unlink($existingImagePath);
-    //             }
-    //             $affectedRows = $this->update($slider_id, $data);
-    //             if($affectedRows > 0){
-    //                 return true;
-    //             } else {
-    //                 return false;
-    //             }
-    // }
+    public function updateSliders($slider_id, $data){
+        $existingSlider = $this->find($slider_id);
+        if (empty($existingSlider)) {
+            return false;
+        }
+                $existingImagePath = ROOTPATH . 'public/backend/media/slider_images/' . $existingSlider['slider_img'];
+                if (file_exists($existingImagePath)) {
+                    unlink($existingImagePath);
+                }
+                $affectedRows = $this->update($slider_id, $data);
+                if($affectedRows > 0){
+                    return true;
+                } else {
+                    return false;
+                }
+    }
+
+    public function deleteSliders($ids){
+        $existingSliders = $this->whereIn('slider_id', $ids)->findAll();
+        if (empty($existingSliders)) {
+            return false;
+        }
+        if ($this->db->table($this->table)->whereIn('slider_id', $ids)->delete()) {
+            foreach ($existingSliders as $existingSlider) {
+                $existingImagePath = ROOTPATH . 'public/backend/media/slider_images/' . $existingSlider['slider_img'];
+                if (file_exists($existingImagePath)) {
+                    unlink($existingImagePath);
+                }
+                $this->delete($existingSlider['slider_id']);
+            }
+             return true;
+         } else {
+             return false;
+         }
+    }
 }

@@ -19,6 +19,7 @@
    <!-- <link rel="stylesheet" type="text/css" href="<?= base_url('backend/tinymce/js/tinymce/skins/content/tinymce-5-dark/content.min.css') ?>"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
 </head>
 <body>
 <div id="overlay"></div>
@@ -48,17 +49,23 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                     <img src="<?php echo base_url('backend/media/admin_images/' .$avatar);?>" class="user-image img-responsive"/>
 					</li>
 
-                    <li>
-                        <a class="active-menu"  href="<?php echo base_url('creative/dashboard');?>"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
-                    </li>
-                     <li>
-                        <a  href="#" id="viewService" data-action="viewService"><i class="fa fa-desktop fa-3x"></i> Manage Services</a>
-                    </li>
-						   <li >
-                        <a   href="#"  id="viewSliders" data-action="viewSliders"><i class="fa fa-bar-chart-o fa-3x"></i> Manage Slider</a>
-                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" id="dashboard-link" href="<?php echo base_url('creative/dashboard');?>">
+                                <i class="fa fa-dashboard fa-3x"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item" >
+                            <a class="nav-link" href="#" id="viewService" data-action="viewService">
+                                <i class="fa fa-desktop fa-3x"></i> Manage Services
+                            </a>
+                        </li>
+                        <li class="nav-item" id="sliders-link">
+                            <a class="nav-link" href="#" id="viewSliders" data-action="viewSliders">
+                                <i class="fa fa-bar-chart-o fa-3x"></i> Manage Slider
+                            </a>
+                        </li>
                     <li  >
-                        <a  href="form.html"><i class="fa fa-user fa-3x"></i>Manage About me </a>
+                        <a  href="<?php echo base_url('creative/profileUpdateForm/'.$admin_id);?>"><i class="fa fa-user fa-3x"></i>My Profile </a>
                     </li>
                     <li  >
                         <a  href="form.html"><i class="fa fa-question fa-3x"></i> Manage FAQs </a>
@@ -71,10 +78,13 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> More Controls<span class="fa arrow"></span></a>
+                        <a href="#" id="moreControls"><i class="fa fa-sitemap fa-3x"></i> More Controls<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                        <li>
-                        <a  href="#" id="viewConfigs" data-action="viewConfigs"><i class="fa fa-gear fa-3x"></i> Configurations</a>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="viewConfigs" data-action="viewConfigs">
+                                <i class="fa fa-gear fa-2x"></i> Configurations
+                            </a>
                         </li>
                         <li>
                         <a  href="#"><i class="fa fa-tag fa-3x"></i> Manage Quotes</a>
@@ -99,19 +109,16 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                                     </li>
 
                                 </ul>
-                               
+
                             </li> -->
                         </ul>
-                      </li>  
+                      </li>
                   <!-- <li  >
                         <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
                     </li>	 -->
                 </ul>
-               
             </div>
-            
         </nav>
         <center>
     <img src = "<?= base_Url('backend/assets/img/loader.gif')?>" id="loaderBanner" style="width: 100px; height:100px; display: none" >
     </center>
-    

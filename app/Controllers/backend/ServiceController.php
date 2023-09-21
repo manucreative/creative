@@ -10,6 +10,7 @@ class ServiceController extends BaseController{
 
         $data = [
             'first_name' => session('first_name'),
+            'admin_id' => session('admin_id'),
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
@@ -91,6 +92,7 @@ class ServiceController extends BaseController{
         $data=[
         'services' => $servicesModel->getServices(),
         'first_name' => session('first_name'),
+        'admin_id' => session('admin_id'),
         'last_name' => session('last_name'),
         'avatar' => session('avatar'),
         'role' => session('role'),
@@ -120,6 +122,7 @@ class ServiceController extends BaseController{
             'service_img' => $service_img,
 
             'first_name' => session('first_name'),
+            'admin_id' => session('admin_id'),
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),

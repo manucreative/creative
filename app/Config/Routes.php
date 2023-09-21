@@ -44,12 +44,15 @@ use App\Controllers\backend\ServiceController;
    $routes->get('dashboard', [DashboardController::class, 'dashboard']);
    $routes->get('addAdminForm', [AdminsController::class, 'addAdminForm']);
    $routes->post('addAdminAction', [AdminsController::class, 'addAdminAction']);
-  $routes->get('unAuthorized', [AdminLoginController::class, 'unAuthorized']);
+   $routes->get('unAuthorized', [AdminLoginController::class, 'unAuthorized']);
     $routes->get('logOut', [AdminLoginController::class, 'logOut']);
+
+    //admin updates
+    $routes->get('profileUpdateForm/(:num)', [AdminsController::class, 'profileUpdateForm/$1']);
 
     //Sliders
     $routes->get('addSliderContent', [SliderController::class, 'addSliderContent']);
-    $routes->POST('addSliderAction', [SliderController::class, 'addSliderAction']);
+    $routes->post('addSliderAction', [SliderController::class, 'addSliderAction']);
     $routes->get('viewSliders', [SliderController::class, 'viewSliders']);
     $routes->get('updateSliderForm/(:num)', [SliderController::class, 'updateSliderForm/$1']);
     $routes->post('updateSlider', [SliderController::class, 'updateSlider']);

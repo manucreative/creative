@@ -105,7 +105,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="submit" value="" id="addSliderBtn" name="addSliderBtn" class="btn btn-success">Save Slider</button>
+        <button type="submit" value=""style="width: 100%; font-weight:700" id="addSliderBtn" name="addSliderBtn" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; YES SAVE THE SLIDER</button>
       </div>
   <?= form_close() ?>
       
