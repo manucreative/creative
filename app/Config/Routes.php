@@ -49,6 +49,7 @@ use App\Controllers\backend\ServiceController;
 
     //admin updates
     $routes->get('profileUpdateForm/(:num)', [AdminsController::class, 'profileUpdateForm/$1']);
+    $routes->post('updateProfile', [AdminsController::class, 'updateProfile']);
 
     //Sliders
     $routes->get('addSliderContent', [SliderController::class, 'addSliderContent']);

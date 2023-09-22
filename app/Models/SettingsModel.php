@@ -41,7 +41,7 @@ class SettingsModel extends Model
 
     public function getAllFeatures(){
         // Select the 'features' column from the 'tbl_setting' table
-    $featuresData = $this->db->table('tbl_settings')->select('features')->get()->getResultArray();
+    $featuresData = $this->db->table($this->table)->select('features')->get()->getResultArray();
 
     // Convert the data to JSON
     $jsonFeatures = json_encode($featuresData);

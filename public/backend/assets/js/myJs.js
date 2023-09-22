@@ -404,74 +404,205 @@
  * Define a function to navigate betweens form steps.
  * It accepts one parameter. That is - step number.
  */
-const navigateToFormStep = (stepNumber) => {
-    /**
-     * Hide all form steps.
-     */
-    document.querySelectorAll(".form-step").forEach((formStepElement) => {
-        formStepElement.classList.add("d-none");
-    });
+// const navigateToFormStep = (stepNumber) => {
+
+//     /**
+//      * Hide all form steps.
+//      */
+//     document.querySelectorAll(".form-step").forEach((formStepElement) => {
+//         formStepElement.classList.add("d-none");
+//     });
+
     /**
      * Mark all form steps as unfinished.
      */
-    document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
-        formStepHeader.classList.add("form-stepper-unfinished");
-        formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
+//     document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
+//         formStepHeader.classList.add("form-stepper-unfinished");
+//         formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
+//     });
+//     /**
+//      * Show the current form step (as passed to the function).
+//      */
+//     document.querySelector("#step-" + stepNumber).classList.remove("d-none");
+//     /**
+//      * Select the form step circle (progress bar).
+//      */
+//     const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
+//     /**
+//      * Mark the current form step as active.
+//      */
+//     formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+//     formStepCircle.classList.add("form-stepper-active");
+//     /**
+//      * Loop through each form step circles.
+//      * This loop will continue up to the current step number.
+//      * Example: If the current step is 3,
+//      * then the loop will perform operations for step 1 and 2.
+//      */
+//     for (let index = 0; index < stepNumber; index++) {
+//         /**
+//          * Select the form step circle (progress bar).
+//          */
+//         const formStepCircle = document.querySelector('li[step="' + index + '"]');
+//         /**
+//          * Check if the element exist. If yes, then proceed.
+//          */
+//         if (formStepCircle) {
+//             /**
+//              * Mark the form step as completed.
+//              */
+//             formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
+//             formStepCircle.classList.add("form-stepper-completed");
+//         }
+//     }
+// };
+// /**
+//  * Select all form navigation buttons, and loop through them.
+//  */
+// document.querySelectorAll(".btn-navigate-form-step, .btn-navigate-form-step-back").forEach((formNavigationBtn) => {
+//     formNavigationBtn.addEventListener("click", () => {
+//         const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
+
+//         // Check if the current step contains any required fields that are empty.
+//         const currentStepFields = document.querySelectorAll(`#step-${stepNumber} [data-required]`);
+//         let isValidStep = true;
+
+//         currentStepFields.forEach((field) => {
+//             if (field.value.trim() === "") {
+//                 isValidStep = false;
+//                 field.classList.add("invalid-field");
+//             } else {
+//                 field.classList.remove("invalid-field");
+//             }
+//         });
+
+//         // Only navigate if the current step is valid.
+//         if (isValidStep) {
+//             navigateToFormStep(stepNumber);
+//         }
+//     });
+// });
+
+
+(function ($) {
+    "use strict";
+
+
+     /*==================================================================
+    [ Focus input ]*/
+    $('.myInput').each(function(){
+        $(this).on('blur', function(){
+            if($(this).val().trim() != "") {
+                $(this).addClass('has-val');
+            }
+            else {
+                $(this).removeClass('has-val');
+            }
+        })    
+    })
+  
+  
+    /*==================================================================
+    [ Validate ]*/
+    var input = $('.validate_input .myInput');
+
+    $('.profileUpdateForm').on('submit',function(){
+        
+        var check = true;
+
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
+            }
+        }
+
+        return check;
     });
-    /**
-     * Show the current form step (as passed to the function).
-     */
-    document.querySelector("#step-" + stepNumber).classList.remove("d-none");
-    /**
-     * Select the form step circle (progress bar).
-     */
-    const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
-    /**
-     * Mark the current form step as active.
-     */
-    formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
-    formStepCircle.classList.add("form-stepper-active");
-    /**
-     * Loop through each form step circles.
-     * This loop will continue up to the current step number.
-     * Example: If the current step is 3,
-     * then the loop will perform operations for step 1 and 2.
-     */
-    for (let index = 0; index < stepNumber; index++) {
-        /**
-         * Select the form step circle (progress bar).
-         */
-        const formStepCircle = document.querySelector('li[step="' + index + '"]');
-        /**
-         * Check if the element exist. If yes, then proceed.
-         */
-        if (formStepCircle) {
-            /**
-             * Mark the form step as completed.
-             */
-            formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
-            formStepCircle.classList.add("form-stepper-completed");
+
+
+    $('.profileUpdateForm .myInput').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+
+    function validate (input) {
+        if($(input).attr('type') == 'text' || $(input).attr('name') == 'sub_title') {
+        //     if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+        //         return false;
+        //     }
+        // }
+        // else {
+            if($(input).val().trim() == ''){
+                return false;
+            }
         }
     }
+
+    function showValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).addClass('alert-validate');
+    }
+
+    function hideValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).removeClass('alert-validate');
+    }
+
+
+})(jQuery);
+// validations
+
+
+// Function to navigate to a specific step
+const navigateToFormStep = (stepNumber) => {
+    // Hide all form steps
+    document.querySelectorAll(".form-step").forEach((formStepElement) => {
+        formStepElement.classList.add("d-none");
+    });
+
+    // Show the current form step
+    document.querySelector("#step-" + stepNumber).classList.remove("d-none");
+
+    // Update the active step in your progress bar
+    document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
+        formStepHeader.classList.remove("form-stepper-active");
+        formStepHeader.classList.remove("form-stepper-completed");
+        if (formStepHeader.getAttribute("step") <= stepNumber) {
+            formStepHeader.classList.add("form-stepper-completed");
+        }
+        if (formStepHeader.getAttribute("step") === stepNumber) {
+            formStepHeader.classList.add("form-stepper-active");
+        }
+    });
 };
-/**
- * Select all form navigation buttons, and loop through them.
- */
+
+// Add event listeners to all navigation buttons
 document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
-    /**
-     * Add a click event listener to the button.
-     */
     formNavigationBtn.addEventListener("click", () => {
-        /**
-         * Get the value of the step.
-         */
         const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
-        /**
-         * Call the function to navigate to the target form step.
-         */
-        navigateToFormStep(stepNumber);
+
+        // Check if the current step contains any fields that require validation.
+        const currentStepFields = document.querySelectorAll(`#step-${stepNumber} [data-valida]`);
+        let isValidStep = true;
+
+        currentStepFields.forEach((field) => {
+            // You can implement custom validation logic for each field here
+            // For example, check if the field meets specific criteria.
+            if (field.value.trim() === "") {
+                isValidStep = false;
+                field.classList.add("invalid-field");
+            } else {
+                field.classList.remove("invalid-field");
+            }
+        });
+
+        // Only navigate if the current step is valid.
+        if (isValidStep) {
+            navigateToFormStep(stepNumber);
+        }
     });
 });
-
-    
-    

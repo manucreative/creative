@@ -103,4 +103,18 @@ class AdminModel extends Model
          }
     }
 
+    public function updateAdminProfile($admin_id, $adminDirectData, $basic_details, $contact_details, $education, $expertise_areas, $skills, $experience, $reference) {
+        $data = [
+            'basic_details' => json_encode($basic_details),
+            'contact_details' => json_encode($contact_details),
+            'education' => json_encode($education),
+            'expertise_areas'=> json_encode($expertise_areas),
+            'skills' => json_encode($skills),
+            'experience' => json_encode($experience),
+            'reference' => json_encode($reference)
+        ];
+        $packagedData = array_merge($adminDirectData, $data);
+        return $this->where('admin_id', $admin_id)->update($admin_id, $packagedData);
+    }
+
 }
