@@ -81,7 +81,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5 col-md-6">
                             <div class="about-img">
-                                <img src="<?php echo base_url('frontend/media/carousel_images/carousel-3.png')?>" alt="Image">
+                                <img src="<?php echo base_url('backend/media/admin_images/' .$admins['avatar'])?>" alt="Image">
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6">
@@ -90,21 +90,13 @@
                             <br>
                             <br>
                         <div class="section-header text-left myHeader">
-                                <p class="subHeaderOnAboutMe">Manu Creative Dev</p>
-                                <h2 class="mainDeaderOnAboutMe">With 3 Years Experience</h2>
+                                <p class="subHeaderOnAboutMe"><?php echo $admins['sub_title'] ?? '';?></p>
+                                <h2 class="mainDeaderOnAboutMe"><?php echo $admins['personal_title'] ?? '';?></h2>
                             </div>
                             <div class="about-text">
-                                <p>
-                                I'm a software developer with a passion for coding and problem-solving. Proficient in multiple languages and frameworks, 
-                                I create efficient, user-focused applications, driven by a commitment to innovation and quality.
-                                </p>
-                                <p>
-                                As a developer, I bring a diverse skill set to the table. I can deliver robust web and mobile applications, tailored to your specific needs. 
-                                        My expertise encompasses front-end and back-end development, database design, and API integration. I ensure user-friendly interfaces, 
-                                        responsive designs, and efficient code for optimal performance. I'm well-versed in agile methodologies, 
-                                        facilitating effective communication and project management. Additionally, I can provide thorough testing, debugging, and ongoing maintenance to ensure long-term reliability. 
-                                        My commitment to staying updated with emerging technologies ensures that I can deliver innovative solutions that keep you ahead in the ever-evolving tech landscape.
-                                </p>
+                                <span>
+                                <?php echo $admins['professional_profile'] ?? '';?>
+                                </span>
                                 <a class="btn" href="<?php echo base_url('about')?>">Learn More</a>
                             </div>
                         </div>

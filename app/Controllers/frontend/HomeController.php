@@ -3,14 +3,24 @@ namespace App\Controllers\frontend;
 use App\Controllers\BaseController;
 use App\Models\SettingsModel;
 use App\Models\SliderModel;
+use App\Models\frontend\AdminFrontendModel;
 
 class HomeController extends BaseController{
     public function index(){
+        
+       
+        $adminModel = model(AdminFrontendModel::class);
         $sliderModel = model(SliderModel::class);
         $settingsModel = model(SettingsModel::class);
         $features = $settingsModel->getAllFeatures();
         $arrayFeatures = json_decode($features, true);
 
+        $allUsers = $settingsModel->getUserProfiler();
+        if(!empty($allUsers) && is_array($allUsers)){
+        foreach($allUsers as $user){
+            $user_name = $user['display_profile'];
+        }
+    }
         if (isset($arrayFeatures[0]['features'])) {
             $features2 = json_decode($arrayFeatures[0]['features'], true);
         
@@ -18,6 +28,7 @@ class HomeController extends BaseController{
         $array2 = $features2[1];
         $array3 = $features2[2];
 }
+        $admins = $adminModel->getAdminDataByUserName($user_name);
         $data = [
             'sliders' => $sliderModel->getSliders(),
 
@@ -35,6 +46,8 @@ class HomeController extends BaseController{
             'feature_desc3' => $array3['feature_desc3'],
             'feature_background3' => $array3['feature_background3'],
             'feature_icon3' => $array3['feature_icon3'],
+
+            'admins' => $admins
         ];
 
         return view('frontend/templates/header', $data)

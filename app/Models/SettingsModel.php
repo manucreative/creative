@@ -56,4 +56,18 @@ class SettingsModel extends Model
     
         return $this->update($settings_id, $data);
     }
+
+    public function updateProfileDisplay($settings_id, $newUserName){
+        return $this->db->table($this->table)
+                ->where('settings_id', $settings_id)
+                ->set('display_profile', $newUserName)
+                ->update();
+    }
+
+    public function getUserProfiler(){
+        return $this->db->table($this->table)
+                        ->select('display_profile')
+                        ->get()
+                        ->getResultArray();
+    }
 }

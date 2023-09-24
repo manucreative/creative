@@ -21,19 +21,19 @@
                         <div class="col-lg-5 col-md-6">
                             <div class="details_section">
                             <div class="about-img1 text-center">
-                                <img class="myServe-img" src="<?php echo base_url('frontend/media/carousel_images/carousel-3.png')?>" alt="Image">
+                                <img class="myServe-img" src="<?php echo base_url('backend/media/admin_images/' .$admins['avatar'])?>" alt="Image">
                             </div>
                             <div class="basic_details">
                             <div class="box">
                                 <span>Basic Details</span>
                             </div>
                             <p class="nav-link">
-                            <span>Date of birth  </span>   &nbsp &nbsp <span>:&nbsp 15th-11-1996</span><br>
-                            <span>ID No </span> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<span>:&nbsp 34500863</span><br>
-                            <span>Gender </span> &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp <span>:&nbsp Male</span><br>
-                            <span>Marital Status</span> &nbsp   <span>:&nbsp Single</span><br>
-                            <span>Address</span>  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp <span>:&nbsp Po Box 4782 Eldoret</span><br>
-                            <span>Languages</span>  &nbsp &nbsp &nbsp  <span>:&nbsp English, Swahili & Kalenjin</span>
+                            <span>Date of birth  </span>   &nbsp; &nbsp; <span>:&nbsp; <?php echo $basics['dob'] ?? '';?></span><br>
+                            <span>ID No </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span>:&nbsp; <?php echo $basics['national_id'] ?? '';?></span><br>
+                            <span>Gender </span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <span>:&nbsp; <?php echo $basics['gender'] ?? '';?></span><br>
+                            <span>Marital Status</span> &nbsp;   <span>:&nbsp; <?php echo $basics['marital_status'] ?? '';?></span><br>
+                            <span>Address</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span>:&nbsp; <?php echo $basics['address'] ?? '';?></span><br>
+                            <span>Languages</span>  &nbsp; &nbsp; &nbsp;  <span>:&nbsp; <?php echo $basics['languages'] ?? '';?></span>
                             </p>
                             </div>
                             <div class="contact_details">
@@ -41,50 +41,56 @@
                                         <span>Contact Details</span>
                                     </div>
                                 <p class="nav-link"> 
-                                    <span><i class="fa fa-map-marker-alt"></i>&nbsp 2522-00100, Nairobi, Kenya</span><br>
-                                    <span><i class="fa fa-phone-alt"></i>&nbsp +254-721827214</span><br>
-                                    <span><i class="fa fa-phone-alt"></i>&nbsp +254-745369555</span><br>
-                                    <span><i class="fa fa-envelope"></i>&nbsp emmanuelkirui34@gmail.com</span>
+                                    <span><i class="fa fa-map-marker-alt"></i>&nbsp; <?php echo $contacts['residence'] ?? '';?></span><br>
+                                    <span><i class="fa fa-phone-alt"></i>&nbsp; <?php echo $contacts['phone1'] ?? '';?></span><br>
+                                    <span><i class="fa fa-phone-alt"></i>&nbsp; <?php echo $contacts['phone2'] ?? '';?></span><br>
+                                    <span><i class="fa fa-envelope"></i>&nbsp; <?php echo $contacts['personal_email'] ?? '';?></span><br>
+                                    <span><i class="fa fa-envelope"></i>&nbsp; <?php echo $contacts['other_email'] ?? '';?></span>
                                 </p>
                             </div>
                             <div class="education">
                             <div class="box">
                                     <span>Education</span>
                                 </div>
-                            
-                            <h5 class="education-header">KCA University</h5>
-                            <p class="nav-link">
-                                    <span>Pursuing Bachelor Of Science in Applied Computing</span>
-                                </p>
-                            <h5 class="education-header">KCA University</h5>
-                            <p class="nav-link">
-                                    <span>Diploma In Information Technology (2018 - 2021), Graduated</span>
-                                </p>
-                            <h5 class="education-header">Koros Secondary School</h5>
-                            <p class="nav-link">
-                                    <span>Kenya Certificate of Secondary Education (KCPE - 2012 - 2015), Graduated</span>
-                                </p>
+                                <span>
+                                <?php echo $educationData['masters_level'] ?? '';?>
+                            </span>
+                            <span>
+                                <?php echo $educationData['degree_level'] ?? '';?>
+                            </span>
+
+                            <span>
+                                <?php echo $educationData['diploma_level'] ?? '';?>
+                            </span>
+
+                            <span>
+                                <?php echo $educationData['highschool_level'] ?? '';?>
+                            </span>
+
+                            <span>
+                                <?php echo $educationData['primary_level'] ?? '';?>
+                            </span>
                          </div>
 
                          <div class="skills">
                          <div class="box">
                                     <span>Satisfaction Skills</span>
                                 </div>
-                                <p class="nav-link">
-                                <span>SkillUp Online -</span><span>&nbsp CCNA 200-301 Net-work Fundamentals Online.</span>
-                                </p>
+                                <span>
+                                <?php echo $educationData['satisfaction_skills'] ?? '';?>
+                            </span>
                          </div>
                          <div class="expertise">
                          <div class="box">
                                     <span>Areas of Expertise</span>
                                 </div>
                                     <ul>
-                                        <li class="nav-link">Web Application development/ Android</li>
-                                        <li class="nav-link">Graphic designs</li>
-                                        <li class="nav-link">System Administration</li>
-                                        <li class="nav-link">APIs Integrations</li>
-                                        <li class="nav-link">Social media</li>
-                                        <li class="nav-link">Data Entry Management</li>
+                                        <li class="nav-link"><?php echo $expertiseData['expert_area1'] ?? '';?></li>
+                                        <li class="nav-link"><?php echo $expertiseData['expert_area2'] ?? '';?></li>
+                                        <li class="nav-link"><?php echo $expertiseData['expert_area3'] ?? '';?></li>
+                                        <li class="nav-link"><?php echo $expertiseData['expert_area4'] ?? '';?></li>
+                                        <li class="nav-link"><?php echo $expertiseData['expert_area5'] ?? '';?></li>
+                                        <li class="nav-link"><?php echo $expertiseData['expert_area6'] ?? '';?></li>
                                     </ul>
                          </div>
 
@@ -93,38 +99,32 @@
                                     <span>SKILLS</span>
                             </div>
                         <p class="nav-link">
-                                <span class="skill-box">PHP</span>&nbsp<span class="skill-box">JAVA PROGRAMMING</span>&nbsp<span class="skill-box">JAVASCRIPT</span>&nbsp<span class="skill-box">SQL</span><br>
+                                <span class="skill-box"><?php echo $skillData['skill1'] ?? '';?></span>&nbsp;<span class="skill-box"><?php echo $skillData['skill2'] ?? '';?>
+                            </span>&nbsp;<span class="skill-box"><?php echo $skillData['skill3'] ?? '';?></span>&nbsp;<span class="skill-box"><?php echo $skillData['skill4'] ?? '';?></span><br>
                                 <br>
-                                <span class="skill-box">CODEIGNITER 4</span>&nbsp<span class="skill-box">MAGENTO 2</span>&nbsp<span class="skill-box">HTML</span>&nbsp<span class="skill-box">CSS</span><br>
+                                <span class="skill-box"><?php echo $skillData['skill5'] ?? '';?></span>&nbsp;<span class="skill-box"><?php echo $skillData['skill6'] ?? '';?></span>&nbsp;<span class="skill-box"><?php echo $skillData['skill8'] ?? '';?></span><br>
                                 <br>
-                                &nbsp<span class="skill-box">ANDROID DEVELOPMENT</span>&nbsp<span class="skill-box">ADOBE ILLUSTRATOR</span><br>
+                                &nbsp;<span class="skill-box"><?php echo $skillData['skill9'] ?? '';?></span>&nbsp;<span class="skill-box"><?php echo $skillData['skill10'] ?? '';?></span><br>
                                 <br>
-                                &nbsp<span class="skill-box">ADOBE PHOTOSHOP</span>
+                                &nbsp;<span class="skill-box"><?php echo $skillData['skill11'] ?? '';?></span>
                         </p>
                          </div>
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6">
                             <div class="section-header text-left myHeader">
-                                <p class="subHeaderOnAboutMe">Manu Creative Dev</p>
-                                <h2 class="mainDeaderOnAboutMe">With 3 Years Experience</h2>
+                                <p class="subHeaderOnAboutMe"><?php echo $admins['sub_title'] ?? '';?></p>
+                                <h2 class="mainDeaderOnAboutMe"><?php echo $admins['personal_title'] ?? '';?></h2>
                             </div>
                             <div class="about-text">
                                 
                             <div class="box-details">
                             <span>PROFESSIONAL PROFILE</span>
                             </div>
-                                <p>
-                                    I'm a software developer with a passion for coding and problem-solving. Proficient in multiple languages and frameworks, 
-                                    I create efficient, user-focused applications, driven by a commitment to innovation and quality.
-                                </p>
-                                <p>
-                                        As a developer, I bring a diverse skill set to the table. I can deliver robust web and mobile applications, tailored to your specific needs. 
-                                        My expertise encompasses front-end and back-end development, database design, and API integration. I ensure user-friendly interfaces, 
-                                        responsive designs, and efficient code for optimal performance. I'm well-versed in agile methodologies, 
-                                        facilitating effective communication and project management. Additionally, I can provide thorough testing, debugging, and ongoing maintenance to ensure long-term reliability. 
-                                        My commitment to staying updated with emerging technologies ensures that I can deliver innovative solutions that keep you ahead in the ever-evolving tech landscape.
-                                </p>
+                            <span>
+                            <?php echo $admins['professional_profile'] ?? '';?>
+                            </span>
+
                             </div>
                                 <hr>
                                 <br>
@@ -133,38 +133,13 @@
                             <div class="box-details">
                             <span>EXPERIENCE</span>
                             </div>
-                            <h4 style="color: #0e0d3e">Alladin World of brands (ltd) Company (https://alladin.co.ke)</h4>
-                            <p style="color: #000000; font-weight: 700; font-size: 20px;">
-                            Job Designation – DEVELOPER (July 2021 - to date)
-                            </p>
-                            <p style="color: #000000; font-weight: 700; font-size: 18px;">
-                            Duties and Responsibilities
-                            </p>
-                            <ul>
-                                <li>Maintaining and modifying website with UI/UX principles (Magento 2)</li>
-                          <li>Developing and Maintaining the overall look and design of a website</li>
-                                <li>Working with PHP and other web scripting languages to create REST APIs for
-                                    Magento 2 Extensions e.g Mpesa STK push and KRA TIMs.</li>
-                                    <li>Creating tools that enhance the user’s website experience (graphics & pop-ups)</li>
-                                    <li>Fixing normal and technical site bugs on daily basis</li>
-                                    <li>updating applications, graphics, audio, and video clips into client’s frontend and back-end.</li>
-                                    <li>Providing technical support to the staff, concerning working systems, website, and the current OS (windows)</li>
-                                    <li>Incorporating with the Vietnam Magento tech team for advanced technical support through Slack.</li>
-                                </ul> 
+                            <span>
+                            <?php echo $experienceData['main_experience'] ?? '';?>
+                            </span>
 
-                                <h4 style="color: #0e0d3e">United Arian Export Processing Zone</h4>
-                            <p style="color: #000000; font-weight: 700; font-size: 20px;">
-                            Job Designation – Industrial Engineering (2018 - 2020)
-                            </p>
-                            <p style="color: #000000; font-weight: 700; font-size: 18px;">
-                            Duties and Responsibilities
-                            </p>
-                            <ul>
-                                <li>Storing and recording of data files with excel sheets and systems.</li>
-                                <li>Research on new innovations and implementations.</li>
-                                <li>Calculate employees and factory production efficiencies.</li>
-                                <li>Implementations of new improved methods to increase factory productivity, minimize time wastage, and reduce waste.</li>
-                            </ul>
+                            <span>
+                            <?php echo $experienceData['other_experience'] ?? '';?>
+                            </span>
                                 </div>
                                 <hr>
                                 <br>
@@ -174,23 +149,16 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                        <p class="nav-link"> 
-                                        <span style="font-size: 20px; font-weight: 700"> Steven Maunda Patrick</span><br>
-                                        <span>Lead Developer Alladin Company (ltd)</span><br>
-                                        <span>P.O. Box 2522-0621 Nairobi</span><br>
-                                        <span>Number: +254702890401</span>
-                                </p>
-                                </div>
-                                <div class="col-sm-6">
-                                <p class="nav-link"> 
-                                    <span style="font-size: 20px; font-weight: 700"> Lawrence Njenga</span><br>
-                                    <span>CEO Wezadata Company</span><br>
-                                    <span><a href="https://www.wezadata.co.ke">Weza Data Company</a></span><br>
-                                    <span>Software development Mentor</span>
-                                    <span>Phone: +254725164293</span>
-                                </p>
-                                </div>
-                                </div>
+                                            <span>
+                                            <?php echo $referenceData['referee1'] ?? '';?>
+                                            </span>
+                                            </div>
+                                            <div class="col-sm-6">
+                                            <span>
+                                            <?php echo $referenceData['referee2'] ?? '';?>
+                                            </span>
+                                            </div>
+                                    </div>
 
                                 </div>
                         </div>

@@ -177,15 +177,30 @@ class AdminsController extends BaseController{
             }
         }
 
-
+       //      echo '<pre>';
+        // print_r($basicData);
+        // echo '</pre>';
         public function profileUpdateForm($admin_id){
             $adminModel = model(AdminModel::class);
             $rolesModel = model(RolesModel::class);
             $admins = $adminModel->getAdmins($admin_id);
 
-
+            $basic_details = $adminModel->getBasicDetails($admin_id);
+            $contactDetails = $adminModel->getContactDetails($admin_id);
+            $education = $adminModel->getEducation($admin_id);
+            $expertiseAreas = $adminModel->getExpertiseAreas($admin_id);
+            $skills = $adminModel->getSkills($admin_id);
+            $experience = $adminModel->getExperience($admin_id);
+            $reference = $adminModel->getReference($admin_id);
 
              $data = [
+                 'basics' => $basic_details,
+                 'contacts' => $contactDetails,
+                 'expertiseData' => $expertiseAreas,
+                 'educationData' =>$education,
+                 'skillData' =>$skills,
+                 'experienceData' => $experience,
+                 'referenceData' => $reference,
                  'first_name' => session('first_name'),
                  'admin_id' => session('admin_id'),
                  'last_name' => session('last_name'),
@@ -240,7 +255,7 @@ class AdminsController extends BaseController{
             $user_name = $this->request->getPostGet('user_name');
             $personal_title = $this->request->getPost('personal_title');
             $sub_title = $this->request->getPost('sub_title');
-            $profesional_profile = $this->request->getPost('profesional_profile');
+            $professional_profile = $this->request->getPost('professional_profile');
 
 
             $adminDirectData = [
@@ -252,7 +267,7 @@ class AdminsController extends BaseController{
                 'user_name'=> $user_name,
                 'personal_title'=> $personal_title,
                 'sub_title' => $sub_title,
-                'profesional_profile' => $profesional_profile,
+                'professional_profile' => $professional_profile,
                 'avatar' => $newName,
                 'created_at' => date('Y-m-d H:i:s')
             ];

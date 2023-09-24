@@ -26,7 +26,7 @@
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#tab_1" data-toggle="tab">Features</a></li>
-						<li class="nave-link"><a href="#tab_2" data-toggle="tab">Favicon</a></li>
+						<li class="nave-link"><a href="#tab_2" data-toggle="tab">Front Dp</a></li>
 						<li class="nave-link"><a href="#tab_3" data-toggle="tab">App Logo</a></li>
 						<li class="nave-link"><a href="#tab_4" data-toggle="tab">Email Settings</a></li>
 						<li class="nave-link"><a href="#tab_5" data-toggle="tab">News and Tours</a></li>
@@ -129,18 +129,59 @@
                                         </div>
                                         <div class="col-sm-1"></div>
 
-                                        <div class="modal-footer">
+                                    </div>
+                                    
+                                    <div class="modal-footer">
                                             <button type="submit" id="btnUpdateFeatures" name="btnUpdateFeatures" class="btn btn-success">Save Changes</button>
                                             </div>
 
-                                    </div>
 								</div>
 							</div>
                             </div>
 
 							<?php echo form_close(); ?>
                         
+                </div>
+                <div class="tab-pane" id="tab_2">
 
+                            <?php echo form_open_multipart(base_url('creative/updateProfiler'),array('class' => 'updateProfiler')); ?>
+          					<div class="box box-info">
+								<div class="box-body">
+                                <div class="modal-body">
+                                    <div class="row">
+
+                                        <div class="col-sm-5">
+                                        <h2> Display Profile Setting </h2>
+
+                                        <div class="form-group">
+                                                <div class="row">
+                                                    <label for="display_profile" class="col-form-label">Select user to display profile  <span style="color: red;">*</span></label>
+
+                                                    <select class="form-control" name="display_profile" id="display_profile">
+                                                    <option value="">Select user_name</option>
+                                                    <?php if (!empty($users) && is_array($users)): ?>
+                                                        <?php foreach ($users as $user): ?>
+                                                            <option value="<?php echo $user['user_name']; ?>"
+                                                                <?php // if ($user['user_name'] == $selectedUserName) echo 'selected'; ?>>
+                                                                <?php echo $user['user_name']; ?>
+                                                            </option>
+                                                        <?php endforeach ?>
+                                                    <?php endif ?>
+                                                </select>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                            <button type="submit" id="btnUpdateProfiler" name="btnUpdateProfiler" class="btn btn-success">Save Changes</button>
+                                            </div>
+
+								</div>
+							</div>
+                            </div>
+
+							<?php echo form_close(); ?>
                     </div>
                 </div>
         </div>

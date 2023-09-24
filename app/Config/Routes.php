@@ -62,6 +62,7 @@ use App\Controllers\backend\ServiceController;
     //Configurations
     $routes->get('configurations', [ConfigurationsController::class, 'viewSettingsPage']);
     $routes->post('featureConfigForm',[ConfigurationsController::class, 'featureConfigForm']);
+    $routes->post('updateProfiler', [ConfigurationsController::class, 'updateProfiler']);
 
     //Service Controls
     $routes->get('addServiceForm', [ServiceController::class, 'addServiceForm']);

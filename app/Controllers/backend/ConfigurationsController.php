@@ -11,7 +11,9 @@ class ConfigurationsController extends BaseController{
     public function viewSettingsPage(){
 
         $settingsModel = model(SettingsModel::class);
+        $adminModel = model(AdminModel::class);
         $features = $settingsModel->getAllFeatures();
+
         $arrayFeatures = json_decode($features, true);
 
         if (isset($arrayFeatures[0]['features'])) {
@@ -43,6 +45,7 @@ $data = [
     'avatar' => session('avatar'),
     'role' => session('role'),
     'title' => 'Pages Configurations',
+    'users' => $adminModel->getAdminsUserName(),
     'errors' => []
 ];
         return view('backend/templates/admin_header', $data)
@@ -178,6 +181,38 @@ $data = [
                session()->setFlashdata('error', 'Updates Failed');
                 return redirect()->to(base_url('creative/configurations'))->withInput()->with('error', 'Error: Kindly check your data and try again');
             }
+               }
+        }
+    }
+
+    public function updateProfiler(){
+        $configModels = model(SettingsModel::class);
+        if($this->request->getMethod() === 'post'){
+            $validations = [
+                'display_profile' => [
+                    'babel' => 'display_profile',
+                    'rules'=> 'required'
+                ],
+            ];
+            if(!$this->validate($validations)){
+
+                $errors = $this->validator->getErrors();
+                       foreach($errors as $error){
+                       return redirect()->back()->withInput()->with('error', $error);
+                   }
+               }else{
+                $dataUpdates =[
+                    'display_profile' => $this->request->getPost('display_profile')
+                ];
+
+                $runUpdate = $configModels->updateProfileDisplay(1,$dataUpdates);
+                if($runUpdate){
+                    session()->setFlashdata('success', 'Profiler have been Updated successful');
+                    return redirect()->to(base_url('creative/configurations'));
+                }else{
+                   session()->setFlashdata('error', 'Updates Failed');
+                    return redirect()->to(base_url('creative/configurations'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                }
                }
         }
     }
