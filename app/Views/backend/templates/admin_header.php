@@ -65,10 +65,10 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                             </a>
                         </li>
                     <li  >
-                        <a  href="<?php echo base_url('creative/profileUpdateForm/'.$admin_id);?>"><i class="fa fa-user fa-3x"></i>My Profile </a>
+                        <a  href="#" id="myProfile" data-action="myProfile"><i class="fa fa-user fa-3x"></i>My Profile </a>
                     </li>
-                    <li  >
-                        <a  href="form.html"><i class="fa fa-question fa-3x"></i> Manage FAQs </a>
+                    <li>
+                        <a  href="#" id="addFaqs" data-action="addFaqs"><i class="fa fa-question fa-3x"></i> Manage FAQs </a>
                     </li>
                     <li  >
                         <a  href="form.html"><i class="fa fa-table fa-3x"></i> Manage Portfolio </a>

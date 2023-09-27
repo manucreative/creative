@@ -4,6 +4,7 @@ use App\Controllers\BaseController;
 use App\Models\SettingsModel;
 use App\Models\SliderModel;
 use App\Models\frontend\AdminFrontendModel;
+use App\Models\ServiceModel;
 
 class HomeController extends BaseController{
     public function index(){
@@ -11,11 +12,13 @@ class HomeController extends BaseController{
        
         $adminModel = model(AdminFrontendModel::class);
         $sliderModel = model(SliderModel::class);
+        $serviceModel = model(ServiceModel::class);
         $settingsModel = model(SettingsModel::class);
         $features = $settingsModel->getAllFeatures();
         $arrayFeatures = json_decode($features, true);
 
         $allUsers = $settingsModel->getUserProfiler();
+
         if(!empty($allUsers) && is_array($allUsers)){
         foreach($allUsers as $user){
             $user_name = $user['display_profile'];
@@ -46,7 +49,7 @@ class HomeController extends BaseController{
             'feature_desc3' => $array3['feature_desc3'],
             'feature_background3' => $array3['feature_background3'],
             'feature_icon3' => $array3['feature_icon3'],
-
+            'services' => $serviceModel->getServices(),
             'admins' => $admins
         ];
 

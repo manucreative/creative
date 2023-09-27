@@ -16,6 +16,7 @@ use App\Controllers\backend\AdminsController;
 use App\Controllers\backend\SliderController;
 use App\Controllers\backend\ConfigurationsController;
 use App\Controllers\backend\ServiceController;
+use App\Controllers\backend\FaqController;
 
 /**
  * @var RouteCollection $routes
@@ -71,5 +72,9 @@ use App\Controllers\backend\ServiceController;
     $routes->get('updateServiceForm/(:num)', [ServiceController::class, 'updateServiceForm/$1']);
     $routes->get('viewServices', [ServiceController::class, 'viewServices']);
     $routes->post('updateService', [ServiceController::class, 'updateService']);
+
+    // FAQ controls
+    $routes->get('addFaqs', [FaqController::class, 'addFaqs']);
+    $routes->post('addFaqAction', [FaqController::class, 'addFaqAction']);
  });
 

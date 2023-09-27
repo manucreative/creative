@@ -16,110 +16,35 @@
 
             <div class="wrapper"> <!-- wrapper start -->
 
-            <!-- Service Start -->
-            <div class="service">
+               <!-- Service Start -->
+
+               <div class="service">
                     <div class="section-header text-center"style="background: #030f27;">
                         <p>Actual Services</p>
                         <h2 style="color: #ffffff;">I Can Deliver To You</h2>
                     </div>
                     <!-- <div class="container"> -->
                     <div class="row">
+                        <?php if(!empty($services) && is_array($services)) :?>
+                            <?php foreach($services as $service) :?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="service-item" id="service-1">
-                                <div class="service-img">
-                                    <img src="<?php echo base_url('frontend/media/service_images/avatar-2.jpg')?>" alt="Image">
-                                    <div class="service-overlay">
-                                        <p>
-                                        I build user-friendly, responsive websites that combine creativity and functionality, thanks to my expertise in front-end and back-end technology. I'm committed to remaining up to date on market trends and enjoy converting challenging concepts into intuitive web experiences.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="service-text">
-                                    <h3>Websites Development</h3>
-                                    <a class="btn" href="<?php echo base_url('frontend/media/service_images/avatar-2.jpg')?>" data-lightbox="service">+</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                             <div class="service-item">
                                 <div class="service-img">
-                                    <img src="<?php echo base_url('frontend/media/service_images/service-11.jpg')?>" alt="Image">
+                                    <img src="<?php echo base_url('backend/media/service_images/'. $service['service_img'])?>" alt="Image">
                                     <div class="service-overlay">
                                         <p>
-                                        I'm an Android developer who focuses on making user-friendly mobile applications. I turn ideas into polished Android applications with a focus on efficiency and user pleasure to offer outstanding mobile experiences. I have a strong background in Java and an eye for UI/UX design.
+                                        <?php echo $service['service_short_content'];?>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="service-text">
-                                    <h3>Android Development</h3>
-                                    <a class="btn" href="<?php echo base_url('frontend/media/service_images/service-11.jpg')?>" data-lightbox="service">+</a>
+                                    <h3> <?php echo $service['service_title'];?></h3>
+                                    <a class="btn" href="<?php echo base_url('backend/media/service_images/'. $service['service_img'])?>" data-lightbox="service">+</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="service-item">
-                                <div class="service-img">
-                                    <img src="<?php echo base_url('frontend/media/service_images/avatar-5.jpg')?>" alt="Image">
-                                    <div class="service-overlay">
-                                        <p>
-                                        I'm a talented graphic designer who combines technical expertise with creative flare. I create aesthetically appealing graphics for a variety of media using my expertise in Adobe Creative Suite. My interest is turning concepts into powerful images that have an impact.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="service-text">
-                                    <h3>Graphic Design</h3>
-                                    <a class="btn" href="<?php echo base_url('frontend/media/service_images/avatar-5.jpg')?>" data-lightbox="service">+</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="service-item">
-                                <div class="service-img">
-                                    <img src="<?php echo base_url('frontend/media/service_images/service-8.jpg')?>" alt="Image">
-                                    <div class="service-overlay">
-                                        <p>
-                                        I'm a versatile e-commerce developer, proficient in Android and web platforms. I specialize in creating seamless online shopping experiences, blending mobile app and web design with robust functionality, ensuring user-friendly interfaces and secure transactions to drive business growth.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="service-text">
-                                    <h3>E-commerce Development</h3>
-                                    <a class="btn" href="<?php echo base_url('frontend/media/service_images/service-8.jpg')?>" data-lightbox="service">+</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="service-item">
-                                <div class="service-img">
-                                    <img src="<?php echo base_url('frontend/media/service_images/service-11.jpg')?>" alt="Image">
-                                    <div class="service-overlay">
-                                        <p>
-                                        I'm an expert in managing server infrastructure and offering first-rate technical support for websites. With a dedication to prompt problem-solving and superior performance, my focus is on ensuring that websites operate without a hitch, maintain their security, and provide outstanding user experiences.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="service-text">
-                                    <h3>Web Hosting Support</h3>
-                                    <a class="btn" href="<?php echo base_url('frontend/media/service_images/service-11.jpg')?>" data-lightbox="service">+</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="service-item">
-                                <div class="service-img">
-                                    <img src="<?php echo base_url('frontend/media/service_images/avatar-2.jpg')?>" alt="Image">
-                                    <div class="service-overlay">
-                                        <p>
-                                        I'm a skilled system administrator proficient in maintaining network infrastructure and server environments. My expertise lies in ensuring optimal system performance, security, and seamless operations, backed by a commitment to proactive problem-solving and robust IT solutions.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="service-text">
-                                    <h3>System Administration</h3>
-                                    <a class="btn" href="<?php echo base_url('frontend/media/service_images/avatar-2.jpg')?>" data-lightbox="service">+</a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach ?>
+                        <?php endif ?>
                     </div>
                 <!-- </div> -->
             </div>

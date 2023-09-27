@@ -26,8 +26,11 @@
                 }else if (currentUrl.indexOf("/creative/configurations") !== -1) {
                     document.getElementById("viewConfigs").classList.add("myNav");
                 }
-                else if (currentUrl.indexOf("/creative/configurations") !== 1) {
+                else if (currentUrl.indexOf("/creative/configurations") !== -1) {
                     document.getElementById("#moreControls").classList.add("myNav");
+                }
+                else if (currentUrl.indexOf("/creative/addFaqs") !== -1) {
+                    document.getElementById("#addFaqs").classList.add("myNav");
                 }
 
                 $("#moreControls").click(function() { 
@@ -174,7 +177,7 @@
     // category delete function Start
     $(function(){
     //If check_all checked then check all table rows
-    $("#check_all_cats").on("click", function () {
+    $("#check_all_faqs").on("click", function () {
         if ($("input:checkbox").prop("checked")) {
             $("input:checkbox[name='categories']").prop("checked", true);
         } else {
@@ -189,10 +192,10 @@
     
         // If all checked manually then check check_all checkbox
         if (total_check_boxes === total_checked_boxes) {
-            $("#check_all_cats").prop("checked", true);
+            $("#check_all_faqs").prop("checked", true);
         }
         else {
-            $("#check_all_cats").prop("checked", false);
+            $("#check_all_faqs").prop("checked", false);
         }
     });
     
@@ -380,7 +383,7 @@
     
     $(document).ready(function () {
         // ,#editTopUpsBtn,#editCat,#addAdminBtn
-        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm').click(function (e) {
+        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm,#faqAddForm').click(function (e) {
             // Prevent the form from submitting immediately
             e.preventDefault();
             $('#overlay').show();
@@ -393,7 +396,7 @@
                 $('#overlay').hide();
                 // Submit the form
                 // , .topUpsEditForm, .categoriesEditForm, .AdminAddForm'
-                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm').submit();
+                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm, .faqAddForm').submit();
             }, 4000);
         });
     });
@@ -506,7 +509,7 @@
     [ Validate ]*/
     var input = $('.validate_input .myInput');
 
-    $('.profileUpdateForm').on('submit',function(){
+    $('.profileUpdateForm,.faqAddForm').on('submit',function(){
         
         var check = true;
 
@@ -522,6 +525,12 @@
 
 
     $('.profileUpdateForm .myInput').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+
+    $('.faqAddForm .myInput').each(function(){
         $(this).focus(function(){
            hideValidate(this);
         });

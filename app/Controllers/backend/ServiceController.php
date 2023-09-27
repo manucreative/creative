@@ -76,7 +76,7 @@ class ServiceController extends BaseController{
                     session()->setFlashdata('success', '1 Service Insert successful');
                     return redirect()->to(base_url('creative/addServiceForm'));
                 }else{
-                   session()->setFlashdata('error', 'Service Insert Failed');
+                //    session()->setFlashdata('error', 'Service Insert Failed');
                     return redirect()->to(base_url('creative/addServiceForm'))->withInput()->with('error', 'Error: Kindly check your data and try again');
                 
                     throw new \Exception();

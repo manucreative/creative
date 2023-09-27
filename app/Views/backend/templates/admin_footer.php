@@ -4,7 +4,7 @@
 <script>
       // All buttons Configurations
     $(document).ready(function () {
-        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#btnViewAdmins,#btnAddProducts,#btnViewProducts,#btnBanner').click(function (e) {
+        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#viewFaqs,#addFaqs,#btnBanner').click(function (e) {
             e.preventDefault();
             var action = $(this).data('action');
             $('#overlay').show();
@@ -32,14 +32,14 @@
                 case 'viewSliders':
                     window.location.href = "<?php echo base_url('creative/viewSliders');?>";
                     break;
-                case 'viewAdmin':
-                    window.location.href = "viewAdmins";
+                case 'myProfile':
+                    window.location.href = "<?php echo base_url('creative/profileUpdateForm/'.$admin_id);?>";
                     break;
-                case 'addProduct':
-                    window.location.href = "product_addition_page";
+                case 'viewFaqs':
+                    window.location.href = "<?php echo base_url('creative/viewFaqs');?>";
                     break;
-                case 'viewProduct':
-                    window.location.href = "view_products";
+                case 'addFaqs':
+                    window.location.href = "<?php echo base_url('creative/addFaqs');?>";
                     break;
                 case 'viewProd':
                     window.location.href = "../view_products";
@@ -96,7 +96,7 @@
 
     <script>
     tinymce.init({
-    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details', // Change this to match your textarea's class or ID
+    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer', // Change this to match your textarea's class or ID
     height: 300,
     plugins: 'link image code',
     toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
