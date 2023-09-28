@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class FagModel extends Model
+class FaqModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'tbl_faq';
@@ -43,11 +43,27 @@ class FagModel extends Model
         $this->insert($data);
     }
 
+    public function updateFaqs($faq_id, $data){
+        return $this->update($faq_id, $data);
+    }
+
     public function getFaq($faq_id = false){
         if($faq_id === false){
             return $this->findAll();
         }else{
             return $this->where(['faq_id' => $faq_id])->first();
+        }
+    }
+
+    public function deleteFaqs($faqIds){
+        $isIdExist = $this->whereIn('faq_id', $faqIds)->findAll();
+        if(empty($isIdExist)){
+            return false;
+        }
+        if($this->db->table($this->table)->whereIn('faq_id', $faqIds)->delete()){
+            return true;
+        }else{
+            return false;
         }
     }
 }

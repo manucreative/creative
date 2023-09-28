@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\frontend;
 use App\Controllers\BaseController;
+use App\Models\FaqModel;
 use App\Models\SettingsModel;
 use App\Models\SliderModel;
 use App\Models\frontend\AdminFrontendModel;
@@ -14,6 +15,7 @@ class HomeController extends BaseController{
         $sliderModel = model(SliderModel::class);
         $serviceModel = model(ServiceModel::class);
         $settingsModel = model(SettingsModel::class);
+        $faqModel = model(FaqModel::class);
         $features = $settingsModel->getAllFeatures();
         $arrayFeatures = json_decode($features, true);
 
@@ -31,6 +33,7 @@ class HomeController extends BaseController{
         $array2 = $features2[1];
         $array3 = $features2[2];
 }
+
         $admins = $adminModel->getAdminDataByUserName($user_name);
         $data = [
             'sliders' => $sliderModel->getSliders(),
@@ -50,6 +53,7 @@ class HomeController extends BaseController{
             'feature_background3' => $array3['feature_background3'],
             'feature_icon3' => $array3['feature_icon3'],
             'services' => $serviceModel->getServices(),
+            'faqs' => $faqModel->getFaq(),
             'admins' => $admins
         ];
 

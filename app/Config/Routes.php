@@ -29,6 +29,7 @@ use App\Controllers\backend\FaqController;
     $routes->get('about', [AboutController::class, 'index']);
     $routes->get('myBlogs', [BlogsController::class, 'index']);
     $routes->get('contact', [ContactController::class, 'index']);
+    $routes->post('sendMail', [ContactController::class, 'sendMail']);
     $routes->get('myPricing', [PricingController::class, 'index']);
  });
 
@@ -76,5 +77,9 @@ use App\Controllers\backend\FaqController;
     // FAQ controls
     $routes->get('addFaqs', [FaqController::class, 'addFaqs']);
     $routes->post('addFaqAction', [FaqController::class, 'addFaqAction']);
+    $routes->post('deleteFaqs', [FaqController::class, 'deleteFaqs']);
+    $routes->get('viewFaqs', [FaqController::class, 'viewFaqs']);
+    $routes->get('updateFaqForm/(:num)', [FaqController::class, 'updateFaqForm/$1']);
+    $routes->post('updateFaq', [FaqController::class, 'updateFaq']);
  });
 

@@ -210,23 +210,36 @@
                         <p>Frequently Asked Question</p>
                         <h2>What are your questions about me?</h2>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div id="accordion-1">
-                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.1s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
-                                            Who are you?
-                                        </a>
-                                    </div>
-                                    <div id="collapseOne" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                        I'm Emmanuel Kiptoo Kirui.
-                                        <p> A software developer with a passion for coding and problem-solving. Proficient in multiple languages and frameworks, I create efficient, user-focused applications, driven by a commitment to innovation and quality.</p>
+
+                    <?php if (!empty($faqs) && is_array($faqs)): ?>
+                        <div class="row">
+                            <?php foreach ($faqs as $index => $faq): ?>
+                                <div class="col-md-6">
+                                    <div id="accordion-<?php echo $index; ?>">
+                                        <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.1s">
+                                            <div class="card-header">
+                                                <a class="card-link collapsed" data-toggle="collapse" href="#collapse-<?php echo $index; ?>">
+                                                    <?php echo $faq['faq_question']; ?>
+                                                </a>
+                                            </div>
+                                            <div id="collapse-<?php echo $index; ?>" class="collapse" data-parent="#accordion-<?php echo $index; ?>">
+                                                <div class="card-body">
+                                                    <?php echo $faq['faq_answer']; ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.3s">
+                                <?php if (($index + 1) % 2 === 0): ?>
+                                    </div>
+                                    <div class="row">
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                      </div>
+                                <!-- <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.3s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
                                             What can you deliver as an Android developer?
@@ -270,7 +283,7 @@
                                         enhancing my ability to deliver versatile and innovative software solutions.
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="card wow fadeInLeft" data-wow-delay="0.5s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseFive">
@@ -283,7 +296,7 @@
                                         </div>
                                     </div>
                                 </div> -->
-                            </div>
+                            <!-- </div>
                         </div>
                         <div class="col-md-6">
                             <div id="accordion-2">
@@ -347,7 +360,7 @@
                                         and stakeholders to bring the vision to life while ensuring usability, security, and scalability.
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="card wow fadeInRight" data-wow-delay="0.5s">
                                     <div class="card-header">
                                         <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
@@ -360,9 +373,9 @@
                                         </div>
                                     </div>
                                 </div> -->
-                            </div>
+                            <!-- </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- FAQs End -->

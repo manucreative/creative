@@ -81,7 +81,7 @@
 
             <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         
-
+            <script src="<?php echo base_url('frontend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -96,5 +96,14 @@
 
         <!-- Template Javascript -->
         <script src="<?php echo base_url('frontend/js/main.js')?>"></script>
+        <script>
+    tinymce.init({
+    selector: '#contact_message', // Change this to match your textarea's class or ID
+    height: 300,
+    plugins: 'link image code',
+    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
+    menubar: false
+});
+ </script>
     </body>
 </html>

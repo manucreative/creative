@@ -47,7 +47,7 @@
                     <td><?php echo $faq['faq_question'];?></td>
                     <td><?php echo $faq['faq_answer']; ?></td>
                     <td><?php echo $faq['created_at']; ?></td>
-                    <td> <a class="btn btn-primary dropdown-item" href="<?php  echo base_url('creative/updateSliderForm/'.$faq['faq_id']); ?>"><i class="fa fa-edit"></i>&nbsp; Edit Sliders</a></td>
+                    <td> <a class="btn btn-primary dropdown-item" href="<?php  echo base_url('creative/updateFaqForm/'.$faq['faq_id']); ?>"><i class="fa fa-edit"></i>&nbsp; Edit Sliders</a></td>
                         <!-- <div class="btn-group">
 
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

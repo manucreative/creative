@@ -29,8 +29,11 @@
                 else if (currentUrl.indexOf("/creative/configurations") !== -1) {
                     document.getElementById("#moreControls").classList.add("myNav");
                 }
+                else if (currentUrl.indexOf("/creative/viewFaqs") !== -1) {
+                    document.getElementById("myFaqs").classList.add("myNav");
+                }
                 else if (currentUrl.indexOf("/creative/addFaqs") !== -1) {
-                    document.getElementById("#addFaqs").classList.add("myNav");
+                    document.getElementById("myFaqs").classList.add("myNav");
                 }
 
                 $("#moreControls").click(function() { 
@@ -173,22 +176,29 @@
         });
     });
     // sliders delete function end
-    
-    // category delete function Start
+
+
+
+    /**
+     * ==============================
+     * AQs delete function StartF
+     * ====================
+     */
+ 
     $(function(){
     //If check_all checked then check all table rows
     $("#check_all_faqs").on("click", function () {
         if ($("input:checkbox").prop("checked")) {
-            $("input:checkbox[name='categories']").prop("checked", true);
+            $("input:checkbox[name='faqs']").prop("checked", true);
         } else {
-            $("input:checkbox[name='categories']").prop("checked", false);
+            $("input:checkbox[name='faqs']").prop("checked", false);
         }
     });
     
     // Check each table row checkbox for categories
-    $("input:checkbox[name='categories']").on("change", function () {
-        var total_check_boxes = $("input:checkbox[name='categories']").length;
-        var total_checked_boxes = $("input:checkbox[name='categories']:checked").length;
+    $("input:checkbox[name='faqs']").on("change", function () {
+        var total_check_boxes = $("input:checkbox[name='faqs']").length;
+        var total_checked_boxes = $("input:checkbox[name='faqs']:checked").length;
     
         // If all checked manually then check check_all checkbox
         if (total_check_boxes === total_checked_boxes) {
@@ -199,11 +209,11 @@
         }
     });
     
-    $("#delete_selected_cats").on("click", function (e) {
+    $("#delete_selected_faq").on("click", function (e) {
         e.preventDefault();
         var ids = '';
         var comma = '';
-        $("input:checkbox[name='categories']:checked").each(function() {
+        $("input:checkbox[name='faqs']:checked").each(function() {
             ids = ids + comma + this.value;
             comma = ',';
         });
@@ -211,12 +221,12 @@
         //console.log(ids);
         
         if(ids.length > 0) {
-            if (confirm("Are you sure you want to delete the selected categories?")) {
+            if (confirm("Are you sure you want to delete the selected faqs?")) {
             $('#overlay').show();
             $('#loaderBanner').show();
             $.ajax({
                 type: "POST",
-                url: "deleteCats",
+                url: "deleteFaqs",
                 data: {'ids': ids},
                 dataType: "html",
                 cache: false,
@@ -225,7 +235,7 @@
                      window.setTimeout(function(){
                         $('#loaderBanner').hide();
                        $('#overlay').hide();
-                       window.location.href = "viewCategories";
+                       window.location.href = "viewFaqs";
                      }, 4000);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -236,7 +246,7 @@
             });
         }
         } else {
-            $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one category row for deletion</span>');
+            $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one faq row for deletion</span>');
         }
     });
     });
@@ -383,7 +393,7 @@
     
     $(document).ready(function () {
         // ,#editTopUpsBtn,#editCat,#addAdminBtn
-        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm,#faqAddForm').click(function (e) {
+        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm,#faqAddForm,#faqUpdateForm').click(function (e) {
             // Prevent the form from submitting immediately
             e.preventDefault();
             $('#overlay').show();
@@ -396,7 +406,7 @@
                 $('#overlay').hide();
                 // Submit the form
                 // , .topUpsEditForm, .categoriesEditForm, .AdminAddForm'
-                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm, .faqAddForm').submit();
+                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm, .faqAddForm, .faqUpdateForm').submit();
             }, 4000);
         });
     });

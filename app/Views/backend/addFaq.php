@@ -32,7 +32,7 @@
       </div>
       <div class="col-sm-9">
       <div class="modal-footer">
-        <a href="#"><button id="viewFags" data-action="viewFags" class="btn btn-primary">View All FAQs</button></a>
+        <a href="#"><button id="myFaqs" data-action="myFaqs" class="btn btn-primary">View All FAQs</button></a>
         </div>
       </div>
 

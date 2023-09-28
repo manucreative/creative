@@ -4,7 +4,7 @@
 <script>
       // All buttons Configurations
     $(document).ready(function () {
-        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#viewFaqs,#addFaqs,#btnBanner').click(function (e) {
+        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#myFaqs,#addFaqs,#btnBanner').click(function (e) {
             e.preventDefault();
             var action = $(this).data('action');
             $('#overlay').show();
@@ -35,7 +35,7 @@
                 case 'myProfile':
                     window.location.href = "<?php echo base_url('creative/profileUpdateForm/'.$admin_id);?>";
                     break;
-                case 'viewFaqs':
+                case 'myFaqs':
                     window.location.href = "<?php echo base_url('creative/viewFaqs');?>";
                     break;
                 case 'addFaqs':
@@ -75,6 +75,7 @@
     <!-- Custom JS -->
     <script src="<?php echo base_url('backend/assets/js/myJs.js')?>"></script>
   <script src="<?php echo base_url('backend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
+  
 
   <script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net/jquery.dataTables.js')?>"></script>
    <script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net-bs4/dataTables.bootstrap4.js')?>"></script>

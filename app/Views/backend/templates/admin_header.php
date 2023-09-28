@@ -51,30 +51,32 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
 
                     <li class="nav-item">
                             <a class="nav-link" id="dashboard-link" href="<?php echo base_url('creative/dashboard');?>">
-                                <i class="fa fa-dashboard fa-3x"></i> Dashboard
+                                <i class="fa fa-dashboard fa-2"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item" >
                             <a class="nav-link" href="#" id="viewService" data-action="viewService">
-                                <i class="fa fa-desktop fa-3x"></i> Manage Services
+                                <i class="fa fa-desktop fa-2x"></i> Manage Services
                             </a>
                         </li>
                         <li class="nav-item" id="sliders-link">
                             <a class="nav-link" href="#" id="viewSliders" data-action="viewSliders">
-                                <i class="fa fa-bar-chart-o fa-3x"></i> Manage Slider
+                                <i class="fa fa-bar-chart-o fa-2x"></i> Manage Slider
                             </a>
                         </li>
-                    <li  >
-                        <a  href="#" id="myProfile" data-action="myProfile"><i class="fa fa-user fa-3x"></i>My Profile </a>
+                    <li class="nav-item" id="sliders-link">
+                        <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
+                            <i class="fa fa-user fa-2x"></i>My Profile </a>
                     </li>
-                    <li>
-                        <a  href="#" id="addFaqs" data-action="addFaqs"><i class="fa fa-question fa-3x"></i> Manage FAQs </a>
+                    <li class="nav-item" id="sliders-link">
+                        <a class="nav-link" href="#" id="myFaqs" data-action="myFaqs">
+                            <i class="fa fa-question fa-2x"></i> Manage FAQs </a>
                     </li>
                     <li  >
-                        <a  href="form.html"><i class="fa fa-table fa-3x"></i> Manage Portfolio </a>
+                        <a  href="form.html"><i class="fa fa-table fa-2x"></i> Manage Portfolio </a>
                     </li>
                     <li  >
-                        <a  href="form.html"><i class="fa fa-money fa-3x"></i> Manage Pricing </a>
+                        <a  href="form.html"><i class="fa fa-money fa-2x"></i> Manage Pricing </a>
                     </li>
 
                     <li>
