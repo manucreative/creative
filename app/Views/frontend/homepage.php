@@ -211,32 +211,33 @@
                         <h2>What are your questions about me?</h2>
                     </div>
 
-                    <?php if (!empty($faqs) && is_array($faqs)): ?>
-                        <div class="row">
-                            <?php foreach ($faqs as $index => $faq): ?>
-                                <div class="col-md-6">
-                                    <div id="accordion-<?php echo $index; ?>">
-                                        <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.1s">
-                                            <div class="card-header">
-                                                <a class="card-link collapsed" data-toggle="collapse" href="#collapse-<?php echo $index; ?>">
-                                                    <?php echo $faq['faq_question']; ?>
-                                                </a>
-                                            </div>
-                                            <div id="collapse-<?php echo $index; ?>" class="collapse" data-parent="#accordion-<?php echo $index; ?>">
-                                                <div class="card-body">
-                                                    <?php echo $faq['faq_answer']; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php if (($index + 1) % 2 === 0): ?>
-                                    </div>
-                                    <div class="row">
-                                <?php endif; ?>
-                            <?php endforeach; ?>
+                    <div class="row">
+    <?php $delay = 0.1; // Initialize delay variable ?>
+    <?php foreach ($faqs as $index => $faq): ?>
+        <div class="col-md-6">
+            <div id="accordion-<?php echo $index; ?>">
+                <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="<?php echo $delay; ?>">
+                    <div class="card-header">
+                        <a class="card-link collapsed" data-toggle="collapse" href="#collapse<?php echo $index; ?>"
+                           data-parent="#accordion-<?php echo $index; ?>">
+                            <?php echo $faq['faq_question']; ?>
+                        </a>
+                    </div>
+                    <div id="collapse<?php echo $index; ?>" class="collapse" data-parent="#accordion-<?php echo $index; ?>">
+                        <div class="card-body">
+                            <?php echo $faq['faq_answer']; ?>
                         </div>
-                    <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+        $delay += 0.2; // Increment the delay for the next FAQ
+        if (($index + 1) % 2 === 0 && $index < count($faqs) - 1): ?>
+            <div class="clearfix visible-md-block"></div> <!-- Add this for spacing between rows -->
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>
                 </div>
                       </div>
                                 <!-- <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.3s">
