@@ -1,14 +1,17 @@
 <?php
 namespace App\Controllers\frontend;
 use App\Controllers\BaseController;
+use App\Models\FaqModel;
 
 class ContactController extends BaseController{
 
     protected $helpers = ['form'];
     public function index(){
+        $faqModel = model(FaqModel::class);
         $data = [
             'title' => 'Add FAQ',
-            'errors' => []
+            'errors' => [],
+            'faqs' => $faqModel->getFaq(),
         ];
 
         return view('frontend/templates/header', $data)
@@ -58,19 +61,17 @@ class ContactController extends BaseController{
                     $smtp_mail->setTo(['emmanuelkirui34@gmail.com', 'manwiks2@gmail.com']);
                     $smtp_mail->setSubject($subject);
                     $smtp_mail->setMessage($body);
-
                     if($smtp_mail->send()){
                         session()->setFlashdata('success', 'Your Message has been send');
                         return redirect()->to(base_url('contact'));
                     }else{
                         $data = $smtp_mail->printDebugger(['headers']);
                         return redirect()->to(base_url('contact'))->withInput()->with('error', $data);
-                    
+
                         throw new \Exception();
                     }
             }
 
-        
         }
 
     }

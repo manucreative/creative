@@ -2,10 +2,10 @@
 <html ang="en">
     <head>
         <meta charset="utf-8">
-        <title>Manu - Creative dev</title>
+        <title>Manuu Creative Web Dev</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Construction Company Website Template" name="keywords">
-        <meta content="Construction Company Website Template" name="description">
+        <meta content="Emmanuel Kirui Developer website" name="keywords">
+        <meta content="Emmanuel Kirui Developer website" name="description">
 
         <!-- Favicon -->
         <link href="<?php echo base_url('frontend/media/general_images/favicon.png')?>" rel="icon">
@@ -81,8 +81,7 @@
                     </div>
                 </div>
             </div>
-            
-        
+
             <!-- Top Bar End -->
             <!-- Nav Bar Start -->
             <div class="nav-bar"style="background-image: url(<?php echo base_url('frontend/media/general_images/banner_about.png'); ?>">

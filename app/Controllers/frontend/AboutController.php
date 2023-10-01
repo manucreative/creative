@@ -3,6 +3,7 @@ namespace App\Controllers\frontend;
 use App\Controllers\BaseController;
 use App\Models\SettingsModel;
 use App\Models\frontend\AdminFrontendModel;
+use App\Models\FaqModel;
 
 class AboutController extends BaseController{
 
@@ -12,6 +13,7 @@ class AboutController extends BaseController{
             $adminModel = model(AdminFrontendModel::class);
             $rolesModel = model(RolesModel::class);
             $allUsers = $configModels->getUserProfiler();
+            $faqModel = model(FaqModel::class);
             if(!empty($allUsers) && is_array($allUsers)){
             foreach($allUsers as $user){
                 $user_name = $user['display_profile'];
@@ -38,6 +40,7 @@ class AboutController extends BaseController{
                  'experienceData' => $experience,
                  'referenceData' => $reference,
                  'admins' => $admins,
+                 'faqs' => $faqModel->getFaq(),
                  'title' => 'All Administrators'
              ];
 

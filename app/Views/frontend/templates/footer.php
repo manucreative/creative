@@ -2,7 +2,7 @@
 
   <!-- Footer Start -->
   <div class="footer wow fadeIn" data-wow-delay="0.3s">
-                <!-- <div class="container"> -->
+                <div class="container">
                     <div class="footer-wrapper">
                     <div class="row">
                         <div class="col-md-6 col-lg-3">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     </div>
-                <!-- </div> -->
+                </div>
                 <div class="container footer-menu wow fadeInUp">
                     <div class="f-menu">
                         <a href="">Terms of use</a>
