@@ -27,7 +27,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'auth' => AuthFilter::class,
-        'ifLoggedIn' => CheckIfLoggedIn::class,
+        'ifLoggedIn' => CheckIfLoggedIn::class
     ];
 
     /**

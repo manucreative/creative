@@ -13,7 +13,7 @@ class AdminModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['first_name','middle_name','last_name','email_address','password','telephone','role ',
+    protected $allowedFields    = ['first_name','middle_name','last_name','session_key','email_address','password','telephone','role',
     'avatar','created_at','user_name','basic_details','contact_details','education','expertise_areas','skills','personal_title',
     'sub_title','professional_profile','experience','reference'];
 
@@ -43,8 +43,8 @@ class AdminModel extends Model
 
     public function loginAdmin($email, $password) {
         // Check if the email exists in the database
-        $admin = $this->select('admin.*, roles.role_name')
-            ->join('roles', 'roles.role_id = admin.role')
+        $admin = $this->select('admin.*, tbl_roles.role_id')
+            ->join('tbl_roles', 'tbl_roles.role_id = admin.role')
             ->where('email_address', $email)
             ->first();
     
@@ -56,8 +56,10 @@ class AdminModel extends Model
                 'middle_name' => $admin['middle_name'],
                 'last_name' => $admin['last_name'],
                 'telephone' => $admin['telephone'],
+                'user_name' => $admin['user_name'],
+                'session_key'=> $admin['session_key'],
                 'avatar' => $admin['avatar'],
-                'role' => $admin['role_name'],
+                'role' => $admin['role_id'],
                 'logged_in' => true,
             ];
             return $adminData;
@@ -68,13 +70,17 @@ class AdminModel extends Model
 
     public function isEmailUnique($email)
         {
-    return $this->where('email_address', $email)->countAllResults() === 0;
+    return $this->where(['email_address'=> $email])->countAllResults() === 0;
+        }
+        public function isUserNameUnique($user_name)
+        {
+    return $this->where(['user_name' => $user_name])->countAllResults() === 0;
         }
 
     public function getAdmins($admin_id = false){
         if($admin_id === false){
-            return $this->select('admin.*, roles.role_name')
-            ->join('roles', 'roles.role_id = admin.role')
+            return $this->select('admin.*, tbl_roles.role_name')
+            ->join('tbl_roles', 'tbl_roles.role_id = admin.role')
             ->findAll();
         }else{
             return $this->where(['admin_id' => $admin_id])->first();

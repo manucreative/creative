@@ -142,16 +142,17 @@
 
                             if ($serviceCounter < count($services)) : // Check if there are more services to show
                                 ?>
-                                <div class="myBox wow fadeInUp" data-wow-delay="0.3s">
-                                    <a href="<?php echo base_url('services') ?>" class="btn-md nav-item nav-link">Find out More</a>
-                                </div>
+                               
                             <?php endif; ?>
                         <?php endif; ?>
                     </div>
+                    <div class="myBox wow fadeInUp" style="text-align: center;" data-wow-delay="0.3s">
+                                    <a href="<?php echo base_url('services') ?>" class="btn-md nav-item nav-link">Find out More</a>
+                                </div>
                 </div>
             </div>
             <!-- Service End -->
-
+<hr>
              <!-- Testimonial Start -->
              <div class="container">
              <div class="testimonial wow fadeIn" data-wow-delay="0.1s">

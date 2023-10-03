@@ -80,6 +80,17 @@
       </div>
       </div>
 
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="user_name" class="col-sm-4 col-form-label">Type your User Name  <span style="color: red;">*</span></label>
+            <div class="col-sm-6">
+          <input type="text" id="" name="user_name" value="<?= old('user_name') ?>" placeholder="enter user name"  class="form-control">
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+      </div>
+
 
         <div class = "form-group">
         <div class="row">

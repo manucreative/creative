@@ -96,12 +96,14 @@
    
 
     <script>
-    tinymce.init({
+tinymce.init({
     selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer', // Change this to match your textarea's class or ID
     height: 300,
     plugins: 'link image code',
-    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
-    menubar: false
+    toolbar: 'undo redo | formatselect | bold italic underline strikethrough | fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table | code',
+    fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
+    menubar: true,
+    skin_url: '<?php echo base_url('frontend/tinymce/js/tinymce/skins/ui/tinymce-5-dark');?>',
 });
  </script>
 </body>

@@ -31,6 +31,14 @@ class AdminsController extends BaseController{
              . view('backend/templates/admin_footer');
     }
 
+    public function unAuthorized(){
+        $data =
+        [
+            'title' => 'You are not Authorized To Access this content, Kindly Conduct the Administrator'
+        ];
+        return view('backend/unAuthorized',$data);
+    }
+
     public function addAdminForm(){
         $rolesModel = model(RolesModel::class);
         $data = [
@@ -56,15 +64,19 @@ class AdminsController extends BaseController{
           //  $rolesModel = model(RolesModel::class);
             $validations = [
                 'first_name' => [
-                    'babel' => 'first_name',
+                    'babel' => 'first name',
                     'rules'=> 'required'
                 ],
                 'middle_name' => [
-                    'babel' => 'middle_name',
+                    'babel' => 'middle name',
+                    'rules'=> 'required'
+                ],
+                 'user_name' => [
+                    'babel' => 'user name',
                     'rules'=> 'required'
                 ],
                 'last_name' => [
-                    'babel' => 'last_name',
+                    'babel' => 'last name',
                     'rules'=> 'required'
                 ],
                 'email_address' => [
@@ -105,7 +117,7 @@ class AdminsController extends BaseController{
                 }
             }else{
                 try{
-                  
+            $user_name = $this->request->getPost('user_name');
             $first_name = $this->request->getPost('first_name');
             $middle_name = $this->request->getPost('middle_name');
             $last_name = $this->request->getPost('last_name');
@@ -115,6 +127,7 @@ class AdminsController extends BaseController{
             $re_enterPass = $this->request->getPost('re_enterPass');
             $admin_role = $this->request->getPost('role');
             $avatar = $this->request->getFile('avatar');
+            $sessionKey = bin2hex(random_bytes(32));
 
             $newName = $avatar->getRandomName();
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -122,10 +135,14 @@ class AdminsController extends BaseController{
             // Check if the email already exists
                 if (!$adminModel->isEmailUnique($email_address)) {
                     // Email already exists, handle the error (e.g., display a message)
-                    return redirect()->back()->withInput()->with('error', 'Email address already inuse.');
+                    return redirect()->back()->withInput()->with('error', 'Email is already in use.');
+                }else if(!$adminModel->isUserNameUnique($user_name)){
+                    return redirect()->back()->withInput()->with('error', 'User Name is already in use.');
                 }
 
             $adminData = [
+                'user_name' => $user_name,
+                'session_key' => $sessionKey,
                 'first_name' => $first_name,
                 'middle_name'=> $middle_name,
                 'last_name'=> $last_name,

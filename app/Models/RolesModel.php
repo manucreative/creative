@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class RolesModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'roles';
+    protected $table            = 'tbl_roles';
     protected $primaryKey       = 'role_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['role_name','created_at'];
+    protected $allowedFields    = ['role_id','role_name','created_at'];
 
     // Dates
     protected $useTimestamps = false;

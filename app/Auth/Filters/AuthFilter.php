@@ -4,10 +4,12 @@ namespace App\Auth\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\HTTP\URI;
+use SebastianBergmann\RecursionContext\Context;
 
 class AuthFilter implements FilterInterface
 {
-     
+ 
     public function before(RequestInterface $request, $arguments = null)
     {
       
@@ -19,11 +21,13 @@ class AuthFilter implements FilterInterface
         // Check user's role and restrict access based on roles
         
         $role = session('role'); 
-        if ($role === "SUPER_ADMIN") {
-            // Allow access for super admin
-        } elseif ($role === "ADMIN") {
-            // Allow access for regular admins
-            if (!$this->checkAllowedRoutes($request->uri->getPath())) {
+        if ($role === "1") {
+            //Full Access
+        }
+        elseif ($role === "2") {
+            log_message('debug', $this->checkAllowed(($request->getUri()->getPath())));
+            
+            if (!$this->checkAllowed($request->getUri()->getPath())) {
                 return redirect()->to(base_url('creative/unAuthorized'));
             }
         } else {
@@ -31,34 +35,25 @@ class AuthFilter implements FilterInterface
             return redirect()->to(base_url('creative/unAuthorized'));
         }
     }
+        // Check if the current route is allowed for the admin role
+        private function checkAllowed($path)
+        {
+            $allowedRoutesForAdmin = [
+                'creative',
+                'creative/dashboard',
+                'creative/addAdminForm',
+                'creative/addAdminAction',
+                'creative/deleteBanners',
+                'creative/logOut',
 
+            ];
+
+            return in_array($path, $allowedRoutesForAdmin);
+        }
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
         // No action needed after processing the request
     }
 
-    // Check if the current route is allowed for the admin role
-    private function checkAllowedRoutes($path)
-    {
-        $allowedRoutesForAdmin = [
-            'admin/dashboard',
-            // 'admin/addBanner',
-            // 'admin/addBanners',
-            // 'admin/view_banners',
-            // 'admin/deleteBanners',
-            // 'admin/editBanner/(:num)',
-            // 'admin/editBannerFunction',
-            // 'admin/logOut',
-            'admin/unAuthorized',
-            // 'admin/view_products',
-            // 'admin/deleteProducts',
-            // 'admin/product_addition_page',
-            // 'admin/productAddFunction',
-            // 'admin/editProduct/(:num)',
-            // 'admin/productUpdateFunction'
-
-        ];
-
-        return in_array($path, $allowedRoutesForAdmin);
-    }
+    
 }

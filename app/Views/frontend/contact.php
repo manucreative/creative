@@ -80,10 +80,10 @@
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="control-group">
-                                        <textarea class="form-control" id="contact_message" name="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"> <?php echo old('message');?> </textarea>
+                                        <textarea class="form-control" id="contact_message" name="message" placeholder="Type Your Message" required="required" data-validation-required-message="Please enter your message"> <?php echo old('message');?> </textarea>
                                         <p class="help-block text-danger"></p>
                                     </div>
-                                    <div>
+                                    <div class="modal-footer">
                                         <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
                                     </div>
                                 <?= form_close()?>

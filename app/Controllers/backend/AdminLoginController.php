@@ -34,8 +34,6 @@ class AdminLoginController extends BaseController{
             ];
 
             $session->set($userData);
-           // $session->set('logged_in', true);
-            
             return redirect()->to(base_url('creative/dashboard'))->with('success', 'Congrats ' . session('first_name') . ' You are In');
         } else {
             // Invalid login
@@ -48,20 +46,6 @@ class AdminLoginController extends BaseController{
       }
     }
 
-    public function unAuthorized(){
-        $data =
-        [
-            'first_name' => session('first_name'),
-            'admin_id' => session('admin_id'),
-            'last_name' => session('last_name'),
-            'avatar' => session('avatar'),
-            'role' => session('role'),
-            'title' => 'You are not Authorized To Access this content'
-        ];
-        return view('backend/templates/admin_header',$data)
-                .view('frontend/unAuthorized',$data)
-                .view('backend/templates/admin_footer');
-    }
 
     public function logOut(){
         $session = session();

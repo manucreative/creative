@@ -1,4 +1,13 @@
 <?php
+namespace Config;
+
+// Create a new instance of our RouteCollection class.
+$routes = Services::routes();
+
+$routes->setTranslateURIDashes(false);
+$routes->set404Override();
+
+$routes->setAutoRoute(false);
 
 use App\Controllers\frontend\HomeController;
 use CodeIgniter\Router\RouteCollection;
@@ -22,6 +31,7 @@ use App\Controllers\backend\FaqController;
  * @var RouteCollection $routes
  */
 
+ 
  $routes->group('', ['namespace' => 'App\Controllers\frontend'],function ($routes){
     $routes->get('/', [HomeController::class, 'index']);
     $routes->get('services', [ServicesController::class, 'index']);
@@ -38,15 +48,16 @@ use App\Controllers\backend\FaqController;
  $routes->group('creative', ['namespace' => 'App\Controllers\backend'], function ($routes) {
    $routes->get('login', [AdminLoginController::class, 'index'],['filter' => 'ifLoggedIn']);
    $routes->post('adminLogin', [AdminLoginController::class, 'adminLogin']); // Process login
+   
 
 });
  //admin Routing 
  $routes->group('creative', ['namespace' => 'App\Controllers\backend', 'filter' => 'auth'],function ($routes){
+   $routes->get('unAuthorized', [AdminsController::class, 'unAuthorized']);
    $routes->get('/', [DashboardController::class, 'dashboard']);
    $routes->get('dashboard', [DashboardController::class, 'dashboard']);
    $routes->get('addAdminForm', [AdminsController::class, 'addAdminForm']);
    $routes->post('addAdminAction', [AdminsController::class, 'addAdminAction']);
-   $routes->get('unAuthorized', [AdminLoginController::class, 'unAuthorized']);
     $routes->get('logOut', [AdminLoginController::class, 'logOut']);
 
     //admin updates
@@ -82,4 +93,9 @@ use App\Controllers\backend\FaqController;
     $routes->get('updateFaqForm/(:num)', [FaqController::class, 'updateFaqForm/$1']);
     $routes->post('updateFaq', [FaqController::class, 'updateFaq']);
  });
+
+ if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+   require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+}
+
 
