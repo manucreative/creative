@@ -13,6 +13,7 @@ class ServiceController extends BaseController{
             'admin_id' => session('admin_id'),
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
+            'session_key' =>session('session_key'),
             'role' => session('role'),
             'title' => 'Add Service',
             'errors' => []
@@ -94,6 +95,7 @@ class ServiceController extends BaseController{
         'first_name' => session('first_name'),
         'admin_id' => session('admin_id'),
         'last_name' => session('last_name'),
+        'session_key' =>session('session_key'),
         'avatar' => session('avatar'),
         'role' => session('role'),
         'i'=> $i,

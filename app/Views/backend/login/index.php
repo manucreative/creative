@@ -42,7 +42,8 @@
                     <?= session('success') ?>
                 </div>
             <?php endif; ?>
-				<?= form_open(base_url('creative/adminLogin'),['class' => 'login100-form validate-form', 'id' => 'adminLoginForm']);?>
+			<?php // $myUrl = 'creative/admin/index/key/'?>
+				<?= form_open(base_url('creative/admin/index/key/adminLogin'),['class' => 'login100-form validate-form', 'id' => 'adminLoginForm']);?>
 					<span class="login100-form-title p-b-49">
                     <?php  echo $title ?>
 					</span>

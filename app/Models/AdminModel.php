@@ -43,7 +43,7 @@ class AdminModel extends Model
 
     public function loginAdmin($email, $password) {
         // Check if the email exists in the database
-        $admin = $this->select('admin.*, tbl_roles.role_id')
+        $admin = $this->select('admin.*, tbl_roles.role_name')
             ->join('tbl_roles', 'tbl_roles.role_id = admin.role')
             ->where('email_address', $email)
             ->first();
@@ -59,7 +59,7 @@ class AdminModel extends Model
                 'user_name' => $admin['user_name'],
                 'session_key'=> $admin['session_key'],
                 'avatar' => $admin['avatar'],
-                'role' => $admin['role_id'],
+                'role' => $admin['role_name'],
                 'logged_in' => true,
             ];
             return $adminData;

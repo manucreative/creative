@@ -16,23 +16,23 @@ class AuthFilter implements FilterInterface
         $session = session();
         // Check if the user is authenticated
         if (!$session->get('logged_in')) {
-            return redirect()->to(base_url('creative/login'));
+            return redirect()->to(base_url('creative/admin/index/key/login'));
         }
         // Check user's role and restrict access based on roles
         
         $role = session('role'); 
-        if ($role === "1") {
+        if ($role === "SUPER_ADMIN") {
             //Full Access
         }
-        elseif ($role === "2") {
+        elseif ($role === "ADMIN") {
             log_message('debug', $this->checkAllowed(($request->getUri()->getPath())));
             
             if (!$this->checkAllowed($request->getUri()->getPath())) {
-                return redirect()->to(base_url('creative/unAuthorized'));
+                return redirect()->to(base_url('creative/admin/index/key/unAuthorized'));
             }
         } else {
             // Restrict access for other roles
-            return redirect()->to(base_url('creative/unAuthorized'));
+            return redirect()->to(base_url('creative/admin/index/key/unAuthorized'));
         }
     }
         // Check if the current route is allowed for the admin role

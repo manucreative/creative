@@ -12,7 +12,8 @@ class CheckIfLoggedIn implements FilterInterface
     {
         $session = Services::session();
         if ($session->get('logged_in')) {
-            return redirect()->to(base_url('creative'));
+            $key = $session->get('session_key');
+            return redirect()->to(base_url('creative/admin/index/key/'.$key.'/dashboard'));
         }
     }
 
