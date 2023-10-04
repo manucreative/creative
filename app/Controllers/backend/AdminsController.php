@@ -11,8 +11,6 @@ class AdminsController extends BaseController{
         $adminModel = model(AdminModel::class);
        $rolesModel = model(RolesModel::class);
        $admins = $adminModel->getAdmins();
-       
-      
 
         $data = [
             'first_name' => session('first_name'),
@@ -20,6 +18,7 @@ class AdminsController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
+            'session_key' => session('session_key'),
             'admins' => $admins,
             'admin_roles' => $rolesModel->getRoles(),
             'title' => 'All Administrators',
@@ -39,7 +38,11 @@ class AdminsController extends BaseController{
         return view('backend/unAuthorized',$data);
     }
 
-    public function addAdminForm(){
+    public function addAdminForm($key){
+        $session_key = session()->get('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
         $rolesModel = model(RolesModel::class);
         $data = [
             'first_name' => session('first_name'),
@@ -47,6 +50,7 @@ class AdminsController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
+            'session_key' => session('session_key'),
             'admin_roles' => $rolesModel->getRoles(),
             'title' => 'Add Administrator',
             'errors' => []
@@ -55,10 +59,14 @@ class AdminsController extends BaseController{
                 . view('backend/addAdmin_form',$data)
                 . view('backend/templates/admin_footer');
     }
+}
 
-
-    public function addAdminAction(){
+    public function addAdminAction($key){
         
+        $session_key = session()->get('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
         $adminModel = model(AdminModel::class);
         if($this->request->getMethod() === 'post'){
           //  $rolesModel = model(RolesModel::class);
@@ -159,10 +167,10 @@ class AdminsController extends BaseController{
             
                 $avatar->move(ROOTPATH . 'public/backend/media/admin_images', $newName);
                 session()->setFlashdata('success', 'Administrator Insert successful');
-                return redirect()->to(base_url('creative/addAdminForm'));
+                return redirect()->to(base_url('creative/admin/addAdminForm/index/key/'.$key));
             }else{
                session()->setFlashdata('error', 'Admin Insert Failed');
-                return redirect()->to(base_url('creative/addAdminForm'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                return redirect()->to(base_url('creative/admin/addAdminForm/index/key/'.$key))->withInput()->with('error', 'Error: Kindly check your data and try again');
             
                 throw new \Exception();
             }
@@ -171,6 +179,7 @@ class AdminsController extends BaseController{
         }
     }
     }
+}
     }
 
     public function deleteAdmins(){
@@ -197,10 +206,17 @@ class AdminsController extends BaseController{
        //      echo '<pre>';
         // print_r($basicData);
         // echo '</pre>';
-        public function profileUpdateForm($admin_id){
+        public function profileUpdateForm($key, $admin_id){
+            $session_key = session()->get('session_key');
+            $session_adminId = session()->get('admin_id');
+            if($key !== $session_key && $admin_id !== $session_adminId){
+                return redirect()->back();
+            }else{
+
             $adminModel = model(AdminModel::class);
             $rolesModel = model(RolesModel::class);
-            $admins = $adminModel->getAdmins($admin_id);
+
+            $admins = $adminModel->allAdmins($admin_id);
 
             $basic_details = $adminModel->getBasicDetails($admin_id);
             $contactDetails = $adminModel->getContactDetails($admin_id);
@@ -209,7 +225,6 @@ class AdminsController extends BaseController{
             $skills = $adminModel->getSkills($admin_id);
             $experience = $adminModel->getExperience($admin_id);
             $reference = $adminModel->getReference($admin_id);
-
              $data = [
                  'basics' => $basic_details,
                  'contacts' => $contactDetails,
@@ -223,7 +238,8 @@ class AdminsController extends BaseController{
                  'last_name' => session('last_name'),
                  'avatar' => session('avatar'),
                  'role' => session('role'),
-                 'admins' => $admins,
+                 'session_key' => session('session_key'),
+                  'admins' => $admins,
                  'admin_roles' => $rolesModel->getRoles(),
                  'title' => 'All Administrators',
                  'errors' => []
@@ -232,6 +248,7 @@ class AdminsController extends BaseController{
              return view('backend/templates/admin_header', $data)
                   . view('backend/profileUpdateForm', $data)
                   . view('backend/templates/admin_footer');
+            }
         }
 
         /**
@@ -239,7 +256,11 @@ class AdminsController extends BaseController{
          *
          * @return void
          */
-        public function updateProfile(){
+        public function updateProfile($key){
+            $session_key = session()->get('session_key');
+            if($key !== $session_key){
+                return redirect()->back();
+            }else{
             $adminModel = model(AdminModel::class);
             if($this->request->getMethod() === 'post'){
 
@@ -349,16 +370,16 @@ class AdminsController extends BaseController{
             
                 $avatar->move(ROOTPATH . 'public/backend/media/admin_images', $newName);
                 session()->setFlashdata('success', 'You have successfully updated you Profile Congratulations');
-                return redirect()->to(base_url('creative/profileUpdateForm/'.$admin_id));
+                return redirect()->to(base_url('creative/admin/profileUpdateForm/index/key/'.$key.'/'.$admin_id));
             }else{
                session()->setFlashdata('error', 'Admin Insert Failed');
-                return redirect()->to(base_url('creative/profileUpdateForm/'.$admin_id))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                return redirect()->to(base_url('creative/admin/profileUpdateForm/index/key/'.$key.'/'.$admin_id))->withInput()->with('error', 'Error: Kindly check your data and try again');
             
                 throw new \Exception();
             }
 
                 }
-
+            }
         }
         }
     }

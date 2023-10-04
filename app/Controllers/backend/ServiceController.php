@@ -133,6 +133,7 @@ class ServiceController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
+            'session_key' => session('session_key'),
             'title' => 'Add Service',
             'errors' => []
         ];

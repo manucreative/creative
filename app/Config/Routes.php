@@ -63,12 +63,12 @@ use App\Controllers\backend\FaqController;
  $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend', 'filter' => 'auth'],function ($routes){
    $routes->get('logOut/index/key', [AdminLoginController::class, 'logOut']);
    $routes->get('dashboard/index/key/(:segment)', [DashboardController::class, 'dashboard/$1']);
-   $routes->get('unAuthorized/index/key/(:any)', [AdminsController::class, 'unAuthorized']);
-   $routes->get('addAdminForm/index/key/(:any)', [AdminsController::class, 'addAdminForm']);
-   $routes->post('addAdminAction/index/key/(:any)', [AdminsController::class, 'addAdminAction']);
+   $routes->get('unAuthorized/index/key/(:segment)', [AdminsController::class, 'unAuthorized/$1']);
+   $routes->get('addAdminForm/index/key/(:segment)', [AdminsController::class, 'addAdminForm/$1']);
+   $routes->post('addAdminAction/index/key/(:segment)', [AdminsController::class, 'addAdminAction/$1']);
 
     //admin updates
-    $routes->get('profileUpdateForm/(:num)', [AdminsController::class, 'profileUpdateForm/$1']);
+    $routes->get('profileUpdateForm/index/key/(:segment)/(:num)', [AdminsController::class, 'profileUpdateForm/$1/$2']);
     $routes->post('updateProfile', [AdminsController::class, 'updateProfile']);
 
     //Sliders
@@ -80,9 +80,9 @@ use App\Controllers\backend\FaqController;
     $routes->post('deleteSliders', [SliderController::class, 'deleteSliders']);
 
     //Configurations
-    $routes->get('configurations', [ConfigurationsController::class, 'viewSettingsPage']);
-    $routes->post('featureConfigForm',[ConfigurationsController::class, 'featureConfigForm']);
-    $routes->post('updateProfiler', [ConfigurationsController::class, 'updateProfiler']);
+    $routes->get('configurations/index/key/(:segment)', [ConfigurationsController::class, 'viewSettingsPage/$1']);
+    $routes->post('featureConfigForm/index/key/(:segment)',[ConfigurationsController::class, 'featureConfigForm/$1']);
+    $routes->post('updateProfiler/index/key/(:segment)', [ConfigurationsController::class, 'updateProfiler/$1']);
 
     //Service Controls
     $routes->get('addServiceForm', [ServiceController::class, 'addServiceForm']);

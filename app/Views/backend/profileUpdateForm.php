@@ -109,7 +109,7 @@
                                             <input type="file" id="avatar" name="avatar" class="form-control myInput" accept="image/*"  style="cursor:pointer">
                                                 <div class="existing_icon">
                                                     <h2>Existing Image</h2>
-                                                    <img src="<?php  echo base_url('backend/media/admin_images/'.$admins['avatar']) ?? '';?>" class="img-responsive" height="150px" width="150px" alt="Existing Icon">
+                                                    <img src="<?php  echo base_url('backend/media/admin_images/'.$admins['avatar'] ?? '') ?>" class="img-responsive" height="150px" width="150px" alt="Existing Icon">
                                                 </div>
                                             </div>
                                             <hr>

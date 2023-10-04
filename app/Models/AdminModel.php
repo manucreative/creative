@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use CodeIgniter\Model;
 
 class AdminModel extends Model
@@ -57,7 +56,6 @@ class AdminModel extends Model
                 'last_name' => $admin['last_name'],
                 'telephone' => $admin['telephone'],
                 'user_name' => $admin['user_name'],
-                'session_key'=> $admin['session_key'],
                 'avatar' => $admin['avatar'],
                 'role' => $admin['role_name'],
                 'logged_in' => true,
@@ -82,6 +80,13 @@ class AdminModel extends Model
             return $this->select('admin.*, tbl_roles.role_name')
             ->join('tbl_roles', 'tbl_roles.role_id = admin.role')
             ->findAll();
+        }else{
+            return $this->where(['admin_id' => $admin_id])->first();
+        }
+    }
+    public function allAdmins($admin_id = false){
+        if($admin_id === false){
+            return $this->findAll();
         }else{
             return $this->where(['admin_id' => $admin_id])->first();
         }

@@ -43,7 +43,7 @@
             <div id="page-inner">
 
 
-<?= form_open_multipart(base_url('creative/addAdminAction'), ['class'=> 'AdminAddForm'])?>
+<?= form_open_multipart(base_url('creative/admin/addAdminAction/index/key/'.$session_key), ['class'=> 'AdminAddForm'])?>
 
       <div class="modal-body">
 

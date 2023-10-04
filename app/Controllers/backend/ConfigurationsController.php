@@ -44,6 +44,7 @@ $data = [
     'last_name' => session('last_name'),
     'avatar' => session('avatar'),
     'role' => session('role'),
+    'session_key' => session('session_key'),
     'title' => 'Pages Configurations',
     'users' => $adminModel->getAdminsUserName(),
     'errors' => []

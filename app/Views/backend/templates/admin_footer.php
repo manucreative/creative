@@ -24,22 +24,22 @@
                     window.location.href = "<?php echo base_url('creative/admin/addServiceForm/index/key/'.$session_key);?>";
                     break;
                 case 'btnAddSlider':
-                    window.location.href = "<?php echo base_url('creative/addSliderContent');?>";
+                    window.location.href = "<?php echo base_url('creative/admin/addSliderContent/index/key/'.$session_key);?>";
                     break;
                 case 'viewConfigs':
-                    window.location.href = "<?php echo base_url('creative/configurations');?>";
+                    window.location.href = "<?php echo base_url('creative/admin/configurations/index/key/'.$session_key);?>";
                     break;
                 case 'viewSliders':
-                    window.location.href = "<?php echo base_url('creative/viewSliders');?>";
+                    window.location.href = "<?php echo base_url('creative/admin/viewSliders/index/key/'.$session_key);?>";
                     break;
                 case 'myProfile':
-                    window.location.href = "<?php echo base_url('creative/profileUpdateForm/'.$admin_id);?>";
+                    window.location.href = "<?php echo base_url('creative/admin/profileUpdateForm/index/key/'.$session_key.'/'.$admin_id);?>";
                     break;
                 case 'myFaqs':
-                    window.location.href = "<?php echo base_url('creative/viewFaqs');?>";
+                    window.location.href = "<?php echo base_url('creative/admin/viewFaqs/index/key/'.$session_key);?>";
                     break;
                 case 'addFaqs':
-                    window.location.href = "<?php echo base_url('creative/addFaqs');?>";
+                    window.location.href = "<?php echo base_url('creative/admin/addFaqs/index/key/'.$session_key);?>";
                     break;
                 case 'viewProd':
                     window.location.href = "../view_products";

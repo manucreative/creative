@@ -24,7 +24,7 @@
 <body>
 <div id="overlay"></div>
 <div id="wrapper">
-        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">a
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url('creative/dashboard');?>">Mr Kirui admin</a> 
+                <a class="navbar-brand" href="<?php echo base_url('creative/admin/dashboard/index/key/'.$session_key);?>">Mr Kirui admin</a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -51,7 +51,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
 
                     <li class="nav-item">
                             <a class="nav-link" id="dashboard-link" href="<?php echo base_url('creative/admin/dashboard/index/key/'.$session_key);?>">
-                                <i class="fa fa-dashboard fa-2"></i> Dashboard
+                                <i class="fa fa-dashboard fa-2x"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item" >
@@ -95,7 +95,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a  href="#"><i class="fa fa-user fa-3x"></i> Manage Blogs</a>
                     </li>
                     <li>
-                        <a  href="<?php echo base_url('creative/addAdminForm');?>"><i class="fa fa-edit fa-3x"></i> Add Administrator</a>
+                        <a  href="<?php echo base_url('creative/admin/addAdminForm/index/key/'.$session_key);?>"><i class="fa fa-edit fa-3x"></i> Add Administrator</a>
                     </li>
                             <!-- <li>
                                 <a href="#">Second Level Link<span class="fa arrow"></span></a>

@@ -14,6 +14,7 @@ class SliderController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
+            'session_key' => session('session_key'),
             'title' => 'Manuu Creative Dashboard',
             'errors' => []
         ];
@@ -100,6 +101,7 @@ class SliderController extends BaseController{
     'last_name' => session('last_name'),
     'avatar' => session('avatar'),
     'role' => session('role'),
+    'session_key' => session('session_key'),
     'i'=> $i,
     'title' => 'Viewing all Sliders'
 ];
@@ -134,6 +136,7 @@ return view('backend/templates/admin_header', $data)
         'last_name' => session('last_name'),
         'avatar' => session('avatar'),
         'role' => session('role'),
+        'session_key' => session('session_key'),
         'title' => 'Update Slider',
         'errors' => []
     ];

@@ -14,6 +14,7 @@ class FaqController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
+            'session_key' => session('session_key'),
             'title' => 'Add FAQ',
             'errors' => []
         ];
@@ -78,6 +79,7 @@ class FaqController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
+            'session_key' => session('session_key'),
             'faqs' => $faqModel->getFaq(),
             'title' => 'View All FAQs',
             'i' => $i,
@@ -98,6 +100,7 @@ class FaqController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'role' => session('role'),
+            'session_key' => session('session_key'),
             'faq' => $faqModel->getFaq($faq_id),
             'title' => 'Add FAQ',
             'errors' => []

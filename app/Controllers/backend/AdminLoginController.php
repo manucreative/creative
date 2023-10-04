@@ -38,7 +38,6 @@ class AdminLoginController extends BaseController{
             ];
 
             $session->set($userData);
-            //$randKey = bin2hex(random_bytes(32));
              $randKey = session()->get('session_key');
             return redirect()->to(base_url('creative/admin/dashboard/index/key/'.$randKey))->with('success', 'Congrats ' . session('first_name') . ' You are In');
 
