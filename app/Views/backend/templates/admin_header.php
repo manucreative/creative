@@ -37,7 +37,7 @@
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url('creative/admin/index/key/logOut');?>" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url('creative/admin/logOut/index/key');?>" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
            <br>
@@ -50,7 +50,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
 					</li>
 
                     <li class="nav-item">
-                            <a class="nav-link" id="dashboard-link" href="<?php echo base_url('creative/dashboard');?>">
+                            <a class="nav-link" id="dashboard-link" href="<?php echo base_url('creative/admin/dashboard/index/key/'.$session_key);?>">
                                 <i class="fa fa-dashboard fa-2"></i> Dashboard
                             </a>
                         </li>

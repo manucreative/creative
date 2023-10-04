@@ -43,7 +43,7 @@
                 </div>
             <?php endif; ?>
 			<?php // $myUrl = 'creative/admin/index/key/'?>
-				<?= form_open(base_url('creative/admin/index/key/adminLogin'),['class' => 'login100-form validate-form', 'id' => 'adminLoginForm']);?>
+				<?= form_open(base_url('creative/admin/adminLogin/index/key'),['class' => 'login100-form validate-form', 'id' => 'adminLoginForm']);?>
 					<span class="login100-form-title p-b-49">
                     <?php  echo $title ?>
 					</span>

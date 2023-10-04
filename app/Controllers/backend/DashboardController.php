@@ -3,8 +3,11 @@ namespace App\Controllers\backend;
 use App\Controllers\BaseController;
 
 class DashboardController extends BaseController{
-    public function dashboard(){
-
+    public function dashboard($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->to(base_url('creative/admin/login/index/key'));
+        }else{
         $data = [
 
             'first_name' => session('first_name'),
@@ -19,4 +22,5 @@ class DashboardController extends BaseController{
             . view('backend/dashboard_view', $data)
             . view('backend/templates/admin_footer',$data);
     }
+}
 }

@@ -30,20 +30,21 @@ class AdminLoginController extends BaseController{
                 'last_name' => $loginAuthenticate['last_name'],
                 'telephone' => $loginAuthenticate['telephone'],
                 'user_name' => $loginAuthenticate['user_name'],
-                'session_key'=> $loginAuthenticate['session_key'],
+                'session_key' => bin2hex(random_bytes(32)),
+                // 'session_key'=> $loginAuthenticate['session_key'],
                 'avatar' => $loginAuthenticate['avatar'],
                 'role' => $loginAuthenticate['role'],
-                
                 'logged_in' => true,
             ];
-            
+
             $session->set($userData);
-            $key = $loginAuthenticate['session_key'];
-            return redirect()->to(base_url('creative/admin/index/key/dashboard/'.$key))->with('success', 'Congrats ' . session('first_name') . ' You are In');
-            
+            //$randKey = bin2hex(random_bytes(32));
+             $randKey = session()->get('session_key');
+            return redirect()->to(base_url('creative/admin/dashboard/index/key/'.$randKey))->with('success', 'Congrats ' . session('first_name') . ' You are In');
+
         } else {
             // Invalid login
-            return redirect()->to(base_url('creative/admin/index/key/login'))->with('error', 'Invalid email or password');
+            return redirect()->to(base_url('creative/admin/login/index/key'))->with('error', 'Invalid email or password');
         }
     }catch(\Exception $e){
         $e->getMessage();
@@ -56,6 +57,6 @@ class AdminLoginController extends BaseController{
     public function logOut(){
         $session = session();
         $session->destroy(); // Destroys all session data
-        return redirect()->to(base_url('creative/admin/index/key/login'));
+        return redirect()->to(base_url('creative/admin/login/index/key'));
     }
 }

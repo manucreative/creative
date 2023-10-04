@@ -9,24 +9,23 @@ use SebastianBergmann\RecursionContext\Context;
 
 class AuthFilter implements FilterInterface
 {
- 
+
     public function before(RequestInterface $request, $arguments = null)
     {
-      
+
         $session = session();
         // Check if the user is authenticated
         if (!$session->get('logged_in')) {
-            return redirect()->to(base_url('creative/admin/index/key/login'));
+            return redirect()->to(base_url('creative/admin/login/index/key'));
         }
         // Check user's role and restrict access based on roles
-        
-        $role = session('role'); 
+        $role = session('role');
         if ($role === "SUPER_ADMIN") {
             //Full Access
         }
         elseif ($role === "ADMIN") {
             log_message('debug', $this->checkAllowed(($request->getUri()->getPath())));
-            
+
             if (!$this->checkAllowed($request->getUri()->getPath())) {
                 return redirect()->to(base_url('creative/admin/index/key/unAuthorized'));
             }

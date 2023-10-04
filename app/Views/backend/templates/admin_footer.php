@@ -18,10 +18,10 @@
     
                 switch(action){
                  case 'viewService':
-                window.location.href = "<?php echo base_url('creative/admin/index/key/'.$session_key.'/viewServices');?>";
+                window.location.href = "<?php echo base_url('creative/admin/viewServices/index/key/'.$session_key);?>";
                     break;
                 case 'btnAddService':
-                    window.location.href = "<?php echo base_url('creative/addServiceForm');?>";
+                    window.location.href = "<?php echo base_url('creative/admin/addServiceForm/index/key/'.$session_key);?>";
                     break;
                 case 'btnAddSlider':
                     window.location.href = "<?php echo base_url('creative/addSliderContent');?>";

@@ -87,7 +87,11 @@ class ServiceController extends BaseController{
         }
     }
 
-    public function viewServices(){
+    public function viewServices($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
         $servicesModel = model(ServiceModel::class);
         $i = 1;
         $data=[
@@ -104,6 +108,7 @@ class ServiceController extends BaseController{
     return view('backend/templates/admin_header', $data)
         . view('backend/viewAllServices', $data)
         . view('backend/templates/admin_footer');
+}
     }
 
     public function updateServiceForm($service_id){

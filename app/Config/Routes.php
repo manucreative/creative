@@ -45,25 +45,27 @@ use App\Controllers\backend\FaqController;
 
  // Admin Login
  // 
- $routes->group('creative/admin/index/key', ['namespace' => 'App\Controllers\backend'], function ($routes) {
-   $routes->get('login', [AdminLoginController::class, 'index'],['filter' => 'ifLoggedIn']);
-   $routes->post('adminLogin', [AdminLoginController::class, 'adminLogin']); // Process login
-   
+ $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend'], function ($routes) {
 
+   $routes->get('login/index/key', [AdminLoginController::class, 'index'],['filter' => 'ifLoggedIn']);
+   $routes->post('adminLogin/index/key', [AdminLoginController::class, 'adminLogin']); // Process login
 });
-   $sessionKey = session()->get('session_key');
-    $routes->addRedirect('creative', 'creative/admin/index/key/'.$sessionKey.'/dashboard');
-    $routes->addRedirect('creative/admin', 'creative/admin/index/key/'.$sessionKey.'/dashboard');
-    $routes->addRedirect('creative/admin/index', 'creative/admin/index/key/'.$sessionKey.'/dashboard');
-    $routes->addRedirect('creative/admin/index/key/dashboard', 'creative/admin/index/key/'.$sessionKey.'/dashboard');
+
+   $myKey = 'kgskj98743ojhrk40dfjk49fjwj839fir8506jd9jd0j40jdfgjowpojd';
+
+    $routes->addRedirect('creative', 'creative/admin/login/index/key');
+    $routes->addRedirect('creative/admin', 'creative/admin/login/index/key');
+    $routes->addRedirect('creative/admin/dashboard', 'creative/admin/login/index/key');
+    $routes->addRedirect('creative/admin/dashboard/index', 'creative/admin/login/index/key');
+    $routes->addRedirect('creative/admin/dashboard/index/key', 'creative/admin/login/index/key');
 
  //admin Routing 
- $routes->group('creative/admin/index/key/'.$sessionKey, ['namespace' => 'App\Controllers\backend', 'filter' => 'auth'],function ($routes){
-   $routes->get('dashboard', [DashboardController::class, 'dashboard']);
-   $routes->get('unAuthorized', [AdminsController::class, 'unAuthorized']);
-   $routes->get('addAdminForm', [AdminsController::class, 'addAdminForm']);
-   $routes->post('addAdminAction', [AdminsController::class, 'addAdminAction']);
-    $routes->get('logOut', [AdminLoginController::class, 'logOut']);
+ $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend', 'filter' => 'auth'],function ($routes){
+   $routes->get('logOut/index/key', [AdminLoginController::class, 'logOut']);
+   $routes->get('dashboard/index/key/(:segment)', [DashboardController::class, 'dashboard/$1']);
+   $routes->get('unAuthorized/index/key/(:any)', [AdminsController::class, 'unAuthorized']);
+   $routes->get('addAdminForm/index/key/(:any)', [AdminsController::class, 'addAdminForm']);
+   $routes->post('addAdminAction/index/key/(:any)', [AdminsController::class, 'addAdminAction']);
 
     //admin updates
     $routes->get('profileUpdateForm/(:num)', [AdminsController::class, 'profileUpdateForm/$1']);
@@ -87,7 +89,7 @@ use App\Controllers\backend\FaqController;
     $routes->post('addService', [ServiceController::class, 'addService']);
     $routes->post('deleteServices', [ServiceController::class, 'deleteServices']);
     $routes->get('updateServiceForm/(:num)', [ServiceController::class, 'updateServiceForm/$1']);
-    $routes->get('viewServices', [ServiceController::class, 'viewServices']);
+    $routes->get('viewServices/index/key/(:segment)', [ServiceController::class, 'viewServices/$1']);
     $routes->post('updateService', [ServiceController::class, 'updateService']);
 
     // FAQ controls
