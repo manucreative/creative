@@ -1,6 +1,6 @@
 <br>
  <div id="page-wrapper" >
-            <div id="my-page-inner">
+            <div id="page-inner">
               
 <?php foreach ($errors as $error): ?>
   <div class="file error">
@@ -18,13 +18,7 @@
         <?= session()->getFlashdata('success') ?>
     </div>
     <?php endif; ?>
-    
-                <!-- <div class="row">
-                    <div class="col-md-4">
-                     <h2>Creative Dashboard</h2>   
-                        <h5>Welcome Emmanuel, Good to see you back. </h5>
-                    </div>
-                </div>   -->
+
                 <div class="row">
       <div class="col-sm-3">
       <div class="">
@@ -38,12 +32,8 @@
       </div>
 
     </div>
-</div>            
 
-            <div id="page-inner">
-
-
-<?= form_open_multipart(base_url('creative/addSliderAction'), ['class'=> 'sliderAddForm'])?>
+<?= form_open_multipart(base_url('creative/admin/addSliderAction/index/key/'.$session_key), ['class'=> 'sliderAddForm'])?>
 
       <div class="modal-body">
 

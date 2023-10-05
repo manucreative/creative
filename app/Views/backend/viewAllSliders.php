@@ -59,7 +59,7 @@
                                 Action
                             </button>
                             <div class="dropdown-menu">
-                                <a class="btn btn-primary dropdown-item" href="<?php  echo base_url('creative/updateSliderForm/'.$slider['slider_id']); ?>"><i class="fa fa-edit"></i>&nbsp; Edit Sliders</a>
+                                <a class="btn btn-primary dropdown-item" href="<?php  echo base_url('creative/admin/updateSliderForm/index/key/'.$session_key.'/'.$slider['slider_id'].'?token=' . $token); ?>"><i class="fa fa-edit"></i>&nbsp; Edit Sliders</a>
                             </div>
                         </div>
                     </td>

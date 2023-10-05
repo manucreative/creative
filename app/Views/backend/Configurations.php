@@ -39,7 +39,7 @@
           				<div class="tab-pane active" id="tab_1">
 
 
-          					<?php echo form_open_multipart(base_url('creative/featureConfigForm'),array('class' => 'updateFeatures')); ?>
+          					<?php echo form_open_multipart(base_url('creative/admin/featureConfigForm/index/key'.$session_key),array('class' => 'updateFeatures')); ?>
           					<div class="box box-info">
 								<div class="box-body">
                                 <div class="modal-body">
@@ -144,7 +144,7 @@
                 </div>
                 <div class="tab-pane" id="tab_2">
 
-                            <?php echo form_open_multipart(base_url('creative/updateProfiler'),array('class' => 'updateProfiler')); ?>
+                            <?php echo form_open_multipart(base_url('creative/admin/updateProfiler/index/key/'.$session_key),array('class' => 'updateProfiler')); ?>
           					<div class="box box-info">
 								<div class="box-body">
                                 <div class="modal-body">

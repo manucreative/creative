@@ -62,7 +62,7 @@
             </li>
         </ul>
         <!-- Step Wise Form Content -->
-        <?= form_open_multipart(base_url('creative/updateProfile'),array('class' => 'profileUpdateForm','id'=>'userAccountSetupForm')); ?>
+        <?= form_open_multipart(base_url('creative/admin/updateProfile/index/key/'.$session_key),array('class' => 'profileUpdateForm','id'=>'userAccountSetupForm')); ?>
             <!-- Step 1 Content -->
             <section id="step-1" class="form-step">
                 <h2 class="font-normal">Account Basic Details</h2>

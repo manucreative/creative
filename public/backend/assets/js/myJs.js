@@ -83,7 +83,7 @@
                 $('#loaderBanner').show();
                 $.ajax({
                     type: "POST",
-                    url: "deleteServices",
+                    url: serviceDeleteUrl,
                     data: {'ids': ids},
                     dataType: "html",
                     cache: false,
@@ -92,7 +92,7 @@
                          window.setTimeout(function(){
                             $('#loaderBanner').hide();
                            $('#overlay').hide();
-                           window.location.href = "viewServices";
+                           window.location.href = serviceLocation;
                          }, 4000);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -151,7 +151,7 @@
                 $('#loaderBanner').show();
                 $.ajax({
                     type: "POST",
-                    url: "deleteSliders",
+                    url: sliderDeleteUrl,
                     data: {'ids': ids},
                     dataType: "html",
                     cache: false,
@@ -160,7 +160,7 @@
                          window.setTimeout(function(){
                             $('#loaderBanner').hide();
                            $('#overlay').hide();
-                           window.location.href = "viewSliders";
+                           window.location.href = sliderViewLocation;
                          }, 4000);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -181,7 +181,7 @@
 
     /**
      * ==============================
-     * AQs delete function StartF
+     * FAQs delete function Start
      * ====================
      */
  
@@ -226,7 +226,7 @@
             $('#loaderBanner').show();
             $.ajax({
                 type: "POST",
-                url: "deleteFaqs",
+                url: faqDeleteUrl,
                 data: {'ids': ids},
                 dataType: "html",
                 cache: false,
@@ -235,7 +235,7 @@
                      window.setTimeout(function(){
                         $('#loaderBanner').hide();
                        $('#overlay').hide();
-                       window.location.href = "viewFaqs";
+                       window.location.href = gaqViewLocation;
                      }, 4000);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -251,7 +251,7 @@
     });
     });
     
-    // Category delete function end
+
     
     // TopUps delete function Start
     $(function(){

@@ -37,7 +37,7 @@
            
 
 
-<?= form_open_multipart(base_url('creative/addService'), ['class'=> 'serviceAddForm'])?>
+<?= form_open_multipart(base_url('creative/admin/addService/index/key/'.$session_key), ['class'=> 'serviceAddForm'])?>
 
       <div class="modal-body">
 
@@ -47,6 +47,8 @@
             <label for="service_title" class="col-sm-3 col-form-label" style="text-align: end;">Service Title Entry  <span style="color: red;">*</span></label>
             <div class="col-sm-5">
                 <input type="text" id="service_title" name="service_title" value="<?= old('service_title') ?>" placeholder="Enter Slider Content" class="form-control">
+                <input type="hidden" id="service_key" name="service_key" value="<?= $service_key ?>" placeholder="Enter Slider Content" class="form-control">
+                <input type="hidden" id="owner" name="owner" value="<?= $admin_id ?>" placeholder="Enter Slider Content" class="form-control">
             </div>
             <div class="col-sm-3"></div>
         </div>

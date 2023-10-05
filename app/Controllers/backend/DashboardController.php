@@ -15,6 +15,7 @@ class DashboardController extends BaseController{
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
             'session_key' =>session('session_key'),
+            'token' => session('adminToken'),
             'role' => session('role'),
             'title' => 'Manuu Creative Dashboard',
         ];

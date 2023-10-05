@@ -8,7 +8,11 @@ use App\Models\SettingsModel;
 class ConfigurationsController extends BaseController{
     protected $helpers = ['form'];
 
-    public function viewSettingsPage(){
+    public function viewSettingsPage($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
 
         $settingsModel = model(SettingsModel::class);
         $adminModel = model(AdminModel::class);
@@ -45,6 +49,7 @@ $data = [
     'avatar' => session('avatar'),
     'role' => session('role'),
     'session_key' => session('session_key'),
+    'token' => session('adminToken'),
     'title' => 'Pages Configurations',
     'users' => $adminModel->getAdminsUserName(),
     'errors' => []
@@ -53,8 +58,13 @@ $data = [
             . view('backend/Configurations', $data)
             . view('backend/templates/admin_footer');
     }
+    }
+    public function featureConfigForm($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
 
-    public function featureConfigForm(){
         $settingsModel = model(SettingsModel::class);
         if($this->request->getMethod() === 'post'){
             $validations = [
@@ -177,16 +187,22 @@ $data = [
                 $feature_icon3->move(ROOTPATH . 'public/backend/media/feature_icons/icon3', $icon3);
 
                 session()->setFlashdata('success', 'Features Updated successful');
-                return redirect()->to(base_url('creative/configurations'));
+                return redirect()->to(base_url('creative/admin/configurations/index/key/'.$key));
             }else{
                session()->setFlashdata('error', 'Updates Failed');
-                return redirect()->to(base_url('creative/configurations'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                return redirect()->to(base_url('creative/admin/configurations/index/key/'.$key))->withInput()->with('error', 'Error: Kindly check your data and try again');
             }
                }
         }
     }
+    }
 
-    public function updateProfiler(){
+    public function updateProfiler($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+
         $configModels = model(SettingsModel::class);
         if($this->request->getMethod() === 'post'){
             $validations = [
@@ -209,12 +225,13 @@ $data = [
                 $runUpdate = $configModels->updateProfileDisplay(1,$dataUpdates);
                 if($runUpdate){
                     session()->setFlashdata('success', 'Profiler have been Updated successful');
-                    return redirect()->to(base_url('creative/configurations'));
+                    return redirect()->to(base_url('creative/admin/configurations/index/key/'.$key));
                 }else{
                    session()->setFlashdata('error', 'Updates Failed');
-                    return redirect()->to(base_url('creative/configurations'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                    return redirect()->to(base_url('creative/admin/configurations/index/key/'.$key))->withInput()->with('error', 'Error: Kindly check your data and try again');
                 }
                }
         }
     }
+}
 }

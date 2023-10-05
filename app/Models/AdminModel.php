@@ -12,7 +12,7 @@ class AdminModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['first_name','middle_name','last_name','session_key','email_address','password','telephone','role',
+    protected $allowedFields    = ['first_name','middle_name','last_name','adminToken','owner','email_address','password','telephone','role',
     'avatar','created_at','user_name','basic_details','contact_details','education','expertise_areas','skills','personal_title',
     'sub_title','professional_profile','experience','reference'];
 
@@ -56,6 +56,7 @@ class AdminModel extends Model
                 'last_name' => $admin['last_name'],
                 'telephone' => $admin['telephone'],
                 'user_name' => $admin['user_name'],
+                'adminToken' => $admin['adminToken'],
                 'avatar' => $admin['avatar'],
                 'role' => $admin['role_name'],
                 'logged_in' => true,

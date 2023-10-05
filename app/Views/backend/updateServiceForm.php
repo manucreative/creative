@@ -37,7 +37,7 @@
            
 
 
-<?= form_open_multipart(base_url('creative/updateService'), ['class'=> 'serviceUpdateForm'])?>
+<?= form_open_multipart(base_url('creative/admin/updateService/index/key/'.$session_key), ['class'=> 'serviceUpdateForm'])?>
 
       <div class="modal-body">
 
@@ -48,6 +48,7 @@
             <div class="col-sm-5">
                 <input type="text" id="service_title" name="service_title" value="<?= $service_title ?>" class="form-control">
                 <input type="hidden" id="service_id" name="service_id" value="<?= $service_id ?>">
+                <input type="hidden" id="service_key" name="service_key" value="<?= $service_key ?>">
             </div>
             <div class="col-sm-3"></div>
         </div>

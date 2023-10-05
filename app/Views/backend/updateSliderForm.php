@@ -35,7 +35,7 @@
 
 
 
-<?= form_open_multipart(base_url('creative/updateSlider'), ['class'=> 'sliderUpdateForm'])?>
+<?= form_open_multipart(base_url('creative/admin/updateSlider/index/key/'.$session_key), ['class'=> 'sliderUpdateForm'])?>
 
       <div class="modal-body">
 

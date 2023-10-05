@@ -19,6 +19,7 @@ class AdminsController extends BaseController{
             'avatar' => session('avatar'),
             'role' => session('role'),
             'session_key' => session('session_key'),
+            'token' => session('adminToken'),
             'admins' => $admins,
             'admin_roles' => $rolesModel->getRoles(),
             'title' => 'All Administrators',
@@ -51,6 +52,7 @@ class AdminsController extends BaseController{
             'avatar' => session('avatar'),
             'role' => session('role'),
             'session_key' => session('session_key'),
+            'token' => session('adminToken'),
             'admin_roles' => $rolesModel->getRoles(),
             'title' => 'Add Administrator',
             'errors' => []
@@ -67,6 +69,7 @@ class AdminsController extends BaseController{
         if($key !== $session_key){
             return redirect()->back();
         }else{
+
         $adminModel = model(AdminModel::class);
         if($this->request->getMethod() === 'post'){
           //  $rolesModel = model(RolesModel::class);
@@ -182,7 +185,12 @@ class AdminsController extends BaseController{
 }
     }
 
-    public function deleteAdmins(){
+    public function deleteAdmins($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+
         if($this->request->getMethod() === 'post' && $this->request->getPost('ids')){
             $ids = explode(',', $this->request->getPost('ids'));
             $adminsModel = model(AdminsModel::class);
@@ -202,11 +210,16 @@ class AdminsController extends BaseController{
                 echo '<span style="background-color: red; color:black; padding:10px;">You must select at least one admin row for deletion</span>';
             }
         }
-
+    }
        //      echo '<pre>';
         // print_r($basicData);
         // echo '</pre>';
         public function profileUpdateForm($key, $admin_id){
+            $session_key = session('session_key');
+        if($key !== $session_key || $admin_id !== session('admin_id')){
+            return redirect()->back();
+        }else{
+
             $session_key = session()->get('session_key');
             $session_adminId = session()->get('admin_id');
             if($key !== $session_key && $admin_id !== $session_adminId){
@@ -239,6 +252,7 @@ class AdminsController extends BaseController{
                  'avatar' => session('avatar'),
                  'role' => session('role'),
                  'session_key' => session('session_key'),
+                 'token' => session('adminToken'),
                   'admins' => $admins,
                  'admin_roles' => $rolesModel->getRoles(),
                  'title' => 'All Administrators',
@@ -249,6 +263,7 @@ class AdminsController extends BaseController{
                   . view('backend/profileUpdateForm', $data)
                   . view('backend/templates/admin_footer');
             }
+        }
         }
 
         /**
@@ -261,6 +276,7 @@ class AdminsController extends BaseController{
             if($key !== $session_key){
                 return redirect()->back();
             }else{
+
             $adminModel = model(AdminModel::class);
             if($this->request->getMethod() === 'post'){
 

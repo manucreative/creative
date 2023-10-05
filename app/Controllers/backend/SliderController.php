@@ -6,7 +6,11 @@ use App\Models\SliderModel;
 class SliderController extends BaseController{
 
     protected $helpers = ['form'];
-    public function addSliderContent(){
+    public function addSliderContent($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            redirect()->back();
+        }else{
 
         $data = [
             'first_name' => session('first_name'),
@@ -22,8 +26,13 @@ class SliderController extends BaseController{
             . view('backend/addSlider_view', $data)
             . view('backend/templates/admin_footer');
     }
+}
+    public function addSliderAction($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            redirect()->back();
+        }else{
 
-    public function addSliderAction(){
         $sliderModel = model(SliderModel::class);
         if($this->request->getMethod() === 'post'){
             $validations = [
@@ -81,17 +90,23 @@ class SliderController extends BaseController{
         if($insertData){
             $slider_img->move(ROOTPATH . 'public/backend/media/slider_images', $newImgName);
             session()->setFlashdata('success', '1 Slider has been Insert successful');
-            return redirect()->to(base_url('creative/addSliderContent'));
+            return redirect()->to(base_url('creative/admin/addSliderContent/index/key/'.$key));
         }else{
            session()->setFlashdata('error', 'Slider Insert Failed');
-            return redirect()->to(base_url('creative/addSliderContent'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+            return redirect()->to(base_url('creative/admin/addSliderContent/index/key/'.$key))->withInput()->with('error', 'Error: Kindly check your data and try again');
         
         }
     }
 
         }
     }
-   public function viewSliders(){
+    }
+   public function viewSliders($key){
+    $session_key = session('session_key');
+        if($key !== $session_key){
+            redirect()->back();
+        }else{
+
     $sliderModel = model(SliderModel::class);
     $i = 1;
     $data=[
@@ -102,6 +117,7 @@ class SliderController extends BaseController{
     'avatar' => session('avatar'),
     'role' => session('role'),
     'session_key' => session('session_key'),
+    'token' => session('adminToken'),
     'i'=> $i,
     'title' => 'Viewing all Sliders'
 ];
@@ -109,9 +125,20 @@ return view('backend/templates/admin_header', $data)
     . view('backend/viewAllSliders', $data)
     . view('backend/templates/admin_footer');
    }
-
+}
    
-   public function updateSliderForm($slider_id){
+   public function updateSliderForm($key, $slider_id){
+    $token = $this->request->getGet('token');
+        $adminToken = session('adminToken');
+        $session_key = session('session_key');
+
+        if($key !== $session_key){
+            return redirect()->back();
+        }elseif($token !== $adminToken){
+             return redirect()->back();
+        }
+        else{
+
     $sliderModel = model(SliderModel::class);
 
     $sliders = $sliderModel->getSliders($slider_id);
@@ -137,6 +164,7 @@ return view('backend/templates/admin_header', $data)
         'avatar' => session('avatar'),
         'role' => session('role'),
         'session_key' => session('session_key'),
+        'token' => session('adminToken'),
         'title' => 'Update Slider',
         'errors' => []
     ];
@@ -144,8 +172,13 @@ return view('backend/templates/admin_header', $data)
         . view('backend/updateSliderForm', $data)
         . view('backend/templates/admin_footer');
    }
+}
+   public function updateSlider($key){
+    $session_key = session('session_key');
+        if($key !== $session_key){
+            redirect()->back();
+        }else{
 
-   public function updateSlider(){
     $sliderModel = model(SliderModel::class);
     if($this->request->getMethod() === 'post'){
         $validations = [
@@ -204,7 +237,7 @@ return view('backend/templates/admin_header', $data)
     if($updateData){
         $slider_img->move(ROOTPATH . 'public/backend/media/slider_images', $newImgName);
         session()->setFlashdata('success', 'Slider has been updated successful');
-        return redirect()->to(base_url('creative/updateSliderForm/'.$slider_id));
+        return redirect()->to(base_url('creative/admin/updateSliderForm/index/key/'.$key.'/'.$slider_id));
     }else{
        session()->setFlashdata('error', 'Slider Insert Failed');
         return redirect()->back()->withInput()->with('error', 'Error: Kindly check your data and try again');
@@ -212,7 +245,13 @@ return view('backend/templates/admin_header', $data)
     }
     }
     }
-   public function deleteSliders(){
+}
+   public function deleteSliders($key){
+    $session_key = session('session_key');
+        if($key !== $session_key){
+            redirect()->back();
+        }else{
+
     if($this->request->getMethod() === 'post' && $this->request->getPost('ids')){
         $ids = explode(',', $this->request->getPost('ids'));
         $sliderModel = model(SliderModel::class);
@@ -233,4 +272,5 @@ return view('backend/templates/admin_header', $data)
         echo '<span style="background-color: red; color:black; padding:10px;">You must select at least one row for deletion</span>';
     }
    }
+}
 }

@@ -72,6 +72,17 @@
         });
     });
     </script>
+    <script>
+        //service Scripts
+            var serviceDeleteUrl = "<?php echo base_url('creative/admin/deleteServices/index/key/'.$session_key); ?>";
+            var serviceLocation = "<?php echo base_url('creative/admin/viewServices/index/key/'.$session_key);?>"
+        //slider scripts
+            var sliderDeleteUrl = "<?php echo base_url('creative/admin/deleteSliders/index/key/'.$session_key); ?>";
+            var sliderViewLocation = "<?php echo base_url('creative/admin/viewSliders/index/key/'.$session_key);?>"
+        //slider scripts
+            var faqDeleteUrl = "<?php echo base_url('creative/admin/deleteFaqs/index/key/'.$session_key); ?>";
+            var gaqViewLocation = "<?php echo base_url('creative/admin/viewFaqs/index/key/'.$session_key);?>"
+    </script>
     <!-- Custom JS -->
     <script src="<?php echo base_url('backend/assets/js/myJs.js')?>"></script>
   <script src="<?php echo base_url('backend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>

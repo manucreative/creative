@@ -57,7 +57,7 @@
                                 Action
                             </button>
                             <div class="dropdown-menu">
-                                <a class="btn btn-primary dropdown-item" href="<?php  echo base_url('creative/updateServiceForm/'.$service['service_id']); ?>"><i class="fa fa-edit"></i>&nbsp; Edit Service</a>
+                                <a class="btn btn-primary dropdown-item" href="<?php  echo base_url('creative/admin/updateServiceForm/index/key/'.$session_key.'/'.$service['service_key'].'?token=' . $token); ?>"><i class="fa fa-edit"></i>&nbsp; Edit Service</a>
                             </div>
                         </div>
                     </td>

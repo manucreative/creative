@@ -6,8 +6,12 @@ use App\Models\ServiceModel;
 class ServiceController extends BaseController{
 
     protected $helpers = ['form'];
-    public function addServiceForm(){
-
+    public function addServiceForm($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+        $service_key = bin2hex(random_bytes(8));
         $data = [
             'first_name' => session('first_name'),
             'admin_id' => session('admin_id'),
@@ -15,21 +19,31 @@ class ServiceController extends BaseController{
             'avatar' => session('avatar'),
             'session_key' =>session('session_key'),
             'role' => session('role'),
+            'service_key' => $service_key,
             'title' => 'Add Service',
             'errors' => []
         ];
         return view('backend/templates/admin_header', $data)
             . view('backend/addServiceForm', $data)
             . view('backend/templates/admin_footer');
+        }
     }
 
-    public function addService(){
+    public function addService($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
         $serviceModel = model(ServiceModel::class);
 
         if($this->request->getMethod() === 'post'){
             $validations = [
                 'service_title' => [
                     'label' => 'service title is',
+                    'rules' => 'required',
+                ],
+                'service_key' => [
+                    'label' => 'service Key is',
                     'rules' => 'required',
                 ],
                 'service_short_content' => [
@@ -56,6 +70,7 @@ class ServiceController extends BaseController{
                 }
             }else{
 
+                $service_key = $this->request->getPost('service_key');
                 $service_title = $this->request->getPost('service_title');
                 $service_short_content = $this->request->getPost('service_short_content');
                 $service_main_content = $this->request->getPost('service_main_content');
@@ -65,6 +80,7 @@ class ServiceController extends BaseController{
 
                 $dataToInsert =[
                     'service_title' => $service_title,
+                    'service_key' => $service_key,
                     'service_short_content' => $service_short_content,
                     'service_main_content' => $service_main_content,
                     'service_img' => $ranName,
@@ -75,10 +91,10 @@ class ServiceController extends BaseController{
                 if($runQuery){
                     $service_img->move(ROOTPATH . 'public/backend/media/service_images', $ranName);
                     session()->setFlashdata('success', '1 Service Insert successful');
-                    return redirect()->to(base_url('creative/addServiceForm'));
+                    return redirect()->to(base_url('creative/admin/addServiceForm/index/key/'.$key));
                 }else{
                 //    session()->setFlashdata('error', 'Service Insert Failed');
-                    return redirect()->to(base_url('creative/addServiceForm'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                    return redirect()->to(base_url('creative/admin/addServiceForm/index/key/'.$key))->withInput()->with('error', 'Error: Kindly check your data and try again');
                 
                     throw new \Exception();
                 }
@@ -86,6 +102,7 @@ class ServiceController extends BaseController{
             }
         }
     }
+}
 
     public function viewServices($key){
         $session_key = session('session_key');
@@ -100,6 +117,7 @@ class ServiceController extends BaseController{
         'admin_id' => session('admin_id'),
         'last_name' => session('last_name'),
         'session_key' =>session('session_key'),
+        'token' => session('adminToken'),
         'avatar' => session('avatar'),
         'role' => session('role'),
         'i'=> $i,
@@ -111,11 +129,22 @@ class ServiceController extends BaseController{
 }
     }
 
-    public function updateServiceForm($service_id){
-        $servicesModel = model(ServiceModel::class);
+    public function updateServiceForm($key,$service_key){
+        $token = $this->request->getGet('token');
+        $adminToken = session('adminToken');
+        $session_key = session('session_key');
 
-        $service = $servicesModel->getServices($service_id);
+        if($key !== $session_key){
+            return redirect()->back();
+        }elseif($token !== $adminToken){
+             return redirect()->back();
+        }
+        else{
+
+        $servicesModel = model(ServiceModel::class);
+        $service = $servicesModel->getServices($service_key);
             $service_id = $service['service_id'];
+            $service_key = $service['service_key'];
             $serviceTitle = $service['service_title'];
             $shortContent = $service['service_short_content'];
             $mainContent = $service['service_main_content'];
@@ -123,6 +152,7 @@ class ServiceController extends BaseController{
 
         $data = [
             'service_id' => $service_id,
+            'service_key' => $service['service_key'],
             'service_title' => $serviceTitle,
             'service_short_content' => $shortContent,
             'service_main_content' => $mainContent,
@@ -134,6 +164,7 @@ class ServiceController extends BaseController{
             'avatar' => session('avatar'),
             'role' => session('role'),
             'session_key' => session('session_key'),
+            'token' => session('adminToken'),
             'title' => 'Add Service',
             'errors' => []
         ];
@@ -141,10 +172,17 @@ class ServiceController extends BaseController{
             . view('backend/updateServiceForm', $data)
             . view('backend/templates/admin_footer');
     }
+}
+    public function updateService($key){
+        $session_key = session('session_key');
+        $adminToken = session('adminToken');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
 
-    public function updateService(){
         $serviceModel = model(ServiceModel::class);
         $service_id = $this->request->getPost('service_id');
+        $service_key = $this->request->getPost('service_key');
         if($this->request->getMethod() === 'post'){
             $validations = [
                 'service_title' => [
@@ -193,10 +231,10 @@ class ServiceController extends BaseController{
                 if($runQuery){
                     $service_img->move(ROOTPATH . 'public/backend/media/service_images', $ranName);
                     session()->setFlashdata('success', 'Service Updated successful');
-                    return redirect()->to(base_url('creative/updateServiceForm/'.$service_id));
+                    return redirect()->to(base_url('creative/admin/updateServiceForm/index/key/'.$key.'/'.$service_key.'?token='.$adminToken));
                 }else{
                    session()->setFlashdata('error', 'update Insert Failed');
-                    return redirect()->to(base_url('creative/updateServiceForm/'.$service_id))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                    return redirect()->to(base_url('creative/admin/updateServiceForm/index/key/'.$key.'/'.$service_key.'?token='.$adminToken))->withInput()->with('error', 'Error: Kindly check your data and try again');
                 
                     throw new \Exception();
                 }
@@ -204,8 +242,14 @@ class ServiceController extends BaseController{
             }
         }
     }
+}
 
-    public function deleteServices(){
+    public function deleteServices($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+
         if($this->request->getMethod() === 'post' && $this->request->getPost('ids')){
             $ids = explode(',', $this->request->getPost('ids'));
             $serviceModel = model(ServiceModel::class);
@@ -226,4 +270,5 @@ class ServiceController extends BaseController{
             echo '<span style="background-color: red; color:black; padding:10px;">You must select at least one row for deletion</span>';
         }
     }
+}
 }

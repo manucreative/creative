@@ -6,7 +6,11 @@ use App\Models\FaqModel;
 class FaqController extends BaseController{
 
     protected $helpers = ['form'];
-    public function addFaqs(){
+    public function addFaqs($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
 
         $data = [
             'first_name' => session('first_name'),
@@ -15,15 +19,21 @@ class FaqController extends BaseController{
             'avatar' => session('avatar'),
             'role' => session('role'),
             'session_key' => session('session_key'),
+            'token' => session('adminToken'),
             'title' => 'Add FAQ',
             'errors' => []
         ];
         return view('backend/templates/admin_header', $data)
             . view('backend/addFaq', $data)
             . view('backend/templates/admin_footer');
+        }
     }
+    public function addFaqAction($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
 
-    public function addFaqAction(){
         $faqModel = model(FaqModel::class);
         if($this->request->getMethod() === 'post'){
             $validations = [
@@ -55,10 +65,10 @@ class FaqController extends BaseController{
                 $insertData = $faqModel->insertFaq($PostData);
                 if($insertData){
                     session()->setFlashdata('success', '1 Faq Inserted successful');
-                    return redirect()->to(base_url('creative/addFaqs'));
+                    return redirect()->to(base_url('creative/admin/addFaqs/index/key/'.$key));
                 }else{
                 //    session()->setFlashdata('error', 'Faq Insert Failed');
-                    return redirect()->to(base_url('creative/addFaqs'))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                    return redirect()->to(base_url('creative/admin/addFaqs/index/key/'.$key))->withInput()->with('error', 'Error: Kindly check your data and try again');
                 
                     throw new \Exception();
                 }
@@ -67,10 +77,15 @@ class FaqController extends BaseController{
             }
             }
         }
-        
+    }
     }
 
-    public function viewFaqs(){
+    public function viewFaqs($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+
         $faqModel = model(FaqModel::class);
         $i = 1;
         $data = [
@@ -80,6 +95,7 @@ class FaqController extends BaseController{
             'avatar' => session('avatar'),
             'role' => session('role'),
             'session_key' => session('session_key'),
+            'token' => session('adminToken'),
             'faqs' => $faqModel->getFaq(),
             'title' => 'View All FAQs',
             'i' => $i,
@@ -88,10 +104,21 @@ class FaqController extends BaseController{
         return view('backend/templates/admin_header', $data)
             . view('backend/viewFaqs', $data)
             . view('backend/templates/admin_footer');
-
+        }
     }
 
-    public function updateFaqForm($faq_id){
+    public function updateFaqForm($key, $faq_id){
+        $token = $this->request->getGet('token');
+        $adminToken = session('adminToken');
+        $session_key = session('session_key');
+
+        if($key !== $session_key){
+            return redirect()->back();
+        }elseif($token !== $adminToken){
+             return redirect()->back();
+        }
+        else{
+
         $faqModel = model(FaqModel::class);
 
         $data = [
@@ -101,6 +128,7 @@ class FaqController extends BaseController{
             'avatar' => session('avatar'),
             'role' => session('role'),
             'session_key' => session('session_key'),
+            'token' => session('adminToken'),
             'faq' => $faqModel->getFaq($faq_id),
             'title' => 'Add FAQ',
             'errors' => []
@@ -108,10 +136,16 @@ class FaqController extends BaseController{
         return view('backend/templates/admin_header', $data)
             . view('backend/updateFaqForm', $data)
             . view('backend/templates/admin_footer');
+        }
     }
 
 
-    public function updateFaq(){
+    public function updateFaq($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+
         $faqModel = model(FaqModel::class);
         if($this->request->getMethod() === 'post'){
             $validations = [
@@ -144,9 +178,9 @@ class FaqController extends BaseController{
                 $insertData = $faqModel->updateFaqs($faqId, $PostData);
                 if($insertData){
                     session()->setFlashdata('success', '1 Faq Updated successful');
-                    return redirect()->to(base_url('creative/updateFaqForm/'. $faqId));
+                    return redirect()->to(base_url('creative/admin/updateFaqForm/index/key/'.$key.'/'. $faqId));
                 }else{
-                    return redirect()->to(base_url('creative/updateFaqForm/'. $faqId))->withInput()->with('error', 'Error: Kindly check your data and try again');
+                    return redirect()->to(base_url('creative/admin/updateFaqForm/index/key/'.$key.'/'. $faqId))->withInput()->with('error', 'Error: Kindly check your data and try again');
                 
                     throw new \Exception();
                 }
@@ -156,9 +190,15 @@ class FaqController extends BaseController{
             }
         }
     }
+    }
 
 
-    public function deleteFaqs(){
+    public function deleteFaqs($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+
         if($this->request->getMethod() === 'post' && $this->request->getPost('ids')){
             $ids = explode(',', $this->request->getPost('ids'));
             $faqModel = model(FaqModel::class);
@@ -179,4 +219,5 @@ class FaqController extends BaseController{
             echo '<span style="background-color: red; color:black; padding:10px;">You must select at least one row for deletion</span>';
         }
     }
+}
 }

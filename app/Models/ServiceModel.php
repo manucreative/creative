@@ -13,7 +13,7 @@ class ServiceModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['service_title','service_short_content','service_main_content','service_img','created_at'];
+    protected $allowedFields    = ['service_title','service_key','service_short_content','service_main_content','service_img','created_at'];
 
     // Dates
     protected $useTimestamps = false;
@@ -43,11 +43,11 @@ class ServiceModel extends Model
         return $this->insert($data);
     }
 
-    public function getServices($service_id = false){
-        if($service_id === false){
+    public function getServices($service_key = false){
+        if($service_key === false){
             return $this->findAll();
         }else{
-            return $this->where(['service_id'=> $service_id])->first();
+            return $this->where(['service_key'=> $service_key])->first();
         }
     }
 

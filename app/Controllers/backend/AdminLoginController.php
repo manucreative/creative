@@ -31,7 +31,7 @@ class AdminLoginController extends BaseController{
                 'telephone' => $loginAuthenticate['telephone'],
                 'user_name' => $loginAuthenticate['user_name'],
                 'session_key' => bin2hex(random_bytes(32)),
-                // 'session_key'=> $loginAuthenticate['session_key'],
+                'adminToken'=> $loginAuthenticate['adminToken'],
                 'avatar' => $loginAuthenticate['avatar'],
                 'role' => $loginAuthenticate['role'],
                 'logged_in' => true,

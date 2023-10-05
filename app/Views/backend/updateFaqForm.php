@@ -39,7 +39,7 @@
     </div>
 
 
-<?= form_open(base_url('creative/updateFaq'), ['class'=> 'faqUpdateForm'])?>
+<?= form_open(base_url('creative/admin/updateFaq/index/key/'.$session_key), ['class'=> 'faqUpdateForm'])?>
 
       <div class="modal-body">
 

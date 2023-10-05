@@ -41,7 +41,7 @@
             <div id="page-inner">
 
 
-<?= form_open(base_url('creative/addFaqAction'), ['class'=> 'faqAddForm'])?>
+<?= form_open(base_url('creative/admin/addFaqAction/index/key/'.$session_key), ['class'=> 'faqAddForm'])?>
 
       <div class="modal-body">
 

@@ -69,15 +69,15 @@ use App\Controllers\backend\FaqController;
 
     //admin updates
     $routes->get('profileUpdateForm/index/key/(:segment)/(:num)', [AdminsController::class, 'profileUpdateForm/$1/$2']);
-    $routes->post('updateProfile', [AdminsController::class, 'updateProfile']);
+    $routes->post('updateProfile/index/key/(:segment)', [AdminsController::class, 'updateProfile/$1']);
 
     //Sliders
-    $routes->get('addSliderContent', [SliderController::class, 'addSliderContent']);
-    $routes->post('addSliderAction', [SliderController::class, 'addSliderAction']);
-    $routes->get('viewSliders', [SliderController::class, 'viewSliders']);
-    $routes->get('updateSliderForm/(:num)', [SliderController::class, 'updateSliderForm/$1']);
-    $routes->post('updateSlider', [SliderController::class, 'updateSlider']);
-    $routes->post('deleteSliders', [SliderController::class, 'deleteSliders']);
+    $routes->get('addSliderContent/index/key/(:segment)', [SliderController::class, 'addSliderContent/$1']);
+    $routes->post('addSliderAction/index/key/(:segment)', [SliderController::class, 'addSliderAction/$1']);
+    $routes->get('viewSliders/index/key/(:segment)', [SliderController::class, 'viewSliders/$1']);
+    $routes->get('updateSliderForm/index/key/(:segment)/(:num)', [SliderController::class, 'updateSliderForm/$1/$2']);
+    $routes->post('updateSlider/index/key/(:segment)', [SliderController::class, 'updateSlider/$1']);
+    $routes->post('deleteSliders/index/key/(:segment)', [SliderController::class, 'deleteSliders/$1']);
 
     //Configurations
     $routes->get('configurations/index/key/(:segment)', [ConfigurationsController::class, 'viewSettingsPage/$1']);
@@ -85,20 +85,20 @@ use App\Controllers\backend\FaqController;
     $routes->post('updateProfiler/index/key/(:segment)', [ConfigurationsController::class, 'updateProfiler/$1']);
 
     //Service Controls
-    $routes->get('addServiceForm', [ServiceController::class, 'addServiceForm']);
-    $routes->post('addService', [ServiceController::class, 'addService']);
-    $routes->post('deleteServices', [ServiceController::class, 'deleteServices']);
-    $routes->get('updateServiceForm/(:num)', [ServiceController::class, 'updateServiceForm/$1']);
+    $routes->get('addServiceForm/index/key/(:segment)', [ServiceController::class, 'addServiceForm/$1']);
+    $routes->post('addService/index/key/(:segment)', [ServiceController::class, 'addService/$1']);
+    $routes->post('deleteServices/index/key/(:segment)', [ServiceController::class, 'deleteServices/$1']);
+    $routes->get('updateServiceForm/index/key/(:segment)/(:segment)', [ServiceController::class, 'updateServiceForm/$1/$2']);
     $routes->get('viewServices/index/key/(:segment)', [ServiceController::class, 'viewServices/$1']);
-    $routes->post('updateService', [ServiceController::class, 'updateService']);
+    $routes->post('updateService/index/key/(:segment)', [ServiceController::class, 'updateService/$1']);
 
     // FAQ controls
-    $routes->get('addFaqs', [FaqController::class, 'addFaqs']);
-    $routes->post('addFaqAction', [FaqController::class, 'addFaqAction']);
-    $routes->post('deleteFaqs', [FaqController::class, 'deleteFaqs']);
-    $routes->get('viewFaqs', [FaqController::class, 'viewFaqs']);
-    $routes->get('updateFaqForm/(:num)', [FaqController::class, 'updateFaqForm/$1']);
-    $routes->post('updateFaq', [FaqController::class, 'updateFaq']);
+    $routes->get('addFaqs/index/key/(:segment)', [FaqController::class, 'addFaqs/$1']);
+    $routes->post('addFaqAction/index/key/(:segment)', [FaqController::class, 'addFaqAction/$1']);
+    $routes->post('deleteFaqs/index/key/(:segment)', [FaqController::class, 'deleteFaqs/$1']);
+    $routes->get('viewFaqs/index/key/(:segment)', [FaqController::class, 'viewFaqs/$1']);
+    $routes->get('updateFaqForm/index/key/(:segment)/(:num)', [FaqController::class, 'updateFaqForm/$1/$2']);
+    $routes->post('updateFaq/index/key/(:segment)', [FaqController::class, 'updateFaq/$1']);
  });
 
  if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
