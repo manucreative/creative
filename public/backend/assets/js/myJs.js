@@ -13,30 +13,41 @@
                 var currentUrl = window.location.href;
 
                 // Check if the current URL matches a specific URL pattern (e.g., the dashboard URL)
-                if (currentUrl.indexOf("/creative/dashboard") !== -1) {
+                if (currentUrl.indexOf(dashboardUrl) !== -1) {
                     document.getElementById("dashboard-link").classList.add("myNav");
-                } else if (currentUrl.indexOf("/creative/viewServices") !== -1) {
+                }
+                else if (currentUrl.indexOf(viewServicesUrl) !== -1) {
                     document.getElementById("viewService").classList.add("myNav");
-                }else if (currentUrl.indexOf("/creative/addServiceForm") !== -1) {
+                }
+                else if (currentUrl.indexOf(addServiceFormUrl) !== -1) {
                     document.getElementById("viewService").classList.add("myNav");
-                } else if (currentUrl.indexOf("/creative/viewSliders") !== -1) {
+                }
+                else if (currentUrl.indexOf(sliderViewLocation) !== -1) {
                     document.getElementById("viewSliders").classList.add("myNav");
-                }else if (currentUrl.indexOf("/creative/addSliderContent") !== -1) {
+                }
+                else if (currentUrl.indexOf(addSliderUrl) !== -1) {
                     document.getElementById("viewSliders").classList.add("myNav");
-                }else if (currentUrl.indexOf("/creative/configurations") !== -1) {
+                }
+                else if (currentUrl.indexOf(configUrl) !== -1) {
                     document.getElementById("viewConfigs").classList.add("myNav");
                 }
                 else if (currentUrl.indexOf("/creative/configurations") !== -1) {
                     document.getElementById("#moreControls").classList.add("myNav");
                 }
-                else if (currentUrl.indexOf("/creative/viewFaqs") !== -1) {
+                else if (currentUrl.indexOf(viewFaqsUrl) !== -1) {
                     document.getElementById("myFaqs").classList.add("myNav");
                 }
-                else if (currentUrl.indexOf("/creative/addFaqs") !== -1) {
+                else if (currentUrl.indexOf(addFaqsUrl) !== -1) {
                     document.getElementById("myFaqs").classList.add("myNav");
                 }
 
                 $("#moreControls").click(function() { 
+                    $(this).addClass("myNav2");
+                });
+                $("#manageProfile").click(function() { 
+                    $(this).addClass("myNav2");
+                });
+                $("#manageServices").click(function() { 
                     $(this).addClass("myNav2");
                 });
     });

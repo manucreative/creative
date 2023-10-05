@@ -8,7 +8,7 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use App\Auth\Filters\AuthFilter;
+use App\Auth\Filters\AuthFilters;
 use App\Auth\Filters\CheckIfLoggedIn;
 
 class Filters extends BaseConfig
@@ -26,7 +26,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'auth' => AuthFilter::class,
+        'authentication' => AuthFilters::class,
         'ifLoggedIn' => CheckIfLoggedIn::class
     ];
 

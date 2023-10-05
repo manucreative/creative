@@ -46,6 +46,10 @@ class ServiceController extends BaseController{
                     'label' => 'service Key is',
                     'rules' => 'required',
                 ],
+                'owner' => [
+                    'label' => 'orner is',
+                    'rules' => 'required',
+                ],
                 'service_short_content' => [
                     'label' => 'service short content is',
                     'rules' => 'required',
@@ -71,6 +75,7 @@ class ServiceController extends BaseController{
             }else{
 
                 $service_key = $this->request->getPost('service_key');
+                $owner = $this->request->getPost('owner');
                 $service_title = $this->request->getPost('service_title');
                 $service_short_content = $this->request->getPost('service_short_content');
                 $service_main_content = $this->request->getPost('service_main_content');
@@ -80,6 +85,7 @@ class ServiceController extends BaseController{
 
                 $dataToInsert =[
                     'service_title' => $service_title,
+                    'owner' => $owner,
                     'service_key' => $service_key,
                     'service_short_content' => $service_short_content,
                     'service_main_content' => $service_main_content,

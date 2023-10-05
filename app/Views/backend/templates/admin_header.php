@@ -54,20 +54,78 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                                 <i class="fa fa-dashboard fa-2x"></i> Dashboard
                             </a>
                         </li>
-                        <li class="nav-item" >
-                            <a class="nav-link" href="#" id="viewService" data-action="viewService">
-                                <i class="fa fa-desktop fa-2x"></i> Manage Services
-                            </a>
-                        </li>
+              <!-- Profile Controls -->
+              <li>
+            <a href="#" id="manageProfile"><i class="fa fa-sitemap fa-3x"></i> Manage Profile<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                        <?php if($role == 'SUPER_ADMIN'): ?>
+                            <li class="nav-item" id="sliders-link">
+                                    <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
+                                        <i class="fa fa-user fa-2x"></i>My All Users </a>
+                                </li>
+                                <?php if($role == 'SUPER_ADMIN' || $role == 'ADMIN'):?>
+                                <li class="nav-item" id="sliders-link">
+                                <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
+                                    <i class="fa fa-user fa-2x"></i>My Profile </a>
+                            </li>
+                            <?php endif?>
+                            <?php endif ?>
+            </ul>
+            </li>
+
+                <!-- Service Control -->
+            <li>
+            <a href="#" id="manageServices"><i class="fa fa-sitemap fa-3x"></i> Manage Service<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
+                <?php if($role == 'SUPER_ADMIN'): ?>
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="#" id="viewService" data-action="viewService">
+                                        <i class="fa fa-desktop fa-2x"></i> Manage All Services
+                                    </a>
+                                </li>
+
+                                <?php if($role == 'SUPER_ADMIN' || $role == 'ADMIN'):?>
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="#" id="viewService" data-action="viewService">
+                                        <i class="fa fa-desktop fa-2x"></i> Manage My Services
+                                    </a>
+                                </li>
+                                <?php endif?>
+                            <?php endif ?>
+            </ul>
+            </li>
+
+                <!-- Service Blogs -->
+                <li>
+            <a href="#" id="manageServices"><i class="fa fa-sitemap fa-3x"></i> Manage Blogs<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+
+                <?php if($role == 'SUPER_ADMIN'): ?>
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="#" id="viewAllBlogs" data-action="viewAllBlogs">
+                                        <i class="fa fa-desktop fa-2x"></i> Manage All Blogs
+                                    </a>
+                                </li>
+
+                                <?php if($role == 'SUPER_ADMIN' || $role == 'ADMIN'):?>
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="#" id="viewMyBlogs" data-action="viewMyBlogs">
+                                        <i class="fa fa-desktop fa-2x"></i> Manage My Blogs
+                                    </a>
+                                </li>
+                                <?php endif?>
+                            <?php endif ?>
+            </ul>
+            </li>
+
+            <?php if($role == 'SUPER_ADMIN'): ?>
                         <li class="nav-item" id="sliders-link">
                             <a class="nav-link" href="#" id="viewSliders" data-action="viewSliders">
                                 <i class="fa fa-bar-chart-o fa-2x"></i> Manage Slider
                             </a>
                         </li>
-                    <li class="nav-item" id="sliders-link">
-                        <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
-                            <i class="fa fa-user fa-2x"></i>My Profile </a>
-                    </li>
+
                     <li class="nav-item" id="sliders-link">
                         <a class="nav-link" href="#" id="myFaqs" data-action="myFaqs">
                             <i class="fa fa-question fa-2x"></i> Manage FAQs </a>
@@ -78,7 +136,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                     <li  >
                         <a  href="form.html"><i class="fa fa-money fa-2x"></i> Manage Pricing </a>
                     </li>
-
+            
                     <li>
                         <a href="#" id="moreControls"><i class="fa fa-sitemap fa-3x"></i> More Controls<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -92,32 +150,11 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a  href="#"><i class="fa fa-tag fa-3x"></i> Manage Quotes</a>
                     </li>
                     <li>
-                        <a  href="#"><i class="fa fa-user fa-3x"></i> Manage Blogs</a>
-                    </li>
-                    <li>
                         <a  href="<?php echo base_url('creative/admin/addAdminForm/index/key/'.$session_key);?>"><i class="fa fa-edit fa-3x"></i> Add Administrator</a>
                     </li>
-                            <!-- <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li> -->
                         </ul>
                       </li>
-                  <!-- <li  >
-                        <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
-                    </li>	 -->
+                      <?php endif?>
                 </ul>
             </div>
         </nav>

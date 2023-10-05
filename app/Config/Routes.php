@@ -60,7 +60,7 @@ use App\Controllers\backend\FaqController;
     $routes->addRedirect('creative/admin/dashboard/index/key', 'creative/admin/login/index/key');
 
  //admin Routing 
- $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend', 'filter' => 'auth'],function ($routes){
+ $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend', 'filter' => 'authentication'],function ($routes){
    $routes->get('logOut/index/key', [AdminLoginController::class, 'logOut']);
    $routes->get('dashboard/index/key/(:segment)', [DashboardController::class, 'dashboard/$1']);
    $routes->get('unAuthorized/index/key/(:segment)', [AdminsController::class, 'unAuthorized/$1']);

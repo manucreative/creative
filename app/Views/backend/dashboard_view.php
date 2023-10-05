@@ -13,7 +13,7 @@
                     </div>
                 </div>  
 </div>            
-
+            <?php if($role == 'SUPER_ADMIN'):?>
             <div id="page-inner">
                  <!-- /. ROW  -->
                   <hr />
@@ -424,6 +424,7 @@
                 </div>     
                  <!-- /. ROW  -->           
     </div>
+    <?php endif?>
              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->

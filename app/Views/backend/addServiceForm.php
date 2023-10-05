@@ -47,8 +47,8 @@
             <label for="service_title" class="col-sm-3 col-form-label" style="text-align: end;">Service Title Entry  <span style="color: red;">*</span></label>
             <div class="col-sm-5">
                 <input type="text" id="service_title" name="service_title" value="<?= old('service_title') ?>" placeholder="Enter Slider Content" class="form-control">
-                <input type="hidden" id="service_key" name="service_key" value="<?= $service_key ?>" placeholder="Enter Slider Content" class="form-control">
-                <input type="hidden" id="owner" name="owner" value="<?= $admin_id ?>" placeholder="Enter Slider Content" class="form-control">
+                <input type="hidden" id="service_key" name="service_key" value="<?= $service_key ?>"class="form-control">
+                <input type="hidden" id="owner" name="owner" value="<?= $admin_id ?>" class="form-control">
             </div>
             <div class="col-sm-3"></div>
         </div>

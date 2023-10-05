@@ -73,6 +73,13 @@
     });
     </script>
     <script>
+            var dashboardUrl = "<?php echo base_url('creative/admin/dashboard/index/key/'.$session_key);?>"
+            var viewServicesUrl = "<?php echo base_url('creative/admin/viewServices/index/key/'.$session_key)?>";
+            var viewFaqsUrl = "<?php echo base_url('creative/admin/viewFaqs/index/key/'.$session_key);?>"
+            var addServiceFormUrl = "<?php echo base_url('creative/admin/addServiceForm/index/key/'.$session_key);?>"
+            var addSliderUrl = "<?php echo base_url('creative/admin/addSliderContent/index/key/'.$session_key);?>"
+            var configUrl = "<?php echo base_url('creative/admin/configurations/index/key/'.$session_key)?>";
+            var addFaqsUrl = "<?php echo base_url('creative/admin/addFaqs/index/key/'.$session_key)?>";
         //service Scripts
             var serviceDeleteUrl = "<?php echo base_url('creative/admin/deleteServices/index/key/'.$session_key); ?>";
             var serviceLocation = "<?php echo base_url('creative/admin/viewServices/index/key/'.$session_key);?>"
