@@ -52,6 +52,22 @@ class AdminLoginController extends BaseController{
       }
     }
 
+    public function unAuthorized(){
+        $data =
+        [
+            'first_name' => session('first_name'),
+            'admin_id' => session('admin_id'),
+            'last_name' => session('last_name'),
+            'avatar' => session('avatar'),
+            'role' => session('role'),
+            'session_key' => session('session_key'),
+            'token' => session('adminToken'),
+            'title' => 'You are not Authorized To Access this content, Kindly Conduct the Administrator'
+        ];
+        return view('backend/templates/admin_header', $data)
+             . view('backend/unAuthorized', $data)
+             . view('backend/templates/admin_footer');
+    }
 
     public function logOut(){
         $session = session();

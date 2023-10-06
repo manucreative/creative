@@ -58,17 +58,18 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
               <li>
             <a href="#" id="manageProfile"><i class="fa fa-sitemap fa-3x"></i> Manage Profile<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                        <?php if($role == 'SUPER_ADMIN'): ?>
+                        <?php if($role == 'super_admin'): ?>
                             <li class="nav-item" id="sliders-link">
                                     <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
                                         <i class="fa fa-user fa-2x"></i>My All Users </a>
                                 </li>
-                                <?php if($role == 'SUPER_ADMIN' || $role == 'ADMIN'):?>
+                         <?php endif?>
+                                <?php if($role == 'super_admin' || $role == 'admin' || $role == 'user'):?>
                                 <li class="nav-item" id="sliders-link">
                                 <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
                                     <i class="fa fa-user fa-2x"></i>My Profile </a>
                             </li>
-                            <?php endif?>
+ 
                             <?php endif ?>
             </ul>
             </li>
@@ -78,21 +79,21 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
             <a href="#" id="manageServices"><i class="fa fa-sitemap fa-3x"></i> Manage Service<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
-                <?php if($role == 'SUPER_ADMIN'): ?>
+                <?php if($role === 'super_admin'): ?>
                                 <li class="nav-item" >
                                     <a class="nav-link" href="#" id="viewService" data-action="viewService">
                                         <i class="fa fa-desktop fa-2x"></i> Manage All Services
                                     </a>
                                 </li>
-
-                                <?php if($role == 'SUPER_ADMIN' || $role == 'ADMIN'):?>
+                         <?php endif ?>
+                                <?php if($role === 'super_admin' || $role === 'admin' || $role === 'user'):?>
                                 <li class="nav-item" >
                                     <a class="nav-link" href="#" id="viewService" data-action="viewService">
                                         <i class="fa fa-desktop fa-2x"></i> Manage My Services
                                     </a>
                                 </li>
                                 <?php endif?>
-                            <?php endif ?>
+
             </ul>
             </li>
 
@@ -101,25 +102,25 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
             <a href="#" id="manageServices"><i class="fa fa-sitemap fa-3x"></i> Manage Blogs<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
-                <?php if($role == 'SUPER_ADMIN'): ?>
+                <?php if($role === 'super_admin'): ?>
                                 <li class="nav-item" >
                                     <a class="nav-link" href="#" id="viewAllBlogs" data-action="viewAllBlogs">
                                         <i class="fa fa-desktop fa-2x"></i> Manage All Blogs
                                     </a>
                                 </li>
-
-                                <?php if($role == 'SUPER_ADMIN' || $role == 'ADMIN'):?>
+                        <?php endif ?>
+                                <?php if($role === "super_admin" || $role === "admin"):?>
                                 <li class="nav-item" >
                                     <a class="nav-link" href="#" id="viewMyBlogs" data-action="viewMyBlogs">
                                         <i class="fa fa-desktop fa-2x"></i> Manage My Blogs
                                     </a>
                                 </li>
                                 <?php endif?>
-                            <?php endif ?>
+                            
             </ul>
             </li>
 
-            <?php if($role == 'SUPER_ADMIN'): ?>
+            <?php if($role === 'super_admin'): ?>
                         <li class="nav-item" id="sliders-link">
                             <a class="nav-link" href="#" id="viewSliders" data-action="viewSliders">
                                 <i class="fa fa-bar-chart-o fa-2x"></i> Manage Slider

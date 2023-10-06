@@ -13,12 +13,12 @@
                     </div>
                 </div>  
 </div>            
-            <?php if($role == 'SUPER_ADMIN'):?>
+            <?php if($role === 'super_admin'):?>
             <div id="page-inner">
                  <!-- /. ROW  -->
                   <hr />
                 <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-6">           
+                <div class="col-md-3 col-sm-6 col-xs-6">
 			<div class="panel panel-back noti-box">
                 <span class="icon-box bg-color-red set-icon">
                     <i class="fa fa-envelope-o"></i>
@@ -29,7 +29,7 @@
                 </div>
              </div>
 		     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">           
+                    <div class="col-md-3 col-sm-6 col-xs-6">
 			<div class="panel panel-back noti-box">
                 <span class="icon-box bg-color-green set-icon">
                     <i class="fa fa-bars"></i>
@@ -310,7 +310,7 @@
                                         <img src="assets/img/2.png" alt="User" class="img-circle" />
                                     </span>
                                     <div class="chat-body clearfix">
-                                        
+
                                             <small class=" text-muted">
                                                 <i class="fa fa-clock-o fa-fw"></i>13 mins ago</small>
                                             <strong class="pull-right">Jhonson Deed</strong>

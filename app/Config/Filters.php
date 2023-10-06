@@ -8,8 +8,8 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use App\Auth\Filters\AuthFilters;
-use App\Auth\Filters\CheckIfLoggedIn;
+use App\Filters\AuthFilter;
+use App\Filters\CheckIfLoggedIn;
 
 class Filters extends BaseConfig
 {
@@ -26,7 +26,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'authentication' => AuthFilters::class,
+        'authentication' => AuthFilter::class,
         'ifLoggedIn' => CheckIfLoggedIn::class
     ];
 
@@ -42,6 +42,7 @@ class Filters extends BaseConfig
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
+           
         ],
         'after' => [
             'toolbar',
@@ -61,7 +62,9 @@ class Filters extends BaseConfig
      * permits any HTTP method to access a controller. Accessing the controller
      * with a method you don't expect could bypass the filter.
      */
-    public array $methods = [];
+    public array $methods = [
+        // 'get' => ['authentication']
+    ];
 
     /**
      * List of filter aliases that should run on any
@@ -70,5 +73,5 @@ class Filters extends BaseConfig
      * Example:
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
-    public array $filters = [];
+    public array $filters = [ ];
 }

@@ -31,13 +31,6 @@ class AdminsController extends BaseController{
              . view('backend/templates/admin_footer');
     }
 
-    public function unAuthorized(){
-        $data =
-        [
-            'title' => 'You are not Authorized To Access this content, Kindly Conduct the Administrator'
-        ];
-        return view('backend/unAuthorized',$data);
-    }
 
     public function addAdminForm($key){
         $session_key = session()->get('session_key');

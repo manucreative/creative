@@ -1,14 +1,6 @@
 <?php
 namespace Config;
 
-// Create a new instance of our RouteCollection class.
-$routes = Services::routes();
-
-$routes->setTranslateURIDashes(false);
-$routes->set404Override();
-
-$routes->setAutoRoute(false);
-
 use App\Controllers\frontend\HomeController;
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\frontend\ServicesController;
@@ -31,7 +23,6 @@ use App\Controllers\backend\FaqController;
  * @var RouteCollection $routes
  */
 
- 
  $routes->group('', ['namespace' => 'App\Controllers\frontend'],function ($routes){
     $routes->get('/', [HomeController::class, 'index']);
     $routes->get('services', [ServicesController::class, 'index']);
@@ -48,10 +39,10 @@ use App\Controllers\backend\FaqController;
  $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend'], function ($routes) {
 
    $routes->get('login/index/key', [AdminLoginController::class, 'index'],['filter' => 'ifLoggedIn']);
-   $routes->post('adminLogin/index/key', [AdminLoginController::class, 'adminLogin']); // Process login
+   $routes->post('adminLogin/index/key', [AdminLoginController::class, 'adminLogin']);
+   $routes->get('unAuthorized/index/key/(:segment)', [AdminLoginController::class, 'unAuthorized/$1']);
+   $routes->get('logOut/index/key', [AdminLoginController::class, 'logOut']);
 });
-
-   $myKey = 'kgskj98743ojhrk40dfjk49fjwj839fir8506jd9jd0j40jdfgjowpojd';
 
     $routes->addRedirect('creative', 'creative/admin/login/index/key');
     $routes->addRedirect('creative/admin', 'creative/admin/login/index/key');
@@ -59,11 +50,9 @@ use App\Controllers\backend\FaqController;
     $routes->addRedirect('creative/admin/dashboard/index', 'creative/admin/login/index/key');
     $routes->addRedirect('creative/admin/dashboard/index/key', 'creative/admin/login/index/key');
 
- //admin Routing 
+ //admin Routing  , 'filter' => 'authentication'
  $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend', 'filter' => 'authentication'],function ($routes){
-   $routes->get('logOut/index/key', [AdminLoginController::class, 'logOut']);
    $routes->get('dashboard/index/key/(:segment)', [DashboardController::class, 'dashboard/$1']);
-   $routes->get('unAuthorized/index/key/(:segment)', [AdminsController::class, 'unAuthorized/$1']);
    $routes->get('addAdminForm/index/key/(:segment)', [AdminsController::class, 'addAdminForm/$1']);
    $routes->post('addAdminAction/index/key/(:segment)', [AdminsController::class, 'addAdminAction/$1']);
 
@@ -100,9 +89,5 @@ use App\Controllers\backend\FaqController;
     $routes->get('updateFaqForm/index/key/(:segment)/(:num)', [FaqController::class, 'updateFaqForm/$1/$2']);
     $routes->post('updateFaq/index/key/(:segment)', [FaqController::class, 'updateFaq/$1']);
  });
-
- if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-   require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
-}
 
 

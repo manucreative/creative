@@ -1,5 +1,5 @@
 <?php
-namespace App\Auth\Filters;
+namespace App\Filters;
 
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
@@ -12,7 +12,6 @@ class CheckIfLoggedIn implements FilterInterface
     {
         $session = Services::session();
         if ($session->get('logged_in')) {
-            // $myKey = bin2hex(random_bytes(32));
             $myKey = session()->get('session_key');
             return redirect()->to(base_url('creative/admin/dashboard/index/key/'.$myKey));
         }
