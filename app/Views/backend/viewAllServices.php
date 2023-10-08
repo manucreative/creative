@@ -18,11 +18,12 @@
                   </div>
                   <div class="col-sm-8">
                   <div class="modal-footer">
-                    <button class="btn btn-danger service_delete_btn" id="delete_selected_services"><i class="fa fa-trash"></i>&nbsp; Delete Service</button>
+                    <button class="btn btn-danger service_delete_btn" id="delete_selected_services"> <i class="fa fa-trash"></i>&nbsp; Delete Service</button>
                     <a href="#" id="btnAddService" data-action="btnAddService" class='btn btn-primary'><i class="fa fa-plus"></i>&nbsp; Add Service</a>
                   </div>
                 </div>
               </div>
+
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">

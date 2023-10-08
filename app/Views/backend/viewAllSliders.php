@@ -18,7 +18,7 @@
                   </div>
                   <div class="col-sm-8">
                   <div class="modal-footer">
-                    <button class="btn btn-danger slider_delete_btn" id="delete_selected_sliders"><i class="fa fa-bin"></i>&nbsp; Delete Sliders</button>
+                    <button class="btn btn-danger slider_delete_btn" id="delete_selected_sliders"><i class="fa fa-trash"></i>&nbsp; Delete Sliders</button>
                     <a href="#" id="btnAddSlider" data-action="btnAddSlider" class='btn btn-primary'><i class="fa fa-plus"></i>&nbsp; Add Slider</a>
                   </div>
                 </div>
