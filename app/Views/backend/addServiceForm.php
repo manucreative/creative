@@ -27,8 +27,12 @@
       </div>
       <div class="col-sm-9">
       <div class="modal-footer">
-      <!-- <a href="#"><button id="btnDeleteService" data-action="btnDeleteService" class="btn btn-danger"><i class="fa fa-trash"></i>Delete Services</button></a> -->
-        <a href="#"><button id="viewService" data-action="viewService" class="btn btn-primary">View All Service</button></a>
+      <?php if($role === 'super_admin'):?>
+        <a href="#"><button id="viewService" data-action="viewService" class="btn btn-danger">View All Service</button></a>
+        <?php endif;?>
+        <?php if($role === 'super_admin' || $role === 'admin'):?>
+          <a href="#"><button id="viewMyServices" data-action="viewMyServices" class="btn btn-primary">Go to My Service</button></a>
+        <?php endif?>
         </div>
       </div>
 

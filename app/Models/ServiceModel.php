@@ -45,10 +45,19 @@ class ServiceModel extends Model
 
     public function getServices($service_key = false){
         if($service_key === false){
-            return $this->findAll();
+            return $this->select('tbl_services.*, admin.first_name')
+            ->join('admin', 'admin.admin_id = tbl_services.owner')->findAll();
         }else{
             return $this->where(['service_key'=> $service_key])->first();
         }
+    }
+
+    public function getOwnerService($owner){
+        return $this->db->table($this->table)
+            ->select('tbl_services.*, admin.first_name')
+            ->join('admin', 'admin.admin_id = tbl_services.owner')
+            ->where('owner', $owner)->get()
+            ->getResultArray();
     }
 
     public function updateServices($service_id, $data){

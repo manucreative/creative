@@ -135,6 +135,35 @@ class ServiceController extends BaseController{
 }
     }
 
+    public function viewIndividualService($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+        $servicesModel = model(ServiceModel::class);
+        $owner = session('admin_id');
+        $i = 1;
+        $data=[
+        'services' => $servicesModel->getOwnerService($owner),
+        'first_name' => session('first_name'),
+        'admin_id' => session('admin_id'),
+        'last_name' => session('last_name'),
+        'session_key' =>session('session_key'),
+        'token' => session('adminToken'),
+        'avatar' => session('avatar'),
+        'role' => session('role'),
+        'i'=> $i,
+        'title' => 'Viewing all Service'
+    ];
+        //  echo '<pre>';
+        // print_r($servicesModel->getOwnerService($owner));
+        // echo '</pre>';
+    return view('backend/templates/admin_header', $data)
+        . view('backend/viewIndividualService', $data)
+        . view('backend/templates/admin_footer');
+}
+    }
+
     public function updateServiceForm($key,$service_key){
         $token = $this->request->getGet('token');
         $adminToken = session('adminToken');

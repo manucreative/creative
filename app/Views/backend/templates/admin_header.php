@@ -88,7 +88,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                          <?php endif ?>
                                 <?php if($role === 'super_admin' || $role === 'admin' || $role === 'user'):?>
                                 <li class="nav-item" >
-                                    <a class="nav-link" href="#" id="viewService" data-action="viewService">
+                                    <a class="nav-link" href="#" id="viewMyServices" data-action="viewMyServices">
                                         <i class="fa fa-desktop fa-2x"></i> Manage My Services
                                     </a>
                                 </li>
