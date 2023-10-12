@@ -105,6 +105,98 @@
             </div>
             <!-- About End -->
 
+            
+        <!-- Team #1 Start -->
+        <div class="container">
+            <div class="section-title">
+				<h2>Professional</h2>
+                <h1>Team Members on Board</h1>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="team-1">
+                        <div class="team-img">
+                            <img src="<?php echo base_url('images/team/team-1-1.jpg');?>" alt="Team Image">
+                        </div>
+                        <div class="team-content">
+                            <h2>Josh Dunn</h2>
+                            <h3>CEO &amp; Founder</h3>
+                            <p>Some text goes here that describes about team member</p>
+                            <h4>example@example.com</h4>
+                            <div class="team-social">
+                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="team-1">
+                        <div class="team-img">
+                            <img src="<?php echo base_url('images/team/team-1-2.jpg');?>" alt="Team Image">
+                        </div>
+                        <div class="team-content">
+                            <h2>Mollie Ross</h2>
+                            <h3>Art Director</h3>
+                            <p>Some text goes here that describes about team member</p>
+                            <h4>example@example.com</h4>
+                            <div class="team-social">
+                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="team-1">
+                        <div class="team-img">
+                            <img src="<?php echo base_url('images/team/team-1-3.jpg');?>" alt="Team Image">
+                        </div>
+                        <div class="team-content">
+                            <h2>Dylan Adams</h2>
+                            <h3>Developer</h3>
+                            <p>Some text goes here that describes about team member</p>
+                            <h4>example@example.com</h4>
+                            <div class="team-social">
+                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="team-1">
+                        <div class="team-img">
+                            <img src="<?php echo base_url('images/team/team-1-4.jpg');?>" alt="Team Image">
+                        </div>
+                        <div class="team-content">
+                            <h2>Jennifer Page</h2>
+                            <h3>Designer</h3>
+                            <p>Some text goes here that describes about team member</p>
+                            <h4>example@example.com</h4>
+                            <div class="team-social">
+                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!-- Team #1 End -->
+
             <!-- Service Start -->
 
             <div class="service">
