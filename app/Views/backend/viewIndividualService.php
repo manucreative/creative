@@ -42,12 +42,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php if(!empty($services) && is_array($services)): ?>
-                        <?php foreach($services as $service): ?>
+                    <?php  if(!empty($services) && is_array($services)): ?>
+                        <?php  foreach($services as $service): ?>
 
                 <tr>
                     <td><input type='checkbox' name='services' value= <?php echo $service['service_id'];?> class='delete-checkbox'></td>
-                    <td><?php echo  $i++ ?></td> 
+                    <td><?php echo  $i++ ?></td>
                     <td><?php echo $service['service_title'];?></td>
                     <td><?php echo $service['first_name'];?></td>
                     <td><?php echo $service['service_short_content']; ?></td>
@@ -67,8 +67,8 @@
 
                 </tr>
 
-                <?php endforeach?>
-                <?php endif ?>
+                <?php  endforeach?>
+                <?php  endif ?>
                       </tbody>
                     </table>
                   </div>

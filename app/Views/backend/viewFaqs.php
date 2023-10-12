@@ -9,7 +9,6 @@
                       </div>
             <?php endif; ?>
 
-
               <div class="row">
               <div class="col-sm-4">
                 <div class="">
@@ -18,7 +17,7 @@
                   </div>
                   <div class="col-sm-8">
                   <div class="modal-footer">
-                    <button class="btn btn-danger faq_delete_btn" id="delete_selected_faq"><i class="fa fa-bin"></i>&nbsp; Delete Faqs</button>
+                    <button class="btn btn-danger faq_delete_btn" id="delete_selected_faq"><i class="fa fa-trash"></i>&nbsp; Delete Faqs</button>
                     <a href="#" id="addFaqs" data-action="addFaqs" class='btn btn-primary'><i class="fa fa-plus"></i>&nbsp; Add FAQ</a>
                   </div>
                 </div>

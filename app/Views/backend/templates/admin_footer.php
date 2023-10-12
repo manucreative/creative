@@ -4,7 +4,7 @@
 <script>
       // All buttons Configurations
     $(document).ready(function () {
-        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#myFaqs,#addFaqs,#btnBanner').click(function (e) {
+        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#myFaqs,#addFaqs,#btnBanner,#viewMyServices').click(function (e) {
             e.preventDefault();
             var action = $(this).data('action');
             $('#overlay').show();
@@ -41,8 +41,8 @@
                 case 'addFaqs':
                     window.location.href = "<?php echo base_url('creative/admin/addFaqs/index/key/'.$session_key);?>";
                     break;
-                case 'viewProd':
-                    window.location.href = "../view_products";
+                case 'viewMyServices':
+                    window.location.href = "<?php echo base_url('creative/admin/viewOwnerService/index/key/'.$session_key);?>";
                     break;
                 case 'addBanner':
                     window.location.href = "addBanners";

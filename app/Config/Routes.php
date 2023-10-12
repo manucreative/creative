@@ -79,6 +79,7 @@ use App\Controllers\backend\FaqController;
     $routes->post('deleteServices/index/key/(:segment)', [ServiceController::class, 'deleteServices/$1']);
     $routes->get('updateServiceForm/index/key/(:segment)/(:segment)', [ServiceController::class, 'updateServiceForm/$1/$2']);
     $routes->get('viewServices/index/key/(:segment)', [ServiceController::class, 'viewServices/$1']);
+    $routes->get('viewOwnerService/index/key/(:segment)', [ServiceController::class, 'viewIndividualService/$1']);
     $routes->post('updateService/index/key/(:segment)', [ServiceController::class, 'updateService/$1']);
 
     // FAQ controls
