@@ -76,12 +76,12 @@
             <div class="wrapper"> <!-- wrapper start -->
 
                         <!-- About Start -->
-                        <div class="about wow fadeInUp" data-wow-delay="0.1s">
+                        <!-- <div class="about wow fadeInUp" data-wow-delay="0.1s">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-5 col-md-6">
                             <div class="about-img">
-                                <img src="<?php echo base_url('backend/media/admin_images/' .$admins['avatar'])?>" alt="Image">
+                                <img src="<?php // echo base_url('backend/media/admin_images/' .$admins['avatar'])?>" alt="Image">
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6">
@@ -90,40 +90,61 @@
                             <br>
                             <br>
                         <div class="section-header text-left myHeader">
-                                <p class="subHeaderOnAboutMe"><?php echo $admins['sub_title'] ?? '';?></p>
-                                <h2 class="mainDeaderOnAboutMe"><?php echo $admins['personal_title'] ?? '';?></h2>
+                                <p class="subHeaderOnAboutMe"><?php // echo $admins['sub_title'] ?? '';?></p>
+                                <h2 class="mainDeaderOnAboutMe"><?php //echo $admins['personal_title'] ?? '';?></h2>
                             </div>
                             <div class="about-text">
                                 <span>
-                                <?php echo $admins['professional_profile'] ?? '';?>
+                                <?php // echo $admins['professional_profile'] ?? '';?>
                                 </span>
-                                <a class="btn" href="<?php echo base_url('about')?>">Learn More</a>
+                                <a class="btn" href="<?php // echo base_url('about')?>">Learn More</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- About End -->
 
             
         <!-- Team #1 Start -->
+        <div class="myTeam wow fadeInRight" data-wow-delay="0.2s">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title text-center">
 				<h2>Professional</h2>
                 <h1>Team Members on Board</h1>
             </div>
-            <div class="row">
+            <div class="row team-slider">
+            <?php if (!empty($admins) && is_array($admins)) : ?>
+            <?php foreach ($admins as $admin) : ?>
+                <?php
+                    // Check the activation status
+                    // $isActive = ($admin['activation_id'] == 1);
+                    ?>
+                      <?php if($admin['activation_name'] === 'active') : ?>
                 <div class="column">
-                    <div class="team-1">
+                    <div class="team-1 team-member">
                         <div class="team-img">
-                            <img src="<?php echo base_url('images/team/team-1-1.jpg');?>" alt="Team Image">
+                            <img src="<?php echo base_url('backend/media/admin_images/' .$admin['avatar'])?>" alt="Team Image">
                         </div>
-                        <div class="team-content">
-                            <h2>Josh Dunn</h2>
-                            <h3>CEO &amp; Founder</h3>
-                            <p>Some text goes here that describes about team member</p>
-                            <h4>example@example.com</h4>
-                            <div class="team-social">
+                <?php
+                            $paragraph = $admin['professional_profile'] ?? '';
+                            $words = explode(' ', $paragraph);
+                            $totalWords = count($words);
+                            $wordsToShow = 9;
+
+                            if ($totalWords > $wordsToShow) {
+                                $trimmedWords = array_slice($words, 0, $wordsToShow);
+                                $trimmedParagraph = implode(' ', $trimmedWords) . '...';
+                            } else {
+                                $trimmedParagraph = $paragraph;
+                            }
+                 ?>
+                        <div class="team-content text-center">
+                            <h2><?php echo $admin['first_name']. ' ' .$admin['last_name']; ?></h2>
+                            <h3><?php echo $admin['sub_title'] ?? '';?></h3>
+                            <p><?php echo $trimmedParagraph; ?></p>
+                            <h4><?php echo $admin['email_address'] ?? '';?></h4>
+                            <div class="team-social text-center">
                                 <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
@@ -133,67 +154,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="team-1">
-                        <div class="team-img">
-                            <img src="<?php echo base_url('images/team/team-1-2.jpg');?>" alt="Team Image">
-                        </div>
-                        <div class="team-content">
-                            <h2>Mollie Ross</h2>
-                            <h3>Art Director</h3>
-                            <p>Some text goes here that describes about team member</p>
-                            <h4>example@example.com</h4>
-                            <div class="team-social">
-                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="team-1">
-                        <div class="team-img">
-                            <img src="<?php echo base_url('images/team/team-1-3.jpg');?>" alt="Team Image">
-                        </div>
-                        <div class="team-content">
-                            <h2>Dylan Adams</h2>
-                            <h3>Developer</h3>
-                            <p>Some text goes here that describes about team member</p>
-                            <h4>example@example.com</h4>
-                            <div class="team-social">
-                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="team-1">
-                        <div class="team-img">
-                            <img src="<?php echo base_url('images/team/team-1-4.jpg');?>" alt="Team Image">
-                        </div>
-                        <div class="team-content">
-                            <h2>Jennifer Page</h2>
-                            <h3>Designer</h3>
-                            <p>Some text goes here that describes about team member</p>
-                            <h4>example@example.com</h4>
-                            <div class="team-social">
-                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endif ?>
+                <?php endforeach ?>
+                <?php endif ?>
+               
             </div> 
+        </div>
         </div>
         <!-- Team #1 End -->
 
@@ -210,8 +176,9 @@
                         $serviceCounter = 0;
 
                         if (!empty($services) && is_array($services)) :
-                            foreach (array_slice($services, 0, 3) as $service) : // Limit to the first three services
+                            foreach (array_slice($services, 0, 3, true) as $service) : // Limit to the first three services
                                 ?>
+                                <?php if($service['activation_name'] === 'active') : ?>
                                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="service-item">
                                         <div class="service-img">
@@ -230,6 +197,7 @@
                                 </div>
                                 <?php
                                 $serviceCounter++; // Increment the counter
+                                endif;
                             endforeach;
 
                             if ($serviceCounter < count($services)) : // Check if there are more services to show

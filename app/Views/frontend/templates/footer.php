@@ -83,7 +83,10 @@
         
             <script src="<?php echo base_url('frontend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
         <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        // slick
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="<?php echo base_url('frontend/manuu/easing/easing.min.js')?>"></script>
         <script src="<?php echo base_url('frontend/manuu/wow/wow.min.js')?>"></script>
@@ -93,6 +96,8 @@
         <script src="<?php echo base_url('frontend/manuu/waypoints/waypoints.min.js')?>"></script>
         <script src="<?php echo base_url('frontend/manuu/counterup/counterup.min.js')?>"></script>
         <script src="<?php echo base_url('frontend/manuu/slick/slick.min.js')?>"></script>
+
+   
 
         <!-- Template Javascript -->
         <script src="<?php echo base_url('frontend/js/main.js')?>"></script>

@@ -5,7 +5,7 @@ use App\Models\FaqModel;
 use App\Models\SettingsModel;
 use App\Models\SliderModel;
 use App\Models\frontend\AdminFrontendModel;
-use App\Models\ServiceModel;
+use App\Models\frontend\FrontServiceModel;
 
 class HomeController extends BaseController{
     public function index(){
@@ -13,7 +13,7 @@ class HomeController extends BaseController{
        
         $adminModel = model(AdminFrontendModel::class);
         $sliderModel = model(SliderModel::class);
-        $serviceModel = model(ServiceModel::class);
+        $serviceModel = model(FrontServiceModel::class);
         $settingsModel = model(SettingsModel::class);
         $faqModel = model(FaqModel::class);
         $features = $settingsModel->getAllFeatures();
@@ -34,7 +34,7 @@ class HomeController extends BaseController{
         $array3 = $features2[2];
 }
 
-        $admins = $adminModel->getAdminDataByUserName($user_name);
+        $admins = $adminModel->getAdminDataByUserName();
         $data = [
             'sliders' => $sliderModel->getSliders(),
 

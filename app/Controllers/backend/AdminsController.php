@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\backend;
 use App\Controllers\BaseController;
+use App\Models\ActivationModel;
 use App\Models\AdminModel;
 use App\Models\RolesModel;
 
@@ -221,6 +222,7 @@ class AdminsController extends BaseController{
 
             $adminModel = model(AdminModel::class);
             $rolesModel = model(RolesModel::class);
+            $activationModel = model(ActivationModel::class);
 
             $admins = $adminModel->allAdmins($admin_id);
 
@@ -231,6 +233,9 @@ class AdminsController extends BaseController{
             $skills = $adminModel->getSkills($admin_id);
             $experience = $adminModel->getExperience($admin_id);
             $reference = $adminModel->getReference($admin_id);
+
+                $currentActivationId = $admins['activation_id'];
+
              $data = [
                  'basics' => $basic_details,
                  'contacts' => $contactDetails,
@@ -246,8 +251,10 @@ class AdminsController extends BaseController{
                  'role' => session('role'),
                  'session_key' => session('session_key'),
                  'token' => session('adminToken'),
+                 'currentActivationId' => $currentActivationId,
                   'admins' => $admins,
                  'admin_roles' => $rolesModel->getRoles(),
+                 'activations' => $activationModel->getActivations(),
                  'title' => 'All Administrators',
                  'errors' => []
              ];
@@ -274,6 +281,10 @@ class AdminsController extends BaseController{
             if($this->request->getMethod() === 'post'){
 
                 $validations = [
+                    'activation_id' => [
+                        'babel' => 'active',
+                        'rules'=> 'required'
+                    ],
                         'first_name' => [
                             'babel' => 'first_name',
                             'rules'=> 'required'
@@ -281,6 +292,14 @@ class AdminsController extends BaseController{
                         'middle_name' => [
                             'babel' => 'middle_name',
                             'rules'=> 'required'
+                        ],
+                        'avatar' => [
+                            'babel' => 'avatar',
+                            'rules' => [
+                                'uploaded[avatar]',
+                                'is_image[avatar]',
+                                'mime_in[avatar,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+                            ]
                         ],
                 ];
                 if(!$this->validate($validations)){
@@ -293,6 +312,7 @@ class AdminsController extends BaseController{
 
             $admin_id = $this->request->getPost('admin_id');
             $first_name = $this->request->getPost('first_name');
+            $activation = $this->request->getPost('activation_id');
             $middle_name = $this->request->getPost('middle_name');
             $last_name = $this->request->getPost('last_name');
             $email_address = $this->request->getPost('email_address');
@@ -314,6 +334,7 @@ class AdminsController extends BaseController{
                 'user_name'=> $user_name,
                 'personal_title'=> $personal_title,
                 'sub_title' => $sub_title,
+                'activation_id' => $activation,
                 'professional_profile' => $professional_profile,
                 'avatar' => $newName,
                 'created_at' => date('Y-m-d H:i:s')

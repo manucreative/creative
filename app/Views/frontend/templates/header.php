@@ -23,6 +23,10 @@
         <link href="<?php echo base_url('frontend/manuu/slick/slick.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('frontend/manuu/slick/slick-theme.css')?>" rel="stylesheet">
 
+         <!-- slick -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
         <!-- Template Stylesheet -->
         <link href="<?php echo base_url('frontend/css/style.css')?>" rel="stylesheet">
     </head>

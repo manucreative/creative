@@ -27,6 +27,7 @@
                     <div class="row">
                         <?php if(!empty($services) && is_array($services)) :?>
                             <?php foreach($services as $service) :?>
+                             <?php if($service['activation_name'] === 'active') : ?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="service-item">
                                 <div class="service-img">
@@ -43,6 +44,7 @@
                                 </div>
                             </div>
                         </div>
+                        <?php endif ?>
                         <?php endforeach ?>
                         <?php endif ?>
                     </div>

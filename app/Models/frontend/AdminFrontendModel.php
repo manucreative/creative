@@ -150,7 +150,12 @@ class AdminFrontendModel extends Model
 
     }
 
-    public function getAdminDataByUserName($user_name){
+    public function getAdminDataByUserName($user_name = false){
+        if($user_name === false){
+            return $this->select('admin.*, activations.activation_name')
+            ->join('activations', 'activations.activation_id = admin.activation_id')
+            ->findAll();
+        }
         return $this->where(['user_name' => $user_name])->first();
     }
 }
