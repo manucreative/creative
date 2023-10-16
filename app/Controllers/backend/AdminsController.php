@@ -8,9 +8,8 @@ use App\Models\RolesModel;
 class AdminsController extends BaseController{
     protected $helpers = ['form'];
 
-    public function viewAdmins(){
+    public function viewAllUsers(){
         $adminModel = model(AdminModel::class);
-       $rolesModel = model(RolesModel::class);
        $admins = $adminModel->getAdmins();
 
         $data = [
@@ -22,13 +21,12 @@ class AdminsController extends BaseController{
             'session_key' => session('session_key'),
             'token' => session('adminToken'),
             'admins' => $admins,
-            'admin_roles' => $rolesModel->getRoles(),
             'title' => 'All Administrators',
             'i' => $i = 1
         ];
 
         return view('backend/templates/admin_header', $data)
-             . view('backend/view_admin', $data)
+             . view('backend/viewAllUsers', $data)
              . view('backend/templates/admin_footer');
     }
 
@@ -187,7 +185,7 @@ class AdminsController extends BaseController{
 
         if($this->request->getMethod() === 'post' && $this->request->getPost('ids')){
             $ids = explode(',', $this->request->getPost('ids'));
-            $adminsModel = model(AdminsModel::class);
+            $adminsModel = model(AdminModel::class);
 
             $deleted = $adminsModel->delete_admin_by_ids($ids);
             if($deleted === true){
@@ -205,34 +203,84 @@ class AdminsController extends BaseController{
             }
         }
     }
+
+    public function updateUserForm($key, $token){
+            
+        $adminModel = model(AdminModel::class);
+        $rolesModel = model(RolesModel::class);
+        $activationModel = model(ActivationModel::class);
+
+         $session_key = session('session_key');
+         $admins = $adminModel->allAdmins($token);
+
+     if($key !== $session_key){
+        return redirect()->back();
+    }else{
+
+
+        $basic_details = $adminModel->getBasicDetails($token);
+        $contactDetails = $adminModel->getContactDetails($token);
+        $education = $adminModel->getEducation($token);
+        $expertiseAreas = $adminModel->getExpertiseAreas($token);
+        $skills = $adminModel->getSkills($token);
+        $experience = $adminModel->getExperience($token);
+        $reference = $adminModel->getReference($token);
+
+            $currentActivationId = $admins['activation_id'];
+
+         $data = [
+             'basics' => $basic_details,
+             'contacts' => $contactDetails,
+             'expertiseData' => $expertiseAreas,
+             'educationData' =>$education,
+             'skillData' =>$skills,
+             'experienceData' => $experience,
+             'referenceData' => $reference,
+             'first_name' => session('first_name'),
+             'admin_id' => session('admin_id'),
+             'last_name' => session('last_name'),
+             'avatar' => session('avatar'),
+             'role' => session('role'),
+             'session_key' => session('session_key'),
+             'token' => session('adminToken'),
+             'currentActivationId' => $currentActivationId,
+              'admins' => $admins,
+             'admin_roles' => $rolesModel->getRoles(),
+             'activations' => $activationModel->getActivations(),
+             'title' => 'All Administrators',
+             'errors' => []
+         ];
+ 
+         return view('backend/templates/admin_header', $data)
+              . view('backend/profileUpdateForm', $data)
+              . view('backend/templates/admin_footer');
+        }
+    }
        //      echo '<pre>';
         // print_r($basicData);
         // echo '</pre>';
-        public function profileUpdateForm($key, $admin_id){
-            $session_key = session('session_key');
-        if($key !== $session_key || $admin_id !== session('admin_id')){
-            return redirect()->back();
-        }else{
-
-            $session_key = session()->get('session_key');
-            $session_adminId = session()->get('admin_id');
-            if($key !== $session_key && $admin_id !== $session_adminId){
-                return redirect()->back();
-            }else{
-
+        public function profileUpdateForm($key, $token){
+            
             $adminModel = model(AdminModel::class);
             $rolesModel = model(RolesModel::class);
             $activationModel = model(ActivationModel::class);
 
-            $admins = $adminModel->allAdmins($admin_id);
+            $session_key = session('session_key');
+            $adminToken = session('adminToken');
+            $admins = $adminModel->allAdmins($token);
 
-            $basic_details = $adminModel->getBasicDetails($admin_id);
-            $contactDetails = $adminModel->getContactDetails($admin_id);
-            $education = $adminModel->getEducation($admin_id);
-            $expertiseAreas = $adminModel->getExpertiseAreas($admin_id);
-            $skills = $adminModel->getSkills($admin_id);
-            $experience = $adminModel->getExperience($admin_id);
-            $reference = $adminModel->getReference($admin_id);
+        if($key !== $session_key || $token !== $adminToken ){
+            return redirect()->back();
+        }else{
+
+
+            $basic_details = $adminModel->getBasicDetails($token);
+            $contactDetails = $adminModel->getContactDetails($token);
+            $education = $adminModel->getEducation($token);
+            $expertiseAreas = $adminModel->getExpertiseAreas($token);
+            $skills = $adminModel->getSkills($token);
+            $experience = $adminModel->getExperience($token);
+            $reference = $adminModel->getReference($token);
 
                 $currentActivationId = $admins['activation_id'];
 
@@ -263,7 +311,6 @@ class AdminsController extends BaseController{
                   . view('backend/profileUpdateForm', $data)
                   . view('backend/templates/admin_footer');
             }
-        }
         }
 
         /**

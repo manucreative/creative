@@ -13,7 +13,7 @@ class ServiceModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['service_title','service_key','owner','service_short_content','service_main_content','service_img','created_at'];
+    protected $allowedFields    = ['service_title','service_key','owner','activation_id','service_short_content','service_main_content','service_img','created_at'];
 
     // Dates
     protected $useTimestamps = false;
@@ -45,8 +45,10 @@ class ServiceModel extends Model
 
     public function getServices($service_key = false){
         if($service_key === false){
-            return $this->select('tbl_services.*, admin.first_name')
-            ->join('admin', 'admin.admin_id = tbl_services.owner')->findAll();
+            return $this->select('tbl_services.*, admin.first_name, activations.activation_name')
+            ->join('activations', 'activations.activation_id = tbl_services.activation_id')
+            ->join('admin', 'admin.admin_id = tbl_services.owner')
+            ->findAll();
         }else{
             return $this->where(['service_key'=> $service_key])->first();
         }
@@ -54,10 +56,11 @@ class ServiceModel extends Model
 
     public function getOwnerService($owner){
         return $this->db->table($this->table)
-            ->select('tbl_services.*, admin.first_name')
-            ->join('admin', 'admin.admin_id = tbl_services.owner')
-            ->where('owner', $owner)->get()
-            ->getResultArray();
+        ->select('tbl_services.*, admin.first_name, activations.activation_name')
+        ->join('activations', 'activations.activation_id = tbl_services.activation_id')
+        ->join('admin', 'admin.admin_id = tbl_services.owner')
+        ->where('owner', $owner)->get()
+        ->getResultArray();
     }
 
     public function updateServices($service_id, $data){

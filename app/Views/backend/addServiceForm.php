@@ -44,7 +44,23 @@
 <?= form_open_multipart(base_url('creative/admin/addService/index/key/'.$session_key), ['class'=> 'serviceAddForm'])?>
 
       <div class="modal-body">
-
+      <?php if(session('role') === 'super_admin'):?>
+                    <div class="row">
+                      <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large;">USER ACTIVE?</span> <span style="color: red;">*</span></label>
+                      <div class="col-sm-2">
+                      <select class="form-control" name="activation_id" id="activation_id">
+                          <option value="0" style="font-size:large; color:red;">Select Here</option>
+                          <?php if (!empty($activations) && is_array($activations)): ?>
+                              <?php foreach ($activations as $active): ?>
+                                  <option value="<?php echo $active['activation_id']; ?>" style="font-size:large; color:red;">
+                                      <span><?php echo $active['activation_name']; ?></span>
+                                  </option>
+                              <?php endforeach ?>
+                          <?php endif ?>
+                      </select>
+                  </div>
+              </div>
+          <?php endif ?>
       <div class="form-group">
         <div class="row">
         <div class="col-sm-1"></div>

@@ -68,25 +68,28 @@
                 <h2 class="font-normal">Account Basic Details</h2>
                 <!-- Step 1 input fields -->
                 <div class="mt-3">
-                                            <?php if(session('role') === 'super_admin'):?>
-                                                        <div class="row">
-                                                    <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large;">USER ACTIVE?</span> <span style="color: red;">*</span></label>
-                                                    <div class="col-sm-2">
-                                                    <select class="form-control" name="activation_id" id="activation_id">
-                                                        <option value="0" style="font-size:large; color:red;">Select Here</option>
-                                                        <?php if (!empty($activations) && is_array($activations)): ?>
-                                                            <?php foreach ($activations as $active): ?>
-                                                                <option value="<?php echo $active['activation_id']; ?>" style="font-size:large; color:red;"
-                                                                <?php echo ($active['activation_id'] == $currentActivationId) ? 'selected' : ''; ?>>
-                                                                    <span><?php echo $active['activation_name']; ?></span>
-                                                                </option>
-                                                            <?php endforeach ?>
-                                                        <?php endif ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        <?php endif ?>
-                                        <hr>
+                <?php if(session('role') === 'super_admin'):?>
+                            <div class="row">
+                        <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large; color:<?php echo $currentActivationId === '1' ? 'blue;' : 'red;'; ?>"><?php echo $currentActivationId === '1' ? 'ADMIN ENABLED' : 'ADMIN DISABLED'; ?></span> <span style="color: red;">*</span></label>
+                        <div class="col-sm-2">
+
+                        <select style="border:<?php echo $currentActivationId === '1' ? 'solid 2px blue;': 'solid 2px red;'?>" class="form-control" name="activation_id" id="activation_id">
+                            <option value="0" style="font-size:large;">Select Here</option>
+                            <?php if (!empty($activations) && is_array($activations)): ?>
+                                <?php foreach ($activations as $active): ?>
+
+                                    <option style="font-size:large; color:<?php echo $currentActivationId === '1' ? 'blue;': 'red;'?>" value="<?php echo $active['activation_id']; ?>"
+                                    <?php echo ($active['activation_id'] == $currentActivationId) ? 'selected' : ''; ?>>
+                                        <span><?php echo $active['activation_name']; ?></span>
+
+                                    </option>
+                                <?php endforeach ?>
+                            <?php endif ?>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+            <?php endif ?>
                                     <div class="row">
 
                                         <div class="col-sm-5">

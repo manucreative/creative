@@ -38,6 +38,7 @@
                       <th style="color:orange; font-weight:800;">Main Content</th>
                       <th style="color:orange; font-weight:800;">Image</th>
                       <th style="color:orange; font-weight:800;">Date</th>
+                      <th style="color:orange; font-weight:800;">Status</th>
                       <th style="color:orange; font-weight:800;">ACTIONS</th>
                     </tr>
                   </thead>
@@ -54,6 +55,13 @@
                     <td class="height: 5px"><?php echo $service['service_main_content']; ?></td>
                     <td><img src="<?php echo base_url('backend/media/service_images/'.$service['service_img']);?>"  class ='img-fluid' height='150' width='150'></td>
                     <td><?php echo $service['created_at']; ?></td>
+                    <td >
+                      <?php if($service['activation_name'] === 'active'):?>
+                    <button style="color: #fff; font-size: 18px; background-color:blue" class="btn" ><?php echo $service['activation_name'];?></button>
+                      <?php else : ?>
+                     <button style="color: #fff; font-size: 18px; background-color:red" class="btn" ><?php echo $service['activation_name'];?></button>
+                   <?php endif ?>
+                    </td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,7 +72,6 @@
                             </div>
                         </div>
                     </td>
-
                 </tr>
 
                 <?php endforeach?>
@@ -76,4 +83,3 @@
               </div>
             </div>
           </div>
- </div>

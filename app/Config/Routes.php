@@ -57,8 +57,11 @@ use App\Controllers\backend\FaqController;
    $routes->post('addAdminAction/index/key/(:segment)', [AdminsController::class, 'addAdminAction/$1']);
 
     //admin updates
-    $routes->get('profileUpdateForm/index/key/(:segment)/(:num)', [AdminsController::class, 'profileUpdateForm/$1/$2']);
+    $routes->get('profileUpdateForm/index/key/(:segment)/(:segment)', [AdminsController::class, 'profileUpdateForm/$1/$2']);
+    $routes->get('updateUserForm/index/key/(:segment)/(:segment)', [AdminsController::class, 'updateUserForm/$1/$2']);
     $routes->post('updateProfile/index/key/(:segment)', [AdminsController::class, 'updateProfile/$1']);
+    $routes->get('viewAllUsers/index/key/(:segment)', [AdminsController::class, 'viewAllUsers/$1']);
+    $routes->post('deleteAdmins/index/key/(:segment)', [AdminsController::class, 'deleteAdmins/$1']);
 
     //Sliders
     $routes->get('addSliderContent/index/key/(:segment)', [SliderController::class, 'addSliderContent/$1']);

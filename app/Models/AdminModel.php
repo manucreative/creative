@@ -78,18 +78,19 @@ class AdminModel extends Model
 
     public function getAdmins($admin_id = false){
         if($admin_id === false){
-            return $this->select('admin.*, tbl_roles.role_name')
+            return $this->select('admin.*, tbl_roles.role_name, activations.activation_name')
             ->join('tbl_roles', 'tbl_roles.role_id = admin.role')
+            ->join('activations', 'activations.activation_id = admin.activation_id')
             ->findAll();
         }else{
             return $this->where(['admin_id' => $admin_id])->first();
         }
     }
-    public function allAdmins($admin_id = false){
-        if($admin_id === false){
+    public function allAdmins($adminToken = false){
+        if($adminToken === false){
             return $this->findAll();
         }else{
-            return $this->where(['admin_id' => $admin_id])->first();
+            return $this->where(['adminToken' => $adminToken])->first();
         }
     }
 
@@ -110,9 +111,10 @@ class AdminModel extends Model
         if (empty($existingAdmins)) {
             return false;
         }
+        $this->db->disableForeignKeyChecks();
         if ($this->db->table($this->table)->whereIn('admin_id', $ids)->delete()) {
             foreach ($existingAdmins as $existingAdmin) {
-                $existingImagePath = ROOTPATH . 'public/pub/media/admin_images/' . $existingAdmin['admin_img'];
+                $existingImagePath = ROOTPATH . 'public/pub/media/admin_images/' . $existingAdmin['avatar'];
                 if (file_exists($existingImagePath)) {
                     unlink($existingImagePath);
                 }
@@ -122,6 +124,7 @@ class AdminModel extends Model
          } else {
              return false;
          }
+         $this->db->enableForeignKeyChecks();
     }
 
     public function updateAdminProfile($admin_id, $adminDirectData, $basic_details, $contact_details, $education, 

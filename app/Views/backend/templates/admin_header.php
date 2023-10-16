@@ -60,14 +60,14 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                 <ul class="nav nav-second-level">
                         <?php if($role == 'super_admin'): ?>
                             <li class="nav-item" id="sliders-link">
-                                    <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
-                                        <i class="fa fa-user fa-2x"></i>My All Users </a>
+                                    <a class="nav-link"  href="#" id="allUsers" data-action="allUsers">
+                                        <i class="fa fa-user fa-2x"></i>My All Admins </a>
                                 </li>
                          <?php endif?>
-                                <?php if($role == 'super_admin' || $role == 'admin' || $role == 'user'):?>
+                                <?php if($role === 'super_admin' || $role === 'admin' || $role === 'user'):?>
                                 <li class="nav-item" id="sliders-link">
                                 <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
-                                    <i class="fa fa-user fa-2x"></i>My Profile </a>
+                                    <i class="fa fa-user fa-2x"></i>Update Profile </a>
                             </li>
  
                             <?php endif ?>

@@ -17,6 +17,7 @@ class SliderController extends BaseController{
             'admin_id' => session('admin_id'),
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
+            'token' => session('adminToken'),
             'role' => session('role'),
             'session_key' => session('session_key'),
             'title' => 'Manuu Creative Dashboard',

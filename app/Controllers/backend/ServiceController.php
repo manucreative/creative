@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\backend;
 use App\Controllers\BaseController;
+use App\Models\ActivationModel;
 use App\Models\ServiceModel;
 
 class ServiceController extends BaseController{
@@ -11,9 +12,11 @@ class ServiceController extends BaseController{
         if($key !== $session_key){
             return redirect()->back();
         }else{
+        $activationModel = model(ActivationModel::class);
         $service_key = bin2hex(random_bytes(8));
         $data = [
             'first_name' => session('first_name'),
+            'activations' => $activationModel->getActivations(),
             'admin_id' => session('admin_id'),
             'last_name' => session('last_name'),
             'avatar' => session('avatar'),
@@ -74,6 +77,7 @@ class ServiceController extends BaseController{
                 }
             }else{
 
+                $active_id = $this->request->getPost('activation_id');
                 $service_key = $this->request->getPost('service_key');
                 $owner = $this->request->getPost('owner');
                 $service_title = $this->request->getPost('service_title');
@@ -84,6 +88,7 @@ class ServiceController extends BaseController{
                 $ranName = $service_img->getRandomName();
 
                 $dataToInsert =[
+                    'activation_id' => $active_id,
                     'service_title' => $service_title,
                     'owner' => $owner,
                     'service_key' => $service_key,
@@ -129,6 +134,9 @@ class ServiceController extends BaseController{
         'i'=> $i,
         'title' => 'Viewing all Service'
     ];
+    //  echo '<pre>';
+        // print_r( $servicesModel->getServices());
+        // echo '</pre>';
     return view('backend/templates/admin_header', $data)
         . view('backend/viewAllServices', $data)
         . view('backend/templates/admin_footer');
@@ -168,6 +176,7 @@ class ServiceController extends BaseController{
         $token = $this->request->getGet('token');
         $adminToken = session('adminToken');
         $session_key = session('session_key');
+       
 
         if($key !== $session_key){
             return redirect()->back();
@@ -175,8 +184,10 @@ class ServiceController extends BaseController{
              return redirect()->back();
         }
         else{
-
+        $activationModel = model(ActivationModel::class);
         $servicesModel = model(ServiceModel::class);
+
+
         $service = $servicesModel->getServices($service_key);
             $service_id = $service['service_id'];
             $service_key = $service['service_key'];
@@ -185,8 +196,11 @@ class ServiceController extends BaseController{
             $mainContent = $service['service_main_content'];
             $service_img = $service['service_img'];
 
+            $currentActivationId = $service['activation_id'];
         $data = [
             'service_id' => $service_id,
+            'activations' => $activationModel->getActivations(),
+            'currentActivationId' =>$currentActivationId,
             'service_key' => $service['service_key'],
             'service_title' => $serviceTitle,
             'service_short_content' => $shortContent,
@@ -247,6 +261,7 @@ class ServiceController extends BaseController{
                     return redirect()->back()->withInput()->with('error', $error);
                 }
             }else{
+                $active_id = $this->request->getPost('activation_id');
                 $service_title = $this->request->getPost('service_title');
                 $service_short_content = $this->request->getPost('service_short_content');
                 $service_main_content = $this->request->getPost('service_main_content');
@@ -255,6 +270,7 @@ class ServiceController extends BaseController{
                 $ranName = $service_img->getRandomName();
 
                 $dataToInsert =[
+                    'activation_id' => $active_id,
                     'service_title' => $service_title,
                     'service_short_content' => $service_short_content,
                     'service_main_content' => $service_main_content,

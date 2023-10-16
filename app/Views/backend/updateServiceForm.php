@@ -22,7 +22,7 @@
                 <div class="row">
       <div class="col-sm-3">
       <div class="">
-        <h2 class="modal-title" id="exampleModalLabel">Service Update form</h2>
+        <h1 class="modal-title" id="exampleModalLabel">Service Update form</h1>
       </div>
       </div>
       <div class="col-sm-9">
@@ -40,6 +40,29 @@
 <?= form_open_multipart(base_url('creative/admin/updateService/index/key/'.$session_key), ['class'=> 'serviceUpdateForm'])?>
 
       <div class="modal-body">
+
+            <?php if(session('role') === 'super_admin'):?>
+                            <div class="row">
+                        <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large; color:<?php echo $currentActivationId === '1' ? 'blue;' : 'red;'; ?>"><?php echo $currentActivationId === '1' ? 'SERVICE ENABLED' : 'SERVICE DISABLED'; ?></span> <span style="color: red;">*</span></label>
+                        <div class="col-sm-2">
+
+                        <select style="border:<?php echo $currentActivationId === '1' ? 'solid 2px blue;': 'solid 2px red;'?>" class="form-control" name="activation_id" id="activation_id">
+                            <option value="0" style="font-size:large;">Select Here</option>
+                            <?php if (!empty($activations) && is_array($activations)): ?>
+                                <?php foreach ($activations as $active): ?>
+
+                                    <option style="font-size:large; color:<?php echo $currentActivationId === '1' ? 'blue;': 'red;'?>" value="<?php echo $active['activation_id']; ?>"
+                                    <?php echo ($active['activation_id'] == $currentActivationId) ? 'selected' : ''; ?>>
+                                        <span><?php echo $active['activation_name']; ?></span>
+
+                                    </option>
+                                <?php endforeach ?>
+                            <?php endif ?>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+            <?php endif ?>
 
       <div class="form-group">
         <div class="row">

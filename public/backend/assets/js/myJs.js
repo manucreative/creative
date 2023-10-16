@@ -264,36 +264,36 @@
     
 
     
-    // TopUps delete function Start
+    // admins delete function Start
     $(function(){
     //If check_all checked then check all table rows
-    $("#check_all_topUps").on("click", function () {
+    $("#check_all_admins").on("click", function () {
         if ($("input:checkbox").prop("checked")) {
-            $("input:checkbox[name='topUps']").prop("checked", true);
+            $("input:checkbox[name='admins']").prop("checked", true);
         } else {
-            $("input:checkbox[name='topUps']").prop("checked", false);
+            $("input:checkbox[name='admins']").prop("checked", false);
         }
     });
     
     // Check each table row checkbox for products
-    $("input:checkbox[name='topUps']").on("change", function () {
-        var total_check_boxes = $("input:checkbox[name='topUps']").length;
-        var total_checked_boxes = $("input:checkbox[name='topUps']:checked").length;
+    $("input:checkbox[name='admins']").on("change", function () {
+        var total_check_boxes = $("input:checkbox[name='admins']").length;
+        var total_checked_boxes = $("input:checkbox[name='admins']:checked").length;
     
         // If all checked manually then check check_all checkbox
         if (total_check_boxes === total_checked_boxes) {
-            $("#check_all_topUps").prop("checked", true);
+            $("#check_all_admins").prop("checked", true);
         }
         else {
-            $("#check_all_topUps").prop("checked", false);
+            $("#check_all_admins").prop("checked", false);
         }
     });
     
-    $("#delete_selected_topUps").on("click", function (e) {
+    $("#delete_selected_admins").on("click", function (e) {
         e.preventDefault();
         var ids = '';
         var comma = '';
-        $("input:checkbox[name='topUps']:checked").each(function() {
+        $("input:checkbox[name='admins']:checked").each(function() {
             ids = ids + comma + this.value;
             comma = ',';
         });
@@ -301,12 +301,12 @@
         //console.log(ids);
         
         if(ids.length > 0) {
-            if (confirm("Are you sure you want to delete the selected topUps?")) {
+            if (confirm("Are you sure you want to delete the selected admins?")) {
             $('#overlay').show();
             $('#loaderBanner').show();
             $.ajax({
                 type: "POST",
-                url: "deleteTopUps",
+                url: adminDeleteUrl,
                 data: {'ids': ids},
                 dataType: "html",
                 cache: false,
@@ -315,7 +315,7 @@
                      window.setTimeout(function(){
                         $('#loaderBanner').hide();
                        $('#overlay').hide();
-                       window.location.href = "viewTopUps";
+                       window.location.href = "viewAllAdmins";
                      }, 4000);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -326,7 +326,7 @@
             });
         }
         } else {
-            $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one topUp row for deletion</span>');
+            $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one admin row for deletion</span>');
         }
     });
     });
@@ -334,71 +334,71 @@
     
     
     // admin delete function Start
-    $(function(){
-        //If check_all checked then check all table rows
-        $("#check_all_admins").on("click", function () {
-            if ($("input:checkbox").prop("checked")) {
-                $("input:checkbox[name='admins']").prop("checked", true);
-            } else {
-                $("input:checkbox[name='admins']").prop("checked", false);
-            }
-        });
+    // $(function(){
+    //     //If check_all checked then check all table rows
+    //     $("#check_all_admins").on("click", function () {
+    //         if ($("input:checkbox").prop("checked")) {
+    //             $("input:checkbox[name='admins']").prop("checked", true);
+    //         } else {
+    //             $("input:checkbox[name='admins']").prop("checked", false);
+    //         }
+    //     });
         
-        // Check each table row checkbox for products
-        $("input:checkbox[name='admins']").on("change", function () {
-            var total_check_boxes = $("input:checkbox[name='admins']").length;
-            var total_checked_boxes = $("input:checkbox[name='admins']:checked").length;
+    //     // Check each table row checkbox for products
+    //     $("input:checkbox[name='admins']").on("change", function () {
+    //         var total_check_boxes = $("input:checkbox[name='admins']").length;
+    //         var total_checked_boxes = $("input:checkbox[name='admins']:checked").length;
         
-            // If all checked manually then check check_all checkbox
-            if (total_check_boxes === total_checked_boxes) {
-                $("#check_all_admins").prop("checked", true);
-            }
-            else {
-                $("#check_all_admins").prop("checked", false);
-            }
-        });
+    //         // If all checked manually then check check_all checkbox
+    //         if (total_check_boxes === total_checked_boxes) {
+    //             $("#check_all_admins").prop("checked", true);
+    //         }
+    //         else {
+    //             $("#check_all_admins").prop("checked", false);
+    //         }
+    //     });
         
-        $("#delete_selected_admins").on("click", function (e) {
-            e.preventDefault();
-            var ids = '';
-            var comma = '';
-            $("input:checkbox[name='admins']:checked").each(function() {
-                ids = ids + comma + this.value;
-                comma = ',';
-            });
+    //     $("#delete_selected_admins").on("click", function (e) {
+    //         e.preventDefault();
+    //         var ids = '';
+    //         var comma = '';
+    //         $("input:checkbox[name='admins']:checked").each(function() {
+    //             ids = ids + comma + this.value;
+    //             comma = ',';
+    //         });
             
-            //console.log(ids);
+    //         //console.log(ids);
             
-            if(ids.length > 0) {
-                if (confirm("Are you sure you want to delete the selected admin(s)?")) {
-                $('#overlay').show();
-                $('#loaderBanner').show();
-                $.ajax({
-                    type: "POST",
-                    url: "deleteAdmins",
-                    data: {'ids': ids},
-                    dataType: "html",
-                    cache: false,
-                    success: function(success_message) {
-                        $('#successMessage').html(success_message);
-                         window.setTimeout(function(){
-                            $('#loaderBanner').hide();
-                           $('#overlay').hide();
-                           window.location.href = "viewAdmins";
-                         }, 4000);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        $('#loaderBanner').hide();
-                        $('#overlay').hide(); // Hide the overlay
-                        $("#successMessage").html("<span style='background-color: red; color:black; padding:10px'>" + textStatus + " " + errorThrown + "</span>");
-                    }
-                });
-            }
-            } else {
-                $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one admin row for deletion</span>');
-            }
-        });
-        });
+    //         if(ids.length > 0) {
+    //             if (confirm("Are you sure you want to delete the selected admin(s)?")) {
+    //             $('#overlay').show();
+    //             $('#loaderBanner').show();
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "deleteAdmins",
+    //                 data: {'ids': ids},
+    //                 dataType: "html",
+    //                 cache: false,
+    //                 success: function(success_message) {
+    //                     $('#successMessage').html(success_message);
+    //                      window.setTimeout(function(){
+    //                         $('#loaderBanner').hide();
+    //                        $('#overlay').hide();
+    //                        window.location.href = "viewAdmins";
+    //                      }, 4000);
+    //                 },
+    //                 error: function(jqXHR, textStatus, errorThrown) {
+    //                     $('#loaderBanner').hide();
+    //                     $('#overlay').hide(); // Hide the overlay
+    //                     $("#successMessage").html("<span style='background-color: red; color:black; padding:10px'>" + textStatus + " " + errorThrown + "</span>");
+    //                 }
+    //             });
+    //         }
+    //         } else {
+    //             $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one admin row for deletion</span>');
+    //         }
+    //     });
+    //     });
         // admin delete function end
     
     

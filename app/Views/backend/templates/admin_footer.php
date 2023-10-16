@@ -4,7 +4,7 @@
 <script>
       // All buttons Configurations
     $(document).ready(function () {
-        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#myFaqs,#addFaqs,#btnBanner,#viewMyServices').click(function (e) {
+        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#allUsers,#myFaqs,#addFaqs,#btnBanner,#viewMyServices').click(function (e) {
             e.preventDefault();
             var action = $(this).data('action');
             $('#overlay').show();
@@ -33,7 +33,7 @@
                     window.location.href = "<?php echo base_url('creative/admin/viewSliders/index/key/'.$session_key);?>";
                     break;
                 case 'myProfile':
-                    window.location.href = "<?php echo base_url('creative/admin/profileUpdateForm/index/key/'.$session_key.'/'.$admin_id);?>";
+                    window.location.href = "<?php echo base_url('creative/admin/profileUpdateForm/index/key/'.$session_key.'/'.$token);?>";
                     break;
                 case 'myFaqs':
                     window.location.href = "<?php echo base_url('creative/admin/viewFaqs/index/key/'.$session_key);?>";
@@ -44,8 +44,8 @@
                 case 'viewMyServices':
                     window.location.href = "<?php echo base_url('creative/admin/viewOwnerService/index/key/'.$session_key);?>";
                     break;
-                case 'addBanner':
-                    window.location.href = "addBanners";
+                case 'allUsers':
+                    window.location.href = "<?php echo base_url('creative/admin/viewAllUsers/index/key/'.$session_key);?>";
                     break;
                 case 'editBanner':
                     window.location.href = "../view_banners";
@@ -89,7 +89,10 @@
         //slider scripts
             var faqDeleteUrl = "<?php echo base_url('creative/admin/deleteFaqs/index/key/'.$session_key); ?>";
             var gaqViewLocation = "<?php echo base_url('creative/admin/viewFaqs/index/key/'.$session_key);?>"
+            var adminDeleteUrl = "<?php echo base_url('creative/admin/deleteAdmins/index/key/'.$session_key);?>"
     </script>
+
+
     <!-- Custom JS -->
     <script src="<?php echo base_url('backend/assets/js/myJs.js')?>"></script>
   <script src="<?php echo base_url('backend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
