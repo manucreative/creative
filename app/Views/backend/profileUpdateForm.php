@@ -62,7 +62,7 @@
             </li>
         </ul>
         <!-- Step Wise Form Content -->
-        <?= form_open_multipart(base_url('creative/admin/updateProfile/index/key/'.$session_key),array('class' => 'profileUpdateForm','id'=>'userAccountSetupForm')); ?>
+         <form enctype="multipart/form-data" method="post" action="<?php echo base_url('creative/admin/updateProfile/index/key/'.$session_key);?>"class = "profileUpdateForm" id ="userAccountSetupForm">
             <!-- Step 1 Content -->
             <section id="step-1" class="form-step">
                 <h2 class="font-normal">Account Basic Details</h2>
@@ -128,9 +128,10 @@
                                             <div class = "form-group  validate_input"data-validate = "Image is required">
                                             <label for="avatar" class="col-form-label">Select Administrator Image  <span style="color: red;">*</span></label>
                                             <input type="file" id="avatar" name="avatar" class="form-control myInput" accept="image/*"  style="cursor:pointer">
-                                                <div class="existing_icon">
+                                            <input type="hidden" name="existing_avatar" value="<?php echo $admins['avatar']; ?>">
+                                            <div class="existing_icon">
                                                     <h2>Existing Image</h2>
-                                                    <img src="<?php  echo base_url('backend/media/admin_images/'.$admins['avatar'] ?? '') ?>" class="img-responsive" height="150px" width="150px" alt="Existing Icon">
+                                                    <img src="<?php  echo base_url('backend/media/admin_images/'.$admins['avatar']) ?>" class="img-responsive" height="150px" width="150px" alt="Existing Icon">
                                                 </div>
                                             </div>
                                             <hr>
@@ -492,7 +493,7 @@
                     <button class="button submit-btn" type="submit">Save</button>
                 </div>
             </section>
-            <?php echo form_close(); ?>
+                                </form>
     </div>
 </div>
 

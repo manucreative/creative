@@ -6,7 +6,7 @@ use App\Models\AdminModel;
 use App\Models\RolesModel;
 
 class AdminsController extends BaseController{
-    protected $helpers = ['form'];
+    // protected $helpers = ['form'];
 
     public function viewAllUsers(){
         $adminModel = model(AdminModel::class);
@@ -364,14 +364,26 @@ class AdminsController extends BaseController{
             $last_name = $this->request->getPost('last_name');
             $email_address = $this->request->getPost('email_address');
             $telephone = $this->request->getPost('telephone');
-            $avatar = $this->request->getFile('avatar');
-                     $newName = $avatar->getRandomName();
+
             $user_name = $this->request->getPostGet('user_name');
             $personal_title = $this->request->getPost('personal_title');
             $sub_title = $this->request->getPost('sub_title');
             $professional_profile = $this->request->getPost('professional_profile');
 
+             $newName = '';
+            $avatar = $this->request->getFile('avatar');
+            $existingFileName = $this->request->getPost('existing_avatar');
 
+           if (empty($existingAvatarFilename)) {
+                        // A new image upload is expected
+                        if ($avatar->isValid()) {
+                            $newName = $avatar->getRandomName();
+                        } else {
+                        }
+                    } else {
+                        // Use the existing avatar filename
+                        $newName = $existingAvatarFilename;
+                    }
             $adminDirectData = [
                 'first_name' => $first_name,
                 'middle_name'=> $middle_name,

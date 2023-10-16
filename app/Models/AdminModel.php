@@ -145,14 +145,14 @@ class AdminModel extends Model
    /**
     * Basic Details
     *
-    * @param [type] $admin_id
+    * @param [type] $adminToken
     * @return array|null
     */
-    public function getBasicDetails($admin_id){
+    public function getBasicDetails($adminToken){
         // Select the 'basic_details' column from the 'admins' table
         $basic_details = $this->db->table($this->table)
                         ->select('basic_details')
-                        ->where(['admin_id' => $admin_id])
+                        ->where(['adminToken' => $adminToken])
                         ->get()->getRowArray();
         if($basic_details){
         $basicData = json_decode($basic_details['basic_details'], true);
@@ -161,11 +161,11 @@ class AdminModel extends Model
             return null;
         }
     }
-    public function getContactDetails($admin_id){
+    public function getContactDetails($adminToken){
         // Select the 'basic_details' column from the 'admins' table
     $contact_details = $this->db->table($this->table)
                         ->select('contact_details')
-                        ->where(['admin_id' => $admin_id])
+                        ->where(['adminToken' => $adminToken])
                         ->get()->getRowArray();
         if($contact_details){
             $contactsData = json_decode($contact_details['contact_details'], true);
@@ -176,11 +176,11 @@ class AdminModel extends Model
 
     }
 
-    public function getEducation($admin_id){
+    public function getEducation($adminToken){
         // Select the 'education' column from the 'admins' table
     $education = $this->db->table($this->table)
                         ->select('education')
-                        ->where(['admin_id' => $admin_id])
+                        ->where(['adminToken' => $adminToken])
                         ->get()->getRowArray();
             if($education){
                 $educationData = json_decode($education['education'], true);
@@ -190,11 +190,11 @@ class AdminModel extends Model
                 }
     }
 
-    public function getExpertiseAreas($admin_id){
+    public function getExpertiseAreas($adminToken){
         // Select the 'areas of expertise' column from the 'admins' table
     $expertise_areas = $this->db->table($this->table)
                         ->select('expertise_areas')
-                        ->where(['admin_id' => $admin_id])
+                        ->where(['adminToken' => $adminToken])
                         ->get()->getRowArray();
             if($expertise_areas){
                 $expertiseData = json_decode($expertise_areas['expertise_areas'], true);
@@ -205,11 +205,11 @@ class AdminModel extends Model
 
     }
 
-    public function getSkills($admin_id){
+    public function getSkills($adminToken){
         // Select the 'Skills' column from the 'admins' table
     $skills = $this->db->table($this->table)
                         ->select('skills')
-                        ->where(['admin_id' => $admin_id])
+                        ->where(['adminToken' => $adminToken])
                         ->get()->getRowArray();
             if($skills){
                 $skillsData = json_decode($skills['skills'], true);
@@ -220,11 +220,11 @@ class AdminModel extends Model
 
     }
 
-    public function getExperience($admin_id){
+    public function getExperience($adminToken){
         // Select the 'experience' column from the 'admins' table
     $experience = $this->db->table($this->table)
                         ->select('experience')
-                        ->where(['admin_id' => $admin_id])
+                        ->where(['adminToken' => $adminToken])
                         ->get()->getRowArray();
             if($experience){
                 $experienceData = json_decode($experience['experience'], true);
@@ -235,11 +235,11 @@ class AdminModel extends Model
 
     }
 
-    public function getReference($admin_id){
+    public function getReference($adminToken){
         // Select the 'areas of expertise' column from the 'admins' table
     $reference = $this->db->table($this->table)
                     ->select('reference')
-                    ->where(['admin_id' => $admin_id])
+                    ->where(['adminToken' => $adminToken])
                     ->get()->getRowArray();
         if($reference){
             $referenceData = json_decode($reference['reference'], true);
