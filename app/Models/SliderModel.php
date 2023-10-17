@@ -68,6 +68,7 @@ class SliderModel extends Model
                 }
     }
 
+
     public function deleteSliders($ids){
         $existingSliders = $this->whereIn('slider_id', $ids)->findAll();
         if (empty($existingSliders)) {

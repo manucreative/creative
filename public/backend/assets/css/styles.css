@@ -661,3 +661,9 @@ ul.form-stepper li a .form-stepper-circle {
       padding-right: 15px;
     }
   } 
+  .myControl{
+    visibility:visible;
+  }
+  .myControl2{
+    visibility:hidden;
+  }

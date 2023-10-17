@@ -83,6 +83,7 @@ class AdminModel extends Model
             ->join('activations', 'activations.activation_id = admin.activation_id')
             ->findAll();
         }else{
+            
             return $this->where(['admin_id' => $admin_id])->first();
         }
     }
@@ -129,6 +130,8 @@ class AdminModel extends Model
 
     public function updateAdminProfile($admin_id, $adminDirectData, $basic_details, $contact_details, $education, 
                                         $expertise_areas, $skills, $experience, $reference) {
+        
+       
         $data = [
             'basic_details' => json_encode($basic_details),
             'contact_details' => json_encode($contact_details),
@@ -139,7 +142,13 @@ class AdminModel extends Model
             'reference' => json_encode($reference)
         ];
         $packagedData = array_merge($adminDirectData, $data);
-        return $this->update($admin_id, $packagedData);
+        $affectedRows = $this->update($admin_id, $packagedData);
+
+        if($affectedRows > 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
    /**

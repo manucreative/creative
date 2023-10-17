@@ -268,6 +268,7 @@ class AdminsController extends BaseController{
             $session_key = session('session_key');
             $adminToken = session('adminToken');
             $admins = $adminModel->allAdmins($token);
+            
 
         if($key !== $session_key || $token !== $adminToken ){
             return redirect()->back();
@@ -328,10 +329,6 @@ class AdminsController extends BaseController{
             if($this->request->getMethod() === 'post'){
 
                 $validations = [
-                    'activation_id' => [
-                        'babel' => 'active',
-                        'rules'=> 'required'
-                    ],
                         'first_name' => [
                             'babel' => 'first_name',
                             'rules'=> 'required'
@@ -339,14 +336,6 @@ class AdminsController extends BaseController{
                         'middle_name' => [
                             'babel' => 'middle_name',
                             'rules'=> 'required'
-                        ],
-                        'avatar' => [
-                            'babel' => 'avatar',
-                            'rules' => [
-                                'uploaded[avatar]',
-                                'is_image[avatar]',
-                                'mime_in[avatar,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
-                            ]
                         ],
                 ];
                 if(!$this->validate($validations)){
@@ -370,20 +359,30 @@ class AdminsController extends BaseController{
             $sub_title = $this->request->getPost('sub_title');
             $professional_profile = $this->request->getPost('professional_profile');
 
-             $newName = '';
             $avatar = $this->request->getFile('avatar');
-            $existingFileName = $this->request->getPost('existing_avatar');
+            $existingAvatarFilename = $this->request->getPost('existing_avatar');
 
-           if (empty($existingAvatarFilename)) {
-                        // A new image upload is expected
-                        if ($avatar->isValid()) {
-                            $newName = $avatar->getRandomName();
-                        } else {
+            if ($avatar->isValid()&& $avatar->isFile() && in_array($avatar->getMimeType(), ['image/jpg', 'image/jpeg', 'image/gif', 'image/png', 'image/webp'])) {
+                $newName = $avatar->getRandomName();
+                $avatar->move(ROOTPATH . 'public/backend/media/admin_images', $newName);
+
+
+                $existingAdmin = $adminModel->getAdmins($admin_id);
+                if (empty($existingAdmin)) {
+                    return false;
+                }
+                        $existingImagePath = ROOTPATH . 'public/backend/media/admin_images/' . $existingAdmin['avatar'];
+                        if (file_exists($existingImagePath)) {
+                            unlink($existingImagePath);
                         }
-                    } else {
-                        // Use the existing avatar filename
-                        $newName = $existingAvatarFilename;
-                    }
+            } elseif (!empty($existingAvatarFilename)) {
+                // Use the existing filename if available
+                $newName = $existingAvatarFilename;
+            } else {
+
+                $newName = 'default_avatar.jpg';
+            }
+
             $adminDirectData = [
                 'first_name' => $first_name,
                 'middle_name'=> $middle_name,
@@ -455,14 +454,10 @@ class AdminsController extends BaseController{
 
             $updateData = $adminModel->updateAdminProfile($admin_id,$adminDirectData, $basic_details, $contact_details,
                                                             $education, $expertise_areas, $skills, $experience, $reference);
-            if($updateData){
-            
-                $avatar->move(ROOTPATH . 'public/backend/media/admin_images', $newName);
-                session()->setFlashdata('success', 'You have successfully updated you Profile Congratulations');
-                return redirect()->to(base_url('creative/admin/profileUpdateForm/index/key/'.$key.'/'.$admin_id));
+            if($updateData === true){
+                return redirect()->back()->withInput()->with('success', 'You have successfully updated you Profile Congratulations');
             }else{
-               session()->setFlashdata('error', 'Admin Insert Failed');
-                return redirect()->to(base_url('creative/admin/profileUpdateForm/index/key/'.$key.'/'.$admin_id))->withInput()->with('error', 'Error: Kindly check your data and try again');
+               return redirect()->back()->withInput()->with('error', 'Admin Insert Failed');
             
                 throw new \Exception();
             }

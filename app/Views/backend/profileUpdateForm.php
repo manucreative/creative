@@ -1,7 +1,7 @@
 <br>
  <div id="page-wrapper" >
  <div id="page-inner">
-              
+
 <?php foreach ($errors as $error): ?>
   <div class="file error">
   <h6 style="background-color: red; color:black; padding:20px"><?= esc($error) ?></h6>
@@ -20,7 +20,13 @@
     <?php endif; ?>
 
     <div>
-    <h1 class="text-center" style="color: goldenrod; font-weight: 900">PERSONAL PROFILE UPDATE FORM</h1>
+    <h1 class="text-center" style="color: <?php echo $currentActivationId == '1' ? 'green' : 'red'?>; font-weight: 900"><?php echo $admins['first_name'].' '.$admins['last_name'];?></h1>
+    <h1 class="text-center" style="color: orange; font-weight: 900">PROFILE UPDATE FORM</h1>
+    <h4>
+    <span style="background-color: black;color:#fff;">Status</span>
+    <span style="background-color: <?php echo $currentActivationId == '1' ? 'green' : 'red' ?>; color:white"><?php echo $currentActivationId == '1' ? 'Active' : 'inactive' ?></span>
+    </h4>
+                   
     <div id="multi-step-form-container">
         <!-- Form Steps / Progress Bar -->
         <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
@@ -65,31 +71,30 @@
          <form enctype="multipart/form-data" method="post" action="<?php echo base_url('creative/admin/updateProfile/index/key/'.$session_key);?>"class = "profileUpdateForm" id ="userAccountSetupForm">
             <!-- Step 1 Content -->
             <section id="step-1" class="form-step">
-                <h2 class="font-normal">Account Basic Details</h2>
+                <h2 style="color:<?php echo $currentActivationId == '1' ? 'green' : 'red'?>" class="font-normal">Account Basic Details</h2>
                 <!-- Step 1 input fields -->
                 <div class="mt-3">
-                <?php if(session('role') === 'super_admin'):?>
-                            <div class="row">
-                        <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large; color:<?php echo $currentActivationId === '1' ? 'blue;' : 'red;'; ?>"><?php echo $currentActivationId === '1' ? 'ADMIN ENABLED' : 'ADMIN DISABLED'; ?></span> <span style="color: red;">*</span></label>
+               
+                            <div class="row <?php //echo (session('role') === 'super_admin') ? 'myControl' : 'myControl2'; ?>" >
+                        <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large; color:<?php echo $currentActivationId === '1' ? 'blue;' : 'red;'; ?>"><?php echo $currentActivationId === '1' ? 'You are enabled' : 'You are disabled'; ?></span> <span style="color: red;">*</span></label>
                         <div class="col-sm-2">
-
-                        <select style="border:<?php echo $currentActivationId === '1' ? 'solid 2px blue;': 'solid 2px red;'?>" class="form-control" name="activation_id" id="activation_id">
-                            <option value="0" style="font-size:large;">Select Here</option>
+                        <select style="border:<?php echo $currentActivationId === '1' ? 'solid 2px blue;': 'solid 2px red;'?>" class="form-control" name="activation_id" id="activation_id" <?php if (session('role') !== 'super_admin') echo 'disabled'; ?>>
+                            
+                        <option value="<?php echo $currentActivationId?>" style="font-size:large;">Might be disabled</option>
                             <?php if (!empty($activations) && is_array($activations)): ?>
                                 <?php foreach ($activations as $active): ?>
-
                                     <option style="font-size:large; color:<?php echo $currentActivationId === '1' ? 'blue;': 'red;'?>" value="<?php echo $active['activation_id']; ?>"
-                                    <?php echo ($active['activation_id'] == $currentActivationId) ? 'selected' : ''; ?>>
+                                    <?php echo ($active['activation_id'] == $currentActivationId) ? 'selected' : ''; ?>
+                                    >
+                                   
                                         <span><?php echo $active['activation_name']; ?></span>
-
                                     </option>
                                 <?php endforeach ?>
-                            <?php endif ?>
+                                 <?php endif ?>
                         </select>
                     </div>
                 </div>
                 <hr>
-            <?php endif ?>
                                     <div class="row">
 
                                         <div class="col-sm-5">
@@ -125,10 +130,10 @@
                                             </div>
                                             <hr>
 
-                                            <div class = "form-group  validate_input"data-validate = "Image is required">
+                                            <div class = "form-group  validate_input">
                                             <label for="avatar" class="col-form-label">Select Administrator Image  <span style="color: red;">*</span></label>
-                                            <input type="file" id="avatar" name="avatar" class="form-control myInput" accept="image/*"  style="cursor:pointer">
-                                            <input type="hidden" name="existing_avatar" value="<?php echo $admins['avatar']; ?>">
+                                            <input type="file" id="avatar" name="avatar" class="form-control" accept="image/*"  style="cursor:pointer">
+                                            <input type="hidden" id="existing_avatar" name="existing_avatar" value="<?php echo $admins['avatar']; ?>">
                                             <div class="existing_icon">
                                                     <h2>Existing Image</h2>
                                                     <img src="<?php  echo base_url('backend/media/admin_images/'.$admins['avatar']) ?>" class="img-responsive" height="150px" width="150px" alt="Existing Icon">
@@ -159,17 +164,17 @@
                                             <label for="gender" class="col-form-label">Select you gender <span style="color: red;">*</span></label>
                                                 <br>
                                             <label>
-                                                    <input type="radio" name="gender" value="male">
+                                                    <input type="radio" name="gender" value="male" <?php echo $basics['gender'] == 'male' ? 'checked': '';?>>
                                                     Male
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="gender" value="female">
+                                                    <input type="radio" name="gender" value="female"<?php echo $basics['gender'] == 'female' ? 'checked': '';?>>
                                                     Female
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="gender" value="other">
+                                                    <input type="radio" name="gender" value="other"<?php echo $basics['gender'] == 'other' ? 'checked': '';?>>
                                                     Other
                                                 </label>
                                             </div>
@@ -185,22 +190,22 @@
                                             <label for="marital_status" class="col-form-label">Select your Marital status <span style="color: red;">*</span></label>
                                             <br>
                                             <label>
-                                                    <input type="radio" name="marital_status" value="single">
+                                                    <input type="radio" name="marital_status" value="single"<?php echo $basics['marital_status'] == 'single' ? 'checked': '';?>>
                                                     Single
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="engaged">
+                                                    <input type="radio" name="marital_status" value="engaged"<?php echo $basics['marital_status'] == 'engaged' ? 'checked': '';?>>
                                                     Encaged
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="Married">
+                                                    <input type="radio" name="marital_status" value="Married"<?php echo $basics['marital_status'] == 'Married' ? 'checked': '';?>>
                                                     Married
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="Unknown">
+                                                    <input type="radio" name="marital_status" value="Unknown"<?php echo $basics['marital_status'] == 'Unknown' ? 'checked': '';?>>
                                                     Unknown
                                                 </label>
                                             </div>
@@ -490,7 +495,7 @@
                 </div>
                 <div class="modal-footer mt-3">
                     <button class="button btn-navigate-form-step" type="button" step_number="3">Prev</button>
-                    <button class="button submit-btn" type="submit">Save</button>
+                    <button class="button submit-btn" id="profileUpdateForm" type="submit">Save</button>
                 </div>
             </section>
                                 </form>
