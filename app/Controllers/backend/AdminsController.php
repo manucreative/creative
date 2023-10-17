@@ -329,6 +329,10 @@ class AdminsController extends BaseController{
             if($this->request->getMethod() === 'post'){
 
                 $validations = [
+                    // 'activation_id' => [
+                    //     'babel' => 'activation_id',
+                    //     'rules'=> 'required'
+                    // ],
                         'first_name' => [
                             'babel' => 'first_name',
                             'rules'=> 'required'
@@ -348,7 +352,6 @@ class AdminsController extends BaseController{
 
             $admin_id = $this->request->getPost('admin_id');
             $first_name = $this->request->getPost('first_name');
-            $activation = $this->request->getPost('activation_id');
             $middle_name = $this->request->getPost('middle_name');
             $last_name = $this->request->getPost('last_name');
             $email_address = $this->request->getPost('email_address');
@@ -361,6 +364,13 @@ class AdminsController extends BaseController{
 
             $avatar = $this->request->getFile('avatar');
             $existingAvatarFilename = $this->request->getPost('existing_avatar');
+            
+            $defaultActivation = $this->request->getPost('defaultActivation');
+            $activation = $this->request->getPost('activation_id');
+
+            if(empty($activation)){
+                $activation = $defaultActivation;
+            }
 
             if ($avatar->isValid()&& $avatar->isFile() && in_array($avatar->getMimeType(), ['image/jpg', 'image/jpeg', 'image/gif', 'image/png', 'image/webp'])) {
                 $newName = $avatar->getRandomName();
@@ -380,7 +390,18 @@ class AdminsController extends BaseController{
                 $newName = $existingAvatarFilename;
             } else {
 
-                $newName = 'default_avatar.jpg';
+                
+                // Use a default image
+                $defaultImagePath = ROOTPATH . 'public/backend/assets/img/user.png';
+                $newFile = ROOTPATH . 'public/backend/media/admin_images/avatar.png';
+                
+                // Check if the default image exists
+                if (file_exists($defaultImagePath)) {
+                    copy($defaultImagePath, $newFile);
+                    
+                }
+                $newName = 'avatar.png';
+
             }
 
             $adminDirectData = [

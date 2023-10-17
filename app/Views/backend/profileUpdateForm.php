@@ -78,6 +78,7 @@
                             <div class="row <?php //echo (session('role') === 'super_admin') ? 'myControl' : 'myControl2'; ?>" >
                         <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large; color:<?php echo $currentActivationId === '1' ? 'blue;' : 'red;'; ?>"><?php echo $currentActivationId === '1' ? 'You are enabled' : 'You are disabled'; ?></span> <span style="color: red;">*</span></label>
                         <div class="col-sm-2">
+                            <input type="hidden" name="defaultActivation" id="defaultActivation" value="<?php echo $currentActivationId?>">
                         <select style="border:<?php echo $currentActivationId === '1' ? 'solid 2px blue;': 'solid 2px red;'?>" class="form-control" name="activation_id" id="activation_id" <?php if (session('role') !== 'super_admin') echo 'disabled'; ?>>
                             
                         <option value="<?php echo $currentActivationId?>" style="font-size:large;">Might be disabled</option>
