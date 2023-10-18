@@ -58,19 +58,23 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
               <li>
             <a href="#" id="manageProfile"><i class="fa fa-sitemap fa-3x"></i> Manage Profile<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                        <?php if($role == 'super_admin'): ?>
-                            <li class="nav-item" id="sliders-link">
-                                    <a class="nav-link"  href="#" id="allUsers" data-action="allUsers">
-                                        <i class="fa fa-user fa-2x"></i>My All Admins </a>
-                                </li>
-                         <?php endif?>
-                                <?php if($role === 'super_admin' || $role === 'admin' || $role === 'user'):?>
-                                <li class="nav-item" id="sliders-link">
-                                <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
-                                    <i class="fa fa-user fa-2x"></i>Update Profile </a>
-                            </li>
- 
-                            <?php endif ?>
+                    <?php if($role == 'super_admin'): ?>
+                        <li class="nav-item" id="sliders-link">
+                             <a class="nav-link"  href="#" id="allUsers" data-action="allUsers">
+                            <i class="fa fa-user fa-2x"></i>All Admins </a>
+                        </li>
+
+                     <!-- <li class="nav-item" id="sliders-link">
+                        <a  href=""id="addAdmin" data-action="addAdmin">
+                        <i class="fa fa-edit fa-2x"></i> Add Administrator</a>
+                    </li> -->
+                <?php endif?>
+                    <?php if($role === 'super_admin' || $role === 'admin' || $role === 'user'):?>
+                         <li class="nav-item" id="sliders-link">
+                            <a class="nav-link"  href="#" id="myProfile" data-action="myProfile">
+                         <i class="fa fa-user fa-2x"></i>My Profile </a>
+                 </li>
+                 <?php endif ?>
             </ul>
             </li>
 
@@ -150,9 +154,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <li>
                         <a  href="#"><i class="fa fa-tag fa-3x"></i> Manage Quotes</a>
                     </li>
-                    <li>
-                        <a  href="<?php echo base_url('creative/admin/addAdminForm/index/key/'.$session_key);?>"><i class="fa fa-edit fa-3x"></i> Add Administrator</a>
-                    </li>
+                    
                         </ul>
                       </li>
                       <?php endif?>

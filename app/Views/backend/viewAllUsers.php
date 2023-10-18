@@ -19,7 +19,7 @@
                   <div class="col-sm-8">
                   <div class="modal-footer">
                     <button class="btn btn-danger admin_delete_btn" id="delete_selected_admins"><i class="fa fa-trash"></i>&nbsp; Delete Admins</button>
-                    <a href="#" id="btnAddSlider" data-action="btnAddSlider" class='btn btn-primary'><i class="fa fa-plus"></i>&nbsp; Add admin</a>
+                    <a href="#" id="addAdmin" data-action="addAdmin" class='btn btn-primary'><i class="fa fa-plus"></i>&nbsp; Add admin</a>
                   </div>
                 </div>
               </div>

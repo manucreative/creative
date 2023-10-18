@@ -6,7 +6,7 @@ use App\Models\AdminModel;
 use App\Models\RolesModel;
 
 class AdminsController extends BaseController{
-    // protected $helpers = ['form'];
+     protected $helpers = ['form'];
 
     public function viewAllUsers(){
         $adminModel = model(AdminModel::class);
@@ -37,6 +37,7 @@ class AdminsController extends BaseController{
             return redirect()->back();
         }else{
         $rolesModel = model(RolesModel::class);
+        $activationModel = model(ActivationModel::class);
         $data = [
             'first_name' => session('first_name'),
             'admin_id' => session('admin_id'),
@@ -46,6 +47,7 @@ class AdminsController extends BaseController{
             'session_key' => session('session_key'),
             'token' => session('adminToken'),
             'admin_roles' => $rolesModel->getRoles(),
+            'activations' => $activationModel->getActivations(),
             'title' => 'Add Administrator',
             'errors' => []
         ];
@@ -68,10 +70,6 @@ class AdminsController extends BaseController{
             $validations = [
                 'first_name' => [
                     'babel' => 'first name',
-                    'rules'=> 'required'
-                ],
-                'middle_name' => [
-                    'babel' => 'middle name',
                     'rules'=> 'required'
                 ],
                  'user_name' => [
@@ -102,14 +100,14 @@ class AdminsController extends BaseController{
                     'babel' => 'role',
                     'rules'=> 'required'
                 ],
-                'avatar' => [
-                    'babel' => 'avatar',
-                    'rules' => [
-                        'uploaded[avatar]',
-                        'is_image[avatar]',
-                        'mime_in[avatar,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
-                    ]
-                ],
+                // 'avatar' => [
+                //     'babel' => 'avatar',
+                //     'rules' => [
+                //         'uploaded[avatar]',
+                //         'is_image[avatar]',
+                //         'mime_in[avatar,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+                //     ]
+                // ],
             ];
 
             if(!$this->validate($validations)){
@@ -120,6 +118,7 @@ class AdminsController extends BaseController{
                 }
             }else{
                 try{
+            $adminModel->db->transBegin();
             $user_name = $this->request->getPost('user_name');
             $first_name = $this->request->getPost('first_name');
             $middle_name = $this->request->getPost('middle_name');
@@ -128,30 +127,59 @@ class AdminsController extends BaseController{
             $telephone = $this->request->getPost('telephone');
             $password = $this->request->getPost('password');
             $re_enterPass = $this->request->getPost('re_enterPass');
+            $activation = $this->request->getPost('activation_id');
             $admin_role = $this->request->getPost('role');
             $avatar = $this->request->getFile('avatar');
-            $sessionKey = bin2hex(random_bytes(32));
 
-            $newName = $avatar->getRandomName();
+            if($genData = bin2hex(random_bytes(32))){
+                $sessionKey = $genData;
+            }
+
+            // $newName = $avatar->getRandomName();
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+
+            if ($avatar->isValid()&& $avatar->isFile() && in_array($avatar->getMimeType(), ['image/jpg', 'image/jpeg', 'image/gif', 'image/png', 'image/webp'])) {
+                $newName = $avatar->getRandomName();
+                $avatar->move(ROOTPATH . 'public/backend/media/admin_images', $newName);
+
+            } else {
+
+                // Use a default image
+                $defaultImagePath = ROOTPATH . 'public/backend/assets/img/user.png';
+                $randString = rand(1000,10000000);
+                $newFile = ROOTPATH . 'public/backend/media/admin_images/'.$randString.'.png';
+
+                // Check if the default image exists
+                if (file_exists($defaultImagePath)) {
+                    copy($defaultImagePath, $newFile);
+
+                }
+
+                $newName = $randString.'.png';
+
+            }
 
             // Check if the email already exists
                 if (!$adminModel->isEmailUnique($email_address)) {
                     // Email already exists, handle the error (e.g., display a message)
                     return redirect()->back()->withInput()->with('error', 'Email is already in use.');
+                    $adminModel->db->transRollback();
                 }else if(!$adminModel->isUserNameUnique($user_name)){
                     return redirect()->back()->withInput()->with('error', 'User Name is already in use.');
+                    $adminModel->db->transRollback();
                 }
 
             $adminData = [
                 'user_name' => $user_name,
-                'session_key' => $sessionKey,
+                'adminToken' => $sessionKey,
                 'first_name' => $first_name,
                 'middle_name'=> $middle_name,
                 'last_name'=> $last_name,
                 'email_address' => $email_address,
                 'telephone'=> $telephone,
                 'password'=> $hashedPassword,
+                'activation_id' => $activation,
                 'role'=> $admin_role,
                 'avatar' => $newName,
                 'created_at' => date('Y-m-d H:i:s')
@@ -159,14 +187,13 @@ class AdminsController extends BaseController{
 
             $inserted = $adminModel->insertAdmins($adminData);
             if($inserted){
-            
-                $avatar->move(ROOTPATH . 'public/backend/media/admin_images', $newName);
+                $adminModel->db->transCommit();
                 session()->setFlashdata('success', 'Administrator Insert successful');
                 return redirect()->to(base_url('creative/admin/addAdminForm/index/key/'.$key));
             }else{
                session()->setFlashdata('error', 'Admin Insert Failed');
                 return redirect()->to(base_url('creative/admin/addAdminForm/index/key/'.$key))->withInput()->with('error', 'Error: Kindly check your data and try again');
-            
+                $adminModel->db->transRollback();
                 throw new \Exception();
             }
         }catch(\Exception $e){
@@ -303,7 +330,6 @@ class AdminsController extends BaseController{
                  'currentActivationId' => $currentActivationId,
                   'admins' => $admins,
                  'admin_roles' => $rolesModel->getRoles(),
-                 'activations' => $activationModel->getActivations(),
                  'title' => 'All Administrators',
                  'errors' => []
              ];
@@ -350,6 +376,8 @@ class AdminsController extends BaseController{
                        }
                    }else{
 
+            $adminModel->db->transBegin();
+
             $admin_id = $this->request->getPost('admin_id');
             $first_name = $this->request->getPost('first_name');
             $middle_name = $this->request->getPost('middle_name');
@@ -365,11 +393,13 @@ class AdminsController extends BaseController{
             $avatar = $this->request->getFile('avatar');
             $existingAvatarFilename = $this->request->getPost('existing_avatar');
             
-            $defaultActivation = $this->request->getPost('defaultActivation');
             $activation = $this->request->getPost('activation_id');
+            $defaultActivation = $this->request->getPost('defaultActivation');
 
-            if(empty($activation)){
+            if($activation == null){
                 $activation = $defaultActivation;
+            }else{
+                $activation = $activation;
             }
 
             if ($avatar->isValid()&& $avatar->isFile() && in_array($avatar->getMimeType(), ['image/jpg', 'image/jpeg', 'image/gif', 'image/png', 'image/webp'])) {
@@ -476,10 +506,12 @@ class AdminsController extends BaseController{
             $updateData = $adminModel->updateAdminProfile($admin_id,$adminDirectData, $basic_details, $contact_details,
                                                             $education, $expertise_areas, $skills, $experience, $reference);
             if($updateData === true){
+                $adminModel->db->transCommit();
                 return redirect()->back()->withInput()->with('success', 'You have successfully updated you Profile Congratulations');
+                
             }else{
                return redirect()->back()->withInput()->with('error', 'Admin Insert Failed');
-            
+               $adminModel->db->transRollback();
                 throw new \Exception();
             }
 

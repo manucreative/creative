@@ -22,11 +22,20 @@
     <div>
     <h1 class="text-center" style="color: <?php echo $currentActivationId == '1' ? 'green' : 'red'?>; font-weight: 900"><?php echo $admins['first_name'].' '.$admins['last_name'];?></h1>
     <h1 class="text-center" style="color: orange; font-weight: 900">PROFILE UPDATE FORM</h1>
+    <div class="row">
+    <div class="col-sm-3">
     <h4>
     <span style="background-color: black;color:#fff;">Status</span>
     <span style="background-color: <?php echo $currentActivationId == '1' ? 'green' : 'red' ?>; color:white"><?php echo $currentActivationId == '1' ? 'Active' : 'inactive' ?></span>
     </h4>
-                   
+    </div>
+    <div class="col-sm-9">
+    <div class="modal-footer">
+      <a href="#"><button id="btnAddSlider" data-action="btnAddSlider" class="btn btn-danger">Add Slider</button></a>
+        <a href="#"><button id="viewSliders" data-action="viewSliders" class="btn btn-primary">View All Sliders</button></a>
+        </div>
+    </div>
+    </div>
     <div id="multi-step-form-container">
         <!-- Form Steps / Progress Bar -->
         <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
@@ -74,20 +83,19 @@
                 <h2 style="color:<?php echo $currentActivationId == '1' ? 'green' : 'red'?>" class="font-normal">Account Basic Details</h2>
                 <!-- Step 1 input fields -->
                 <div class="mt-3">
-               
-                            <div class="row <?php //echo (session('role') === 'super_admin') ? 'myControl' : 'myControl2'; ?>" >
+
+                            <div class="row" >
                         <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large; color:<?php echo $currentActivationId === '1' ? 'blue;' : 'red;'; ?>"><?php echo $currentActivationId === '1' ? 'You are enabled' : 'You are disabled'; ?></span> <span style="color: red;">*</span></label>
                         <div class="col-sm-2">
                             <input type="hidden" name="defaultActivation" id="defaultActivation" value="<?php echo $currentActivationId?>">
                         <select style="border:<?php echo $currentActivationId === '1' ? 'solid 2px blue;': 'solid 2px red;'?>" class="form-control" name="activation_id" id="activation_id" <?php if (session('role') !== 'super_admin') echo 'disabled'; ?>>
-                            
+ 
                         <option value="<?php echo $currentActivationId?>" style="font-size:large;">Might be disabled</option>
                             <?php if (!empty($activations) && is_array($activations)): ?>
                                 <?php foreach ($activations as $active): ?>
                                     <option style="font-size:large; color:<?php echo $currentActivationId === '1' ? 'blue;': 'red;'?>" value="<?php echo $active['activation_id']; ?>"
-                                    <?php echo ($active['activation_id'] == $currentActivationId) ? 'selected' : ''; ?>
-                                    >
-                                   
+                                    <?php echo ($active['activation_id'] == $currentActivationId) ? 'selected' : ''; ?>>
+
                                         <span><?php echo $active['activation_name']; ?></span>
                                     </option>
                                 <?php endforeach ?>
@@ -99,7 +107,7 @@
                                     <div class="row">
 
                                         <div class="col-sm-5">
-                                        <div class = "form-group validate_input"data-validate = "Your Names is required is required">
+                                        <div class = "form-group validate_input" data-validate = "Your First Names is required">
                                         <label for="first_name" class="col-form-label">First Administrator Name  <span style="color: red;">*</span></label>
                                             <input type="text" id="first_name" name="first_name" value="<?= $admins['first_name'] ?? ''; ?>" placeholder="Enter First name" class="form-control myInput">
                                             <input type="hidden" id="admin_id" name="admin_id" value="<?= $admins['admin_id'] ?? ''; ?>">
@@ -108,12 +116,12 @@
                                             <hr>
 
                                             <div class = "form-group">
-                                            <label for="middle_name" class="col-form-label">Middle Administrator Name  <span style="color: red;">*</span></label>
+                                            <label for="middle_name" class="col-form-label">Middle Administrator Name &nbsp; <span style="color: blue;">(Optional)</span></label>
                                             <input type="text" id="middle_name" name="middle_name" value="<?= $admins['middle_name'] ?? '' ?>" placeholder="enter Middle name"  class="form-control">
                                             </div>
                                             <hr>
 
-                                            <div class = "form-group  validate_input"data-validate = "Last name is required">
+                                            <div class = "form-group validate_input"data-validate = "Last name is required">
                                             <label for="last_name" class="col-form-label">last Administrator Name  <span style="color: red;">*</span></label>
                                             <input type="text" id="last_name" name="last_name" value="<?= $admins['last_name'] ?? '' ?>" placeholder="enter Last name"  class="form-control myInput">
                                             </div>
@@ -131,9 +139,9 @@
                                             </div>
                                             <hr>
 
-                                            <div class = "form-group  validate_input">
+                                            <div class = "form-group">
                                             <label for="avatar" class="col-form-label">Select Administrator Image  <span style="color: red;">*</span></label>
-                                            <input type="file" id="avatar" name="avatar" class="form-control" accept="image/*"  style="cursor:pointer">
+                                            <input type="file" id="avatar" name="avatar" class="form-control myInput" accept="image/*"  style="cursor:pointer">
                                             <input type="hidden" id="existing_avatar" name="existing_avatar" value="<?php echo $admins['avatar']; ?>">
                                             <div class="existing_icon">
                                                     <h2>Existing Image</h2>
@@ -146,8 +154,8 @@
                                         <!-- Column 2 -->
                                         <div class="col-sm-5">
                                         <div class = "form-group  validate_input"data-validate = "User Names is must">
-                                        <label for="user_name" class="col-form-label">Enter Unique User Name only Small letters <span style="color: red;">*</span></label>
-                                                <input type="text" id="user_name" name="user_name" value="<?php  echo $admins['user_name'] ?? ''; ?>"  class="form-control myInput" data-validate>
+                                        <label for="user_name" class="col-form-label">Current User Name <span style="color: red;">*</span></label>
+                                                <input type="text" id="user_name" name="user_name" value="<?php  echo $admins['user_name'] ?? ''; ?>"  class="form-control myInput">
 
                                             </div>
                                             <hr>
@@ -165,24 +173,24 @@
                                             <label for="gender" class="col-form-label">Select you gender <span style="color: red;">*</span></label>
                                                 <br>
                                             <label>
-                                                    <input type="radio" name="gender" value="male" <?php echo $basics['gender'] == 'male' ? 'checked': '';?>>
+                                                    <input type="radio" name="gender" value="male" <?php echo $basics['gender']?? '' == 'male' ? 'checked': '';?>>
                                                     Male
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="gender" value="female"<?php echo $basics['gender'] == 'female' ? 'checked': '';?>>
+                                                    <input type="radio" name="gender" value="female"<?php echo $basics['gender']?? '' == 'female' ? 'checked': '';?>>
                                                     Female
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="gender" value="other"<?php echo $basics['gender'] == 'other' ? 'checked': '';?>>
+                                                    <input type="radio" name="gender" value="other"<?php echo $basics['gender']?? '' == 'other' ? 'checked': '';?>>
                                                     Other
                                                 </label>
                                             </div>
                                             <hr>
 
                                             <div class = "form-group">
-                                            <label for="languages" class="col-form-label">Enter your know Languages as much as you can <span style="color: red;">*</span></label>
+                                            <label for="languages" class="col-form-label">Enter your known Languages as much as you can <span style="color: red;">*</span></label>
                                                 <input type="text" id="languages" name="languages" value="<?php echo $basics['languages'] ?? '';?>" class="form-control">
                                             </div>
                                             <hr>
@@ -191,22 +199,22 @@
                                             <label for="marital_status" class="col-form-label">Select your Marital status <span style="color: red;">*</span></label>
                                             <br>
                                             <label>
-                                                    <input type="radio" name="marital_status" value="single"<?php echo $basics['marital_status'] == 'single' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="single"<?php echo $basics['marital_status']?? '' == 'single' ? 'checked': '';?>>
                                                     Single
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="engaged"<?php echo $basics['marital_status'] == 'engaged' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="engaged"<?php echo $basics['marital_status']?? '' == 'engaged' ? 'checked': '';?>>
                                                     Encaged
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="Married"<?php echo $basics['marital_status'] == 'Married' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="Married"<?php echo $basics['marital_status']?? '' == 'Married' ? 'checked': '';?>>
                                                     Married
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="Unknown"<?php echo $basics['marital_status'] == 'Unknown' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="Unknown"<?php echo $basics['marital_status']?? '' == 'Unknown' ? 'checked': '';?>>
                                                     Unknown
                                                 </label>
                                             </div>
@@ -237,7 +245,7 @@
 
                             <div class="col-sm-5">
                             <h2 class="font-normal">Contacts Details</h2>
-                           <div class = "form-group  validate_input"data-validate = "You Location is required">
+                           <div class = "form-group">
                             <label for="residence" class="col-form-label">Enter Location or you residence <span style="color: red;">*</span></label>
                                 <input type="text" id="residence" name="residence" value="<?php echo $contacts['residence'] ?? ''; ?>" class="form-control myInput">
                             </div>
@@ -245,38 +253,38 @@
 
                             <div class = "form-group">
                             <label for="phone1" class="col-form-label">Enter your Primary Phone Number <span style="color: red;">*</span></label>
-                                <input type="text" id="phone1" name="phone1" value="<?php echo $contacts['phone1'] ?? ''; ?>" class="form-control">
+                                <input type="text" id="phone1" name="phone1" value="<?php echo $contacts['phone1'] ?? ''; ?>" class="form-control myInput">
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="phone2" class="col-form-label">Enter your Secondary or work phone number </label>
-                                <input type="text" id="phone2" name="phone2" value="<?php echo $contacts['phone2'] ?? ''; ?>" class="form-control">
+                                <input type="text" id="phone2" name="phone2" value="<?php echo $contacts['phone2'] ?? ''; ?>" class="form-control myInput">
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="personal_email" class="col-form-label">Enter your persona Email<span style="color: red;">*</span> </label>
-                                <input type="text" id="personal_email" name="personal_email" value="<?php echo $contacts['personal_email'] ?? ''; ?>" class="form-control">
+                                <input type="text" id="personal_email" name="personal_email" value="<?php echo $contacts['personal_email'] ?? ''; ?>" class="form-control myInput">
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="other_email" class="col-form-label">Enter Your Work Or Other Email </label>
-                                <input type="text" id="other_email" name="other_email" value="<?php echo $contacts['other_email'] ?? ''; ?>" class="form-control">
+                                <input type="text" id="other_email" name="other_email" value="<?php echo $contacts['other_email'] ?? ''; ?>" class="form-control myInput">
                             </div>
                             <hr>
 
                             <h2 class="font-normal">Education Details</h2>
                             <div class = "form-group">
                             <label for="masters_level" class="col-form-label">Describe your Masters degree level detail and you achievements<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="masters_level" class="form-control"><?php echo $educationData['masters_level'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="masters_level" class="form-control myInput"><?php echo $educationData['masters_level'] ?? ''; ?></textarea>
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="degree_level" class="col-form-label">Describe Details for University level attended & your achievement<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="degree_level" class="form-control"><?php echo $educationData['degree_level'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="degree_level" class="form-control myInput"><?php echo $educationData['degree_level'] ?? ''; ?></textarea>
                             </div>
                             <hr>
                             </div>
@@ -288,25 +296,25 @@
 
                             <div class = "form-group">
                             <label for="diploma_level" class="col-form-label">Describe Education details for Diploma or Collage attended and the achievements<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="diploma_level"  class="form-control"><?php echo $educationData['diploma_level'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="diploma_level"  class="form-control myInput"><?php echo $educationData['diploma_level'] ?? ''; ?></textarea>
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="highschool_level" class="col-form-label">Describe Education details for High School or related institution attended and the achievements<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="highschool_level"  class="form-control"><?php echo $educationData['highschool_level'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="highschool_level"  class="form-control myInput"><?php echo $educationData['highschool_level'] ?? ''; ?></textarea>
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="primary_level" class="col-form-label">Describe Education details for Primary Level attended and the achievements if applicable<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="primary_level"  class="form-control"><?php echo $educationData['primary_level'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="primary_level"  class="form-control myInput"><?php echo $educationData['primary_level'] ?? ''; ?></textarea>
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="satisfaction_skills" class="col-form-label">Describe Your Satisfaction Skills if any, describe the achievements<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="satisfaction_skills" class="form-control"><?php echo $educationData['satisfaction_skills'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="satisfaction_skills" class="form-control myInput"><?php echo $educationData['satisfaction_skills'] ?? ''; ?></textarea>
                             </div>
                             <hr>
                             </div>
@@ -330,37 +338,37 @@
                                 <h5>Areas of expertise</h5>
                             <div class = "form-group">
                                 <label for="expert_area1" class="col-form-label">Enter your First Area of expertise <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="expert_area1" name="expert_area1" value="<?php echo $expertiseData['expert_area1'] ?? ''; ?>" class="form-control" data-validate>
+                                    <input type="text" id="expert_area1" name="expert_area1" value="<?php echo $expertiseData['expert_area1'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                                 <hr>
 
                                 <div class = "form-group">
                                 <label for="expert_area2" class="col-form-label">Enter your 2nd Area of expertise <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="expert_area2" name="expert_area2" value="<?php echo $expertiseData['expert_area2'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="expert_area2" name="expert_area2" value="<?php echo $expertiseData['expert_area2'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                                 <hr>
 
                                 <div class = "form-group">
                                 <label for="expert_area3" class="col-form-label">Enter your 3rd Area of expertise <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="expert_area3" name="expert_area3" value="<?php echo $expertiseData['expert_area3'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="expert_area3" name="expert_area3" value="<?php echo $expertiseData['expert_area3'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                                 <hr>
 
                                 <div class = "form-group">
                                 <label for="expert_area4" class="col-form-label">Enter your 4th Area of expertise <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="expert_area4" name="expert_area4" value="<?php echo $expertiseData['expert_area4'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="expert_area4" name="expert_area4" value="<?php echo $expertiseData['expert_area4'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                                 <hr>
 
                                 <div class = "form-group">
                                 <label for="expert_area5" class="col-form-label">Enter your 5th Area of expertise <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="expert_area5" name="expert_area5" value="<?php echo $expertiseData['expert_area5'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="expert_area5" name="expert_area5" value="<?php echo $expertiseData['expert_area5'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                                 <hr>
 
                                 <div class = "form-group">
                                 <label for="expert_area6" class="col-form-label">Enter your 6th Area of expertise <span style="color: green;">(option)</span></label>
-                                    <input type="text" id="expert_area6" name="expert_area6" value="<?php echo $expertiseData['expert_area6'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="expert_area6" name="expert_area6" value="<?php echo $expertiseData['expert_area6'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                                 <hr>
                             </div>
@@ -370,57 +378,57 @@
                             <h5>SKILLS</h5>
                             <div class = "form-group">
                                 <label for="skill1" class="col-form-label">Skill 1 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill1" name="skill1" value="<?php echo $skillData['skill1'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill1" name="skill1" value="<?php echo $skillData['skill1'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill2" class="col-form-label">Skill 2 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill2" name="skill2" value="<?php echo $skillData['skill2'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill2" name="skill2" value="<?php echo $skillData['skill2'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill3" class="col-form-label">Skill 3 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill3" name="skill3" value="<?php echo $skillData['skill3'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill3" name="skill3" value="<?php echo $skillData['skill3'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill4" class="col-form-label">Skill 4 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill4" name="skill4" value="<?php echo $skillData['skill4'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill4" name="skill4" value="<?php echo $skillData['skill4'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill5" class="col-form-label">Skill 5 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill5" name="skill5" value="<?php echo $skillData['skill5'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill5" name="skill5" value="<?php echo $skillData['skill5'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill6" class="col-form-label">Skill 6 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill6" name="skill6" value="<?php echo $skillData['skill6'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill6" name="skill6" value="<?php echo $skillData['skill6'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill8" class="col-form-label">Skill 8 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill8" name="skill8" value="<?php echo $skillData['skill8'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill8" name="skill8" value="<?php echo $skillData['skill8'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill9" class="col-form-label">Skill 9 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill9" name="skill9" value="<?php echo $skillData['skill9'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill9" name="skill9" value="<?php echo $skillData['skill9'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill10" class="col-form-label">Skill 10 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill10" name="skill10" value="<?php echo $skillData['skill10'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill10" name="skill10" value="<?php echo $skillData['skill10'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill11" class="col-form-label">Skill 11 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill11" name="skill11" value="<?php echo $skillData['skill11'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill11" name="skill11" value="<?php echo $skillData['skill11'] ?? ''; ?>" class="form-control myInput">
                                 </div>
 
                                 <div class = "form-group">
                                 <label for="skill12" class="col-form-label">Skill 12 <span style="color: green;">(optional)</span></label>
-                                    <input type="text" id="skill12" name="skill12" value="<?php echo $skillData['skill12'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="skill12" name="skill12" value="<?php echo $skillData['skill12'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                             </div>
                             <div class="col-sm-1"></div>
@@ -440,7 +448,7 @@
 
                  <div class="col-sm-5">
 
-                            <div class = "form-group validate_input"data-validate = "subtitle is reauired">
+                            <div class = "form-group">
                                 <label for="sub_title" class="col-form-label">sub title to represent you <span style="color: red;">*</span></label>
                                     <input type="text" id="sub_title" name="sub_title" value="<?php echo $admins['sub_title'] ?? ''; ?>" class="form-control myInput">
                                 </div>
@@ -448,26 +456,26 @@
 
                                 <div class = "form-group">
                                 <label for="personal_title" class="col-form-label">Enter you professional Title <span style="color: red;">*</span></label>
-                                    <input type="text" id="personal_title" name="personal_title" value="<?php echo $admins['personal_title'] ?? ''; ?>" class="form-control">
+                                    <input type="text" id="personal_title" name="personal_title" value="<?php echo $admins['personal_title'] ?? ''; ?>" class="form-control myInput">
                                 </div>
                                 <hr>
 
                                 <h3>Professional Profile</h3>
                             <div class = "form-group">
                             <label for="professional_profile" class="col-form-label">Describe your professional profile in details<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="professional_profile"  class="form-control"><?php echo $admins['professional_profile'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="professional_profile"  class="form-control myInput"><?php echo $admins['professional_profile'] ?? ''; ?></textarea>
                             </div>
                             <hr>
                             <h3>Experience</h3>
                             <div class = "form-group">
                             <label for="main_experience" class="col-form-label">Describe Main Or Current experience<span style="color: green;">(optional)</span></label>
-                                <textarea type="text" id="education_details" name="main_experience"  class="form-control"> <?php echo $experienceData['main_experience'] ?? ''; ?> </textarea>
+                                <textarea type="text" id="education_details" name="main_experience"  class="form-control myInput"> <?php echo $experienceData['main_experience'] ?? ''; ?> </textarea>
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="other_experience" class="col-form-label">Describe Other Experiences in details<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="other_experience" class="form-control">  <?php echo $experienceData['other_experience'] ?? ''; ?> </textarea>
+                                <textarea type="text" id="education_details" name="other_experience" class="form-control myInput">  <?php echo $experienceData['other_experience'] ?? ''; ?> </textarea>
                             </div>
                             <hr>
                     </div>
@@ -480,13 +488,13 @@
 
                             <div class = "form-group">
                             <label for="referee1" class="col-form-label">Describe your first referee details<span style="color: green;">(optional)</span></label>
-                                <textarea type="text" id="education_details" name="referee1" value="" class="form-control"> <?php echo $referenceData['referee1'] ?? ''; ?> </textarea>
+                                <textarea type="text" id="education_details" name="referee1" value="" class="form-control myInput"> <?php echo $referenceData['referee1'] ?? ''; ?> </textarea>
                             </div>
                             <hr>
 
                             <div class = "form-group">
                             <label for="referee2" class="col-form-label">Describe your 2nd referee details<span style="color: green;">(optional)</span> </label>
-                                <textarea type="text" id="education_details" name="referee2" value="" class="form-control"> <?php echo $referenceData['referee2'] ?? ''; ?></textarea>
+                                <textarea type="text" id="education_details" name="referee2" value="" class="form-control myInput"> <?php echo $referenceData['referee2'] ?? ''; ?></textarea>
                             </div>
                             <hr>
                         </div>

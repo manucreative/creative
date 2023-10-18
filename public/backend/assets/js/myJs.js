@@ -404,7 +404,7 @@
     
     $(document).ready(function () {
         // ,#editTopUpsBtn,#editCat,#addAdminBtn
-        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm,#faqAddForm,#faqUpdateForm,#profileUpdateForm').click(function (e) {
+        $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm,#faqAddForm,#faqUpdateForm').click(function (e) {
             // Prevent the form from submitting immediately
             e.preventDefault();
             $('#overlay').show();
@@ -417,7 +417,7 @@
                 $('#overlay').hide();
                 // Submit the form
                 // , .topUpsEditForm, .categoriesEditForm, .AdminAddForm'
-                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm, .faqAddForm, .faqUpdateForm, .profileUpdateForm').submit();
+                $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm, .faqAddForm, .faqUpdateForm').submit();
             }, 4000);
         });
     });
@@ -530,7 +530,7 @@
     [ Validate ]*/
     var input = $('.validate_input .myInput');
 
-    $('.profileUpdateForm,.faqAddForm').on('submit',function(){
+    $('.profileUpdateForm,.faqAddForm,.AdminAddForm').on('submit',function(){
         
         var check = true;
 
@@ -551,23 +551,66 @@
         });
     });
 
+    $('.AdminAddForm .myInput').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+
     $('.faqAddForm .myInput').each(function(){
         $(this).focus(function(){
            hideValidate(this);
         });
     });
 
-    function validate (input) {
-        if($(input).attr('type') == 'text' || $(input).attr('name') == 'sub_title') {
-        //     if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-        //         return false;
-        //     }
-        // }
-        // else {
-            if($(input).val().trim() == ''){
+    function validate(input) {
+        var type = $(input).attr('type');
+        var name = $(input).attr('name');
+        var value = $(input).val().trim();
+    
+        if (type === 'email') {
+            // Email validation
+            var emailPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
+            if (!emailPattern.test(value)) {
+                return false;
+            }else if(value === '') {
+                return false;
+            }
+        } else if (type === 'text' || type === 'password') {
+
+            if (value === '') {
+                return false;
+            }
+        } else if (name === 'role') {
+
+            if (value === '') {
+                return false;
+            }
+        } else if (name === 'gender') {
+
+            if (value === '') {
+                return false;
+            }
+        } else if (type === 'date') {
+
+            if (value === '') {
+                return false;
+            }
+         } else if (type === 'telephone') {
+            var telephonePattern = /^\+254\d{9}$/;
+            if (!telephonePattern.test(value)) {
                 return false;
             }
         }
+        //  else if (type === 'file') {
+        //     // File validation (customize this to your needs)
+        //     // Check if a file is selected
+        //     if (!input.files.length) {
+        //         return false;
+        //     }
+        // }
+    
+        return true;
     }
 
     function showValidate(input) {
