@@ -25,19 +25,150 @@
 							
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab_1" data-toggle="tab">Features</a></li>
-						<li class="nave-link"><a href="#tab_2" data-toggle="tab">Front Dp</a></li>
-						<li class="nave-link"><a href="#tab_3" data-toggle="tab">App Logo</a></li>
-						<li class="nave-link"><a href="#tab_4" data-toggle="tab">Email Settings</a></li>
-						<li class="nave-link"><a href="#tab_5" data-toggle="tab">News and Tours</a></li>
-						<li class="nave-link"><a href="#tab_6" data-toggle="tab">Home Page</a></li>
-						<li class="nave-link"><a href="#tab_9" data-toggle="tab">Banner</a></li>
+                        <?php if(session('role')==='super_admin' || session('role')==='admin'):?>
+                        <li class="active"><a href="#tab_1" data-toggle="tab">Social Media</a></li>
+                        <?php endif ?>
+                        <?php if(session('role')==='super_admin'):?>
+						<li class="nave-link"><a href="#tab_2" data-toggle="tab">Features</a></li>
+						<li class="nave-link"><a href="#tab_3" data-toggle="tab">Front Dp</a></li>
+						<li class="nave-link"><a href="#tab_4" data-toggle="tab">App Logo</a></li>
+						<li class="nave-link"><a href="#tab_5" data-toggle="tab">Email Settings</a></li>
+						<li class="nave-link"><a href="#tab_6" data-toggle="tab">News and Tours</a></li>
+						<li class="nave-link"><a href="#tab_7" data-toggle="tab">Home Page</a></li>
+						<li class="nave-link"><a href="#tab_8" data-toggle="tab">Banner</a></li>
+                        <?php endif ?>
                         <!--<li><a href="#tab_7" data-toggle="tab">Color</a></li>-->
                         <!-- <li><a href="#tab_8" data-toggle="tab">Payment</a></li> -->
 					</ul>
 					<div class="tab-content">
-          				<div class="tab-pane active" id="tab_1">
+        <?php if(session('role')==='super_admin' || session('role')==='admin'):?>
+                    <div class="tab-pane active" id="tab_1">
 
+                    <?= form_open_multipart(base_url('creative/admin/addAdminAction/index/key/'.$session_key), ['class'=> 'AdminAddForm'])?>
+                <div class="row">
+      <div class="col-sm-3">
+      <div class="">
+        <h3 Style="color:forestgreen" class="modal-title" id="exampleModalLabel">My Social Medial</h3>
+      </div>
+      </div>
+      <div class="col-sm-9">
+
+      <div class="modal-footer">
+        <a href="#"><button id="allUsers" data-action="allUsers" class="btn btn-primary">My Profile</button></a>
+        </div>
+      </div>
+
+    </div>
+
+      <div class="modal-body">
+
+      <div class="form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="facebook" class="col-sm-4 col-form-label text-right">Enter facebook user name &nbsp; <span style="color: blue;">(Optional)</span> <span style="color: red;">*</span></label>
+            <div class="col-sm-4">
+                <input type="text" id="facebook" name="facebook" value="<?= old('facebook') ?>" placeholder="Enter First name" class="form-control myInput">
+                <input type="hidden" id="owner" name="owner" value="<?php echo session('admin_id') ?>">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+    <hr>
+
+        <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="instagram" class="col-sm-4 col-form-label text-right">Enter Instagram User name &nbsp; <span style="color: blue;">(Optional)</span></label>
+            <div class="col-sm-4">
+          <input type="text" id="instagram" name="instagram" value="<?= old('instagram') ?>" placeholder="enter instagram name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="tweeter" class="col-sm-4 col-form-label text-right">Enter tweeter User name &nbsp; <span style="color: blue;">(Optional)</span></label>
+            <div class="col-sm-4">
+          <input type="text" id="tweeter" name="tweeter" value="<?= old('tweeter') ?>" placeholder="enter tweeter name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="whatsApp" class="col-sm-4 col-form-label text-right">Enter whatsApp User name &nbsp; <span style="color: blue;">(Optional)</span></label>
+            <div class="col-sm-4">
+          <input type="text" id="whatsApp" name="whatsApp" value="<?= old('whatsApp') ?>" placeholder="enter whatsApp name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="tiktok" class="col-sm-4 col-form-label text-right">Enter tiktok User name &nbsp; <span style="color: blue;">(Optional)</span></label>
+            <div class="col-sm-4">
+          <input type="text" id="tiktok" name="tiktok" value="<?= old('tiktok') ?>" placeholder="enter tiktok name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="youtube" class="col-sm-4 col-form-label text-right">Enter youtube User name &nbsp; <span style="color: blue;">(Optional)</span></label>
+            <div class="col-sm-4">
+          <input type="text" id="youtube" name="youtube" value="<?= old('youtube') ?>" placeholder="enter youtube name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="linkedin" class="col-sm-4 col-form-label text-right">Enter linkedin User name &nbsp; <span style="color: blue;">(Optional)</span></label>
+            <div class="col-sm-4">
+          <input type="text" id="linkedin" name="linkedin" value="<?= old('linkedin') ?>" placeholder="enter linkedin name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+    
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="telegram" class="col-sm-4 col-form-label text-right">Enter telegram User name &nbsp; <span style="color: blue;">(Optional)</span></label>
+            <div class="col-sm-4">
+          <input type="text" id="telegram" name="telegram" value="<?= old('telegram') ?>" placeholder="enter telegram name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" value="" id="addAdminBtn" name="addAdmin" class="submit-btn btn btn-success">Save Admin</button>
+      </div>
+  <?= form_close() ?>
+</div>
+<?php endif ?>
+
+<?php if(session('role')==='super_admin'):?>
+                        <div class="tab-pane" id="tab_2">
 
           					<?php echo form_open_multipart(base_url('creative/admin/featureConfigForm/index/key'.$session_key),array('class' => 'updateFeatures')); ?>
           					<div class="box box-info">
@@ -142,7 +273,7 @@
 							<?php echo form_close(); ?>
                         
                 </div>
-                <div class="tab-pane" id="tab_2">
+                <div class="tab-pane" id="tab_3">
 
                             <?php echo form_open_multipart(base_url('creative/admin/updateProfiler/index/key/'.$session_key),array('class' => 'updateProfiler')); ?>
           					<div class="box box-info">
@@ -183,6 +314,7 @@
 
 							<?php echo form_close(); ?>
                     </div>
+                    <?php endif ?>
                 </div>
         </div>
 </div>

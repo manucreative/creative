@@ -100,6 +100,13 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
 
             </ul>
             </li>
+                            <?php if($role === 'super_admin' || $role === 'admin' || $role === 'user'):?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" id="viewConfigs" data-action="viewConfigs">
+                                                <i class="fa fa-gear fa-2x"></i> Configurations
+                                            </a>
+                                        </li>
+                            <?php endif ?>
 
                 <!-- Service Blogs -->
                 <li>
@@ -146,11 +153,7 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a href="#" id="moreControls"><i class="fa fa-sitemap fa-3x"></i> More Controls<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="viewConfigs" data-action="viewConfigs">
-                                <i class="fa fa-gear fa-2x"></i> Configurations
-                            </a>
-                        </li>
+                    
                         <li>
                         <a  href="#"><i class="fa fa-tag fa-3x"></i> Manage Quotes</a>
                     </li>
