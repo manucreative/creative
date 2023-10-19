@@ -39,7 +39,7 @@ class AuthFilter implements FilterInterface
             'creative/admin/updateService/index/key',
             'creative/admin/viewOwnerService/index/key',
             'creative/admin/configurations/index/key',
-
+            'creative/admin/socialMediaUpdates/index/key',
             //profile update rights
             'creative/admin/profileUpdateForm/index/key',
             'creative/admin/updateProfile/index/key',

@@ -4,6 +4,7 @@ use App\Controllers\BaseController;
 use App\Models\AdminModel;
 use App\Models\RolesModel;
 use App\Models\SettingsModel;
+use App\Models\SocialMedia;
 
 class ConfigurationsController extends BaseController{
     protected $helpers = ['form'];
@@ -16,13 +17,15 @@ class ConfigurationsController extends BaseController{
 
         $settingsModel = model(SettingsModel::class);
         $adminModel = model(AdminModel::class);
+        $socialMedialModel = model(SocialMedia::class);
         $features = $settingsModel->getAllFeatures();
+        
 
         $arrayFeatures = json_decode($features, true);
 
         if (isset($arrayFeatures[0]['features'])) {
             $features2 = json_decode($arrayFeatures[0]['features'], true);
-        
+
          $array1 = $features2[0];
         $array2 = $features2[1];
         $array3 = $features2[2];
@@ -52,13 +55,65 @@ $data = [
     'token' => session('adminToken'),
     'title' => 'Pages Configurations',
     'users' => $adminModel->getAdminsUserName(),
+    'socialMedia' => $socialMedialModel->getSocialMedia(session('admin_id')),
     'errors' => []
 ];
+    //   echo '<pre>';
+        // print_r($socialMedialModel->getSocialMedia(session('admin_id')));
+        // echo '</pre>';
         return view('backend/templates/admin_header', $data)
             . view('backend/Configurations', $data)
             . view('backend/templates/admin_footer');
     }
     }
+
+    public function socialMediaUpdates($key){
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+            $socialMediaModel = model(SocialMedia::class);
+            if($this->request->getMethod() === 'post'){
+
+
+                $facebook = $this->request->getPost('facebook');
+                $instagram = $this->request->getPost('instagram');
+                $tweeter = $this->request->getPost('tweeter');
+                $whatsApp = $this->request->getPost('whatsApp');
+                $tiktok = $this->request->getPost('tiktok');
+                $youtube = $this->request->getPost('youtube');
+                $linkedin = $this->request->getPost('linkedin');
+                $telegram = $this->request->getPost('telegram');
+
+                $owner_id = $this->request->getPost('owner');
+                $socialData = $socialMediaModel->getSocialMedia($owner_id);
+                $socialMediaId = $socialData['social_media_id']?? '';
+                $updatedData =[
+                        'facebook' => $facebook,
+                        'instagram' => $instagram,
+                        'tweeter' => $tweeter,
+                        'whatsApp' => $whatsApp,
+                        'tiktok' => $tiktok,
+                        'youtube' => $youtube,
+                        'linkedin' => $linkedin,
+                        'telegram' => $telegram,
+                        'created_at' => date('Y-m-d H:i:s')
+                    ];
+
+            $updateSocialMedia = $socialMediaModel->insertUpdateSocialMedia($socialMediaId, $owner_id, $updatedData);
+            if($updateSocialMedia){
+
+                return redirect()->back()->withInput()->with('success', 'You have successfully updated your Social Media');
+
+            }else{
+
+               return redirect()->back()->withInput()->with('error', 'Social media update Failed');
+            }
+            }
+
+        }
+    }
+
     public function featureConfigForm($key){
         $session_key = session('session_key');
         if($key !== $session_key){

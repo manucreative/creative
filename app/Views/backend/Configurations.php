@@ -44,7 +44,7 @@
         <?php if(session('role')==='super_admin' || session('role')==='admin'):?>
                     <div class="tab-pane active" id="tab_1">
 
-                    <?= form_open_multipart(base_url('creative/admin/addAdminAction/index/key/'.$session_key), ['class'=> 'AdminAddForm'])?>
+                    <?= form_open_multipart(base_url('creative/admin/socialMediaUpdates/index/key/'.$session_key), ['class'=> 'AdminAddForm'])?>
                 <div class="row">
       <div class="col-sm-3">
       <div class="">
@@ -67,7 +67,7 @@
         <div class="col-sm-1"></div>
             <label for="facebook" class="col-sm-4 col-form-label text-right">Enter facebook user name &nbsp; <span style="color: blue;">(Optional)</span> <span style="color: red;">*</span></label>
             <div class="col-sm-4">
-                <input type="text" id="facebook" name="facebook" value="<?= old('facebook') ?>" placeholder="Enter First name" class="form-control myInput">
+                <input type="text" id="facebook" name="facebook" value="<?php echo $socialMedia['facebook']?? '' ?>"  class="form-control myInput">
                 <input type="hidden" id="owner" name="owner" value="<?php echo session('admin_id') ?>">
             </div>
             <div class="col-sm-3"></div>
@@ -80,7 +80,7 @@
         <div class="col-sm-1"></div>
             <label for="instagram" class="col-sm-4 col-form-label text-right">Enter Instagram User name &nbsp; <span style="color: blue;">(Optional)</span></label>
             <div class="col-sm-4">
-          <input type="text" id="instagram" name="instagram" value="<?= old('instagram') ?>" placeholder="enter instagram name"  class="form-control myInput">
+          <input type="text" id="instagram" name="instagram" value="<?php echo $socialMedia['instagram']?? '' ?>" class="form-control myInput">
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -92,7 +92,7 @@
         <div class="col-sm-1"></div>
             <label for="tweeter" class="col-sm-4 col-form-label text-right">Enter tweeter User name &nbsp; <span style="color: blue;">(Optional)</span></label>
             <div class="col-sm-4">
-          <input type="text" id="tweeter" name="tweeter" value="<?= old('tweeter') ?>" placeholder="enter tweeter name"  class="form-control myInput">
+          <input type="text" id="tweeter" name="tweeter" value="<?php echo $socialMedia['tweeter']?? '' ?>" class="form-control myInput">
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -104,7 +104,7 @@
         <div class="col-sm-1"></div>
             <label for="whatsApp" class="col-sm-4 col-form-label text-right">Enter whatsApp User name &nbsp; <span style="color: blue;">(Optional)</span></label>
             <div class="col-sm-4">
-          <input type="text" id="whatsApp" name="whatsApp" value="<?= old('whatsApp') ?>" placeholder="enter whatsApp name"  class="form-control myInput">
+          <input type="text" id="whatsApp" name="whatsApp" value="<?php echo $socialMedia['whatsApp']?? '' ?>" class="form-control myInput">
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -116,7 +116,7 @@
         <div class="col-sm-1"></div>
             <label for="tiktok" class="col-sm-4 col-form-label text-right">Enter tiktok User name &nbsp; <span style="color: blue;">(Optional)</span></label>
             <div class="col-sm-4">
-          <input type="text" id="tiktok" name="tiktok" value="<?= old('tiktok') ?>" placeholder="enter tiktok name"  class="form-control myInput">
+          <input type="text" id="tiktok" name="tiktok" value="<?php echo $socialMedia['tiktok']?? '' ?>" class="form-control myInput">
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -128,7 +128,7 @@
         <div class="col-sm-1"></div>
             <label for="youtube" class="col-sm-4 col-form-label text-right">Enter youtube User name &nbsp; <span style="color: blue;">(Optional)</span></label>
             <div class="col-sm-4">
-          <input type="text" id="youtube" name="youtube" value="<?= old('youtube') ?>" placeholder="enter youtube name"  class="form-control myInput">
+          <input type="text" id="youtube" name="youtube" value="<?php echo $socialMedia['youtube']?? '' ?>" class="form-control myInput">
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -140,7 +140,7 @@
         <div class="col-sm-1"></div>
             <label for="linkedin" class="col-sm-4 col-form-label text-right">Enter linkedin User name &nbsp; <span style="color: blue;">(Optional)</span></label>
             <div class="col-sm-4">
-          <input type="text" id="linkedin" name="linkedin" value="<?= old('linkedin') ?>" placeholder="enter linkedin name"  class="form-control myInput">
+          <input type="text" id="linkedin" name="linkedin" value="<?php echo $socialMedia['linkedin']?? '' ?>" class="form-control myInput">
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -152,7 +152,7 @@
         <div class="col-sm-1"></div>
             <label for="telegram" class="col-sm-4 col-form-label text-right">Enter telegram User name &nbsp; <span style="color: blue;">(Optional)</span></label>
             <div class="col-sm-4">
-          <input type="text" id="telegram" name="telegram" value="<?= old('telegram') ?>" placeholder="enter telegram name"  class="form-control myInput">
+          <input type="text" id="telegram" name="telegram" value="<?php echo $socialMedia['telegram']?? '' ?>" class="form-control myInput">
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -161,7 +161,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="submit" value="" id="addAdminBtn" name="addAdmin" class="submit-btn btn btn-success">Save Admin</button>
+        <button type="submit" value="" id="addAdminBtn" name="addAdmin" class="submit-btn btn btn-success">Save Data</button>
       </div>
   <?= form_close() ?>
 </div>

@@ -586,11 +586,6 @@
             if (value === '') {
                 return false;
             }
-        } else if (name === 'gender') {
-
-            if (value === '') {
-                return false;
-            }
         } else if (type === 'date') {
 
             if (value === '') {

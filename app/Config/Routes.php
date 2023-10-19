@@ -75,6 +75,7 @@ use App\Controllers\backend\FaqController;
     $routes->get('configurations/index/key/(:segment)', [ConfigurationsController::class, 'viewSettingsPage/$1']);
     $routes->post('featureConfigForm/index/key/(:segment)',[ConfigurationsController::class, 'featureConfigForm/$1']);
     $routes->post('updateProfiler/index/key/(:segment)', [ConfigurationsController::class, 'updateProfiler/$1']);
+    $routes->post('socialMediaUpdates/index/key/(:segment)', [ConfigurationsController::class, 'socialMediaUpdates/$1']);
 
     //Service Controls
     $routes->get('addServiceForm/index/key/(:segment)', [ServiceController::class, 'addServiceForm/$1']);
