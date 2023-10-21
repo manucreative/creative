@@ -420,6 +420,23 @@
                 $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm, .faqAddForm, .faqUpdateForm').submit();
             }, 4000);
         });
+
+        // admin clickble row
+        $('tr[data-href]').each(function () {
+            const $row = $(this);
+
+            // Exclude the checkbox column from the click event
+            $row.find('td:has(:checkbox)').click(function (e) {
+                e.stopPropagation();
+            });
+
+            $row.css('cursor', 'pointer').click(function () {
+                const href = $row.data('href');
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+        })
     });
 
 
@@ -592,11 +609,19 @@
                 return false;
             }
          } else if (type === 'telephone') {
-            var telephonePattern = /^\+254\d{9}$/;
+            var telephonePattern = /^254\d{9}$/;
             if (!telephonePattern.test(value)) {
                 return false;
             }
+        }else if (name === 'whatsApp') {
+            var pattern = /^254\d{9}$/;
+            if (value === '') {
+                return true; // Blank input is allowed
+            }else if (!pattern.test(value)) {
+                return false; // Doesn't match the pattern
+            }
         }
+ 
         //  else if (type === 'file') {
         //     // File validation (customize this to your needs)
         //     // Check if a file is selected

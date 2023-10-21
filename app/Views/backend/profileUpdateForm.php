@@ -173,17 +173,17 @@
                                             <label for="gender" class="col-form-label">Select you gender <span style="color: red;">*</span></label>
                                                 <br>
                                             <label>
-                                                    <input type="radio" name="gender" value="male" <?php echo $basics['gender']?? '' == 'male' ? 'checked': '';?>>
+                                                    <input type="radio" name="gender" value="male" <?php echo ($basics['gender']?? '') == 'male' ? 'checked': "";?>>
                                                     Male
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="gender" value="female"<?php echo $basics['gender']?? '' == 'female' ? 'checked': '';?>>
+                                                    <input type="radio" name="gender" value="female"<?php echo ($basics['gender']?? '') == 'female' ? 'checked': "";?>>
                                                     Female
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="gender" value="other"<?php echo $basics['gender']?? '' == 'other' ? 'checked': '';?>>
+                                                    <input type="radio" name="gender" value="other"<?php echo ($basics['gender']?? '') == 'other' ? 'checked': "";?>>
                                                     Other
                                                 </label>
                                             </div>
@@ -199,22 +199,22 @@
                                             <label for="marital_status" class="col-form-label">Select your Marital status <span style="color: red;">*</span></label>
                                             <br>
                                             <label>
-                                                    <input type="radio" name="marital_status" value="single"<?php echo $basics['marital_status']?? '' == 'single' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="single"<?php echo ($basics['marital_status']?? '') == 'single' ? 'checked': '';?>>
                                                     Single
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="engaged"<?php echo $basics['marital_status']?? '' == 'engaged' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="engaged"<?php echo ($basics['marital_status']?? '') == 'engaged' ? 'checked': '';?>>
                                                     Encaged
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="Married"<?php echo $basics['marital_status']?? '' == 'Married' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="Married"<?php echo ($basics['marital_status']?? '') == 'Married' ? 'checked': '';?>>
                                                     Married
                                                 </label>
                                                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label>
-                                                    <input type="radio" name="marital_status" value="Unknown"<?php echo $basics['marital_status']?? '' == 'Unknown' ? 'checked': '';?>>
+                                                    <input type="radio" name="marital_status" value="Unknown"<?php echo ($basics['marital_status']?? '') == 'Unknown' ? 'checked': '';?>>
                                                     Unknown
                                                 </label>
                                             </div>
@@ -511,5 +511,86 @@
     </div>
 </div>
 
+
+<div class="social-media">
+    <h2 class="modal-header"> Configured Social Media Accounts</h2>
+    <div class="panel panel-default">
+    <?php  if(session('user_name') === $admins['user_name']):?>
+                        <div class="panel-heading">
+                           <a class="btn btn-info" href="#" id="viewConfigs" data-action="viewConfigs">Update Social Medial</a>
+                        </div>
+                        <?php endif ?>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Platform</th>
+                                            <th>Service Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Facebook</td>
+                                                    <td>
+                                                        <a href="https://web.facebook.com/<?php  echo $socialMediaData['facebook']?? '' ?>">
+                                                        <?php  echo ($socialMediaData['facebook']?? '') !== '' ? 'https://web.facebook.com/' .$socialMediaData['facebook']?? '' : '' ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Instagram</td>
+                                                    <td><a href="https://www.instagram.com/<?php  echo $socialMediaData['instagram']?? '' ?>">
+                                                    <?php  echo ($socialMediaData['instagram']?? '') !== '' ? 'https://www.instagram.com/' .$socialMediaData['instagram']?? '' : '' ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Tweeter</td>
+                                                    <td><a href="https://www.tweeter.com/<?php  echo $socialMediaData['tweeter']?? '' ?>">
+                                                    <?php  echo ($socialMediaData['tweeter']?? '') !== '' ? 'https://www.tweeter.com/' .$socialMediaData['tweeter']?? '': '' ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>WhatsApp</td>
+                                                    <td><a href="https://api.whatsapp.com/send?phone=%2B<?php  echo $socialMediaData['whatsApp']?? '' ?>&fbclid=IwAR2oluW78T5fEgXH8g_p_E1FM-SMThaM07LtCD7U2aI7qwdlhxH2zUHUmno"><?php  echo $socialMediaData['whatsApp']?? '' ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>TikTok</td>
+                                                    
+                                                    <td><a href="https://www.tiktok.com/<?php  echo $socialMediaData['tiktok']?? '' ?>">
+                                                    <?php  echo ($socialMediaData['tiktok']?? '') !== '' ? 'https://www.tiktok.com/' .$socialMediaData['tiktok']?? '' : '' ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>Youtube</td>
+                                                    <td><a href="https://www.youtube.com/channel/<?php  echo $socialMediaData['youtube']?? '' ?>">
+                                                    <?php  echo ($socialMediaData['youtube']?? '') !== '' ? 'https://www.youtube.com/channel/' .$socialMediaData['youtube']?? '' : '' ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td><?php  echo $socialMediaData['linkedin']?? '' ?>
+                                                    <td>Linkedin</td>
+                                                    <td><a href="https://www.linkedin.com/in/">
+                                                    <?php  echo ($socialMediaData['linkedin']?? '') !== '' ? 'https://www.linkedin.com/in/' .$socialMediaData['linkedin']?? '' : '' ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>Telegram</td>
+                                                    <td><?php  echo $socialMediaData['telegram']?? '' ?></td>
+                                                </tr>
+                                        
+   
+                    </div>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            <?php //  endif ?>
+</div>
  </div>
  </div>

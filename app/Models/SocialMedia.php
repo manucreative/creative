@@ -46,9 +46,7 @@ class SocialMedia extends Model
             ->join('admin', 'admin.admin_id = social_media.owner')
             ->findAll();
         }else{
-            return $this->select('social_media.*, admin.first_name')
-            ->join('admin', 'admin.admin_id = social_media.owner')
-            ->where(['owner'=> $owner_id])->first();
+            return $this->where(['owner'=> $owner_id])->first();
         }
     }
 

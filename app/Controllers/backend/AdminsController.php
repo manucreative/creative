@@ -4,6 +4,7 @@ use App\Controllers\BaseController;
 use App\Models\ActivationModel;
 use App\Models\AdminModel;
 use App\Models\RolesModel;
+use App\Models\SocialMedia;
 
 class AdminsController extends BaseController{
      protected $helpers = ['form'];
@@ -236,6 +237,7 @@ class AdminsController extends BaseController{
         $adminModel = model(AdminModel::class);
         $rolesModel = model(RolesModel::class);
         $activationModel = model(ActivationModel::class);
+        $socialMedia = model(SocialMedia::class);
 
          $session_key = session('session_key');
          $admins = $adminModel->allAdmins($token);
@@ -244,7 +246,7 @@ class AdminsController extends BaseController{
         return redirect()->back();
     }else{
 
-
+        $admin_id = $admins['admin_id'];
         $basic_details = $adminModel->getBasicDetails($token);
         $contactDetails = $adminModel->getContactDetails($token);
         $education = $adminModel->getEducation($token);
@@ -252,8 +254,10 @@ class AdminsController extends BaseController{
         $skills = $adminModel->getSkills($token);
         $experience = $adminModel->getExperience($token);
         $reference = $adminModel->getReference($token);
+        
 
             $currentActivationId = $admins['activation_id'];
+            $i = 1;
 
          $data = [
              'basics' => $basic_details,
@@ -273,9 +277,11 @@ class AdminsController extends BaseController{
              'currentActivationId' => $currentActivationId,
               'admins' => $admins,
              'admin_roles' => $rolesModel->getRoles(),
+             'socialMediaData' => $socialMedia->getSocialMedia($admin_id),
              'activations' => $activationModel->getActivations(),
              'title' => 'All Administrators',
-             'errors' => []
+             'errors' => [],
+             'i' => $i++
          ];
  
          return view('backend/templates/admin_header', $data)
@@ -291,6 +297,7 @@ class AdminsController extends BaseController{
             $adminModel = model(AdminModel::class);
             $rolesModel = model(RolesModel::class);
             $activationModel = model(ActivationModel::class);
+            $socialMedia = model(SocialMedia::class);
 
             $session_key = session('session_key');
             $adminToken = session('adminToken');
@@ -328,6 +335,7 @@ class AdminsController extends BaseController{
                  'session_key' => session('session_key'),
                  'token' => session('adminToken'),
                  'currentActivationId' => $currentActivationId,
+                 'socialMediaData' => $socialMedia->getSocialMedia(session('admin_id')),
                   'admins' => $admins,
                  'admin_roles' => $rolesModel->getRoles(),
                  'title' => 'All Administrators',

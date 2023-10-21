@@ -87,6 +87,10 @@ class AdminModel extends Model
             return $this->where(['admin_id' => $admin_id])->first();
         }
     }
+
+    // public function getUserWithSessionId($admin_id){
+    //     return $this->where(['adminToken' => $adminToken])->first();
+    // }
     public function allAdmins($adminToken = false){
         if($adminToken === false){
             return $this->findAll();

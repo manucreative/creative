@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php echo base_url('backend/assets/js/dataTables/datatables.net-bs4/dataTables.bootstrap4.css')?>">
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-   <!-- <link rel="stylesheet" type="text/css" href="<?= base_url('backend/tinymce/js/tinymce/skins/content/tinymce-5-dark/content.min.css') ?>"> -->
+   <!-- <link rel="stylesheet" type="text/css" href="<?php // base_url('backend/tinymce/js/tinymce/skins/content/tinymce-5-dark/content.min.css') ?>"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   

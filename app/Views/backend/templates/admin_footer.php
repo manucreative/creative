@@ -1,6 +1,10 @@
 
 
 </div>  <!-- /. WRAPPER  -->
+
+<script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net/jquery.dataTables.js')?>"></script>
+   <script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net-bs4/dataTables.bootstrap4.js')?>"></script>
+   <script src="<?php  echo base_url('backend/assets/js/dataTables/data-table.js')?>"></script>
 <script>
       // All buttons Configurations
     $(document).ready(function () {
@@ -72,6 +76,7 @@
         });
     });
     </script>
+    
     <script>
             var dashboardUrl = "<?php echo base_url('creative/admin/dashboard/index/key/'.$session_key);?>"
             var viewServicesUrl = "<?php echo base_url('creative/admin/viewServices/index/key/'.$session_key)?>";
@@ -98,9 +103,6 @@
   <script src="<?php echo base_url('backend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
   
 
-  <script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net/jquery.dataTables.js')?>"></script>
-   <script src="<?php echo base_url('backend/assets/js/dataTables/datatables.net-bs4/dataTables.bootstrap4.js')?>"></script>
-   <script src="<?php  echo base_url('backend/assets/js/dataTables/data-table.js')?>"></script>
 
 
     <script src="<?php echo base_url('backend/assets/js/jquery-1.10.2.js');?>"></script>
