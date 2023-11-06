@@ -18,12 +18,13 @@ use App\Controllers\backend\SliderController;
 use App\Controllers\backend\ConfigurationsController;
 use App\Controllers\backend\ServiceController;
 use App\Controllers\backend\FaqController;
+use App\Controllers\backend\ArticlesController;
 
 /**
  * @var RouteCollection $routes
  */
 
- $routes->group('', ['namespace' => 'App\Controllers\frontend'],function ($routes){
+    $routes->group('', ['namespace' => 'App\Controllers\frontend'],function ($routes){
     $routes->get('/', [HomeController::class, 'index']);
     $routes->get('services', [ServicesController::class, 'index']);
     $routes->get('portfolio', [PortfolioController::class, 'index']);
@@ -93,6 +94,16 @@ use App\Controllers\backend\FaqController;
     $routes->get('viewFaqs/index/key/(:segment)', [FaqController::class, 'viewFaqs/$1']);
     $routes->get('updateFaqForm/index/key/(:segment)/(:num)', [FaqController::class, 'updateFaqForm/$1/$2']);
     $routes->post('updateFaq/index/key/(:segment)', [FaqController::class, 'updateFaq/$1']);
+
+    //Articles Controls
+    $routes->get('addArticleForm/index/key/(:segment)', [ArticlesController::class, 'addArticleForm/$1']);
+    $routes->post('addArticle/index/key/(:segment)', [ArticlesController::class, 'addArticle/$1']);
+    $routes->post('deleteArticles/index/key/(:segment)', [ArticlesController::class, 'deleteArticles/$1']);
+    $routes->get('updateArticlesForm/index/key/(:segment)/(:segment)', [ArticlesController::class, 'updateArticlesForm/$1/$2']);
+    $routes->get('viewArticles/index/key/(:segment)', [ArticlesController::class, 'viewArticles/$1']);
+    $routes->get('viewOwnerArticles/index/key/(:segment)', [ArticlesController::class, 'viewOwnerArticles/$1']);
+    $routes->post('updateArticle/index/key/(:segment)', [ArticlesController::class, 'updateArticle/$1']);
+
  });
 
 

@@ -8,7 +8,7 @@
 <script>
       // All buttons Configurations
     $(document).ready(function () {
-        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#allUsers,#myFaqs,#addFaqs,#btnBanner,#viewMyServices,#addAdmin').click(function (e) {
+        $('#viewService,#btnAddService,#btnAddSlider,#viewConfigs,#viewSliders,#myProfile,#allUsers,#myFaqs,#addFaqs,#btnBanner,#viewMyServices,#addAdmin,#viewMyArticles,#viewAllArticles,#btnAddArticle').click(function (e) {
             e.preventDefault();
             var action = $(this).data('action');
             $('#overlay').show();
@@ -54,8 +54,14 @@
                 case 'addAdmin':
                     window.location.href = "<?php echo base_url('creative/admin/addAdminForm/index/key/'.$session_key);?>";
                     break;
-                case 'viewBanner':
-                    window.location.href = "view_banners";
+                case 'viewMyArticles':
+                    window.location.href = "<?php echo base_url('creative/admin/viewOwnerArticles/index/key/'.$session_key);?>";
+                    break;
+                case 'viewAllArticles':
+                    window.location.href = "<?php echo base_url('creative/admin/viewArticles/index/key/'.$session_key);?>";
+                    break;
+                case 'btnAddArticle':
+                    window.location.href = "<?php echo base_url('creative/admin/addArticleForm/index/key/'.$session_key);?>";
                     break;
                 }
             }, 1500);
@@ -120,8 +126,8 @@
 
     <script>
 tinymce.init({
-    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer', // Change this to match your textarea's class or ID
-    height: 300,
+    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer,#myArticles', // Change this to match your textarea's class or ID
+    height: 400,
     plugins: 'link image code',
     toolbar: 'undo redo | formatselect | bold italic underline strikethrough | fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table | code',
     fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',

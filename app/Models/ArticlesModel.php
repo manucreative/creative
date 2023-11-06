@@ -50,16 +50,17 @@ class ArticlesModel extends Model
      * @return array of articles | articles by article_id | articles by admin_id
      */
     public function getArticles($article_key = false, $author = false) {
-        $query = $this->select('tbl_articles.*, admin.first_name, activations.activation_name')
+        $query = $this->select('tbl_articles.*, admin.first_name, activations.activation_name,article_categories.cat_name')
             ->join('activations', 'activations.activation_id = tbl_articles.activation_id')
             ->join('admin', 'admin.admin_id = tbl_articles.author')
-            ->join('admin', 'admin.admin_id = tbl_articles.modifier');
+            ->join('article_categories', 'article_categories.cat_id = tbl_articles.category')
+            ->join('admin mod', 'mod.admin_id = tbl_articles.modifier');
     
-        if ($article_key !== false) {
+        if ($article_key !== false && $author === false) {
             return $query->where(['article_key' => $article_key])->first();
         }
     
-        if ($author !== false) {
+        if ($author !== false && $article_key === false) {
             return $query->where(['author' => $author])->findAll();
         }
     

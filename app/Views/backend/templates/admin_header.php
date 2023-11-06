@@ -110,24 +110,24 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
 
                 <!-- Service Blogs -->
                 <li>
-            <a href="#" id="manageServices"><i class="fa fa-sitemap fa-3x"></i> Manage Blogs<span class="fa arrow"></span></a>
+            <a href="#" id="manageServices"><i class="fa fa-sitemap fa-3x"></i> Manage Articles<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
                 <?php if($role === 'super_admin'): ?>
                                 <li class="nav-item" >
-                                    <a class="nav-link" href="#" id="viewAllBlogs" data-action="viewAllBlogs">
-                                        <i class="fa fa-desktop fa-2x"></i> Manage All Blogs
+                                    <a class="nav-link" href="#" id="viewAllArticles" data-action="viewAllArticles">
+                                        <i class="fa fa-desktop fa-2x"></i> Manage All Articles
                                     </a>
                                 </li>
                         <?php endif ?>
                                 <?php if($role === "super_admin" || $role === "admin"):?>
                                 <li class="nav-item" >
-                                    <a class="nav-link" href="#" id="viewMyBlogs" data-action="viewMyBlogs">
-                                        <i class="fa fa-desktop fa-2x"></i> Manage My Blogs
+                                    <a class="nav-link" href="#" id="viewMyArticles" data-action="viewMyArticles">
+                                        <i class="fa fa-desktop fa-2x"></i> Manage My Articles
                                     </a>
                                 </li>
                                 <?php endif?>
-                            
+
             </ul>
             </li>
 
@@ -153,7 +153,6 @@ font-size: 16px;"> Last access : Today 2023 &nbsp; <a href="<?php echo base_url(
                         <a href="#" id="moreControls"><i class="fa fa-sitemap fa-3x"></i> More Controls<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
 
-                    
                         <li>
                         <a  href="#"><i class="fa fa-tag fa-3x"></i> Manage Quotes</a>
                     </li>
