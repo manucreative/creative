@@ -333,73 +333,73 @@
     // topUps delete function end
     
     
-    // admin delete function Start
-    // $(function(){
-    //     //If check_all checked then check all table rows
-    //     $("#check_all_admins").on("click", function () {
-    //         if ($("input:checkbox").prop("checked")) {
-    //             $("input:checkbox[name='admins']").prop("checked", true);
-    //         } else {
-    //             $("input:checkbox[name='admins']").prop("checked", false);
-    //         }
-    //     });
+    // articles delete function Start
+    $(function(){
+        //If check_all checked then check all table rows
+        $("#check_all_articles").on("click", function () {
+            if ($("input:checkbox").prop("checked")) {
+                $("input:checkbox[name='articles']").prop("checked", true);
+            } else {
+                $("input:checkbox[name='articles']").prop("checked", false);
+            }
+        });
         
-    //     // Check each table row checkbox for products
-    //     $("input:checkbox[name='admins']").on("change", function () {
-    //         var total_check_boxes = $("input:checkbox[name='admins']").length;
-    //         var total_checked_boxes = $("input:checkbox[name='admins']:checked").length;
+        // Check each table row checkbox for products
+        $("input:checkbox[name='articles']").on("change", function () {
+            var total_check_boxes = $("input:checkbox[name='articles']").length;
+            var total_checked_boxes = $("input:checkbox[name='articles']:checked").length;
         
-    //         // If all checked manually then check check_all checkbox
-    //         if (total_check_boxes === total_checked_boxes) {
-    //             $("#check_all_admins").prop("checked", true);
-    //         }
-    //         else {
-    //             $("#check_all_admins").prop("checked", false);
-    //         }
-    //     });
+            // If all checked manually then check check_all checkbox
+            if (total_check_boxes === total_checked_boxes) {
+                $("#check_all_articles").prop("checked", true);
+            }
+            else {
+                $("#check_all_articles").prop("checked", false);
+            }
+        });
         
-    //     $("#delete_selected_admins").on("click", function (e) {
-    //         e.preventDefault();
-    //         var ids = '';
-    //         var comma = '';
-    //         $("input:checkbox[name='admins']:checked").each(function() {
-    //             ids = ids + comma + this.value;
-    //             comma = ',';
-    //         });
+        $("#delete_selected_article").on("click", function (e) {
+            e.preventDefault();
+            var ids = '';
+            var comma = '';
+            $("input:checkbox[name='articles']:checked").each(function() {
+                ids = ids + comma + this.value;
+                comma = ',';
+            });
             
-    //         //console.log(ids);
+            //console.log(ids);
             
-    //         if(ids.length > 0) {
-    //             if (confirm("Are you sure you want to delete the selected admin(s)?")) {
-    //             $('#overlay').show();
-    //             $('#loaderBanner').show();
-    //             $.ajax({
-    //                 type: "POST",
-    //                 url: "deleteAdmins",
-    //                 data: {'ids': ids},
-    //                 dataType: "html",
-    //                 cache: false,
-    //                 success: function(success_message) {
-    //                     $('#successMessage').html(success_message);
-    //                      window.setTimeout(function(){
-    //                         $('#loaderBanner').hide();
-    //                        $('#overlay').hide();
-    //                        window.location.href = "viewAdmins";
-    //                      }, 4000);
-    //                 },
-    //                 error: function(jqXHR, textStatus, errorThrown) {
-    //                     $('#loaderBanner').hide();
-    //                     $('#overlay').hide(); // Hide the overlay
-    //                     $("#successMessage").html("<span style='background-color: red; color:black; padding:10px'>" + textStatus + " " + errorThrown + "</span>");
-    //                 }
-    //             });
-    //         }
-    //         } else {
-    //             $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one admin row for deletion</span>');
-    //         }
-    //     });
-    //     });
-        // admin delete function end
+            if(ids.length > 0) {
+                if (confirm("Are you sure you want to delete the selected article(s)?")) {
+                $('#overlay').show();
+                $('#loaderBanner').show();
+                $.ajax({
+                    type: "POST",
+                    url: deleteArticleUrl,
+                    data: {'ids': ids},
+                    dataType: "html",
+                    cache: false,
+                    success: function(success_message) {
+                        $('#successMessage').html(success_message);
+                         window.setTimeout(function(){
+                            $('#loaderBanner').hide();
+                           $('#overlay').hide();
+                           window.location.href = articlesViewLocation;
+                         }, 4000);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        $('#loaderBanner').hide();
+                        $('#overlay').hide(); // Hide the overlay
+                        $("#successMessage").html("<span style='background-color: red; color:black; padding:10px'>" + textStatus + " " + errorThrown + "</span>");
+                    }
+                });
+            }
+            } else {
+                $("#successMessage").html('<span style="background-color: red; color:black; padding:10px">You must select at least one Article row for deletion</span>');
+            }
+        });
+        });
+        // articles delete function end
     
     
     $(document).ready(function () {

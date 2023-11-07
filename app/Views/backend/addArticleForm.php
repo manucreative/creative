@@ -64,9 +64,7 @@
             <label for="article_title" class="col-sm-3 col-form-label" style="text-align: end;">Article Title Entry <span style="color: red;">*</span></label>
             <div class="col-sm-5">
                 <input type="text" id="article_title" name="article_title" value="<?= old('article_title') ?>" placeholder="Enter Article Title" class="form-control myInput">
-                <input type="hidden" id="article_key" name="article_key" value="<?= $article_key ?>"class="form-control">
-                <input type="hidden" id="owner" name="owner" value="<?= $admin_id ?>" class="form-control">
-                <input type="hidden" id="modifier" name="modifier" value="<?= $admin_id ?>" class="form-control">
+                <input type="hidden" id="article_key" name="article_key" value="<?php echo $article_key ?>"class="form-control">
             </div>
             <div class="col-sm-3"></div>
         </div>
@@ -99,7 +97,7 @@
         <div class="col-sm-1"></div>
             <label for="cat_id" class="col-sm-3 col-form-label text-right">Select Article Categories  <span style="color: red;">*</span></label>
             <div class="col-sm-4 validate_input" data-validate = "Select role">
-            <select class="form-control myInput" name="category" id="category">
+            <select class="form-control myInput" name="cat_id" id="category">
                 <option value="">Select Category</option>
                 <?php if (!empty($categories) && is_array($categories)): ?>
                     <?php foreach ($categories as $category): ?>

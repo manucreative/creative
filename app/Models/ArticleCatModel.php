@@ -13,7 +13,7 @@ class ArticleCatModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['cat_name','created_at','updated_at'];
+    protected $allowedFields    = ['category_name','creator','modifier','created_at','updated_at'];
 
     // Dates
     protected $useTimestamps = false;

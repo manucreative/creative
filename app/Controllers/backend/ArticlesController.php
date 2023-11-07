@@ -57,14 +57,7 @@ class ArticlesController extends BaseController
                     'label' => 'article Key',
                     'rules' => 'required',
                 ],
-                'owner' => [
-                    'label' => 'article orner',
-                    'rules' => 'required',
-                ],
-                'modifier' => [
-                    'label' => 'modifier',
-                    'rules' => 'required',
-                ],
+               
                 'short_content' => [
                     'label' => 'short content',
                     'rules' => 'required',
@@ -73,7 +66,7 @@ class ArticlesController extends BaseController
                     'label' => 'article content',
                     'rules' => 'required',
                 ],
-                'category' => [
+                'cat_id' => [
                     'label' => 'category',
                     'rules' => 'required',
                 ],
@@ -87,8 +80,8 @@ class ArticlesController extends BaseController
 
                 $active_id = $this->request->getPost('activation_id');
                 $article_key = $this->request->getPost('article_key');
-                $owner = $this->request->getPost('owner');
-                $modifier = $this->request->getPost('modifier');
+                $owner = session()->get('admin_id');
+                $modifier = session()->get('admin_id');
                 $article_title = $this->request->getPost('article_title');
                 $short_content = $this->request->getPost('short_content');
                 $article_content = $this->request->getPost('article_content');
@@ -119,8 +112,8 @@ class ArticlesController extends BaseController
                 $dataToInsert =[
                     'activation_id' => $active_id,
                     'article_title' => $article_title,
-                    'owner' => $owner,
-                    'modifier' => $modifier,
+                    'author_id' => session('admin_id'),
+                    'modifier_id' => session('admin_id'),
                     'article_key' => $article_key,
                     'short_content' => $short_content,
                     'article_content' => $article_content,
@@ -146,12 +139,84 @@ class ArticlesController extends BaseController
 
     public function deleteArticles($key)
     {
-        //
+        $session_key = session('session_key');
+        if($key !== $session_key){
+            return redirect()->back();
+        }else{
+
+        if($this->request->getMethod() === 'post' && $this->request->getPost('ids')){
+            $ids = explode(',', $this->request->getPost('ids'));
+            $articlesModel = model(ArticlesModel::class);
+
+            $delete = $articlesModel->deleteArticles($ids);
+
+            if ($delete === true) {
+                $deletedCount = count($ids);
+                $message = "A total of $deletedCount Articles(s) have been deleted.";
+				echo '<span style="background-color: green; color:black; padding:10px">' . $message .'</span>';
+                sleep(3);
+			}
+            else {
+
+				echo '<span style="background-color: red; color:black; padding:10px;">Something went wrong during service deletion</span>';
+			}
+        }else{
+            echo '<span style="background-color: red; color:black; padding:10px;">You must select at least one row for deletion</span>';
+        }
+    }
     }
 
     public function updateArticlesForm($key, $article_key)
     {
-        //
+        $token = $this->request->getGet('token');
+        $adminToken = session('adminToken');
+        $session_key = session('session_key');
+       
+
+        if($key !== $session_key){
+            return redirect()->back();
+        }elseif($token !== $adminToken){
+             return redirect()->back();
+        }
+
+        else{
+        $activationModel = model(ActivationModel::class);
+        $articleModel = model(ArticlesModel::class);
+
+
+        $articleKey = $articleModel->getArticles( $article_key, false);
+            $article_id = $articleKey['article_id'];
+            $service_key = $service['service_key'];
+            $serviceTitle = $service['service_title'];
+            $shortContent = $service['service_short_content'];
+            $mainContent = $service['service_main_content'];
+            $service_img = $service['service_img'];
+
+            $currentActivationId = $service['activation_id'];
+        $data = [
+            'service_id' => $service_id,
+            'activations' => $activationModel->getActivations(),
+            'currentActivationId' =>$currentActivationId,
+            'service_key' => $service['service_key'],
+            'service_title' => $serviceTitle,
+            'service_short_content' => $shortContent,
+            'service_main_content' => $mainContent,
+            'service_img' => $service_img,
+
+            'first_name' => session('first_name'),
+            'admin_id' => session('admin_id'),
+            'last_name' => session('last_name'),
+            'avatar' => session('avatar'),
+            'role' => session('role'),
+            'session_key' => session('session_key'),
+            'token' => session('adminToken'),
+            'title' => 'Add Service',
+            'errors' => []
+        ];
+        return view('backend/templates/admin_header', $data)
+            . view('backend/updateServiceForm', $data)
+            . view('backend/templates/admin_footer');
+    }
     }
 
     public function viewArticles($key)

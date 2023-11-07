@@ -101,6 +101,8 @@
             var faqDeleteUrl = "<?php echo base_url('creative/admin/deleteFaqs/index/key/'.$session_key); ?>";
             var gaqViewLocation = "<?php echo base_url('creative/admin/viewFaqs/index/key/'.$session_key);?>"
             var adminDeleteUrl = "<?php echo base_url('creative/admin/deleteAdmins/index/key/'.$session_key);?>"
+            var deleteArticleUrl = "<?php echo base_url('creative/admin/deleteArticles/index/key/'.$session_key);?>"
+            var articlesViewLocation = "<?php echo base_url('creative/admin/viewOwnerArticles/index/key/'.$session_key);?>"
     </script>
 
 

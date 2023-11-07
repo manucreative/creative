@@ -30,7 +30,7 @@
                     <table id="article-listing" class="table">
                       <thead>
                     <tr>
-                      <th><input id="check_all_services" type="checkbox"></th>
+                      <th><input id="check_all_articles" type="checkbox"></th>
                       <th style="color:orange; font-weight:800;">No.</th>
                       <th style="color:orange; font-weight:800;">Article Title</th>
                       <th style="color:orange; font-weight:800;">Article Author</th>
