@@ -68,20 +68,16 @@ class ArticlesModel extends Model
     }
 
     public function updateArticles($article_id, $data){
-        $existingArticle = $this->find($article_id);
-        if (empty($existingArticle)) {
-            return false;
-        }
-                $existingImagePath = ROOTPATH . 'public/backend/media/service_images/' . $existingArticle['article_img'];
-                if (file_exists($existingImagePath)) {
-                    unlink($existingImagePath);
-                }
                 $affectedRows = $this->update($article_id, $data);
                 if($affectedRows > 0){
                     return true;
                 } else {
                     return false;
                 }
+    }
+
+    public function getArticlesById($article_id){
+        return $this->where(['article_id' => $article_id])->first();
     }
 
     public function deleteArticles($ids){
@@ -104,4 +100,5 @@ class ArticlesModel extends Model
          }
          $this->db->enableForeignKeyChecks();
      }
+
 }

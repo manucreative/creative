@@ -38,7 +38,7 @@
 
     </div>
 
-<?= form_open_multipart(base_url('creative/admin/addArticle/index/key/'.$session_key), ['class'=> 'articleAddForm'])?>
+<?= form_open_multipart(base_url('creative/admin/addArticle/index/key/'.$session_key), ['class'=> 'articleAdditionForm'])?>
 
       <div class="modal-body">
       <?php if(session('role') === 'super_admin'):?>
@@ -49,7 +49,8 @@
                           <option value="0" style="font-size:large; color:red;">Select Here</option>
                           <?php if (!empty($activations) && is_array($activations)): ?>
                               <?php foreach ($activations as $active): ?>
-                                  <option value="<?php echo $active['activation_id']; ?>" style="font-size:large; color:red;">
+                                  <option value="<?php echo $active['activation_id']; ?>" style="font-size:large; color:red;"
+                                  <?php if (old('activation_id') == $active['activation_id']) echo 'selected'; ?>>
                                       <span><?php echo $active['activation_name']; ?></span>
                                   </option>
                               <?php endforeach ?>
@@ -71,38 +72,31 @@
     </div>
 
     <div class="form-group">
-    <div class="row validate_input" data-validate="This field cannot be Empty">
-        <div class="col-sm-1"></div>
-            <label for="short_content" class="col-sm-3 col-form-label" style="text-align: end;">Enter Article Short Content <span style="color: red;">*</span></label>
-            <div class="col-sm-5">
+    <div class="validate_input" data-validate="This field cannot be Empty">
+            <label for="short_content" class="col-form-label" style="text-align: end;">Enter Article Short Content <span style="color: red;">*</span></label>
+
                 <textarea type="text" id="myArticles" name="short_content"  placeholder="Enter Article Short Content" class="form-control myInput"><?= old('short_content') ?></textarea>
-            </div>
-            <div class="col-sm-3"></div>
         </div>
     </div>
 
     <div class="form-group">
-    <div class="row validate_input" data-validate="This field cannot be Empty">
-        <div class="col-sm-1"></div>
-            <label for="article_content" class="col-sm-3 col-form-label" style="text-align: end;">Enter Article main Content <span style="color: red;">*</span></label>
-            <div class="col-sm-5">
-                <textarea type="text" id="myArticles" name="article_content"  placeholder="Enter Article Content" class="form-control myInput"><?= old('article_content') ?></textarea>
-            </div>
-            <div class="col-sm-3"></div>
+    <div class="validate_input" data-validate="This field cannot be Empty">
+            <label for="article_content" class="col-form-label" style="text-align: end;">Enter Article main Content <span style="color: red;">*</span></label>
+                <textarea type="text" id="mainAddArticle" name="article_content"  placeholder="Enter Article Content" class="form-control myInput"><?= old('article_content') ?></textarea>
         </div>
     </div>
 
     <div class="form-group">
            <div class="row">
         <div class="col-sm-1"></div>
-            <label for="cat_id" class="col-sm-3 col-form-label text-right">Select Article Categories  <span style="color: red;">*</span></label>
+            <label for="cat_id" class="col-sm-4 col-form-label text-right">Select Article Categories  <span style="color: red;">*</span></label>
             <div class="col-sm-4 validate_input" data-validate = "Select role">
             <select class="form-control myInput" name="cat_id" id="category">
                 <option value="">Select Category</option>
                 <?php if (!empty($categories) && is_array($categories)): ?>
                     <?php foreach ($categories as $category): ?>
                         <option value="<?php echo $category['cat_id']; ?>"
-                            <?php if (old('role') == $category['cat_id']) echo 'selected'; ?>>
+                            <?php if (old('cat_id') == $category['cat_id']) echo 'selected'; ?>>
                             <?php echo $category['cat_name']; ?>
                         </option>
                     <?php endforeach ?>
@@ -116,8 +110,8 @@
         <div class = "form-group">
         <div class="row">
         <div class="col-sm-1"></div>
-            <label for="article_img" class="col-sm-3 col-form-label" style="text-align: end;">Select The Service Image  <span style="color: red;">*</span></label>
-            <div class="col-sm-5">
+            <label for="article_img" class="col-sm-4 col-form-label" style="text-align: end;">Select The Service Image  <span style="color: red;">*</span></label>
+            <div class="col-sm-4">
           <input type="file" id="article_img" name="article_img" class="form-control" accept="image/*"  style="cursor:pointer">
       </div>
       <div class="col-sm-3"></div>
@@ -126,7 +120,7 @@
 
       </div>
       <div>
-        <button type="submit" value="" style="width: 100%; font-weight:700" id="addArticleBtn" name="addArticleBtn" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; Save Others</button>
+        <button type="submit" value="" style="width: 100%; font-weight:700" id="articleAdditionForm" name="articleAdditionForm" class="btn btn-success btn-lg"><i class="fa fa-edit"></i>&nbsp; Save Article</button>
       </div>
   <?= form_close() ?>
 </div>

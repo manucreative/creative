@@ -232,6 +232,13 @@ class AdminsController extends BaseController{
         }
     }
 
+    /**
+     * individual | profile update function
+     *
+     * @param [type] $key
+     * @param [type] $token
+     * @return view
+     */
     public function updateUserForm($key, $token){
             
         $adminModel = model(AdminModel::class);
@@ -289,9 +296,13 @@ class AdminsController extends BaseController{
               . view('backend/templates/admin_footer');
         }
     }
-       //      echo '<pre>';
-        // print_r($basicData);
-        // echo '</pre>';
+       /**
+        * all users profile update form
+        *
+        * @param [type] $key
+        * @param [type] $token
+        * @return view
+        */
         public function profileUpdateForm($key, $token){
             
             $adminModel = model(AdminModel::class);
@@ -428,7 +439,6 @@ class AdminsController extends BaseController{
                 $newName = $existingAvatarFilename;
             } else {
 
-                
                 // Use a default image
                 $defaultImagePath = ROOTPATH . 'public/backend/assets/img/user.png';
                 $newFile = ROOTPATH . 'public/backend/media/admin_images/avatar.png';
