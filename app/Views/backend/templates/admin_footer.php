@@ -123,19 +123,37 @@
     <script src="<?php echo base_url('backend/assets/js/morris/morris.js');?>"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="<?php echo base_url('backend/assets/js/custom.js');?>"></script>
-    
-   
 
     <script>
 tinymce.init({
-    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer,#myArticles,#mainAddArticle,#mainUpdateArticle', // Change this to match your textarea's class or ID
+    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer,#myArticles,#mainAddArticle,#mainUpdateArticle',
     height: 400,
     plugins: 'link image code',
+        // textpattern_patterns: [
+        //     { start: '-->', end: '<!--', format: 'text-box' },
+        // ],
+        // setup: function (editor) {
+        //     editor.on('BeforeSetContent', function (e) {
+        //     // Convert the custom pattern to the HTML content you want
+        //     e.content = e.content.replace(/<!--(.*?)-->/g, '<div class="custom-text-box">$1</div>');
+        //     });
+        // },
     toolbar: 'undo redo | formatselect | bold italic underline strikethrough | fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table | code',
     fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
     menubar: true,
+    images_upload_url: '<?php echo base_url('creative/admin/imageUploads/index/key');?>',
     skin_url: '<?php echo base_url('frontend/tinymce/js/tinymce/skins/ui/tinymce-5-dark');?>',
 });
+// tinymce.PluginManager.add('customtextbox', function (editor) {
+//             editor.addButton('customtextbox', {
+//               text: 'Custom Text Box',
+//               icon: true, // You can set an icon if needed
+//               onclick: function () {
+//                 // Insert the custom text box content
+//                 editor.insertContent('<div class="custom-text-box">Your text here</div>');
+//               },
+//             });
+//         });
  </script>
 </body>
 </html>

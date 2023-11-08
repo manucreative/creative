@@ -6,10 +6,11 @@ use App\Controllers\BaseController;
 use App\Models\ActivationModel;
 use App\Models\ArticleCatModel;
 use App\Models\ArticlesModel;
+use CodeIgniter\HTTP\Files\UploadedFile;
 
 class ArticlesController extends BaseController
 {
-    protected $helpers = ['form'];
+    protected $helpers = ['form','library'];
     public function addArticleForm($key)
     {
         $session_key = session('session_key');
@@ -394,5 +395,22 @@ class ArticlesController extends BaseController
             }
         }
     }
+    }
+    public function imageUploads(){
+        if($this->request->getMethod() === 'post'){
+
+            $file = $this->request->getFile('file');
+ 
+            if ($file->isValid() && !$file->hasMoved()) {
+                // Move the file to a directory.
+                $newName = $file->getRandomName();
+                $file->move(ROOTPATH . 'public/backend/media/uploads/article_data', $newName);
+
+                // Use the response() method to send a JSON response
+    return $this->response->setJSON(['location' => base_url('backend/media/uploads/article_data/' . $newName)]);
+             }
+       // Handle the upload error with a JSON response
+return $this->response->setJSON(['error' => 'File upload failed']);
+            }
     }
 }

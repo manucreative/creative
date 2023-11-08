@@ -103,6 +103,7 @@ use App\Controllers\backend\ArticlesController;
     $routes->get('viewArticles/index/key/(:segment)', [ArticlesController::class, 'viewArticles/$1']);
     $routes->get('viewOwnerArticles/index/key/(:segment)', [ArticlesController::class, 'viewOwnerArticles/$1']);
     $routes->post('updateArticle/index/key/(:segment)', [ArticlesController::class, 'updateArticle/$1']);
+    $routes->post('imageUploads/index/key', [ArticlesController::class, 'imageUploads']);
 
  });
 
