@@ -13,7 +13,7 @@ class ArticlesModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['author_id','modifier_id','activation_id','article_key','article_title','short_content','article_content','cat_id','article_img','created_at','updated_at'];
+    protected $allowedFields    = ['author_id','modifier_id','activation_id','article_key','url_link','meta_title','meta_description','article_title','short_content','article_content','cat_id','article_img','created_at','updated_at'];
 
     // Dates
     protected $useTimestamps = false;

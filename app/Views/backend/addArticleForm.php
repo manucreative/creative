@@ -41,15 +41,15 @@
 <?= form_open_multipart(base_url('creative/admin/addArticle/index/key/'.$session_key), ['class'=> 'articleAdditionForm'])?>
 
       <div class="modal-body">
-      <?php if(session('role') === 'super_admin'):?>
+     
                     <div class="row">
                       <label for="activation_id" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large;">ARTICLE ACTIVE?</span> <span style="color: red;">*</span></label>
                       <div class="col-sm-2">
                       <select class="form-control" name="activation_id" id="activation_id">
-                          <option value="0" style="font-size:large; color:red;">Select Here</option>
+                          <option value="0" style="font-size:large; color:red;"><?php echo (session('role') !== 'super_admin') ? 'Only Admin can Activate':'Select Here'; ?></option>
                           <?php if (!empty($activations) && is_array($activations)): ?>
                               <?php foreach ($activations as $active): ?>
-                                  <option value="<?php echo $active['activation_id']; ?>" style="font-size:large; color:red;"
+                                  <option value="<?php echo $active['activation_id']; ?>"  style="font-size:large; color:red; display:<?php echo (session('role') !== 'super_admin')? 'none':'block'; ?>"
                                   <?php if (old('activation_id') == $active['activation_id']) echo 'selected'; ?>>
                                       <span><?php echo $active['activation_name']; ?></span>
                                   </option>
@@ -58,7 +58,6 @@
                       </select>
                   </div>
               </div>
-          <?php endif ?>
       <div class="form-group">
         <div class="row validate_input" data-validate="This field cannot be Empty">
         <div class="col-sm-1"></div>
@@ -66,6 +65,39 @@
             <div class="col-sm-5">
                 <input type="text" id="article_title" name="article_title" value="<?= old('article_title') ?>" placeholder="Enter Article Title" class="form-control myInput">
                 <input type="hidden" id="article_key" name="article_key" value="<?php echo $article_key ?>"class="form-control">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row validate_input" data-validate="This field cannot be Empty">
+        <div class="col-sm-1"></div>
+            <label for="url_link" class="col-sm-3 col-form-label" style="text-align: end;">Url Link (can be article title)<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                <input type="text" id="url_link" name="url_link" value="<?= old('url_link') ?>" placeholder="Enter Url link" class="form-control myInput">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row validate_input" data-validate="This field cannot be Empty">
+        <div class="col-sm-1"></div>
+            <label for="meta_title" class="col-sm-3 col-form-label" style="text-align: end;">Meta Title (can be article title)<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                <input type="text" id="meta_title" name="meta_title" value="<?= old('meta_title') ?>" placeholder="Enter meta title" class="form-control myInput">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row validate_input" data-validate="This field cannot be Empty">
+        <div class="col-sm-1"></div>
+            <label for="meta_description" class="col-sm-3 col-form-label" style="text-align: end;">Meta Description<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                <input type="text" id="meta_description" name="meta_description" value="<?= old('meta_description') ?>" placeholder="Enter meta description" class="form-control myInput">
             </div>
             <div class="col-sm-3"></div>
         </div>

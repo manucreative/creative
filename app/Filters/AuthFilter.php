@@ -43,6 +43,15 @@ class AuthFilter implements FilterInterface
             //profile update rights
             'creative/admin/profileUpdateForm/index/key',
             'creative/admin/updateProfile/index/key',
+            //Articles
+            'creative/admin/addArticleForm/index/key',
+            'creative/admin/addArticle/index/key',
+            'creative/admin/deleteArticles/index/key',
+            'creative/admin/updateArticlesForm/index/key',
+            'creative/admin/viewArticles/index/key',
+            'creative/admin/viewOwnerArticles/index/key',
+            'creative/admin/updateArticle/index/key',
+            'creative/admin/imageUploads/index/key'
         ];
 
         foreach ($allowedRoutesForAdmin as $route) {

@@ -54,16 +54,17 @@ class ArticlesController extends BaseController
                     'label' => 'Article title',
                     'rules' => 'required',
                 ],
+                'url_link' => [
+                    'label' => 'url_link',
+                    'rules' => 'required',
+                ],
+
                 'article_key' => [
                     'label' => 'article Key',
                     'rules' => 'required',
                 ],
                 'short_content' => [
-                    'label' => 'short content',
-                    'rules' => 'required',
-                ],
-                'article_content' => [
-                    'label' => 'article content',
+                    'label' => 'Article Description',
                     'rules' => 'required',
                 ],
                 'cat_id' => [
@@ -83,10 +84,17 @@ class ArticlesController extends BaseController
                 $owner = session()->get('admin_id');
                 $modifier = session()->get('admin_id');
                 $article_title = $this->request->getPost('article_title');
+                $url_link = $this->request->getPost('url_link');
+                $meta_title = $this->request->getPost('meta_title');
+                $meta_description = $this->request->getPost('meta_description');
                 $short_content = $this->request->getPost('short_content');
                 $article_content = $this->request->getPost('article_content');
                 $cat_id = $this->request->getPost('cat_id');
                 $article_img = $this->request->getFile('article_img');
+
+                if(is_string($url_link)){
+                    $url = url_title($url_link, '-', true);
+                }
 
                 if ($article_img->isValid()&& $article_img->isFile() && in_array($article_img->getMimeType(), ['image/jpg', 'image/jpeg', 'image/gif', 'image/png', 'image/webp'])) {
                     $newName = $article_img->getRandomName();
@@ -112,6 +120,9 @@ class ArticlesController extends BaseController
                 $dataToInsert =[
                     'activation_id' => $active_id,
                     'article_title' => $article_title,
+                    'url_link' => $url,
+                    'meta_title' => $meta_title,
+                    'meta_description' => $meta_description,
                     'author_id' => session('admin_id'),
                     'modifier_id' => session('admin_id'),
                     'article_key' => $article_key,
@@ -189,6 +200,9 @@ class ArticlesController extends BaseController
             $article_id = $article['article_id'];
             $article_key = $article['article_key'];
             $article_title = $article['article_title'];
+            $url_link = $article['url_link'];
+            $meta_title = $article['meta_title'];
+            $meta_description = $article['meta_description'];
             $short_content = $article['short_content'];
             $article_content = $article['article_content'];
 
@@ -204,6 +218,9 @@ class ArticlesController extends BaseController
             'currentCatId' => $currentCatId,
             'article_key' => $article_key,
             'article_title' => $article_title,
+            'url_link' => $url_link,
+            'meta_title' => $meta_title,
+            'meta_description' => $meta_description,
             'short_content' => $short_content,
             'article_content' => $article_content,
             'article_img' => $article_img,
@@ -299,17 +316,17 @@ class ArticlesController extends BaseController
                     'label' => 'Article title',
                     'rules' => 'required',
                 ],
+                'url_link' => [
+                    'label' => 'url_link',
+                    'rules' => 'required',
+                ],
                 'article_key' => [
                     'label' => 'article Key',
                     'rules' => 'required',
                 ],
                
                 'short_content' => [
-                    'label' => 'short content',
-                    'rules' => 'required',
-                ],
-                'article_content' => [
-                    'label' => 'article content',
+                    'label' => 'Article Description',
                     'rules' => 'required',
                 ],
                 'cat_id' => [
@@ -327,14 +344,20 @@ class ArticlesController extends BaseController
                 $article_id = $this->request->getPost('article_id');
                 $active_id = $this->request->getPost('activation_id');
                 $article_key = $this->request->getPost('article_key');
-                $owner = session()->get('admin_id');
                 $modifier = session()->get('admin_id');
                 $article_title = $this->request->getPost('article_title');
+                $url_link = $this->request->getPost('url_link');
+                $meta_title = $this->request->getPost('meta_title');
+                $meta_description = $this->request->getPost('meta_description');
                 $short_content = $this->request->getPost('short_content');
                 $article_content = $this->request->getPost('article_content');
                 $cat_id = $this->request->getPost('cat_id');
                 $existingArticleFilename = $this->request->getPost('existing_articleImg');
                 $article_img = $this->request->getFile('article_img');
+
+                if(is_string($url_link)){
+                    $url = url_title($url_link, '-', true);
+                }
 
                 if ($article_img->isValid()&& $article_img->isFile() && in_array($article_img->getMimeType(), ['image/jpg', 'image/jpeg', 'image/gif', 'image/png', 'image/webp'])) {
                     $newName = $article_img->getRandomName();
@@ -372,7 +395,9 @@ class ArticlesController extends BaseController
                 $dataToUpdate =[
                     'activation_id' => $active_id,
                     'article_title' => $article_title,
-                    'author_id' => $owner,
+                    'url_link' => $url,
+                    'meta_title' => $meta_title,
+                    'meta_description' => $meta_description,
                     'modifier_id' => $modifier,
                     'article_key' => $article_key,
                     'short_content' => $short_content,
@@ -396,7 +421,8 @@ class ArticlesController extends BaseController
         }
     }
     }
-    public function imageUploads(){
+    public function imageUploads($key){
+
         if($this->request->getMethod() === 'post'){
 
             $file = $this->request->getFile('file');
@@ -406,8 +432,15 @@ class ArticlesController extends BaseController
                 $newName = $file->getRandomName();
                 $file->move(ROOTPATH . 'public/backend/media/uploads/article_data', $newName);
 
-                // Use the response() method to send a JSON response
-    return $this->response->setJSON(['location' => base_url('backend/media/uploads/article_data/' . $newName)]);
+                $fullUrl = base_url('backend/media/uploads/article_data/' . $newName);
+
+                // Create a response object and set the JSON data
+                $response = service('response');
+                $response->setHeader('Content-Type', 'application/json');
+                $response->setJSON(['location' => $fullUrl]);
+            
+                // Return the response object
+                return $response;
              }
        // Handle the upload error with a JSON response
 return $this->response->setJSON(['error' => 'File upload failed']);

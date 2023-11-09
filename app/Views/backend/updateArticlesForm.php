@@ -76,6 +76,39 @@
     </div>
 
     <div class="form-group">
+        <div class="row validate_input" data-validate="This field cannot be Empty">
+        <div class="col-sm-1"></div>
+            <label for="url_link" class="col-sm-3 col-form-label" style="text-align: end;">Url Link (can be article title)<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                <input type="text" id="url_link" name="url_link" value="<?php echo $url_link ?>" placeholder="Enter Url link" class="form-control myInput">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row validate_input" data-validate="This field cannot be Empty">
+        <div class="col-sm-1"></div>
+            <label for="meta_title" class="col-sm-3 col-form-label" style="text-align: end;">Meta Title (can be article title)<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                <input type="text" id="url_link" name="meta_title" value="<?php echo $meta_title ?>" placeholder="Enter meta title" class="form-control myInput">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row validate_input" data-validate="This field cannot be Empty">
+        <div class="col-sm-1"></div>
+            <label for="meta_description" class="col-sm-3 col-form-label" style="text-align: end;">Meta Description<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                <input type="text" id="meta_description" name="meta_description" value="<?php echo $meta_description ?>" placeholder="Enter meta description" class="form-control myInput">
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
     <div class="validate_input" data-validate="This field cannot be Empty">
             <label for="short_content" class="col-form-label" style="text-align: end;">Existing Article Short Content <span style="color: red;">*</span></label>
                 <textarea type="text" id="myArticles" name="short_content" class="form-control myInput"><?php echo $short_content; ?></textarea>

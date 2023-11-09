@@ -33,6 +33,9 @@
                       <th><input id="check_all_articles" type="checkbox"></th>
                       <th style="color:orange; font-weight:800;">No.</th>
                       <th style="color:orange; font-weight:800;">Article Title</th>
+                      <th style="color:orange; font-weight:800;">Url Link</th>
+                      <th style="color:orange; font-weight:800;">Meta Title</th>
+                      <th style="color:orange; font-weight:800;">Meta Description</th>
                       <th style="color:orange; font-weight:800;">Category</th>
                       <th style="color:orange; font-weight:800;">Author</th>
                       <th style="color:orange; font-weight:800;">Shot Content</th>
@@ -53,6 +56,9 @@
                     <td><input type='checkbox' name='articles' value= <?php echo $article['article_id'];?> class='delete-checkbox'></td>
                     <td><?php echo  $i++ ?></td> 
                     <td><?php echo $article['article_title'];?></td>
+                    <td><?php echo $article['url_link'];?></td>
+                    <td><?php echo $article['meta_title'];?></td>
+                    <td><?php echo $article['meta_description'];?></td>
                     <td><?php echo $article['cat_name'];?></td>
                     <td><?php echo $article['first_name'];?></td>
                     <td><?php echo $article['short_content']; ?></td>
