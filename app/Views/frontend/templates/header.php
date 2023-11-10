@@ -2,7 +2,7 @@
 <html ang="en">
     <head>
         <meta charset="utf-8">
-        <title><?= esc($slug)?> </title>
+        <title><?= esc($title)?>- Kips Creative</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Emmanuel Kirui Developer website" name="keywords">
         <meta content="Emmanuel Kirui Developer website" name="description">
@@ -104,7 +104,7 @@
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                                     <div class="dropdown-menu">
-                                        <a href="<?php echo base_url('articles')?>" class="dropdown-item">Recent Blogs</a>
+                                        <a href="<?php echo base_url('articles')?>" class="dropdown-item">Recent Articles</a>
                                         <a href="<?php echo base_url('myPricing')?>" class="dropdown-item">My Pricing</a>
                                     </div>
                                 </div>

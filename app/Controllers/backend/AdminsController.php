@@ -124,6 +124,7 @@ class AdminsController extends BaseController{
             $first_name = $this->request->getPost('first_name');
             $middle_name = $this->request->getPost('middle_name');
             $last_name = $this->request->getPost('last_name');
+            $bio = $this->request->getPost('bio');
             $email_address = $this->request->getPost('email_address');
             $telephone = $this->request->getPost('telephone');
             $password = $this->request->getPost('password');
@@ -177,6 +178,7 @@ class AdminsController extends BaseController{
                 'first_name' => $first_name,
                 'middle_name'=> $middle_name,
                 'last_name'=> $last_name,
+                'bio'=> $bio,
                 'email_address' => $email_address,
                 'telephone'=> $telephone,
                 'password'=> $hashedPassword,
@@ -401,6 +403,7 @@ class AdminsController extends BaseController{
             $first_name = $this->request->getPost('first_name');
             $middle_name = $this->request->getPost('middle_name');
             $last_name = $this->request->getPost('last_name');
+            $bio = $this->request->getPost('bio');
             $email_address = $this->request->getPost('email_address');
             $telephone = $this->request->getPost('telephone');
 
@@ -456,6 +459,7 @@ class AdminsController extends BaseController{
                 'first_name' => $first_name,
                 'middle_name'=> $middle_name,
                 'last_name'=> $last_name,
+                'bio'=> $bio,
                 'email_address' => $email_address,
                 'telephone'=> $telephone,
                 'user_name'=> $user_name,

@@ -4,11 +4,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 wow fadeInLeft">
-                            <h2 id="page_head">Visit My Projects</h2>
+                            <h2 id="page_head"><?php echo $title; ?></h2>
                         </div>
                         <div class="col-12 wow fadeInRight">
-                            <a href="" id="page_head">Home</a>
-                            <a href="" id="page_head">portfolio</a>
+                            <a href="<?php echo base_url(); ?>" id="page_head">Home</a>
+                            <a href="<?php echo base_url('portfolio'); ?>" id="page_head">portfolio</a>
                         </div>
                     </div>
                 </div>

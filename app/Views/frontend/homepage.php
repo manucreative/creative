@@ -123,9 +123,11 @@
                       <?php if($admin['activation_name'] === 'active') : ?>
                 <div class="column">
                     <div class="team-1 team-member">
+                        <a href="<?php echo base_url('about/'.$admin['user_name']);?>">
                         <div class="team-img">
                             <img src="<?php echo base_url('backend/media/admin_images/' .$admin['avatar'])?>" alt="Team Image">
                         </div>
+                        </a>
                 <?php
                             $paragraph = $admin['professional_profile'] ?? '';
                             $words = explode(' ', $paragraph);
@@ -140,10 +142,12 @@
                             }
                  ?>
                         <div class="team-content text-center">
+                            <a href="<?php echo base_url('about/'.$admin['user_name']);?>">
                             <h2><?php echo $admin['first_name']. ' ' .$admin['last_name']; ?></h2>
                             <h3><?php echo $admin['sub_title'] ?? '';?></h3>
                             <p><?php echo $trimmedParagraph; ?></p>
                             <h4><?php echo $admin['email_address'] ?? '';?></h4>
+                            </a>
                             <div class="team-social text-center">
                                 <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>

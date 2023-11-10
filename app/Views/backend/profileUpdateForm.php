@@ -127,6 +127,12 @@
                                             </div>
                                             <hr>
 
+                                            <div class="form-group validate_input" data-validate = "This field is required">
+                                            <label for="bio" class="col-form-label text-right">Biography/About <span style="color: red;">*</span></label>
+                                            <textarea type="text" id="bio" name="bio" placeholder="User Biography"  class="form-control"><?php echo $admins['bio'] ?? ''; ?></textarea>
+                                            </div>
+                                            <hr>
+
                                             <div class = "form-group  validate_input"data-validate = "Email is required">
                                             <label for="email_address" class="col-form-label">Administrator Email Address  <span style="color: red;">*</span></label>
                                             <input type="email" id="email_address" name="email_address" value="<?= $admins['email_address'] ?? '' ?>" placeholder="enter administrator Email"  class="form-control myInput">

@@ -8,8 +8,8 @@ use App\Models\frontend\AdminFrontendModel;
 use App\Models\frontend\FrontServiceModel;
 
 class HomeController extends BaseController{
-    public function index($slug){
-        
+    public function index($title){
+        $title = '';
        
         $adminModel = model(AdminFrontendModel::class);
         $sliderModel = model(SliderModel::class);
@@ -37,7 +37,7 @@ class HomeController extends BaseController{
         $admins = $adminModel->getAdminDataByUserName();
         $data = [
             'sliders' => $sliderModel->getSliders(),
-            'slug' => $slug,
+            'title' => $title,
             'feature_title1' => $array1['feature_title1'],
             'feature_desc1' => $array1['feature_desc1'],
             'feature_background1' => $array1['feature_background1'],

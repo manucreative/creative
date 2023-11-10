@@ -60,8 +60,6 @@
     </div>
 
 
-
-
       <div class="modal-body">
 
       <div class="form-group">
@@ -94,6 +92,18 @@
             <label for="last_name" class="col-sm-4 col-form-label text-right">last Administrator Name  <span style="color: red;">*</span></label>
             <div class="col-sm-4 validate_input" data-validate = "Your Last Names is required">
           <input type="text" id="last_name" name="last_name" value="<?= old('last_name') ?>" placeholder="enter Last name"  class="form-control myInput">
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      </div>
+      <hr>
+
+      <div class = "form-group">
+        <div class="row">
+        <div class="col-sm-1"></div>
+            <label for="bio" class="col-sm-4 col-form-label text-right">Type User Biography  <span style="color: red;">*</span></label>
+            <div class="col-sm-4 validate_input" data-validate = "This field is required">
+          <textarea type="text" id="bio" name="bio" placeholder="Biography"  class="form-control"><?= old('bio') ?></textarea>
         </div>
         <div class="col-sm-3"></div>
       </div>

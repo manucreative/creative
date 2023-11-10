@@ -25,15 +25,15 @@ use App\Controllers\backend\ArticlesController;
  */
 
     $routes->group('', ['namespace' => 'App\Controllers\frontend'],function ($routes){
-    $routes->get('/(:segment)', [HomeController::class, 'index/$1']);
-    $routes->get('services/(:segment)', [ServicesController::class, 'index/$1']);
-    $routes->get('portfolio/(:segment)', [PortfolioController::class, 'index/$1']);
+    $routes->get('/', [HomeController::class, 'index/$1']);
+    $routes->get('services', [ServicesController::class, 'index/$1/$2']);
+    $routes->get('portfolio', [PortfolioController::class, 'index/$1']);
     $routes->get('about/(:segment)', [AboutController::class, 'index/$1']);
-    $routes->get('articles/(:segment)', [BlogsController::class, 'index/$1']);
-    $routes->get('articles/(:segment)', [BlogsController::class, 'ownArticle/$1']);
-    $routes->get('contact/(:segment)', [ContactController::class, 'index/$1']);
+    $routes->get('articles', [BlogsController::class, 'index/$1']);
+    $routes->get('articles/(:segment)', [BlogsController::class, 'ownArticle/$1/$2']);
+    $routes->get('contact', [ContactController::class, 'index/$1']);
     $routes->post('sendMail', [ContactController::class, 'sendMail']);
-    $routes->get('myPricing/(:segment)', [PricingController::class, 'index/$1']);
+    $routes->get('myPricing', [PricingController::class, 'index/$1']);
  });
 
  // Admin Login

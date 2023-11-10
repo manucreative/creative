@@ -80,6 +80,23 @@ class ArticlesModel extends Model
         return $this->where(['article_id' => $article_id])->first();
     }
 
+    public function getArticlesByUrl($url_link){
+        return $this->select('tbl_articles.*, admin.first_name, activations.activation_name,article_categories.cat_name')
+        ->join('activations', 'activations.activation_id = tbl_articles.activation_id')
+        ->join('admin', 'admin.admin_id = tbl_articles.author_id')
+        ->join('article_categories', 'article_categories.cat_id = tbl_articles.cat_id')
+        ->join('admin mod', 'mod.admin_id = tbl_articles.modifier_id')
+        ->where(['url_link' => $url_link])->first();
+    }
+    public function getArticleCategories($authorId){
+        return $this->select('tbl_articles.*, admin.first_name, activations.activation_name,article_categories.cat_name')
+        ->join('activations', 'activations.activation_id = tbl_articles.activation_id')
+        ->join('admin', 'admin.admin_id = tbl_articles.author_id')
+        ->join('article_categories', 'article_categories.cat_id = tbl_articles.cat_id')
+        ->join('admin mod', 'mod.admin_id = tbl_articles.modifier_id')
+        ->where(['author_id' => $authorId])->findAll();
+    }
+
     public function deleteArticles($ids){
         $existingArticles = $this->whereIn('article_id', $ids)->findAll();
         if (empty($existingArticles)) {

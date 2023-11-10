@@ -2,11 +2,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 wow fadeInLeft">
-                            <h2 id="page_head">Contact Me</h2>
+                            <h2 id="page_head"><?php echo $title; ?></h2>
                         </div>
                         <div class="col-12 wow fadeInRight">
-                            <a href="" id="page_head">Home</a>
-                            <a href="" id="page_head">Contact Me</a>
+                            <a href="<?php echo $base_url(); ?>" id="page_head">Home</a>
+                            <a href="<?php echo $base_url('contact'); ?>" id="page_head">Contact</a>
                         </div>
                     </div>
                 </div>

@@ -8,31 +8,35 @@ use App\Models\FaqModel;
 class AboutController extends BaseController{
 
           
-        public function index(){
+        public function index($slug, $title){
             $configModels = model(SettingsModel::class);
             $adminModel = model(AdminFrontendModel::class);
             $rolesModel = model(RolesModel::class);
             $allUsers = $configModels->getUserProfiler();
             $faqModel = model(FaqModel::class);
-            if(!empty($allUsers) && is_array($allUsers)){
-            foreach($allUsers as $user){
-                $user_name = $user['display_profile'];
-            }
-            // echo '<pre>';
-            // print_r($basic_details);
-            // echo '</pre>';
-        }
-        $admins = $adminModel->getAdminDataByUserName($user_name);
-            $basic_details = $adminModel->getBasicDetails($user_name);
-            $contactDetails = $adminModel->getContactDetails($user_name);
-            $education = $adminModel->getEducation($user_name);
-            $expertiseAreas = $adminModel->getExpertiseAreas($user_name);
-            $skills = $adminModel->getSkills($user_name);
-            $experience = $adminModel->getExperience($user_name);
-            $reference = $adminModel->getReference($user_name);
+            $admins = $adminModel->getAdminDataByUserName($slug);
+
+            $title = $admins['first_name']. ' ' .$admins['last_name'];
+        //     if(!empty($allUsers) && is_array($allUsers)){
+        //     foreach($allUsers as $user){
+        //      //   $user_name = $user['display_profile'];
+        //     }
+        //     // echo '<pre>';
+        //     // print_r($basic_details);
+        //     // echo '</pre>';
+        // }
+
+            $basic_details = $adminModel->getBasicDetails($slug);
+            $contactDetails = $adminModel->getContactDetails($slug);
+            $education = $adminModel->getEducation($slug);
+            $expertiseAreas = $adminModel->getExpertiseAreas($slug);
+            $skills = $adminModel->getSkills($slug);
+            $experience = $adminModel->getExperience($slug);
+            $reference = $adminModel->getReference($slug);
 
              $data = [
                  'basics' => $basic_details,
+                 'title' => $title,
                  'contacts' => $contactDetails,
                  'expertiseData' => $expertiseAreas,
                  'educationData' =>$education,
@@ -41,7 +45,6 @@ class AboutController extends BaseController{
                  'referenceData' => $reference,
                  'admins' => $admins,
                  'faqs' => $faqModel->getFaq(),
-                 'title' => 'All Administrators'
              ];
 
              return view('frontend/templates/header', $data)

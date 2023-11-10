@@ -5,13 +5,14 @@ use App\Models\FaqModel;
 use App\Models\frontend\FrontServiceModel;
 
 class ServicesController extends BaseController{
-    public function index($slug){
+    public function index($title){
+        $title = 'Our Services';
         $faqModel = model(FaqModel::class);
         $serviceModel = model(FrontServiceModel::class);
         $data =[
             'services' => $serviceModel->getServices(),
             'faqs' => $faqModel->getFaq(),
-            'slug' => $slug,
+            'title' => $title,
         ];
         return view('frontend/templates/header', $data)
             . view('frontend/myServices', $data)

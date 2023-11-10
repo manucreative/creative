@@ -3,11 +3,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 wow fadeInLeft">
-                            <h2 id="page_head">My Services</h2>
+                            <h2 id="page_head"><?php echo $title; ?></h2>
                         </div>
                         <div class="col-12 wow fadeInRight">
-                            <a href="" id="page_head">Home</a>
-                            <a href="" id="page_head">My Services</a>
+                            <a href="<?php echo base_url(); ?>" id="page_head">Home</a>
+                            <a href="<?php echo base_url('services'); ?>" id="page_head"><?php echo $title; ?></a>
                         </div>
                     </div>
                 </div>

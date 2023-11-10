@@ -34,6 +34,7 @@
                       <th style="color:orange; font-weight:800;">Names</th>
                       <th style="color:orange; font-weight:800;">user_name</th>
                       <th style="color:orange; font-weight:800;">Title</th>
+                      <th style="color:orange; font-weight:800;">Biography</th>
                       <th style="color:orange; font-weight:800;">Email</th>
                       <th style="color:orange; font-weight:800;">Phone</th>
                       <th style="color:orange; font-weight:800;">Role</th>
@@ -53,6 +54,7 @@
                               <td><?php echo $admin['first_name'].' '.$admin['last_name'];?></td>
                               <td><?php echo $admin['user_name']; ?></td>
                               <td><?php echo $admin['sub_title']; ?></td>
+                              <td><?php echo $admin['bio']; ?></td>
                               <td><?php echo $admin['email_address']; ?></td>
                               <td><?php echo $admin['telephone']; ?></td>
                               <td><?php echo $admin['role_name']; ?></td>

@@ -3,10 +3,14 @@ namespace App\Controllers\frontend;
 use App\Controllers\BaseController;
 
 class PricingController extends BaseController{
-    public function index(){
+    public function index($title){
+        $title = 'Our Web pricing';
 
-        return view('frontend/templates/header')
-            . view('frontend/pricing')
+        $data =[
+            'title' => $title,
+         ];
+        return view('frontend/templates/header', $data)
+            . view('frontend/pricing', $data)
             . view('frontend/templates/footer');
     }
 }

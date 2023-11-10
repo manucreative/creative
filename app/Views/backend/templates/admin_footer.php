@@ -126,7 +126,7 @@
 
     <script>
 tinymce.init({
-    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer,#myArticles,#mainAddArticle,#mainUpdateArticle',
+    selector: '#feature_desc2,#feature_desc1,#feature_desc3,#service_short_content,#service_main_content,#short_desc_slider,#education_details,#faq_answer,#myArticles,#mainAddArticle,#mainUpdateArticle,#bio',
     height: 400,
     plugins: 'link image code',
     toolbar: 'undo redo | formatselect | bold italic underline strikethrough | fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table | code',

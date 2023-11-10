@@ -6,10 +6,11 @@ use App\Models\FaqModel;
 class ContactController extends BaseController{
 
     protected $helpers = ['form'];
-    public function index(){
+    public function index($title){
+        $slug = 'Contact Us';
         $faqModel = model(FaqModel::class);
         $data = [
-            'title' => 'Add FAQ',
+            'title' => $title,
             'errors' => [],
             'faqs' => $faqModel->getFaq(),
         ];
