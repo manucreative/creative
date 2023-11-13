@@ -19,17 +19,20 @@ class BlogsController extends BaseController{
             . view('frontend/templates/footer');
     }
 
-    public function ownArticle($slug, $title){
+    public function ownArticle($user_name, $slug, $title){
         $articlesModel = model(ArticlesModel::class);
         $adminModel = model(AdminModel::class);
         $articles = $articlesModel->getArticlesByUrl($slug);
         $author_id = $articles['author_id'];
+        $cat_id = $articles['cat_id'];
         $title = $articles['meta_title'];
-        $categories = $articlesModel->getArticleCategories($author_id);
+        $findAuthor = $articlesModel->getArticleByAdminId($author_id);
+        $related_cat = $articlesModel->getArticleByCategories($cat_id);
         $author = $adminModel->getAdminById($author_id);
         $data =[
             'title' => $title,
             'slug' => $slug,
+            'user_name' => $user_name,
             'article_title' => $articles['article_title'],
             'author_id' => $articles['author_id'],
             'meta_description' => $articles['meta_description'],
@@ -40,7 +43,8 @@ class BlogsController extends BaseController{
             'article_img' => $articles['article_img'],
             'article_date' => $articles['updated_at'],
             'category' => $articles['cat_name'],
-            'allUserArticles' => $categories
+            'allUserArticles' => $findAuthor,
+            'relatedCats' => $related_cat
 
         ];
 

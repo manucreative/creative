@@ -1,11 +1,13 @@
 <?php
 namespace App\Controllers\frontend;
 use App\Controllers\BaseController;
+use App\Models\ArticlesModel;
 use App\Models\FaqModel;
 use App\Models\SettingsModel;
 use App\Models\SliderModel;
 use App\Models\frontend\AdminFrontendModel;
 use App\Models\frontend\FrontServiceModel;
+use App\Models\SocialMedia;
 
 class HomeController extends BaseController{
     public function index($title){
@@ -16,6 +18,8 @@ class HomeController extends BaseController{
         $serviceModel = model(FrontServiceModel::class);
         $settingsModel = model(SettingsModel::class);
         $faqModel = model(FaqModel::class);
+        $articlesModel = model(ArticlesModel::class);
+        $socialMediaModel = model(SocialMedia::class);
         $features = $settingsModel->getAllFeatures();
         $arrayFeatures = json_decode($features, true);
 
@@ -35,6 +39,15 @@ class HomeController extends BaseController{
 }
 
         $admins = $adminModel->getAdminDataByUserName();
+        if(!empty($admins) && is_array($admins)){
+        foreach($admins as $admin){
+            $admin_id = $admin['admin_id'];
+        }
+    }
+        $socialMedialData = $socialMediaModel->getSocialMedia($admin_id);
+        //  echo '<pre>';
+        // print_r($admin_id);
+        // echo '</pre>';
         $data = [
             'sliders' => $sliderModel->getSliders(),
             'title' => $title,
@@ -54,7 +67,9 @@ class HomeController extends BaseController{
             'feature_icon3' => $array3['feature_icon3'],
             'services' => $serviceModel->getServices(),
             'faqs' => $faqModel->getFaq(),
-            'admins' => $admins
+            'admins' => $admins,
+            'socialMedia' => $socialMedialData,
+            'articles' => $articlesModel->getArticles()
         ];
 
         return view('frontend/templates/header', $data)

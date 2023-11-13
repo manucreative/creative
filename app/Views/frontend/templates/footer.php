@@ -98,6 +98,23 @@
         <script src="<?php echo base_url('frontend/manuu/slick/slick.min.js')?>"></script>
 
    
+        <!-- added JS -->
+        <!-- All JS Files -->
+<!-- <script src="<?php // echo base_url('frontend/js/jquery-2.2.4.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/bootstrap.min.js'); ?>"></script> -->
+<script src="<?php // echo base_url('frontend/js/chosen.jquery.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/docsupport/init.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/jquery.magnific-popup.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/jquery.dataTables.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/owl.carousel.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/easing.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/wow.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/superfish.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/jquery.slicknav.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/jquery.counterup.min.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/viewportchecker.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/waypoints.min.js'); ?>"></script>
+<script src="<?php echo base_url('frontend/js/custom.js'); ?>"></script>
 
         <!-- Template Javascript -->
         <script src="<?php echo base_url('frontend/js/main.js')?>"></script>

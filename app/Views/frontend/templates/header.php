@@ -22,6 +22,14 @@
         <link href="<?php echo base_url('frontend/manuu/lightbox/css/lightbox.min.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('frontend/manuu/slick/slick.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('frontend/manuu/slick/slick-theme.css')?>" rel="stylesheet">
+        <link rel="stylesheet" href="<?php  echo base_url('frontend/css/style2.css'); ?>">
+        <link rel="stylesheet" href="<?php // echo base_url('frontend/css/spacing.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('frontend/css/custom.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('frontend/css/responsive.css'); ?>">
+        <link rel="stylesheet" href="<?php // echo base_url('frontend/css/chosen.css'); ?>">
+        <link rel="stylesheet" href="<?php // echo base_url('frontend/css/datatable.min.css'); ?>">
+        <link rel="stylesheet" href="<?php // echo base_url('frontend/fancybox/css/jquery.fancybox.css'); ?>">
+        <link rel="stylesheet" href="<?php // echo base_url('frontend/fancybox/css/jquery.fancybox.min.css'); ?>">
 
          <!-- slick -->
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -29,6 +37,16 @@
 
         <!-- Template Stylesheet -->
         <link href="<?php echo base_url('frontend/css/style.css')?>" rel="stylesheet">
+    <style>
+    .main_content img {
+    max-width: 500px;
+    height: auto;
+    padding: 10px; 
+    }
+    .main_content p{
+        color: #000000;
+    }
+    </style>
     </head>
 
     <body>

@@ -20,7 +20,7 @@
             <div class="single">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-9">
                             <div class="single-content wow fadeInUp">
                                 <img src="<?php echo base_url('backend/media/article_images/'.$article_img); ?>" />
                                 <h2><?php echo $article_title; ?></h2>
@@ -33,7 +33,9 @@
                                     <img src="<?php echo base_url('backend/media/admin_images/'.$author['avatar']); ?>" />
                                 </div>
                                 <div class="single-bio-text">
-                                    <h3><?php echo $author['first_name']; ?></h3>
+                                <div class="author-head">
+                                    <h3><span style="color:orangered;">Author</span>&nbsp;<?php echo $author['first_name'].' ' .$author['last_name']; ?></h3>
+                                </div>
                                     <p>
                                        <?php echo $author['bio']; ?>
                                     </p>
@@ -44,7 +46,7 @@
                                 <h2>More Articles From the Author</h2>
                             <?php if(!empty($allUserArticles) && is_array($allUserArticles)):?>
                                 <?php foreach ($allUserArticles as $userArticle): ?>
-                                <a style="background:<?php echo $userArticle['article_title'] == $article_title ? 'green': '' ?>;color:<?php echo $userArticle['article_title'] == $article_title ? '#ffffff': ''; ?>" href="<?php echo base_url('articles/'.$userArticle['url_link']);?>"><?php echo $userArticle['article_title']; ?></a>
+                                <a style="background:<?php echo $userArticle['article_title'] == $article_title ? 'green': '' ?>;color:<?php echo $userArticle['article_title'] == $article_title ? '#ffffff': ''; ?>" href="<?php echo base_url('team/'.$user_name.'/'.$userArticle['url_link']);?>"><?php echo $userArticle['article_title']; ?></a>
                                 <?php endforeach ?>
                             <?php endif ?>
                             </div>
@@ -52,55 +54,24 @@
 
                             <div class="single-related wow fadeInUp">
                                 <h2>Related Post</h2>
+                               
                                 <div class="owl-carousel related-slider">
+                                <?php if(!empty($relatedCats) && is_array($relatedCats)):?>
+                                    <?php foreach($relatedCats as $related):?>
                                     <div class="post-item">
                                         <div class="post-img">
-                                            <img src="img/post-1.jpg" />
+                                            <img src="<?php echo base_url('backend/media/article_images/' .$related['article_img']); ?>" />
                                         </div>
                                         <div class="post-text">
-                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                                            <a href=""><?php echo $related['article_title']; ?></a>
                                             <div class="post-meta">
-                                                <p>By<a href="">Admin</a></p>
-                                                <p>In<a href="">Design</a></p>
+                                                <p>By<a href=""><?php echo $related['first_name']; ?></a></p>
+                                                <p>In<a href=""><?php echo $related['cat_name']; ?></a></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="post-item">
-                                        <div class="post-img">
-                                            <img src="img/post-2.jpg" />
-                                        </div>
-                                        <div class="post-text">
-                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                            <div class="post-meta">
-                                                <p>By<a href="">Admin</a></p>
-                                                <p>In<a href="">Design</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="post-item">
-                                        <div class="post-img">
-                                            <img src="img/post-3.jpg" />
-                                        </div>
-                                        <div class="post-text">
-                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                            <div class="post-meta">
-                                                <p>By<a href="">Admin</a></p>
-                                                <p>In<a href="">Design</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="post-item">
-                                        <div class="post-img">
-                                            <img src="img/post-4.jpg" />
-                                        </div>
-                                        <div class="post-text">
-                                            <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                            <div class="post-meta">
-                                                <p>By<a href="">Admin</a></p>
-                                                <p>In<a href="">Design</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <?php endforeach ?>
+                                <?php endif ?>
                                 </div>
                             </div>
 
@@ -122,7 +93,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="comment-item">
+                                <li class="comment-item">
                                         <div class="comment-body">
                                             <div class="comment-img">
                                                 <img src="img/user.jpg" />
@@ -183,7 +154,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-sm-3">
                             <div class="sidebar">
                                 <div class="sidebar-widget wow fadeInUp">
                                     <div class="search-widget">

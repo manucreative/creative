@@ -123,7 +123,7 @@
                       <?php if($admin['activation_name'] === 'active') : ?>
                 <div class="column">
                     <div class="team-1 team-member">
-                        <a href="<?php echo base_url('about/'.$admin['user_name']);?>">
+                        <a href="<?php echo base_url('team/'.$admin['user_name']);?>">
                         <div class="team-img">
                             <img src="<?php echo base_url('backend/media/admin_images/' .$admin['avatar'])?>" alt="Team Image">
                         </div>
@@ -142,18 +142,19 @@
                             }
                  ?>
                         <div class="team-content text-center">
-                            <a href="<?php echo base_url('about/'.$admin['user_name']);?>">
+                            <a href="<?php echo base_url('team/'.$admin['user_name']);?>">
                             <h2><?php echo $admin['first_name']. ' ' .$admin['last_name']; ?></h2>
                             <h3><?php echo $admin['sub_title'] ?? '';?></h3>
                             <p><?php echo $trimmedParagraph; ?></p>
                             <h4><?php echo $admin['email_address'] ?? '';?></h4>
                             </a>
                             <div class="team-social text-center">
-                                <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="social-yt" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="social-tw" href="https://www.tweeter.com/<?php  echo $socialMedia['tweeter']?? '' ?>"><i class="fab fa-twitter"></i></a>
+                            <a class="social-fb" href="https://web.facebook.com/<?php  echo $socialMedia['facebook']?? '' ?>"><i class="fab fa-facebook-f"></i></a>
+                            <a class="social-li" href="https://www.linkedin.com/in/<?php  echo ($socialMedia['linkedin']?? '')?>"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="social-in" href="https://www.instagram.com/<?php  echo $socialMedia['instagram']?? '' ?>"><i class="fab fa-instagram"></i></a>
+                            <a class="social-yt" href="https://www.youtube.com/channel/<?php  echo $socialMedia['youtube']?? '' ?>"><i class="fab fa-youtube"></i></a>
+                            <a style="background-color: green;" class="social-fb" href="https://api.whatsapp.com/send?phone=%2B<?php  echo $socialMedia['whatsApp']?? '' ?>&fbclid=IwAR2oluW78T5fEgXH8g_p_E1FM-SMThaM07LtCD7U2aI7qwdlhxH2zUHUmno"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
@@ -217,8 +218,78 @@
             </div>
             <!-- Service End -->
 <hr>
+
+<div class="blog-area pt_80 pb_80">
+    <div class="container wow fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-headline">
+                    <div class="headline">
+                        <h2> All our Articles<?php // echo $setting['home_title_news']; ?></h2>
+                        <hr>
+                    </div>
+                    <p> Learn More from the experts<?php // echo $setting['home_subtitle_news']; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt_50">
+                <div class="blog-carousel owl-carousel">
+                    <?php
+                    foreach ($articles as $article) {
+
+                        $temp_arr = explode('.',$article['article_img']);
+                        $temp_final = $temp_arr[0].'-thumb'.'.'.$temp_arr[1];
+
+                        $dt = explode('-',$article['updated_at']);
+
+                        ?>
+                        <div class="blog-item wow fadeIn" data-wow-delay="0.1s">
+                            <a href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>">
+                                <div class="blog-image">
+                                    <img src="<?php echo base_url('backend/media/article_images/'. $article['article_img']); ?>" alt="Article Image">
+                                    <div class="date">
+                                        <h3><?php echo $dt[2]; ?></h3>
+                                        <h4>
+                                            <?php
+                                            if($dt[1] == '01') {echo 'Jan';}
+                                            if($dt[1] == '02') {echo 'Feb';}
+                                            if($dt[1] == '03') {echo 'Mar';}
+                                            if($dt[1] == '04') {echo 'Apr';}
+                                            if($dt[1] == '05') {echo 'May';}
+                                            if($dt[1] == '06') {echo 'Jun';}
+                                            if($dt[1] == '07') {echo 'Jul';}
+                                            if($dt[1] == '08') {echo 'Aug';}
+                                            if($dt[1] == '09') {echo 'Sep';}
+                                            if($dt[1] == '10') {echo 'Oct';}
+                                            if($dt[1] == '11') {echo 'Nov';}
+                                            if($dt[1] == '12') {echo 'Dec';}
+                                            ?>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="blog-text">
+                                <a class="b-head" href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>"><?php echo $article['article_title']; ?></a>
+                                <p>
+                                    <?php echo $article['short_content']; ?>
+                                </p>
+                                <div class="button mt_15">
+                                    <a href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>">Read More <i class="fa fa-chevron-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
              <!-- Testimonial Start -->
-             <div class="container">
+             <!-- <div class="container">
              <div class="testimonial wow fadeIn" data-wow-delay="0.1s">
                 
                 <div class="section-header text-center">
@@ -279,7 +350,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Testimonial End -->
 
                       <!-- FAQs Start -->

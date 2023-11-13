@@ -9,6 +9,7 @@ use App\Controllers\frontend\AboutController;
 use App\Controllers\frontend\BlogsController;
 use App\Controllers\frontend\ContactController;
 use App\Controllers\frontend\PricingController;
+use App\Controllers\frontend\TeamController;
 
 //admins Controllers
 use App\Controllers\backend\DashboardController;
@@ -28,9 +29,12 @@ use App\Controllers\backend\ArticlesController;
     $routes->get('/', [HomeController::class, 'index/$1']);
     $routes->get('services', [ServicesController::class, 'index/$1/$2']);
     $routes->get('portfolio', [PortfolioController::class, 'index/$1']);
-    $routes->get('about/(:segment)', [AboutController::class, 'index/$1']);
+    $routes->get('about', [PortfolioController::class, 'index/$1']);
+    $routes->get('team', [TeamController::class, 'team/$1']);
+    $routes->get('team/(:segment)', [TeamController::class, 'team/$1/$2']);
+    $routes->get('team/(:segment)/(:segment)', [BlogsController::class, 'ownArticle/$1/$2']);
     $routes->get('articles', [BlogsController::class, 'index/$1']);
-    $routes->get('articles/(:segment)', [BlogsController::class, 'ownArticle/$1/$2']);
+   //  $routes->get('articles/(:segment)', [BlogsController::class, 'ownArticle/$1/$2']);
     $routes->get('contact', [ContactController::class, 'index/$1']);
     $routes->post('sendMail', [ContactController::class, 'sendMail']);
     $routes->get('myPricing', [PricingController::class, 'index/$1']);

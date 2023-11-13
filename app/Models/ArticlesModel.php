@@ -50,7 +50,7 @@ class ArticlesModel extends Model
      * @return array of articles | articles by article_id | articles by admin_id
      */
     public function getArticles($article_key = false, $author = false) {
-        $query = $this->select('tbl_articles.*, admin.first_name, activations.activation_name,article_categories.cat_name')
+        $query = $this->select('tbl_articles.*, admin.first_name, admin.user_name, activations.activation_name,article_categories.cat_name')
             ->join('activations', 'activations.activation_id = tbl_articles.activation_id')
             ->join('admin', 'admin.admin_id = tbl_articles.author_id')
             ->join('article_categories', 'article_categories.cat_id = tbl_articles.cat_id')
@@ -81,20 +81,29 @@ class ArticlesModel extends Model
     }
 
     public function getArticlesByUrl($url_link){
-        return $this->select('tbl_articles.*, admin.first_name, activations.activation_name,article_categories.cat_name')
+        return $this->select('tbl_articles.*, admin.first_name, admin.user_name, activations.activation_name,article_categories.cat_name')
         ->join('activations', 'activations.activation_id = tbl_articles.activation_id')
         ->join('admin', 'admin.admin_id = tbl_articles.author_id')
         ->join('article_categories', 'article_categories.cat_id = tbl_articles.cat_id')
         ->join('admin mod', 'mod.admin_id = tbl_articles.modifier_id')
         ->where(['url_link' => $url_link])->first();
     }
-    public function getArticleCategories($authorId){
-        return $this->select('tbl_articles.*, admin.first_name, activations.activation_name,article_categories.cat_name')
+    public function getArticleByAdminId($authorId){
+        return $this->select('tbl_articles.*, admin.first_name, admin.user_name, activations.activation_name,article_categories.cat_name')
         ->join('activations', 'activations.activation_id = tbl_articles.activation_id')
         ->join('admin', 'admin.admin_id = tbl_articles.author_id')
         ->join('article_categories', 'article_categories.cat_id = tbl_articles.cat_id')
         ->join('admin mod', 'mod.admin_id = tbl_articles.modifier_id')
         ->where(['author_id' => $authorId])->findAll();
+    }
+
+    public function getArticleByCategories($cat_id){
+        return $this->select('tbl_articles.*, admin.first_name, admin.user_name, activations.activation_name,article_categories.cat_name')
+        ->join('activations', 'activations.activation_id = tbl_articles.activation_id')
+        ->join('admin', 'admin.admin_id = tbl_articles.author_id')
+        ->join('article_categories', 'article_categories.cat_id = tbl_articles.cat_id')
+        ->join('admin mod', 'mod.admin_id = tbl_articles.modifier_id')
+        ->where(['tbl_articles.cat_id' => $cat_id])->findAll();
     }
 
     public function deleteArticles($ids){

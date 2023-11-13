@@ -5,8 +5,8 @@
                             <h2 id="page_head"><?php echo $title; ?></h2>
                         </div>
                         <div class="col-12 wow fadeInRight">
-                            <a href="<?php echo $base_url(); ?>" id="page_head">Home</a>
-                            <a href="<?php echo $base_url('contact'); ?>" id="page_head">Contact</a>
+                            <a href="<?php echo base_url(); ?>" id="page_head">Home</a>
+                            <a href="<?php echo base_url('contact'); ?>" id="page_head">Contact</a>
                         </div>
                     </div>
                 </div>

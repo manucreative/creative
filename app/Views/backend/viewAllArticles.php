@@ -62,7 +62,15 @@
                     <td><?php echo $article['cat_name'];?></td>
                     <td><?php echo $article['first_name'];?></td>
                     <td><?php echo $article['short_content']; ?></td>
-                    <td class="height: 5px"><?php echo $article['article_content']; ?></td>
+                    <td>
+                    <?php
+                        $content = $article['article_content'];
+                        $words = str_word_count($content, 1); // Split the content into an array of words
+                        $limitedWords = implode(' ', array_slice($words, 0, 70)); // Take the first 70 words
+
+                        echo $limitedWords;
+                        ?>
+                    </td>
                     <td><img src="<?php echo base_url('backend/media/article_images/'.$article['article_img']);?>"  class ='img-fluid' height='150' width='150'></td>
                     <td><?php echo $article['created_at']; ?></td>
                     <td><?php echo $article['updated_at']; ?></td>
