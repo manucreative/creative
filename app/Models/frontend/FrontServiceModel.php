@@ -43,7 +43,6 @@ class FrontServiceModel extends Model
         if($service_id === false){
             return $this->select('tbl_services.*, activations.activation_name')
             ->join('activations', 'activations.activation_id = tbl_services.activation_id')
-            ->orderBy('RAND()')
             ->findAll();
         }else{
             return $this->where(['service_id'=> $service_id])->first();

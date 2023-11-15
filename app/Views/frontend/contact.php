@@ -66,27 +66,31 @@
                                                         <?= session()->getFlashdata('success') ?>
                                                     </div>
                                                     <?php endif; ?>
-                                <?= form_open(base_url('sendMail'), ['id' => 'contactForm'])?>
-                                    <div class="control-group">
-                                        <input type="text" class="form-control" id="name" value="<?php echo old('name');?>" name="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
-                                        <p class="help-block text-danger"></p>
+                               <form id= "contactForm" action="<?php echo base_url('sendMail');?>" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Enter you full names</label>
+                                        <input type="text" class="form-control" id="contact_name" value="<?php echo old('name');?>" name="name" placeholder="Your Name"/>
+                                        <div class="error"></div>
                                     </div>
-                                    <div class="control-group">
-                                        <input type="email" class="form-control" id="user_email" name="user_email" value="<?php echo old('user_email');?>" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
-                                        <p class="help-block text-danger"></p>
+                                    <div class="form-group">
+                                        <label for="user_email">Enter a valid Email</label>
+                                        <input type="text" class="form-control" id="contact_email" name="user_email" value="<?php echo old('user_email');?>" placeholder="Your Email"/>
+                                        <div class="error"></div>
                                     </div>
-                                    <div class="control-group">
-                                        <input type="text" class="form-control" id="subject" name="subject" value="<?php echo old('subject');?>" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
-                                        <p class="help-block text-danger"></p>
+                                    <div class="form-group">
+                                        <label for="subject">Enter Mail Subject</label>
+                                        <input type="text" class="form-control" id="subject" name="subject" value="<?php echo old('subject');?>" placeholder="Subject"/>
+                                        <div class="error"></div>
                                     </div>
-                                    <div class="control-group">
-                                        <textarea class="form-control" id="contact_message" name="message" placeholder="Type Your Message" required="required" data-validation-required-message="Please enter your message"> <?php echo old('message');?> </textarea>
-                                        <p class="help-block text-danger"></p>
+                                    <div class="form-group">
+                                        <label for="message">Write you Message here</label>
+                                        <textarea type="text" class="form-control contact-data" id="contact_message" name="message" placeholder="Type Your Message"> <?php echo old('message');?> </textarea>
+                                        <div class="error"></div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
+                                        <button class="btn" type="submit">Send Message</button>
                                     </div>
-                                <?= form_close()?>
+                               </form>
                             </div>
                         </div>
                     </div>

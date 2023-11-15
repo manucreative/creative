@@ -8,7 +8,11 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="footer-contact wow fadeInLeft">
                                 <h2>Office Contact</h2>
-                                <p><i class="fa fa-map-marker-alt"></i>&nbsp 2522-00100, Nairobi, Kenya</p>
+                                <p>
+                                <a href="<?php echo base_url();?>">
+                                    <img src="<?php echo base_url('frontend/media/general_images/logos/new-red.png')?>" width="200px" alt="Logo">
+                                </a>
+                                </p>
                                 <p><i class="fa fa-phone-alt"></i>&nbsp +254-721827214</p>
                                 <p><i class="fa fa-phone-alt"></i>&nbsp +254-745369555</p>
                                 <p><i class="fa fa-envelope"></i>&nbsp emmanuelkirui34@gmail.com</p>
@@ -45,6 +49,11 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="newsletter wow fadeInRight">
                                 <h2>Newsletter</h2>
+                                <p>
+                                <a href="<?php echo base_url();?>">
+                                    <img src="<?php echo base_url('frontend/media/general_images/logos/new-red.png')?>" width="100px" alt="Logo">
+                                </a>
+                                </p>
                                 <p>
                                     For More Updates or to learn more about Me, I kindly request you to Subscribe my news letter Now. Take advantage of finding a close developer for your project.
                                 </p>
@@ -100,8 +109,8 @@
    
         <!-- added JS -->
         <!-- All JS Files -->
-<!-- <script src="<?php // echo base_url('frontend/js/jquery-2.2.4.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/bootstrap.min.js'); ?>"></script> -->
+<script src="<?php  echo base_url('frontend/js/myJs.js'); ?>"></script>
+<script src="<?php // echo base_url('frontend/js/bootstrap.min.js'); ?>"></script>
 <script src="<?php // echo base_url('frontend/js/chosen.jquery.js'); ?>"></script>
 <script src="<?php // echo base_url('frontend/js/docsupport/init.js'); ?>"></script>
 <script src="<?php // echo base_url('frontend/js/jquery.magnific-popup.min.js'); ?>"></script>
@@ -120,13 +129,13 @@
         <script src="<?php echo base_url('frontend/js/main.js')?>"></script>
         <script>
     tinymce.init({
-    selector: '#contact_message', // Change this to match your textarea's class or ID
+    selector: '.contact-data, .comment_message',
     height: 300,
     plugins: 'link image code',
     toolbar: 'undo redo | formatselect | bold italic underline strikethrough | fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table | code',
-    fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt', // Customize font sizes as needed
+    fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
     menubar: true,
-    skin_url: '<?php echo base_url('frontend/tinymce/js/tinymce/skins/ui/tinymce-5-dark');?>',
+    skin_url: '<?php echo base_url('frontend/tinymce/js/tinymce/skins/ui/tinymce-5');?>',
 });
  </script>
     </body>

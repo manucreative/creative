@@ -2,13 +2,13 @@
 <html ang="en">
     <head>
         <meta charset="utf-8">
-        <title><?= esc($title)?>- Kips Creative</title>
+        <title><?= esc($title)?>&nbsp;Manwix - Modern Artisans Network </title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Emmanuel Kirui Developer website" name="keywords">
         <meta content="Emmanuel Kirui Developer website" name="description">
 
         <!-- Favicon -->
-        <link href="<?php echo base_url('frontend/media/general_images/favicon.png')?>" rel="icon">
+        <link href="<?php echo base_url('frontend/media/general_images/logos/big-red-fav.png')?>" rel="icon">
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
         <link href="<?php echo base_url('frontend/manuu/slick/slick.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('frontend/manuu/slick/slick-theme.css')?>" rel="stylesheet">
         <link rel="stylesheet" href="<?php  echo base_url('frontend/css/style2.css'); ?>">
-        <link rel="stylesheet" href="<?php // echo base_url('frontend/css/spacing.css'); ?>">
+        <link rel="stylesheet" href="<?php  echo base_url('frontend/css/myStyles.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('frontend/css/custom.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('frontend/css/responsive.css'); ?>">
         <link rel="stylesheet" href="<?php // echo base_url('frontend/css/chosen.css'); ?>">
@@ -57,9 +57,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-12">
                             <div class="logo">
-                                <a href="index.html">
-                                    <!-- <h1>DEVELOPER</h1> -->
-                                    <img src="<?php echo base_url('frontend/media/general_images/logo.png')?>" alt="Logo">
+                                <a href="<?php echo base_url();?>">
+                                    <img src="<?php echo base_url('frontend/media/general_images/logos/new-white.png')?>" alt="Logo">
                                 </a>
                             </div>
                         </div>

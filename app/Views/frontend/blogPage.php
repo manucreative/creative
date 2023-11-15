@@ -129,26 +129,30 @@
                             </div>
                             <div class="comment-form wow fadeInUp">
                                 <h2>Leave a comment</h2>
-                                <form>
+                                <form id="commentForm" action="/">
                                     <div class="form-group">
                                         <label for="name">Name *</label>
-                                        <input type="text" class="form-control" id="name">
+                                        <input type="text" class="form-control" id="comment-name">
+                                        <div class="error"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email *</label>
-                                        <input type="email" class="form-control" id="email">
+                                        <input type="text" class="form-control" id="comment-email">
+                                        <div class="error"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="website">Website</label>
                                         <input type="url" class="form-control" id="website">
+                                        <div class="error"></div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="message">Message *</label>
-                                        <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                                        <textarea type="text" id="comment-message" class="form-control comment_message" name="comment_message" placeholder="Type Your Message"></textarea>
+                                        <div class="error"></div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" value="Post Comment" class="btn">
+                                        <button type="submit" class="btn">Post Comment</button>
                                     </div>
                                 </form>
                             </div>

@@ -171,17 +171,24 @@
             <!-- Service Start -->
 
             <div class="service">
-                    <div class="section-header text-center"style="background: #030f27;">
-                        <p>Actual Services</p>
-                        <h2 style="color: #ffffff;">I Can Deliver To You</h2>
-                    </div>
                     <div class="container">
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="main-headline">
+                                    <div class="headline">
+                                        <h2> All our Services<?php // echo $setting['home_title_news']; ?></h2>
+                                        <hr>
+                                    </div>
+                                    <p> Our Experts have go a lot for you<?php // echo $setting['home_subtitle_news']; ?></p>
+                                </div>
+                            </div>
+                        </div>
                     <div class="row">
                         <?php
                         $serviceCounter = 0;
 
                         if (!empty($services) && is_array($services)) :
-                            foreach (array_slice($services, 0, 3, true) as $service) : // Limit to the first three services
+                            foreach($services as $service) : // Limit to the first three services
                                 ?>
                                 <?php if($service['activation_name'] === 'active') : ?>
                                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -201,15 +208,15 @@
                                     </div>
                                 </div>
                                 <?php
-                                $serviceCounter++; // Increment the counter
+                                // $serviceCounter++; // Increment the counter
                                 endif;
                             endforeach;
 
-                            if ($serviceCounter < count($services)) : // Check if there are more services to show
+                            // if ($serviceCounter < count($services)) : // Check if there are more services to show
                                 ?>
                                
-                            <?php endif; ?>
-                        <?php endif; ?>
+                            <?php  endif; ?>
+                        <?php // endif; ?>
                     </div>
                     <div class="myBox wow fadeInUp" style="text-align: center;" data-wow-delay="0.3s">
                                     <a href="<?php echo base_url('services') ?>" class="btn-md nav-item nav-link">Find out More</a>
