@@ -114,17 +114,19 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a href="<?php echo base_url()?>" class="nav-item nav-link active">Home</a>
-                                <a href="<?php echo base_url('about')?>" class="nav-item nav-link">My Profile</a>
+                                <a href="<?php echo base_url()?>" class="nav-item nav-link">Home</a>
+                                <a href="<?php echo base_url('team')?>" class="nav-item nav-link">Team</a>
                                 <a href="<?php echo base_url('services')?>" class="nav-item nav-link">Services</a>
                                 <a href="<?php echo base_url('portfolio')?>" class="nav-item nav-link">Projects</a>
-                                <div class="nav-item dropdown">
+                                <a href="<?php echo base_url('articles')?>" class="nav-item nav-link">Recent Articles</a>
+                                <a href="<?php echo base_url('about')?>" class="nav-item nav-link">About Us</a>
+                                <!-- <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                                     <div class="dropdown-menu">
                                         <a href="<?php echo base_url('articles')?>" class="dropdown-item">Recent Articles</a>
                                         <a href="<?php echo base_url('myPricing')?>" class="dropdown-item">My Pricing</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div> 
                             <div class="ml-auto">
                             <a href="<?php echo base_url('contact')?>" class="btn nav-item nav-link">Contact me</a>

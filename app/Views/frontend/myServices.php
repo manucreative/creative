@@ -19,10 +19,17 @@
                <!-- Service Start -->
 
                <div class="service">
-                    <div class="section-header text-center"style="background: #030f27;">
-                        <p>Actual Services</p>
-                        <h2 style="color: #ffffff;">I Can Deliver To You</h2>
-                    </div>
+               <div class="row">
+                            <div class="col-md-12">
+                                <div class="main-headline">
+                                    <div class="headline">
+                                        <h2>My Services<?php // echo $setting['home_title_news']; ?></h2>
+                                        <hr>
+                                    </div>
+                                    <p>I am Professional in the following <?php // echo $setting['home_subtitle_news']; ?></p>
+                                </div>
+                            </div>
+                        </div>
                     <!-- <div class="container"> -->
                     <div class="row">
                         <?php if(!empty($services) && is_array($services)) :?>
@@ -54,7 +61,7 @@
             
                                   <!-- FAQs Start -->
                                   <div class="faqs">
-                <div class="container">
+                <!-- <div class="container"> -->
                     <div class="section-header text-center">
                         <p>Frequently Asked Question</p>
                         <h2>What are your questions about me?</h2>
@@ -102,5 +109,5 @@
                             </div>
                             </div>
                         </div>
-                        </div>
+                        <!-- </div> -->
                 </div>

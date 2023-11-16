@@ -93,7 +93,7 @@
             <script src="<?php echo base_url('frontend/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
         <!-- JavaScript Libraries -->
         // slick
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -138,5 +138,23 @@
     skin_url: '<?php echo base_url('frontend/tinymce/js/tinymce/skins/ui/tinymce-5');?>',
 });
  </script>
+ <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('.navbar-dark .mr-auto .nav-link');
+
+        links.forEach(function (link) {
+            link.addEventListener('click', function () {
+                // Remove the 'active' class from all links
+                links.forEach(function (l) {
+                    l.classList.remove('on-page');
+                });
+
+                // Add the 'active' class to the clicked link
+                link.classList.add('on-page');
+            });
+        });
+    });
+</script> -->
+
     </body>
 </html>

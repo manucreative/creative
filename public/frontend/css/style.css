@@ -3,7 +3,7 @@
 /*******************************/
 body {
     color: #000000;
-    background: #ffffff;
+    background: #f9f8f8;
     /* font-family: 'Poppins', sans-serif; */
     font-weight: 400;
 }
@@ -23,7 +23,7 @@ a {
 }
 
 a:hover,
-a:active,
+/* a:active, */
 a:focus {
     color: #ff430a;
     outline: none;
@@ -258,7 +258,7 @@ a:focus {
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
     color: #09ff15;
-    transition: none;
+    /* transition: none; */
 }
 
 .nav-bar .dropdown-menu {

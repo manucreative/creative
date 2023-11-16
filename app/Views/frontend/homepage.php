@@ -7,7 +7,6 @@
                                 <li data-target="#carousel" data-slide-to="<?php echo $key; ?>" <?php echo ($key === 0) ? 'class="active"' : ''; ?>></li>
                             <?php endforeach; ?>
                 </ol>
-
                 <div class="carousel-inner">
                 <?php foreach ($sliders as $key => $slider): ?>
                 <div class="carousel-item <?php echo ($key === 0) ? 'active' : ''; ?>">
@@ -108,70 +107,86 @@
             
         <!-- Team #1 Start -->
         <div class="myTeam wow fadeInRight" data-wow-delay="0.2s">
-        <div class="container">
-            <div class="section-title text-center">
-				<h2>Professional</h2>
-                <h1>Team Members on Board</h1>
-            </div>
-            <div class="row team-slider">
-            <?php if (!empty($admins) && is_array($admins)) : ?>
-            <?php foreach ($admins as $admin) : ?>
-                <?php
-                    // Check the activation status
-                    // $isActive = ($admin['activation_id'] == 1);
-                    ?>
-                      <?php if($admin['activation_name'] === 'active') : ?>
-                <div class="column">
-                    <div class="team-1 team-member">
-                        <a href="<?php echo base_url('team/'.$admin['user_name']);?>">
-                        <div class="team-img">
-                            <img src="<?php echo base_url('backend/media/admin_images/' .$admin['avatar'])?>" alt="Team Image">
-                        </div>
-                        </a>
-                <?php
-                            $paragraph = $admin['professional_profile'] ?? '';
-                            $words = explode(' ', $paragraph);
-                            $totalWords = count($words);
-                            $wordsToShow = 9;
-
-                            if ($totalWords > $wordsToShow) {
-                                $trimmedWords = array_slice($words, 0, $wordsToShow);
-                                $trimmedParagraph = implode(' ', $trimmedWords) . '...';
-                            } else {
-                                $trimmedParagraph = $paragraph;
-                            }
-                 ?>
-                        <div class="team-content text-center">
-                            <a href="<?php echo base_url('team/'.$admin['user_name']);?>">
-                            <h2><?php echo $admin['first_name']. ' ' .$admin['last_name']; ?></h2>
-                            <h3><?php echo $admin['sub_title'] ?? '';?></h3>
-                            <p><?php echo $trimmedParagraph; ?></p>
-                            <h4><?php echo $admin['email_address'] ?? '';?></h4>
-                            </a>
-                            <div class="team-social text-center">
-                            <a class="social-tw" href="https://www.tweeter.com/<?php  echo $socialMedia['tweeter']?? '' ?>"><i class="fab fa-twitter"></i></a>
-                            <a class="social-fb" href="https://web.facebook.com/<?php  echo $socialMedia['facebook']?? '' ?>"><i class="fab fa-facebook-f"></i></a>
-                            <a class="social-li" href="https://www.linkedin.com/in/<?php  echo ($socialMedia['linkedin']?? '')?>"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-in" href="https://www.instagram.com/<?php  echo $socialMedia['instagram']?? '' ?>"><i class="fab fa-instagram"></i></a>
-                            <a class="social-yt" href="https://www.youtube.com/channel/<?php  echo $socialMedia['youtube']?? '' ?>"><i class="fab fa-youtube"></i></a>
-                            <a style="background-color: green;" class="social-fb" href="https://api.whatsapp.com/send?phone=%2B<?php  echo $socialMedia['whatsApp']?? '' ?>&fbclid=IwAR2oluW78T5fEgXH8g_p_E1FM-SMThaM07LtCD7U2aI7qwdlhxH2zUHUmno"><i class="fab fa-whatsapp"></i></a>
+        <!-- <div class="container"> -->
+        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main-headline">
+                                    <div class="headline">
+                                        <h2> Meet the current professional team <?php // echo $setting['home_title_news']; ?></h2>
+                                        <hr>
+                                    </div>
+                                    <p> We value professionalism, click to confirm<?php // echo $setting['home_subtitle_news']; ?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php endif ?>
+                <div class="row">
+    <div class="col-md-12 mt_50">
+        <div class="blog-carousel owl-carousel">
+            <?php if (!empty($admins) && is_array($admins)) : ?>
+                <?php foreach ($admins as $admin) : ?>
+                    <?php
+                    // Check the activation status
+                    if ($admin['activation_name'] === 'active') :
+                        // Get social media data for the current admin
+                        $adminSocialMedia = $socialMediaModel->getSocialMedia($admin['admin_id']);
+                    ?>
+                        <div class="blog-item">
+                            <div class="team-1 team-member">
+                                <a href="<?php echo base_url('team/' . $admin['user_name']); ?>">
+                                    <div class="team-img">
+                                        <img src="<?php echo base_url('backend/media/admin_images/' . $admin['avatar']) ?>" alt="Team Image">
+                                    </div>
+                                </a>
+                                <?php
+                                $paragraph = $admin['professional_profile'] ?? '';
+                                $words = explode(' ', $paragraph);
+                                $totalWords = count($words);
+                                $wordsToShow = 9;
+
+                                if ($totalWords > $wordsToShow) {
+                                    $trimmedWords = array_slice($words, 0, $wordsToShow);
+                                    $trimmedParagraph = implode(' ', $trimmedWords) . '...';
+                                } else {
+                                    $trimmedParagraph = $paragraph;
+                                }
+                                ?>
+                                <div class="team-content text-center">
+                                    <a href="<?php echo base_url('team/' . $admin['user_name']); ?>">
+                                        <h2><?php echo $admin['first_name'] . ' ' . $admin['last_name']; ?></h2>
+                                        <h3><?php echo $admin['sub_title'] ?? ''; ?></h3>
+                                        <p><?php echo $trimmedParagraph; ?></p>
+                                        <h4><?php echo $admin['email_address'] ?? ''; ?></h4>
+                                    </a>
+                                    <div class="team-social text-center">
+                                    <a class="social-tw" href="https://www.tweeter.com/<?php  echo $adminSocialMedia['tweeter']?? '' ?>"><i class="fab fa-twitter"></i></a>
+                                    <a class="social-fb" href="https://web.facebook.com/<?php  echo $adminSocialMedia['facebook']?? '' ?>"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="social-li" href="https://www.linkedin.com/in/<?php  echo ($adminSocialMedia['linkedin']?? '')?>"><i class="fab fa-linkedin-in"></i></a>
+                                    <a class="social-in" href="https://www.instagram.com/<?php  echo $adminSocialMedia['instagram']?? '' ?>"><i class="fab fa-instagram"></i></a>
+                                    <a class="social-yt" href="https://www.youtube.com/channel/<?php  echo $adminSocialMedia['youtube']?? '' ?>"><i class="fab fa-youtube"></i></a>
+                                    <a style="background-color: green;" class="social-fb" href="https://api.whatsapp.com/send?phone=%2B<?php  echo $adminSocialMedia['whatsApp']?? '' ?>&fbclid=IwAR2oluW78T5fEgXH8g_p_E1FM-SMThaM07LtCD7U2aI7qwdlhxH2zUHUmno"><i class="fab fa-whatsapp"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
                 <?php endforeach ?>
-                <?php endif ?>
-               
-            </div> 
+            <?php endif ?>
         </div>
+    </div>
+</div>
+        <div class="row">
+                        <div class="col-12 load-more">
+                            <a class="btn btn-success" href="<?php echo base_url('team') ?>">Load More</a>
+                        </div>
+                    </div>
+        <!-- </div> -->
         </div>
         <!-- Team #1 End -->
 
             <!-- Service Start -->
 
             <div class="service">
-                    <div class="container">
+                    <!-- <div class="container"> -->
                     <div class="row">
                             <div class="col-md-12">
                                 <div class="main-headline">
@@ -184,14 +199,15 @@
                             </div>
                         </div>
                     <div class="row">
+                    <div class="col-md-12 mt_50">
+                        <div class="blog-carousel owl-carousel">
                         <?php
-                        $serviceCounter = 0;
 
                         if (!empty($services) && is_array($services)) :
-                            foreach($services as $service) : // Limit to the first three services
+                            foreach($services as $service) :
                                 ?>
                                 <?php if($service['activation_name'] === 'active') : ?>
-                                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="service-item">
                                         <div class="service-img">
                                             <img src="<?php echo base_url('backend/media/service_images/' . $service['service_img']) ?>" alt="Image">
@@ -208,26 +224,24 @@
                                     </div>
                                 </div>
                                 <?php
-                                // $serviceCounter++; // Increment the counter
                                 endif;
                             endforeach;
-
-                            // if ($serviceCounter < count($services)) : // Check if there are more services to show
-                                ?>
-                               
-                            <?php  endif; ?>
-                        <?php // endif; ?>
+                            endif;
+                            ?>
                     </div>
-                    <div class="myBox wow fadeInUp" style="text-align: center;" data-wow-delay="0.3s">
-                                    <a href="<?php echo base_url('services') ?>" class="btn-md nav-item nav-link">Find out More</a>
-                                </div>
-                </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 load-more">
+                            <a class="btn btn-success" href="<?php echo base_url('services') ?>">Load More</a>
+                        </div>
+                    </div>
             </div>
             <!-- Service End -->
 <hr>
 
 <div class="blog-area pt_80 pb_80">
-    <div class="container wow fadeIn">
+    <div class=" wow fadeIn">
         <div class="row">
             <div class="col-md-12">
                 <div class="main-headline">
@@ -249,7 +263,7 @@
                         $temp_final = $temp_arr[0].'-thumb'.'.'.$temp_arr[1];
 
                         $dt = explode('-',$article['updated_at']);
-
+                            if($article['activation_name'] === 'active'){
                         ?>
                         <div class="blog-item wow fadeIn" data-wow-delay="0.1s">
                             <a href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>">
@@ -287,6 +301,7 @@
                             </div>
                         </div>
                         <?php
+                            }
                     }
                     ?>
                 </div>
@@ -362,7 +377,7 @@
 
                       <!-- FAQs Start -->
                       <div class="faqs">
-                <div class="container">
+                <!-- <div class="container"> -->
                     <div class="section-header text-center">
                         <p>Frequently Asked Question</p>
                         <h2>What are your questions about me?</h2>
@@ -410,7 +425,7 @@
                             </div>
                             </div>
                         </div>
-                        </div>
+                        <!-- </div> -->
                 </div>
                        
             <!-- FAQs End -->

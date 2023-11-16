@@ -150,6 +150,18 @@ class AdminFrontendModel extends Model
 
     }
 
+    public function getAdmins($admin_id = false){
+        if($admin_id === false){
+            return $this->select('admin.*, tbl_roles.role_name, activations.activation_name')
+            ->join('tbl_roles', 'tbl_roles.role_id = admin.role')
+            ->join('activations', 'activations.activation_id = admin.activation_id')
+            ->findAll();
+        }else{
+            
+            return $this->where(['admin_id' => $admin_id])->first();
+        }
+    }
+
     public function getAdminDataByUserName($user_name = false){
         if($user_name === false){
             return $this->select('admin.*, activations.activation_name')

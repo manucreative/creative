@@ -15,43 +15,77 @@
 
             <div class="wrapper"> <!-- wrapper start -->
             <!-- Blog Start -->
-            <div class="blog">
-                <div class="container">
-                    <div class="section-header text-center">
-                        <p>Latest Blogs</p>
-                        <h2><?php echo $title;?></h2>
+            <div class="blog-area pt_80 pb_80">
+    <div class=" wow fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-headline">
+                    <div class="headline">
+                        <h2> All our Articles<?php // echo $setting['home_title_news']; ?></h2>
+                        <hr>
                     </div>
-                   
-                    <div class="row blog-page">
-                    <?php if (!empty($articles)&& is_array($articles)):?>
-                        <?php foreach($articles as $article):?>
-                            <?php if($article['activation_id'] == 1):?>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="blog-item">
-                                <div class="blog-img">
-                                    <img src="<?php echo base_url('backend/media/article_images/'. $article['article_img'])?>" alt="Article Image">
+                    <p> Learn More from the experts<?php // echo $setting['home_subtitle_news']; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                    <?php
+                    foreach ($articles as $article) {
+
+                        $temp_arr = explode('.',$article['article_img']);
+                        $temp_final = $temp_arr[0].'-thumb'.'.'.$temp_arr[1];
+
+                        $dt = explode('-',$article['updated_at']);
+                        if($article['activation_name'] === 'active'){
+                        ?>
+                        
+            <div class="col-sm-4 mt_50">
+                <div class="blog-item">
+                        <div class="blog-item wow fadeIn" data-wow-delay="0.1s">
+                            <a href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>">
+                                <div class="blog-image">
+                                    <img src="<?php echo base_url('backend/media/article_images/'. $article['article_img']); ?>" alt="Article Image">
+                                    <div class="date">
+                                        <h3><?php echo $dt[2]; ?></h3>
+                                        <h4>
+                                            <?php
+                                            if($dt[1] == '01') {echo 'Jan';}
+                                            if($dt[1] == '02') {echo 'Feb';}
+                                            if($dt[1] == '03') {echo 'Mar';}
+                                            if($dt[1] == '04') {echo 'Apr';}
+                                            if($dt[1] == '05') {echo 'May';}
+                                            if($dt[1] == '06') {echo 'Jun';}
+                                            if($dt[1] == '07') {echo 'Jul';}
+                                            if($dt[1] == '08') {echo 'Aug';}
+                                            if($dt[1] == '09') {echo 'Sep';}
+                                            if($dt[1] == '10') {echo 'Oct';}
+                                            if($dt[1] == '11') {echo 'Nov';}
+                                            if($dt[1] == '12') {echo 'Dec';}
+                                            ?>
+                                        </h4>
+                                    </div>
                                 </div>
-                                <div class="blog-title">
-                                    <h3><?php echo $article['article_title'];?></h3>
-                                    <a class="btn" href="<?php echo base_url('articles/'.$article['url_link']);?>">+</a>
-                                </div>
-                                <div class="blog-meta">
-                                    <p>By<a href=""><?php echo $article['first_name'];?></a></p>
-                                   
-                                </div>
-                                <div class="blog-text">
-                                    <p>
-                                        <?php echo $article['short_content'];?>
-                                    </p>
+                            </a>
+                            <div class="blog-text">
+                                <a class="b-head" href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>"><?php echo $article['article_title']; ?></a>
+                                <p>
+                                    <?php echo $article['short_content']; ?>
+                                </p>
+                                <div class="button mt_15">
+                                    <a href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>">Read More <i class="fa fa-chevron-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <?php endif ?>
-                        <?php endforeach ?>
-                        <?php endif?>
                         </div>
-                        
                     </div>
+                        <?php
+                        }
+                    }
+                    ?>
+                
+        </div>
+  
+                    <!-- </div> -->
                     <div class="row">
                         <div class="col-12">
                             <ul class="pagination justify-content-center">

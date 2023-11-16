@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
     const contactForm = $('#contactForm');
     const commentForm = $('#commentForm');
 
@@ -119,4 +121,6 @@ $(document).ready(function () {
             setSuccess(commentMessage);
         }
     };
+
+
 });

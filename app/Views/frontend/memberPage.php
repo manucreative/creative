@@ -17,7 +17,7 @@
             <div class="wrapper"> <!-- wrapper start -->
                <!-- About Start -->
                <div class="about wow fadeInUp" data-wow-delay="0.2s">
-                <div class="container">
+                <!-- <div class="container"> -->
                 <div class="section-header text-center">
                         <p>Resume</p>
                         <h2>My Professional Resume</h2>
@@ -168,7 +168,7 @@
                                 </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
             <!-- About End -->
 
@@ -209,7 +209,7 @@
             <!-- Service End -->
 
             <div class="blog-area pt_80 pb_80">
-    <div class="container wow fadeIn">
+    <div class="wow fadeIn">
         <div class="row">
             <div class="col-md-12">
                 <div class="main-headline">
@@ -353,7 +353,7 @@
 
                                   <!-- FAQs Start -->
                                   <div class="faqs">
-                <div class="container">
+                <!-- <div class="container"> -->
                     <div class="section-header text-center">
                         <p>Frequently Asked Question</p>
                         <h2>What are your questions about me?</h2>
@@ -401,5 +401,5 @@
                             </div>
                             </div>
                         </div>
-                        </div>
+                        <!-- </div> -->
                 </div>

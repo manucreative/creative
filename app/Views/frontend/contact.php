@@ -16,7 +16,7 @@
             <div class="wrapper"> <!-- wrapper start -->
             <!-- Contact Start -->
             <div class="contact wow fadeInUp">
-                <div class="container">
+                <!-- <div class="container"> -->
                     <div class="section-header text-center">
                         <p>Get In Touch Right Now</p>
                         <h2>For Any Question</h2>
@@ -94,12 +94,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
 
                                     <!-- FAQs Start -->
                                     <div class="faqs">
-                <div class="container">
+                <!-- <div class="container"> -->
                     <div class="section-header text-center">
                         <p>Frequently Asked Question</p>
                         <h2>What are your questions about me?</h2>
@@ -147,5 +147,5 @@
                             </div>
                             </div>
                         </div>
-                        </div>
+                        <!-- </div> -->
                 </div>

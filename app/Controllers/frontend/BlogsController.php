@@ -32,6 +32,7 @@ class BlogsController extends BaseController{
         $data =[
             'title' => $title,
             'slug' => $slug,
+            'articles' => $articlesModel->getArticles(),
             'user_name' => $user_name,
             'article_title' => $articles['article_title'],
             'author_id' => $articles['author_id'],

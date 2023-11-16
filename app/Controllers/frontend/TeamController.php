@@ -12,7 +12,31 @@ use App\Models\SocialMedia;
 
 class TeamController extends BaseController
 {
-    public function team($slug,$title)
+    public function team($title){
+
+        $title = 'Professional Team';
+        $adminModel = model(AdminFrontendModel::class);
+        $socialMediaModel = model(SocialMedia::class);
+        $admins = $adminModel->getAdmins();
+        
+        foreach($admins as $admin){
+            $admin_id = $admin['admin_id'];
+        }
+        $mySocialMedia = $socialMediaModel->getSocialMedia($admin_id);
+
+        $data = [
+            'admins' => $admins,
+            'socialMediaModel' => model(SocialMedia::class),
+            'title' => $title,
+        ];
+        return view('frontend/templates/header', $data)
+         . view('frontend/ourTeam', $data)
+         . view('frontend/templates/footer');
+
+    }
+
+
+    public function teamDetails($slug,$title)
     {
         $configModels = model(SettingsModel::class);
         $adminModel = model(AdminFrontendModel::class);

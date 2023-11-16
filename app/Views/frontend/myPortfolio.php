@@ -17,7 +17,7 @@
             <div class="wrapper"> <!-- wrapper start -->
             
 <div class="portfolio">
-                <div class="container">
+                <!-- <div class="container"> -->
 
                     <div class="row">
                         <div class="col-12">
@@ -140,11 +140,11 @@
                             <a class="btn" href="#">Load More</a>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
                                    <!-- FAQs Start -->
                                    <div class="faqs">
-                <div class="container">
+                <!-- <div class="container"> -->
                     <div class="section-header text-center">
                         <p>Frequently Asked Question</p>
                         <h2>What are your questions about me?</h2>
@@ -192,5 +192,5 @@
                             </div>
                             </div>
                         </div>
-                        </div>
+                        <!-- </div> -->
                 </div>

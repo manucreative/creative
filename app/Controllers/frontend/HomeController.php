@@ -68,7 +68,7 @@ class HomeController extends BaseController{
             'services' => $serviceModel->getServices(),
             'faqs' => $faqModel->getFaq(),
             'admins' => $admins,
-            'socialMedia' => $socialMedialData,
+            'socialMediaModel' => model(SocialMedia::class),
             'articles' => $articlesModel->getArticles()
         ];
 

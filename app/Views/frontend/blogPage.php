@@ -15,10 +15,10 @@
             </div>
             <!-- Page Header End -->
 
-
+            <div class="wrapper"> <!-- wrapper start -->
             <!-- Single Post Start-->
             <div class="single">
-                <div class="container">
+                <!-- <div class="container"> -->
                     <div class="row">
                         <div class="col-lg-9">
                             <div class="single-content wow fadeInUp">
@@ -93,38 +93,6 @@
                                             </div>
                                         </div>
                                     </li>
-                                <li class="comment-item">
-                                        <div class="comment-body">
-                                            <div class="comment-img">
-                                                <img src="img/user.jpg" />
-                                            </div>
-                                            <div class="comment-text">
-                                                <h3><a href="">Josh Dunn</a></h3>
-                                                <p><span>01 Jan 2045 at 12:00pm</span></p>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis sapien, non eros leo in nunc. Donec a nulla vel turpis tempor ac vel justo. In hac platea dictumst. 
-                                                </p>
-                                                <a class="btn" href="">Reply</a>
-                                            </div>
-                                        </div>
-                                        <ul class="comment-child">
-                                            <li class="comment-item">
-                                                <div class="comment-body">
-                                                    <div class="comment-img">
-                                                        <img src="img/user.jpg" />
-                                                    </div>
-                                                    <div class="comment-text">
-                                                        <h3><a href="">Josh Dunn</a></h3>
-                                                        <p><span>01 Jan 2045 at 12:00pm</span></p>
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet elit. Integer lorem augue purus mollis sapien, non eros leo in nunc. Donec a nulla vel turpis tempor ac vel justo. In hac platea dictumst. 
-                                                        </p>
-                                                        <a class="btn" href="">Reply</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="comment-form wow fadeInUp">
@@ -171,68 +139,28 @@
 
                                 <div class="sidebar-widget wow fadeInUp">
                                     <h2 class="widget-title">Recent Post</h2>
+                                    <?php
+                                        foreach ($articles as $article) {
+                                            if($article['activation_name'] === 'active'){
+                                    ?>
                                     <div class="recent-post">
                                         <div class="post-item">
                                             <div class="post-img">
-                                                <img src="img/post-1.jpg" />
+                                                <img src="<?php echo base_url('backend/media/article_images/'. $article['article_img']); ?>" alt="Article-image" />
                                             </div>
                                             <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                                                <a href="<?php echo base_url('team/'.$user_name.'/'.$article['url_link']);?>"><?php echo $article['article_title']; ?></a>
                                                 <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-2.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-3.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-4.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-item">
-                                            <div class="post-img">
-                                                <img src="img/post-5.jpg" />
-                                            </div>
-                                            <div class="post-text">
-                                                <a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                                <div class="post-meta">
-                                                    <p>By<a href="">Admin</a></p>
-                                                    <p>In<a href="">Design</a></p>
+                                                    <p>By<a href=""><?php echo $article['first_name']; ?></a></p>
+                                                    <p>In<a href=""><?php echo $article['cat_name']; ?></a></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php
+                                            }
+                                        }
+                                    ?>
                                 </div>
 
                                 <div class="sidebar-widget wow fadeInUp">
@@ -497,6 +425,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
             <!-- Single Post End-->   
