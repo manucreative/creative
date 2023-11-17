@@ -138,23 +138,23 @@
     skin_url: '<?php echo base_url('frontend/tinymce/js/tinymce/skins/ui/tinymce-5');?>',
 });
  </script>
- <!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var links = document.querySelectorAll('.navbar-dark .mr-auto .nav-link');
+ <script>
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     var links = document.querySelectorAll('.navbar-nav .nav-link');
 
-        links.forEach(function (link) {
-            link.addEventListener('click', function () {
-                // Remove the 'active' class from all links
-                links.forEach(function (l) {
-                    l.classList.remove('on-page');
-                });
+    //     links.forEach(function (link) {
+    //         link.addEventListener('click', function () {
+    //             // Remove the 'active' class from all links
+    //             links.forEach(function (l) {
+    //                 l.classList.remove('active');
+    //             });
 
-                // Add the 'active' class to the clicked link
-                link.classList.add('on-page');
-            });
-        });
-    });
-</script> -->
+    //             // Add the 'active' class to the clicked link
+    //             link.classList.add('active');
+    //         });
+    //     });
+    // });
+</script>
 
     </body>
 </html>

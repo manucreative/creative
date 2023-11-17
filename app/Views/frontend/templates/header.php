@@ -2,7 +2,7 @@
 <html ang="en">
     <head>
         <meta charset="utf-8">
-        <title><?= esc($title)?>&nbsp;Manwix - Modern Artisans Network </title>
+        <title>Manwix -&nbsp;<?= esc($title)?> &nbsp;- Modern Artisans Network </title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Emmanuel Kirui Developer website" name="keywords">
         <meta content="Emmanuel Kirui Developer website" name="description">
@@ -11,12 +11,13 @@
         <link href="<?php echo base_url('frontend/media/general_images/logos/big-red-fav.png')?>" rel="icon">
 
         <!-- Google Font -->
+       
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo base_url('frontend/manuu/flaticon/font/flaticon.css')?>" rel="stylesheet"> 
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="<?php echo base_url('frontend/manuu/flaticon/font/flaticon.css')?>" rel="stylesheet">  -->
         <link href="<?php echo base_url('frontend/manuu/animate/animate.min.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('frontend/manuu/owlcarousel/assets/owl.carousel.min.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('frontend/manuu/lightbox/css/lightbox.min.css')?>" rel="stylesheet">
@@ -31,13 +32,15 @@
         <link rel="stylesheet" href="<?php // echo base_url('frontend/fancybox/css/jquery.fancybox.css'); ?>">
         <link rel="stylesheet" href="<?php // echo base_url('frontend/fancybox/css/jquery.fancybox.min.css'); ?>">
 
+         <link href="<?php echo base_url('frontend/css/style.css')?>" rel="stylesheet">
          <!-- slick -->
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
         <!-- Template Stylesheet -->
-        <link href="<?php echo base_url('frontend/css/style.css')?>" rel="stylesheet">
+        
     <style>
+
     .main_content img {
     max-width: 500px;
     height: auto;
@@ -114,12 +117,12 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
-                                <a href="<?php echo base_url()?>" class="nav-item nav-link">Home</a>
-                                <a href="<?php echo base_url('team')?>" class="nav-item nav-link">Team</a>
-                                <a href="<?php echo base_url('services')?>" class="nav-item nav-link">Services</a>
-                                <a href="<?php echo base_url('portfolio')?>" class="nav-item nav-link">Projects</a>
-                                <a href="<?php echo base_url('articles')?>" class="nav-item nav-link">Recent Articles</a>
-                                <a href="<?php echo base_url('about')?>" class="nav-item nav-link">About Us</a>
+                                <a href="<?php echo base_url()?>" class="nav-link active">Home</a>
+                                <a href="<?php echo base_url('team')?>" class="nav-link">Team</a>
+                                <a href="<?php echo base_url('services')?>" class="nav-link">Services</a>
+                                <a href="<?php echo base_url('portfolio')?>" class="nav-link">Projects</a>
+                                <a href="<?php echo base_url('articles')?>" class="nav-link">Recent Articles</a>
+                                <a href="<?php echo base_url('about')?>" class="nav-link">About Us</a>
                                 <!-- <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
                                     <div class="dropdown-menu">
@@ -129,7 +132,7 @@
                                 </div> -->
                             </div> 
                             <div class="ml-auto">
-                            <a href="<?php echo base_url('contact')?>" class="btn nav-item nav-link">Contact me</a>
+                            <a href="<?php echo base_url('contact')?>" class="btn nav-link">Contact me</a>
                             </div>
                             </div>
                     </nav>

@@ -29,7 +29,7 @@ use App\Controllers\backend\ArticlesController;
     $routes->get('/', [HomeController::class, 'index/$1']);
     $routes->get('services', [ServicesController::class, 'index/$1/$2']);
     $routes->get('portfolio', [PortfolioController::class, 'index/$1']);
-    $routes->get('about', [PortfolioController::class, 'index/$1']);
+    $routes->get('about', [AboutController::class, 'index/$1']);
     $routes->get('team', [TeamController::class, 'team/$1']);
     $routes->get('team/(:segment)', [TeamController::class, 'teamDetails/$1/$2']);
     $routes->get('team/(:segment)/(:segment)', [BlogsController::class, 'ownArticle/$1/$2']);

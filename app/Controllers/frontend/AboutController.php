@@ -7,7 +7,15 @@ use App\Models\FaqModel;
 
 class AboutController extends BaseController{
 
-        public function index($slug, $title){
-           
+        public function index($title){
+                $title = 'About Us';
+
+                $data = [
+                    'title' => $title,
+                ];
+        
+                return view('frontend/templates/header', $data)
+                    . view('frontend/aboutme', $data)
+                    . view('frontend/templates/footer');
         }
 }
