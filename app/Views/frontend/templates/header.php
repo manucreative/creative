@@ -27,10 +27,25 @@
         <link rel="stylesheet" href="<?php  echo base_url('frontend/css/myStyles.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('frontend/css/custom.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('frontend/css/responsive.css'); ?>">
-        <link rel="stylesheet" href="<?php // echo base_url('frontend/css/chosen.css'); ?>">
-        <link rel="stylesheet" href="<?php // echo base_url('frontend/css/datatable.min.css'); ?>">
-        <link rel="stylesheet" href="<?php // echo base_url('frontend/fancybox/css/jquery.fancybox.css'); ?>">
-        <link rel="stylesheet" href="<?php // echo base_url('frontend/fancybox/css/jquery.fancybox.min.css'); ?>">
+
+            <!--===============================================================================================-->
+	        <link rel="stylesheet" type="text/css" href="<?php echo base_url('fonts/font-awesome-4.7.0/css/font-awesome.min.css');?>">
+            <!--===============================================================================================-->
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('fonts/iconic/css/material-design-iconic-font.min.css');?>">
+            <!--===============================================================================================-->
+                <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/animate/animate.css');?>"> -->
+            <!--===============================================================================================-->	
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('adminResources/vendors/new/css-hamburgers/hamburgers.min.css');?>">
+            <!--===============================================================================================-->
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/animsition/css/animsition.min.css');?>">
+            <!--===============================================================================================-->
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/select2/select2.min.css');?>">
+            <!--===============================================================================================-->	
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/daterangepicker/daterangepicker.css');?>">
+            <!--===============================================================================================-->
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/util.css');?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/mainLogin.css');?>">
+            <!--===============================================================================================-->
 
          <link href="<?php echo base_url('frontend/css/style.css')?>" rel="stylesheet">
          <!-- slick -->
@@ -131,7 +146,10 @@
                                     </div>
                                 </div> -->
                             </div> 
-                            <div class="ml-auto">
+                            <div style="padding:2px;" class="">
+                            <a href="<?php echo base_url('team/membershipForm')?>" class="btn nav-link">Become A Team Member</a>
+                            </div>
+                            <div style="padding:2px;" class="">
                             <a href="<?php echo base_url('contact')?>" class="btn nav-link">Contact me</a>
                             </div>
                             </div>

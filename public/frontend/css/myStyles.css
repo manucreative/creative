@@ -49,3 +49,9 @@
     font-size: 9px;
     height: 13px;
 }
+
+.form-wrapper {
+    background:#f2f8f5;
+    border-radius: 30px;
+    border: 1px solid #000000;
+}

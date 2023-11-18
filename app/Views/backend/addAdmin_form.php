@@ -59,7 +59,6 @@
 
     </div>
 
-
       <div class="modal-body">
 
       <div class="form-group">
@@ -157,7 +156,7 @@
       </div>
       </div>
       <hr>
-    
+  
         <div class = "form-group">
         <div class="row">
         <div class="col-sm-1"></div>

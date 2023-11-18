@@ -106,30 +106,32 @@
         <script src="<?php echo base_url('frontend/manuu/counterup/counterup.min.js')?>"></script>
         <script src="<?php echo base_url('frontend/manuu/slick/slick.min.js')?>"></script>
 
-   
+        <!--form JS  -->
+        <!--===============================================================================================-->
+            <script src="<?php echo base_url('backend/login/animsition/js/animsition.min.js');?>"></script>
+        <!--===============================================================================================-->
+            <script src="<?php echo base_url('backend/login/bootstrap/js/popper.js');?>"></script>
+            <script src="<?php echo base_url('backend/login/bootstrap/js/bootstrap.min.js');?>"></script>
+        <!--===============================================================================================-->
+            <script src="<?php echo base_url('backend/login/select2/select2.min.js');?>"></script>
+        <!--===============================================================================================-->
+            <script src="<?php echo base_url('backend/login/daterangepicker/moment.min.js');?>"></script>
+            <script src="<?php echo base_url('backend/login/daterangepicker/daterangepicker.js')?>"></script>
+        <!--===============================================================================================-->
+            <script src="<?php echo base_url('backend/login/countdowntime/countdowntime.js');?>"></script>
+        <!--===============================================================================================-->
+            <script src="<?php echo base_url('frontend/js/mainRegistration.js')?>"></script>
+
+
         <!-- added JS -->
-        <!-- All JS Files -->
 <script src="<?php  echo base_url('frontend/js/myJs.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/bootstrap.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/chosen.jquery.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/docsupport/init.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/jquery.magnific-popup.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/owl.carousel.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/easing.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/wow.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/superfish.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/jquery.slicknav.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/jquery.counterup.min.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/viewportchecker.js'); ?>"></script>
-<script src="<?php // echo base_url('frontend/js/waypoints.min.js'); ?>"></script>
 <script src="<?php echo base_url('frontend/js/custom.js'); ?>"></script>
 
         <!-- Template Javascript -->
         <script src="<?php echo base_url('frontend/js/main.js')?>"></script>
         <script>
     tinymce.init({
-    selector: '.contact-data, .comment_message',
+    selector: '.contact-data, .comment_message, #bio',
     height: 300,
     plugins: 'link image code',
     toolbar: 'undo redo | formatselect | bold italic underline strikethrough | fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table | code',

@@ -85,7 +85,7 @@
             </div>
         </div>
                     <div class="row myServices wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="col-md-4 ">
+                        <div class="col-md-4">
                             <div class="box">
                             <div class="myService-head">
                                 <h4>Software Development</h4>

@@ -301,14 +301,16 @@ a:focus {
 
 .nav-bar .btn {
     color: #ffffff;
-    border: 2px solid #ffffff;
+    /* border: 2px solid #ffffff; */
     border-radius: 0;
+    background: #1b342b;
 }
 
 .nav-bar .btn:hover {
     color: #ffffff;
-    background: #ff430a;
+    background: #0b250a;
     border-color: #000000;
+    border: 2px solid #ffffff;;
 }
 
 @media (min-width: 992px) {
@@ -342,6 +344,7 @@ a:focus {
     
     .nav-bar a.nav-link {
         padding: 5px;
+        text-transform: uppercase;
     }
     
     .nav-bar .dropdown-menu {
@@ -349,7 +352,7 @@ a:focus {
     }
     
     .nav-bar .btn {
-        display: none;
+        display: block;
     }
 }
 
@@ -607,7 +610,7 @@ a:focus {
 }
     
 .feature .col-md-12:nth-child(2n) {
-    color: #0e0d3e;
+    color: #ffffff;
     background: #ff430a;
 }
 
@@ -646,7 +649,7 @@ a:focus {
     height: 79px;
     top: -18px;
     left: -9px;
-    background: #0e0d3e;
+    background: #1b342b;
     border-radius: 60px;
     z-index: 2;
 }
@@ -682,10 +685,12 @@ a:focus {
     font-weight: 400;
 }
 
+.feature .col-md-12:nth-child(2n) h3 {
+    color: #0818fa;
+}
 .feature .col-md-12:nth-child(2n) [class^="flaticon-"]::before,
-.feature .col-md-12:nth-child(2n) h3,
 .feature .col-md-12:nth-child(2n) p {
-    color: #0e0d3e;
+    color: #ffffff;
 }
 
 
@@ -749,6 +754,10 @@ a:focus {
 .myServices .myService-body p {
     font-size: 18px;
     text-align: center;
+}
+
+.myServices .col-md-4{
+    padding: 5px;
 }
 
 

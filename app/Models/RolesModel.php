@@ -39,11 +39,11 @@ class RolesModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getRoles($role_id = false){
-        if($role_id === false){
+    public function getRoles($role_name = false){
+        if($role_name === false){
             return $this->findAll();
         }else{
-            return $this->where(['role_id' => $role_id])->first();
+            return $this->where(['role_name' => $role_name])->first();
         }
     }
 }
