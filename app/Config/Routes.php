@@ -35,6 +35,8 @@ use App\Controllers\frontend\MembershipController;
     $routes->get('team/membershipForm', [MembershipController::class, 'membershipForm/$1']);
     $routes->get('team/membershipForm/verificationSend', [MembershipController::class, 'verificationSend/$1']);
     $routes->post('team/membership', [MembershipController::class, 'membership']);
+    $routes->get('team/membership/verification/(:segment)', [MembershipController::class, 'mailVerification/$1']);
+    $routes->get('team/membershipForm/verificationSuccess', [MembershipController::class, 'verificationSuccess/$1']);
     $routes->get('team/(:segment)', [TeamController::class, 'teamDetails/$1/$2']);
     $routes->get('team/(:segment)/(:segment)', [BlogsController::class, 'ownArticle/$1/$2']);
     $routes->get('articles', [BlogsController::class, 'index/$1']);

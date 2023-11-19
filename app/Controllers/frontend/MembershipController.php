@@ -142,6 +142,7 @@ class MembershipController extends BaseController
                 'password'=> $hashedPassword,
                 'activation_id' => $activation,
                 'role'=> $admin_role,
+                'verification' => 'unverified',
                 'avatar' => $newName,
                 'created_at' => date('Y-m-d H:i:s')
             ];
@@ -193,6 +194,44 @@ class MembershipController extends BaseController
         ];
          return view('frontend/templates/header',$data)
                 . view('frontend/verificationSent',$data)
+                . view('frontend/templates/footer');
+    }
+
+    public function mailVerification($token)
+    {
+
+        $adminsModel = model(AdminModel::class);
+
+        if($this->request->getMethod() === 'get'){
+
+            $admin = $adminsModel->allAdmins($token);
+            $admin_id = $admin['admin_id'];
+            $admin_email = $admin['email_address'];
+
+            $data = [
+                'verification' => 'verified'
+            ];
+
+            $verification = $adminsModel->updateVerification($admin_id, $data);
+            if($verification){
+                session()->setFlashdata('userEmail', $admin_email);
+                session()->setFlashdata('success', 'Congratulations, Verification is complete');
+                return redirect()->to(base_url('team/membershipForm/verificationSuccess'));
+            }else{
+                session()->setFlashdata('error', 'Sorry!! verification Failed');
+                return redirect()->to(base_url('team/membershipForm#regForm'))->withInput()->with('error', 'An error ocurred : Kindly check your data and try again');
+            }
+        }
+    }
+
+    public function verificationSuccess($title){
+        $title = 'Verification Success';
+        $data = [
+            'title' => $title,
+            'errors' => []
+        ];
+         return view('frontend/templates/header',$data)
+                . view('frontend/verificationSuccess',$data)
                 . view('frontend/templates/footer');
     }
 }
