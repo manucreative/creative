@@ -107,6 +107,10 @@ class AdminModel extends Model
             return $this->where(['admin_id' => $admin_id])->first();
         }
 
+    public function getAdminByEmailAddress($email_address){
+        return $this->where(['email_address' => $email_address])->first();
+    }
+
     public function getAdminsUserName(){
         return $this->db->table($this->table)
                         ->select('user_name')

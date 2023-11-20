@@ -5,7 +5,9 @@ namespace App\Controllers\frontend;
 use App\Controllers\BaseController;
 use App\Models\ActivationModel;
 use App\Models\AdminModel;
+use App\Models\frontend\AdminFrontendModel;
 use App\Models\RolesModel;
+use App\Models\SocialMedia;
 
 class MembershipController extends BaseController
 {
@@ -13,7 +15,19 @@ class MembershipController extends BaseController
     public function membershipForm($title)
     {
         $title = 'BE AMONG OUR PROFESSIONAL TEAM TODAY';
+
+        $adminModel = model(AdminFrontendModel::class);
+        $socialMediaModel = model(SocialMedia::class);
+        $admins = $adminModel->getAdmins();
+        
+        foreach($admins as $admin){
+            $admin_id = $admin['admin_id'];
+        }
+
         $data = [
+            'title' => $title,
+            'admins' => $admins,
+            'socialMediaModel' => model(SocialMedia::class),
             'title' => $title,
             'errors' => []
         ];
@@ -214,9 +228,62 @@ class MembershipController extends BaseController
 
             $verification = $adminsModel->updateVerification($admin_id, $data);
             if($verification){
-                session()->setFlashdata('userEmail', $admin_email);
-                session()->setFlashdata('success', 'Congratulations, Verification is complete');
-                return redirect()->to(base_url('team/membershipForm/verificationSuccess'));
+                $name = 'Welcome to Modern Artisan Networks';
+                $user_email = $admin_email;
+                $subject = 'Platform access link';
+                $url = base_url('creative');
+
+                
+                $MailName = 'New member has signed in on you website - Modern Artisan Networks (manwix)';
+                $user_email = $admin_email;
+                $user_name = $admin['first_name'].' ' .$admin['last_name'];
+                $user_phone = $admin['telephone'];
+                $mySubject = 'New Member in your website';
+
+$emails = [
+    [
+        'from' => 'emmanuelkirui34@gmail.com',
+        'name' => $name,
+        'to' => $user_email,
+        'subject' => $subject,
+        'body' => "Thank you for your interest in our services and accepting to be a member in our platform.<br><br>"
+            . "Click the button below to access your admin panel with the credentials you provided earlier:<br> <button style='background:blue; color:white;'><a href='$url'>Go to panel</a></button>"
+    ],
+    [
+        'from' => 'emmanuelkirui34@gmail.com',
+        'name' => $MailName,
+        'to' => ['emmanuelkirui34@gmail.com', 'manwiks2@gmail.com'],
+        'subject' => $mySubject,
+        'body' => "There is one person that has accepted to be a member and has completed verification <br><br>"
+            . "The user details are as follows:<br>"
+            . "Name:  $user_name <br>"
+            . "Email: $user_email <br>"
+            . "Phone No. : $user_phone <br>"
+    ],
+];
+
+$smtp_mail = \Config\Services::email();
+
+foreach ($emails as $email) {
+    $smtp_mail->setFrom($email['from'], $email['name']);
+    $smtp_mail->setTo($email['to']);
+    $smtp_mail->setSubject($email['subject']);
+    $smtp_mail->setMessage($email['body']);
+
+    if (!$smtp_mail->send()) {
+        // Handle the case where an email fails to send
+        // You might want to log an error or take other actions
+    }
+    else {
+        session()->setFlashdata('userEmail', $admin_email);
+        session()->setFlashdata('success', 'Congratulations, Verification is complete');
+        return redirect()->to(base_url('team/membershipForm/verificationSuccess'));
+    }
+}
+
+// Check if any errors occurred during the sending process
+ 
+
             }else{
                 session()->setFlashdata('error', 'Sorry!! verification Failed');
                 return redirect()->to(base_url('team/membershipForm#regForm'))->withInput()->with('error', 'An error ocurred : Kindly check your data and try again');

@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title><?php  echo $title ?></title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/bootstrap/css/bootstrap.min.css');?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('fonts/font-awesome-4.7.0/css/font-awesome.min.css');?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('fonts/iconic/css/material-design-iconic-font.min.css');?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/animate/animate.css');?>">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('adminResources/vendors/new/css-hamburgers/hamburgers.min.css');?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/animsition/css/animsition.min.css');?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/select2/select2.min.css');?>">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('backend/login/daterangepicker/daterangepicker.css');?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/util.css');?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/mainLogin.css');?>">
-<!--===============================================================================================-->
-</head>
-<body>
+
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url(<?php echo base_url('images/background.jpg');?>);">
@@ -62,7 +33,7 @@
 					</div>
 					
 					<div class="text-right p-t-8 p-b-31">
-						<a href="#">
+						<a href="<?php echo base_url('creative/admin/forgotPass/index/key');?>">
 							Forgot password?
 						</a>
 					</div>
@@ -113,22 +84,3 @@
 
 	<div id="dropDownSelect1"></div>
 	
-<!--===============================================================================================-->
-	<script src="<?php echo base_url('backend/login/jquery/jquery-3.2.1.min.js');?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url('backend/login/animsition/js/animsition.min.js');?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url('backend/login/bootstrap/js/popper.js');?>"></script>
-	<script src="<?php echo base_url('backend/login/bootstrap/js/bootstrap.min.js');?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url('backend/login/select2/select2.min.js');?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url('backend/login/daterangepicker/moment.min.js');?>"></script>
-	<script src="<?php echo base_url('backend/login/daterangepicker/daterangepicker.js')?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url('backend/login/countdowntime/countdowntime.js');?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url('js/mainLogin.js')?>"></script>
-
-</body>
-</html>

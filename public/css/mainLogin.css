@@ -478,3 +478,44 @@
       padding-right: 15px;
     }
   } 
+
+  /* password sending */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.verificationSent {
+  height: 100%;
+  width: 100%;
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verificationSent .vBox {
+  height: auto;
+  width: auto;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 90px;
+  display: block;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+@media(max-width: 768px) {
+  .verificationSent .vBox {
+      height: auto;
+      width: auto;
+      border: 1px solid #000000;
+      border-radius: 10px;
+      padding: 10px;
+      display: block;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+  }
+}

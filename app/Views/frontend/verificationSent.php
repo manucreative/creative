@@ -1,5 +1,6 @@
 <div class="wrapper" id="regForm">
 
+<br>
 <?php foreach ($errors as $error): ?>
             <div class="file error">
             <h6 style="background-color: red; color:black; padding:20px"><?= esc($error) ?></h6>
@@ -17,9 +18,16 @@
                 </div>
                 <?php endif; ?>
 
- <div class=" text-center text-capitalize col-sm-12" >
-        <h1 Style="color:forestgreen" class="modal-title text-center">THANK YOU FOR YOUR CO-OPERATION KINDLY CHECK YOU EMAIL</h1>
+
+ <div class="verificationSent text-capitalize col-sm-12" >
+    <div class="vBox">
+        <h4 Style="color:forestgreen" class="message">THANKS! PLEASE CHECK YOU E-MAIL</h4>
         <?php if (session()->getFlashdata('userEmail')): ?>
-                <h3 class=" text-center"> We have send an Email to &nbsp;<?php echo session()->getFlashdata('userEmail') ?> &nbsp; for Verification </h3>
-                <?php endif; ?>
+                <p class=" text-center"> We have send an Email to &nbsp;<span style="color: blue; text-decoration:underline"><?php echo session()->getFlashdata('userEmail') ?></span>  &nbsp; for Verification </p>
+        <?php endif; ?>
+            <p>You are required to access you provided Email account and click the link that has been sent to you. 
+                Please keep in mind that the link will expire after some time. 
+            </p>
+            <h6> NOTE: &nbsp;<span style="color: red; text-decoration:underline;">You are required to complate this verification in order to access your account</span> </h6>
+    </div>
 </div>

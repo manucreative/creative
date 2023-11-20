@@ -3,7 +3,7 @@
 /*******************************/
 body {
     color: #000000;
-    background: #f9f8f8;
+    background: #edffed;
     /* font-family: 'Poppins', sans-serif; */
     font-weight: 400;
 }
@@ -39,6 +39,25 @@ body {
     padding-left: 70px;
   }
 
+  .sBox .list-icon {
+    display: inline-block;
+    position: absolute;
+    width: 1em;
+    min-height: 40px;
+    height: auto;
+    fill: #0fdada;
+    text-align: center;
+  }
+  .sBox .list-icon > :first-child {
+    display: inline-block;
+    position: relative;
+    margin: 2px;
+    font-size: 20px;
+    width: 80px;
+    height: 50px;
+    vertical-align: middle;
+  }
+
 h1,
 h2, 
 h3, 
@@ -70,7 +89,7 @@ a:focus {
     width: 100%;
     max-width: 1366px;
     margin: 0 auto;
-    background: #ffffff;
+    background: #edffed
 }
 .footer-wrapper {
     position: relative;
@@ -1629,6 +1648,14 @@ a:focus {
 
 .single .post-item .post-meta p {
     display: inline-block;
+    margin: 0;
+    padding: 0 3px;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+}
+.mine .post-item .post-meta p {
+    /* display: inline-block; */
     margin: 0;
     padding: 0 3px;
     font-size: 14px;

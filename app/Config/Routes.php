@@ -44,6 +44,7 @@ use App\Controllers\frontend\MembershipController;
     $routes->get('contact', [ContactController::class, 'index/$1']);
     $routes->post('sendMail', [ContactController::class, 'sendMail']);
     $routes->get('myPricing', [PricingController::class, 'index/$1']);
+   
  });
 
  // Admin Login
@@ -51,6 +52,9 @@ use App\Controllers\frontend\MembershipController;
  $routes->group('creative/admin', ['namespace' => 'App\Controllers\backend'], function ($routes) {
 
    $routes->get('login/index/key', [AdminLoginController::class, 'index'],['filter' => 'ifLoggedIn']);
+   $routes->get('forgotPass/index/key', [AdminLoginController::class, 'sendMail']);
+   $routes->post('userMailSend/index/key', [AdminLoginController::class, 'userMailSend']);
+   $routes->get('mailSendSuccess/index/key',[AdminLoginController::class, 'mailSendSuccess']);
    $routes->post('adminLogin/index/key', [AdminLoginController::class, 'adminLogin']);
    $routes->get('unAuthorized/index/key/(:segment)', [AdminLoginController::class, 'unAuthorized/$1']);
    $routes->get('logOut/index/key', [AdminLoginController::class, 'logOut']);

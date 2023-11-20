@@ -8,7 +8,9 @@ class AdminLoginController extends BaseController{
     protected $helpers = ['form'];
     public function index(){
         $data['title'] = 'Admin Login Panel';
-        return view('backend/login/index', $data);
+        return view('backend/login/loginHeader', $data)
+        .view('backend/login/index', $data)
+        .view('backend/login/loginFooter');
     }
 
     public function adminLogin(){
@@ -68,6 +70,60 @@ class AdminLoginController extends BaseController{
              . view('backend/unAuthorized', $data)
              . view('backend/templates/admin_footer');
     }
+
+    public function sendMail(){
+        $data['title'] = 'Forgot Password';
+
+        return view('backend/login/loginHeader', $data)
+        .view('backend/login/forgotPass', $data)
+        .view('backend/login/loginFooter');
+    }
+
+    public function userMailSend(){
+        if($this->request->getMethod() === 'post'){
+
+            $admin_email = $this->request->getPost('email_address');
+            $adminModel = model(AdminModel::class);
+
+            //check if the provided Email is in the system
+            if ($adminModel->isEmailUnique($admin_email)) {
+                // Email already exists, handle the error (e.g., display a message)
+                return redirect()->back()->withInput()->with('error', 'Email Provided Does not exist in our database');
+            }
+            else{
+                // get user data with this Email address
+                $adminData = $adminModel->getAdminByEmailAddress($admin_email);
+
+                $sessionKey = $adminData['adminToken'];
+            $name = 'Password Reset Request';
+            $user_email = $admin_email;
+            $subject = 'Password Reset Request';
+            $url = base_url('creative/admin/resetPassword/index/key/'.$sessionKey);
+
+                $smtp_mail = \Config\Services::email();
+                $body = "You have requested to reset your Password.<br><br>"
+                        . "Name: $name<br>"
+                        . "Click the link below to reset your Password, Thanks:<br>$url";
+                $smtp_mail->setFrom('emmanuelkirui34@gmail.com', $name);
+                $smtp_mail->setTo($user_email);
+                $smtp_mail->setSubject($subject);
+                $smtp_mail->setMessage($body);
+                if($smtp_mail->send()){
+
+            session()->setFlashdata('success', 'We have send the link to the provided Email address please open you Email and click the link');
+            return redirect()->to(base_url('creative/admin/mailSendSuccess/index/key'));
+        }
+    }
+}
+}
+
+public function mailSendSuccess(){
+    $data['title'] = 'Email Sent';
+
+        return view('backend/login/loginHeader', $data)
+        .view('backend/login/passMailSend', $data)
+        .view('backend/login/loginFooter');
+}
 
     public function logOut(){
         $session = session();

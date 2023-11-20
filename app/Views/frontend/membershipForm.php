@@ -18,12 +18,12 @@
 
  <div class="wrapper" id="regForm">
 
- <div class=" text-center text-capitalize col-sm-12" >
+ <div class=" text-center text-capitalize col-sm-12 wow fadeInUp" data-wow-delay="0.2s">
         <h1 Style="color:forestgreen" class="modal-title" id="exampleModalLabel">BE AMONG OUR PROFESSIONAL TEAM TODAY</h1>
       </div>
     
  <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
        <?= form_open_multipart(base_url('team/membership'), ['class'=> 'adminRegForm admin-form-validation', 'id' => 'adminRegistrationForm'])?>
 
       <!-- <div class="row" >
@@ -166,9 +166,116 @@
       </div>
   <?= form_close() ?>
 </div>
-    </div>
-
-    <div class="col-sm-6">
+<div class="col-md-6">
 
     <!-- Other data here -->
+    <div style="padding: 10px;" class="form-col-2 wow fadeInUp" data-wow-delay="0.3s">
+    <div class="col-header">
+        <h2>Benefits of becoming a Member</h2>
+    </div>
+
+    <br>
+    <ul class="wow fadeInUp">
+                    <li class="wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="myService-head">
+                            <h4><span>1)</span> Expose you Profession to clients</h4>
+                            </div>
+                            <div class="myService-body">
+                                <p>After successful profile updates you will be able to have a full resume profile that will showcase 
+                                    your professional details to the clients. you will have personal link to add to your CV
+                                </p>
+                            </div>
+                            <!-- <div class="text-center">
+                            <a class="btn btn-primary" href="">Learn More</a>
+                            </div> -->
+                    </li>
+        <hr>
+
+        <li class="wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="myService-head">
+                            <h4><span>2)</span> Add your own services </h4>
+                            </div>
+                            <div class="myService-body">
+                                <p>
+                                    Services Means the service/work you can offer to the client, this package will build a trust to the client
+                                    and it will strengthen your acceptance on the given project.
+                                </p>
+                            </div>
+                    </li>
+        <hr>
+
+        <li class="wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="myService-head">
+                            <h4><span>3)</span> Write Articles and Educate others </h4>
+                            </div>
+                            <div class="myService-body">
+                                <p>
+                                    Within your particular profession, you will be able to write blog post to educate other people around the world 
+                                    over a particular topic or provide solution to the people world-wide
+                                </p>
+                            </div>
+                    </li>
+        <hr>
+
+        <li class="wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="myService-head">
+                            <h4><span>4)</span> Add your Portfolio </h4>
+                            </div>
+                            <div class="myService-body">
+                                <p>
+                                    You might have your own completed projects that was previously done and completed to other clients.
+                                    This platform will provide you an account where you will upload the photos, add contents about you projects, and 
+                                    extract links that will expose you work to the clients.
+                                </p>
+                            </div>
+                    </li>
+        <hr>
+    </ul>
+
+                <br>
+                <div class="single mine sidebar-widget wow fadeInUp" data-wow-delay="0.3s">
+                                    <h2 class="widget-title">List of current Professionals </h2>
+                                    <?php
+                                        foreach ($admins as $admin) {
+                                            if($admin['activation_name'] === 'active'){
+                                                $dt = explode('-',$admin['created_at']);
+                                    ?>
+                                    <div class="recent-post">
+                                        <div class="post-item">
+                                            <div class="post-img">
+                                                <img src="<?php echo base_url('backend/media/admin_images/'. $admin['avatar']); ?>" alt="Admin-image" />
+                                            </div>
+                                            <div class="post-text">
+                                                <a href="<?php echo base_url('team/'.$admin['user_name']);?>"><?php echo $admin['first_name'].' '.$admin['last_name']; ?></a>
+                                                <div class="post-meta">
+                                                    <p>profession:<a href="<?php echo base_url('team/'.$admin['user_name']);?>"><?php echo $admin['personal_title']; ?></a></p>
+                                                    <p>since:
+                                                    <?php 
+                                                     if($dt[1] == '01') {echo 'Jan'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '02') {echo 'Feb'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '03') {echo 'Mar'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '04') {echo 'Apr'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '05') {echo 'May'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '06') {echo 'Jun'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '07') {echo 'Jul'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '08') {echo 'Aug'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '09') {echo 'Sep'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '10') {echo 'Oct'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '11') {echo 'Nov'. ' - ' .$dt[0];}
+                                                     if($dt[1] == '12') {echo 'Dec'. ' - ' .$dt[0];}
+                                                     ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                            }
+                                        }
+                                    ?>
+                                </div>
+    </div>
+ </div>
+
+    
     </div>

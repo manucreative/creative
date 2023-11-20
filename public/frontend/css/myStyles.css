@@ -51,7 +51,89 @@
 }
 
 .form-wrapper {
-    background:#f2f8f5;
+    background:#ffffff;
     border-radius: 30px;
     border: 1px solid #000000;
+}
+
+/* .verificationSent {
+    height: 100%;
+    width: 100%;
+}
+.verificationSent .vBox {
+    height: 400px;
+    width: 400px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: block;
+} */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.verificationSent {
+    height: 100%;
+    width: 100%;
+    padding: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verificationSent .vBox {
+    height: auto;
+    width: auto;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 90px;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: 768px) {
+    .verificationSent .vBox {
+        height: auto;
+        width: auto;
+        border: 1px solid #000000;
+        border-radius: 10px;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.verificationSent .sBox {
+    height: auto;
+    width: auto;
+    border: 5px solid #237a0d;
+    border-radius: 10px;
+    padding: 90px;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: 768px) {
+    .verificationSent .sBox {
+        height: auto;
+        width: auto;
+        border: 5px solid #237a0d;
+        border-radius: 10px;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
 }
