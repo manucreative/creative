@@ -71,6 +71,10 @@ class AdminModel extends Model
         return $this->update($admin_id, $data);
     }
 
+    public function updatePassword($admin_id, $data){
+        return $this->update($admin_id, $data);
+    }
+
     public function isEmailUnique($email)
         {
     return $this->where(['email_address'=> $email])->countAllResults() === 0;

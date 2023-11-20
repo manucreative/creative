@@ -3,16 +3,22 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url(<?php echo base_url('images/background.jpg');?>);">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <?php if (session()->has('error')): ?>
-                <div class="alert alert-danger">
-                    <?= session('error') ?>
+            <?php foreach ($errors as $error): ?>
+            <div class="file error">
+            <h6 style="background-color: red; color:black; padding:20px"><?= esc($error) ?></h6>
+            </div>
+            <?php endforeach ?>
+
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class=" text-center alert alert-danger" id="flash-message">
+                    <?= session()->getFlashdata('error') ?>
                 </div>
-            <?php endif; ?>
-            <?php if (session()->has('success')): ?>
-                <div class="alert alert-success">
-                    <?= session('success') ?>
+                <?php endif; ?>
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class=" text-center alert alert-success" id="flash-message">
+                    <?= session()->getFlashdata('success') ?>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
 			<?php // $myUrl = 'creative/admin/index/key/'?>
 				<?= form_open(base_url('creative/admin/adminLogin/index/key'),['class' => 'login100-form validate-form', 'id' => 'adminLoginForm']);?>
 					<span class="login100-form-title p-b-49">

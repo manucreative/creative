@@ -55,6 +55,8 @@ use App\Controllers\frontend\MembershipController;
    $routes->get('forgotPass/index/key', [AdminLoginController::class, 'sendMail']);
    $routes->post('userMailSend/index/key', [AdminLoginController::class, 'userMailSend']);
    $routes->get('mailSendSuccess/index/key',[AdminLoginController::class, 'mailSendSuccess']);
+   $routes->get('resetPasswordForm/index/key/(:segment)', [AdminLoginController::class, 'resetPasswordForm/$1']);
+   $routes->post('updatePassword/index/key', [AdminLoginController::class, 'updatePassword']);
    $routes->post('adminLogin/index/key', [AdminLoginController::class, 'adminLogin']);
    $routes->get('unAuthorized/index/key/(:segment)', [AdminLoginController::class, 'unAuthorized/$1']);
    $routes->get('logOut/index/key', [AdminLoginController::class, 'logOut']);

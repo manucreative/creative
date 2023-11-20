@@ -42,16 +42,42 @@
     });
 
     function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+        var type = $(input).attr('type');
+        var name = $(input).attr('name');
+        var value = $(input).val().trim();
+    
+        if (type === 'my_email') {
+            // Email validation
+            var emailPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
+            if (!emailPattern.test(value)) {
+                return false;
+            }else if(value === '') {
+                return false;
+            }
+        } else if (type === 'password') {
+            if (value === '' || value.length < 8) {
                 return false;
             }
         }
-        else {
-            if($(input).val().trim() == ''){
+        else if (name === 're_enterPass') {
+            var passwordValue = $('input[name="password"]').val().trim();
+            if (value !== passwordValue) {
                 return false;
             }
         }
+        else if (type === 'text') {
+            if (value === '') {
+                return false;
+            }
+        } 
+        else if (type === 'telephone') {
+            var telephonePattern = /^254\d{9}$/;
+            if (!telephonePattern.test(value)) {
+                return false;
+            }
+        }
+    
+        return true;
     }
 
     function showValidate(input) {

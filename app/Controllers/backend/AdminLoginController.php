@@ -7,7 +7,10 @@ class AdminLoginController extends BaseController{
 
     protected $helpers = ['form'];
     public function index(){
-        $data['title'] = 'Admin Login Panel';
+        $data =[
+            'title' => 'Admin Login Panel',
+            'errors' => []
+        ];
         return view('backend/login/loginHeader', $data)
         .view('backend/login/index', $data)
         .view('backend/login/loginFooter');
@@ -72,7 +75,10 @@ class AdminLoginController extends BaseController{
     }
 
     public function sendMail(){
-        $data['title'] = 'Forgot Password';
+        $data =[
+            'title' => 'Forgot Password',
+            'errors' => []
+        ];
 
         return view('backend/login/loginHeader', $data)
         .view('backend/login/forgotPass', $data)
@@ -98,7 +104,7 @@ class AdminLoginController extends BaseController{
             $name = 'Password Reset Request';
             $user_email = $admin_email;
             $subject = 'Password Reset Request';
-            $url = base_url('creative/admin/resetPassword/index/key/'.$sessionKey);
+            $url = base_url('creative/admin/resetPasswordForm/index/key/'.$sessionKey);
 
                 $smtp_mail = \Config\Services::email();
                 $body = "You have requested to reset your Password.<br><br>"
@@ -118,11 +124,91 @@ class AdminLoginController extends BaseController{
 }
 
 public function mailSendSuccess(){
-    $data['title'] = 'Email Sent';
+    $data = [
+        'title' => 'Email Sent',
+        'errors' => [],
+    ];
 
         return view('backend/login/loginHeader', $data)
         .view('backend/login/passMailSend', $data)
         .view('backend/login/loginFooter');
+}
+
+public function resetPasswordForm($token){
+    $data = [
+        'title' => 'Email Sent',
+        'token' => $token,
+        'errors' => []
+    ];
+
+        return view('backend/login/loginHeader', $data)
+        .view('backend/login/resetPasswordForm', $data)
+        .view('backend/login/loginFooter');
+}
+
+public function updatePassword(){
+    if($this->request->getMethod() === 'post'){
+
+        $adminModel = model(AdminModel::class);
+        $validations = [
+            'password' => [
+                'label' => 'password',
+                'rules' => 'required|min_length[8]',
+            ],
+            're_enterPass' => [
+                'label' => 'Re-enter Password',
+                'rules' => 'required|matches[password]',
+            ],
+        ];
+
+        if(!$this->validate($validations)){
+
+            $errors = $this->validator->getErrors();
+                   foreach($errors as $error){
+                   return redirect()->back()->withInput()->with('error', $error);
+               }
+           }else{
+
+            $token = $this->request->getPost('token');
+            $newPassword = $this->request->getPost('password');
+
+            $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+            // get admin with the given token
+            $adminData = $adminModel->allAdmins($token);
+            $admin_id = $adminData['admin_id'];
+            $admin_email = $adminData['email_address'];
+
+             echo '<pre>';
+        print_r($token);
+        echo '</pre>';
+            // update data now
+            $data = [
+                'password' => $hashedPassword
+            ];
+
+            $updatePass = $adminModel->updatePassword($admin_id, $data);
+
+            if($updatePass){
+                $name = 'Successfully Reset Password';
+                $user_email = $admin_email;
+                $subject = 'Your password reset request was successful';
+                $message = 'Thank you for Choosing our services, we are here to help you 24/7, if it was not you resetting the password Kindly contact the admin immediately';
+    
+                    $smtp_mail = \Config\Services::email();
+                    $body = "You have requested to reset your Password.<br><br>"
+                            . "Congratulations Password reset success: <br>$message";
+                    $smtp_mail->setFrom('emmanuelkirui34@gmail.com', $name);
+                    $smtp_mail->setTo($user_email);
+                    $smtp_mail->setSubject($subject);
+                    $smtp_mail->setMessage($body);
+                    if($smtp_mail->send()){
+    
+                session()->setFlashdata('success', 'Your Password has been updated successful, Please Login here');
+                return redirect()->to(base_url('creative/admin/login/index/key'));
+            }
+            }
+           }
+    }
 }
 
     public function logOut(){

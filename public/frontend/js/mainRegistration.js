@@ -21,18 +21,51 @@
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
-    $('.admin-form-validation').on('submit',function(){
-        var check = true;
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
-            }
+// Attach an event listener to the form submission
+var isFormSubmitted = false; // Flag to control form submission
+
+// Attach an event listener to the form submission
+$('.admin-form-validation').on('submit', function (e) {
+    e.preventDefault();
+    var check = true;
+
+    for (var i = 0; i < input.length; i++) {
+        if (validate(input[i]) == false) {
+            showValidate(input[i]);
+            check = false;
         }
+    }
 
-        return check;
+    if (check) {
+        // Disable backdrop and keyboard interaction before opening the modal
+        $('#tcModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        isFormSubmitted = true; // Set the flag to indicate form submission
+    }
+});
+
+// Attach an event listener to the "OK" button inside the modal
+$('#okButton').on('click', function () {
+    if (isFormSubmitted) {
+        // Programmatically submit the form only if the flag is true
+        $('.admin-form-validation').submit();
+    }
+});
+
+// Attach an event listener to the modal's hidden event
+// This is to re-enable background interaction when the modal is closed
+$('#tcModal').on('hidden.bs.modal', function () {
+    // Reset the flag when the modal is closed
+    isFormSubmitted = false;
+    // Re-enable backdrop and keyboard interaction
+    $('#tcModal').modal({
+        backdrop: true,
+        keyboard: true
     });
+});
 
 
     $('.admin-form-validation .input100').each(function(){
