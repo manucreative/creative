@@ -15,5 +15,21 @@
 <!--===============================================================================================-->
 	<script src="<?php echo base_url('js/mainLogin.js')?>"></script>
 
+	<script>
+	// 		$(document).ready(function () {
+    //     $('#adminLoginForm').click(function (e) {
+
+    //         e.preventDefault();
+    //         $('#overlay').show();
+    //         $('#loaderBanner').show();
+    
+    //         setTimeout(function () {
+    //             $('#loaderBanner').hide();
+    //             $('#overlay').hide();
+    //             $('.validate-form').submit();
+    //         }, 4000);
+    //     });
+	// });
+	</script>
 </body>
 </html>

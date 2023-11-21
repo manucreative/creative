@@ -21,13 +21,8 @@
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
-
 // Attach an event listener to the form submission
-var isFormSubmitted = false; // Flag to control form submission
-
-// Attach an event listener to the form submission
-$('.admin-form-validation').on('submit', function (e) {
-    e.preventDefault();
+$('.admin-form-validation').on('submit', function () {
     var check = true;
 
     for (var i = 0; i < input.length; i++) {
@@ -37,36 +32,40 @@ $('.admin-form-validation').on('submit', function (e) {
         }
     }
 
-    if (check) {
-        // Disable backdrop and keyboard interaction before opening the modal
+    if (validateTAC() == false) {
+        alert('You should read and Accept our Terms and condition to proceed');
+        check = false;
+    }
+
+    return check;
+});
+
+function validateTAC() {
+    if ($('input[name="termsAndConditions"]').prop('checked') !== true) {
+        return false;
+    }
+    return true;
+}
+$(document).ready(function () {
+    // Listen for the click event on the terms link
+    $('#termsLink').on('click', function (e) {
+        e.preventDefault(); // Prevent the default link behavior
         $('#tcModal').modal({
             backdrop: 'static',
             keyboard: false
         });
-        isFormSubmitted = true; // Set the flag to indicate form submission
-    }
-});
+    });
 
-// Attach an event listener to the "OK" button inside the modal
-$('#okButton').on('click', function () {
-    if (isFormSubmitted) {
-        // Programmatically submit the form only if the flag is true
-        $('.admin-form-validation').submit();
-    }
-});
+    $('#okButton').on('click', function(){
+        $('input[name="termsAndConditions"]').prop('checked', true);
+       $('#tcModal').modal('hide');
+    });
 
-// Attach an event listener to the modal's hidden event
-// This is to re-enable background interaction when the modal is closed
-$('#tcModal').on('hidden.bs.modal', function () {
-    // Reset the flag when the modal is closed
-    isFormSubmitted = false;
-    // Re-enable backdrop and keyboard interaction
-    $('#tcModal').modal({
-        backdrop: true,
-        keyboard: true
+    $('#disAgreeBtn').on('click', function(){
+        $('#tcModal').modal('hide');
+        $('input[name="termsAndConditions"]').prop('checked', false);
     });
 });
-
 
     $('.admin-form-validation .input100').each(function(){
         $(this).focus(function(){

@@ -25,27 +25,6 @@
  <div class="row">
         <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
        <?= form_open_multipart(base_url('team/membership'), ['class'=> 'adminRegForm admin-form-validation', 'id' => 'adminRegistrationForm'])?>
-
-      <!-- <div class="row" >
-                        <label for="role" class="col-sm-4 col-form-label text-right"><span style="font-size:x-large; color:red;">ENABLE USER</span> <span style="color: red;">*</span></label>
-                        <div class="col-sm-2">
-                        <select style="border:solid 2px red;" class="form-control" name="activation_id" id="activation_id" <?php if (session('role') !== 'super_admin') echo 'disabled'; ?>>
- 
-                        <option value="0" style="font-size:large;">Select</option>
-                            <?php // if (!empty($activations) && is_array($activations)): ?>
-                                <?php // foreach ($activations as $active): ?>
-                                    <option style="font-size:large; color:red;" value="<?php // echo $active['activation_id']; ?>"
-                                    <?php // if (old('activation_id') == $active['activation_id']) echo 'selected'; ?>>
-
-                                        <span><?php // echo $active['activation_name']; ?></span>
-                                    </option>
-                                <?php // endforeach ?>
-                                 <?php // endif ?>
-                        </select>
-                    </div>
-                </div>
-
-      </div> -->
       <div class="modal-body form-wrapper">
       <?php foreach ($errors as $error): ?>
             <div class="file error">
@@ -128,41 +107,25 @@
             <input class="input100" type="password" name="re_enterPass" id="re_enterPass" value="<?= old('re_enterPass') ?>" placeholder="Type your re enter the Pass">
             <span class="focus-input100" data-symbol="&#xf190;"></span>
 	  </div>
-
-
-        <!-- <div class="form-group">
-           <div class="row">
-        <div class="col-sm-1"></div>
-            <label for="role" class="col-sm-4 col-form-label text-right">Select Administrator Roles  <span style="color: red;">*</span></label>
-            <div class="col-sm-4 validate_input" data-validate = "Select role">
-            <select class="form-control myInput" name="role" id="role">
-                <option value="">Select Admin Role</option>
-                <?php // if (!empty($admin_roles) && is_array($admin_roles)): ?>
-                    <?php // foreach ($admin_roles as $admin_role): ?>
-                        <option value="<?php // echo $admin_role['role_id']; ?>"
-                            <?php // if (old('role') == $admin_role['role_id']) echo 'selected'; ?>>
-                            <?php // echo $admin_role['role_name']; ?>
-                        </option>
-                    <?php // endforeach ?>
-                <?php // endif ?>
-            </select>
-        </div>
-        <div class="col-sm-3"></div>
-      </div>
-      </div> -->
       <div class="wrap-input100 m-b-23">
             <span class="label-input100">Select Your Professional Image &nbsp; <span style="color:red">*</span></span>
             <input class="input100" type="file" name="avatar" id="avatar" value="<?= old('avatar') ?>" placeholder="Type your avatar">
 	  </div>
+      <div class="terms text-center">
+               <p> <input type="checkbox" id="tac" name="termsAndConditions" class="checkbox-lg"> &nbsp; 
+               <a href="#" id="termsLink" class=" btn termsLink" >CLICK here to read & accept terms of use</a>
+            </p>
+            </div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button type="submit" name="submit" class="login100-form-btn">
+							<button type="submit" name="submit"  class="login100-form-btn">
 								Submit credentials now
 							</button>
 						</div>
 					</div>
+
       </div>
   <?= form_close() ?>
 </div>
@@ -170,20 +133,25 @@
 <!-- Large modal -->
 
 <div class="modal fade" id="tcModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">Our terms and Conditions</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
       </div>
       <div class="modal-body">
-        ...
+        <div class="termsHeader">
+            <h3>Read this terms and condition carefully</h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat ducimus nesciunt enim. Quia consequuntur tempora aliquam unde minus, incidunt dolores ab, veritatis asperiores eum doloremque, totam impedit at est nesciunt.
+            </p>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">I don't Agree</button>
-        <button type="button" id="okButton" class="btn btn-primary">I Agree</button>
+        <button type="button" id="disAgreeBtn" class="btn btn-secondary">I don't Agree</button>
+        <button id="okButton" type="button" class=" btn btn-primary">I Agree</button>
       </div>
     </div>
   </div>

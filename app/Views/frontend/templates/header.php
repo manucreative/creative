@@ -68,7 +68,7 @@
     </head>
 
     <body>
-    
+    <div id="overlay"></div>
                     <!-- Top Bar Start -->
             <div class="top-bar">
                 <div class="container-fluid">
@@ -156,4 +156,7 @@
                     </nav>
                 </div>
             </div>
+    <center>
+    <img src = "<?= base_Url('backend/assets/img/loader.gif')?>" id="loaderBanner" style="width: 100px; height:100px; display: none" >
+    </center>
             <!-- Nav Bar End -->

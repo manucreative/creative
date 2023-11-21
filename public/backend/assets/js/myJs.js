@@ -403,20 +403,14 @@
     
     
     $(document).ready(function () {
-        // ,#editTopUpsBtn,#editCat,#addAdminBtn
         $('#addSliderBtn,#addServiceBtn,#editServiceBtn,#btnUpdateFeatures,#addCategory,#addTopUp,#sliderUpdateForm,#faqAddForm,#faqUpdateForm,#articleAdditionForm, #articleEditForm').click(function (e) {
-            // Prevent the form from submitting immediately
             e.preventDefault();
             $('#overlay').show();
-            // Show the loading gif
             $('#loaderBanner').show();
     
             setTimeout(function () {
-                // Hide the loading gif
                 $('#loaderBanner').hide();
                 $('#overlay').hide();
-                // Submit the form
-                // , .topUpsEditForm, .categoriesEditForm, .AdminAddForm'
                 $('.sliderAddForm, .serviceAddForm, .serviceUpdateForm, .updateFeatures, .categoryAddForm, .topUpsAddForm, .sliderUpdateForm, .faqAddForm, .faqUpdateForm, .articleAdditionForm, .articleEditForm').submit();
             }, 4000);
         });

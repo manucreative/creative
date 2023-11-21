@@ -21,17 +21,37 @@
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
-    $('.validate-form').on('submit',function(){
-        var check = true;
+    
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
+    $('.validate-form').on('submit', function (e) {
+        e.preventDefault();
+        var check = true;
+    
+        for (var i = 0; i < input.length; i++) {
+            if (validate(input[i]) == false) {
                 showValidate(input[i]);
-                check=false;
+                check = false;
             }
         }
-
-        return check;
+    
+        $('#overlay').show();
+        $('#loaderBanner').show();
+    
+        if (check) {
+            // Simulate a delay (you can remove this setTimeout in your actual implementation)
+            setTimeout(function () {
+                // Hide the loader and overlay after the simulated delay
+                $('#loaderBanner').hide();
+                $('#overlay').hide();
+    
+                // Submit the form
+                $('.validate-form').submit();
+            }, 4000);
+        } else {
+            // If validation fails, hide the loader and overlay immediately
+            $('#loaderBanner').hide();
+            $('#overlay').hide();
+        }
     });
 
 

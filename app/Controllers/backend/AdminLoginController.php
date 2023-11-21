@@ -25,7 +25,7 @@ class AdminLoginController extends BaseController{
 
         $adminModel = model(AdminModel::class);
         $loginAuthenticate = $adminModel->loginAdmin($admin_email, $admin_pass);
-        if($loginAuthenticate){
+        if(is_array($loginAuthenticate)){
             $session = session();
             $userData = [
                 'admin_id' => $loginAuthenticate['admin_id'],
@@ -47,8 +47,13 @@ class AdminLoginController extends BaseController{
             return redirect()->to(base_url('creative/admin/dashboard/index/key/'.$randKey))->with('success', 'Congrats ' . session('first_name') . ' You are In');
 
         } else {
-            // Invalid login
-            return redirect()->to(base_url('creative/admin/login/index/key'))->with('error', 'Invalid email or password');
+            if ($loginAuthenticate === 'Invalid credentials') {
+                return redirect()->to(base_url('creative/admin/login/index/key'))->with('error', 'Invalid email or password');
+            } elseif ($loginAuthenticate === 'Email not found') {
+                return redirect()->to(base_url('creative/admin/login/index/key'))->with('error', 'Email not found');
+            } elseif ($loginAuthenticate === 'Invalid verification') {
+                return redirect()->to(base_url('creative/admin/login/index/key'))->with('error', 'Your Email has not been verifies Please, Verify your email or contact the owner of this site.');
+            }
         }
     }catch(\Exception $e){
         $e->getMessage();

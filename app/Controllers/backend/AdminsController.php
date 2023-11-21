@@ -170,6 +170,8 @@ class AdminsController extends BaseController{
                 }else if(!$adminModel->isUserNameUnique($user_name)){
                     return redirect()->back()->withInput()->with('error', 'User Name is already in use.');
                     $adminModel->db->transRollback();
+                }else if(){
+                    
                 }
 
             $adminData = [

@@ -46,26 +46,36 @@ class AdminModel extends Model
             ->join('tbl_roles', 'tbl_roles.role_id = admin.role')
             ->where('email_address', $email)
             ->first();
-    
-        if ($admin && password_verify($password, $admin['password'])) {
-            $adminData = [
-                'admin_id' => $admin['admin_id'],
-                'email_address' => $admin['email_address'],
-                'first_name' => $admin['first_name'],
-                'middle_name' => $admin['middle_name'],
-                'last_name' => $admin['last_name'],
-                'telephone' => $admin['telephone'],
-                'user_name' => $admin['user_name'],
-                'adminToken' => $admin['adminToken'],
-                'avatar' => $admin['avatar'],
-                'role' => $admin['role_name'],
-                'logged_in' => true,
-            ];
-            return $adminData;
-        } else {
-            return false; // Invalid credentials
+
+            if ($admin) {
+                if ($admin['verification'] === 'verified' && password_verify($password, $admin['password'])) {
+                    $adminData = [
+                        'admin_id' => $admin['admin_id'],
+                        'email_address' => $admin['email_address'],
+                        'first_name' => $admin['first_name'],
+                        'middle_name' => $admin['middle_name'],
+                        'last_name' => $admin['last_name'],
+                        'telephone' => $admin['telephone'],
+                        'user_name' => $admin['user_name'],
+                        'adminToken' => $admin['adminToken'],
+                        'avatar' => $admin['avatar'],
+                        'role' => $admin['role_name'],
+                        'logged_in' => true,
+                    ];
+                    return $adminData;
+                }
+                else if ($admin['verification'] !== 'verified') {
+                    return 'Invalid verification';
+                }
+                else {
+                    return 'Invalid credentials';
+                }
+            } else {
+                return 'Email not found';
+            }
+           
         }
-    }
+
 
     public function updateVerification($admin_id, $data){
         return $this->update($admin_id, $data);
