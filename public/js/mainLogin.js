@@ -23,8 +23,8 @@
 
     
 
-    $('.validate-form').on('submit', function (e) {
-        e.preventDefault();
+    $('.validate-form').on('submit', function () {
+     
         var check = true;
     
         for (var i = 0; i < input.length; i++) {
