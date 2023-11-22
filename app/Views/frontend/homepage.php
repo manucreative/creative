@@ -182,12 +182,59 @@
         <!-- </div> -->
         </div>
         <!-- Team #1 End -->
+      <br>
+            </div> <!-- end wrapper here -->
+
+<!-- Services here -->
+        <div class="section accent">
+				<div class="w-container">
+				<div class="section-title-group">
+				<div class="row">
+                            <div class="col-md-12">
+                                <div class="main-headline1">
+                                    <div class="headline1">
+                                        <h2 class="section-heading centered white"> All our Services<?php // echo $setting['home_title_news']; ?></h2>
+                                    </div>
+                                    <p class="white-text"> Our Experts have go a lot for you<?php // echo $setting['home_subtitle_news']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+				</div>
+
+				<div class="row">
+                <div class="col-md-12 mt_50">
+                        <div class="blog-carousel owl-carousel">
+                            <?php
+                        if (!empty($services) && is_array($services)) :
+                            foreach($services as $service) :
+                                ?>
+                                <?php if($service['activation_name'] === 'active') : ?>
+					<div class="w-col">
+						<div class="white-box transparent">
+							<img src="<?php echo base_url('backend/media/service_images/' . $service['service_img']) ?>"alt="" class="">
+							<h3 class="white-text"><?php echo $service['service_title']; ?></h3>
+							        <p>
+                                    <?php echo $service['service_short_content'];?>
+                                    </p>
+							<a href="#" class="hollow-button">Learn more</a>
+						</div>
+					</div>
+                    <?php endif ?>
+                    <?php endforeach ?>
+                    <?php endif ?>
+                        </div>
+                </div>
+				</div>
+				</div>
+		</div>
+
+
 
             <!-- Service Start -->
 
-            <div class="service">
+            <!-- <div class="service"> -->
                     <!-- <div class="container"> -->
-                    <div class="row">
+                    <!-- <div class="row">
                             <div class="col-md-12">
                                 <div class="main-headline">
                                     <div class="headline">
@@ -203,30 +250,30 @@
                         <div class="blog-carousel owl-carousel">
                         <?php
 
-                        if (!empty($services) && is_array($services)) :
-                            foreach($services as $service) :
+                        // if (!empty($services) && is_array($services)) :
+                          //  foreach($services as $service) :
                                 ?>
-                                <?php if($service['activation_name'] === 'active') : ?>
+                                <?php // if($service['activation_name'] === 'active') : ?>
                                 <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="service-item">
                                         <div class="service-img">
-                                            <img src="<?php echo base_url('backend/media/service_images/' . $service['service_img']) ?>" alt="Image">
+                                            <img src=" <?php // echo base_url('backend/media/service_images/' . $service['service_img']) ?>" alt="Image">
                                             <div class="service-overlay">
                                                 <p>
-                                                    <?php echo $service['service_short_content']; ?>
+                                                    <?php // echo $service['service_short_content']; ?>
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="service-text">
-                                            <h3> <?php echo $service['service_title']; ?></h3>
-                                            <a class="btn" href="<?php echo base_url('backend/media/service_images/' . $service['service_img']) ?>" data-lightbox="service">+</a>
+                                            <h3> <?php // echo $service['service_title']; ?></h3>
+                                            <a class="btn" href="<?php // echo base_url('backend/media/service_images/' . $service['service_img']) ?>" data-lightbox="service">+</a>
                                         </div>
                                     </div>
                                 </div>
                                 <?php
-                                endif;
-                            endforeach;
-                            endif;
+                            //      endif;
+                            // endforeach;
+                            // endif;
                             ?>
                     </div>
                     </div>
@@ -236,8 +283,9 @@
                             <a class="btn btn-success" href="<?php echo base_url('services') ?>">Load More</a>
                         </div>
                     </div>
-            </div>
+            </div> -->
             <!-- Service End -->
+    <div class="wrapper">
 <hr>
 
 <div class="blog-area pt_80 pb_80">
