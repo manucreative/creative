@@ -23,10 +23,10 @@
                             <div class="col-md-12">
                                 <div class="main-headline">
                                     <div class="headline">
-                                        <h2>Our Services<?php // echo $setting['home_title_news']; ?></h2>
+                                        <h2 class="section-heading centered white">Our Services<?php // echo $setting['home_title_news']; ?></h2>
                                         <hr>
                                     </div>
-                                    <p>Our Professions consist the following <?php // echo $setting['home_subtitle_news']; ?></p>
+                                    <p class="white-text">Our Professions consist the following <?php // echo $setting['home_subtitle_news']; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -34,9 +34,13 @@
                         <?php if(!empty($services) && is_array($services)) :?>
                             <?php foreach($services as $index => $service) :?>
                                 <?php if($service['activation_name'] === 'active') : ?>
-                        <div class="<?php echo $index % 2 !== 0 ? 'shop-local-wrapper':'shop-local-wrapper-inverse'?>  wow <?php echo $index % 2 !== 0 ? 'bounceInRight':'bounceInLeft'?>" data-wow-duration="2s" data-wow-delay="<?php echo 0.1 * ($index / 2); ?>">
+                        <div class="<?php echo $index % 2 !== 0 ? 'shop-local-wrapper':'shop-local-wrapper-inverse'?>  wow <?php echo $index % 2 !== 0 ? 'zoomIn':'zoomIn'?>" data-wow-duration="1s" data-wow-delay="<?php echo 1 * ($index); ?>">
 						<div class="<?php echo $index % 2 !== 0 ? 'shop-local-left':'shop-local-right-inverse'?>" style="background-image: url('<?php echo base_url('backend/media/service_images/'. $service['service_img'])?>')"></div>
-                            <div class="<?php echo $index % 2 !== 0 ? 'shop-local-right':'shop-local-left-inverse'?>">
+                                <!-- <div class="gradient-bg up big-testimonial-component"> -->
+
+                        <div class="<?php echo $index % 2 !== 0 ? 'shop-local-right':'shop-local-left-inverse'?>">
+                        <div class="gradient-circle up"></div>
+                                    <div class="gradient-line up"></div>
                                 <div class="shop-local-content-wrapper">
                                 <h2 class="shop-local-heading"><?php echo $service['service_title'];?></h2>
                                     <p>
@@ -50,7 +54,8 @@
 						<div><strong>Technology</strong>
 						</div>
 						</div>
-                    </div>
+                        </div>
+                     <!-- </div> -->
                     </div>
                     <br><br>
                 <?php endif ?>

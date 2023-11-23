@@ -69,7 +69,8 @@ class HomeController extends BaseController{
             'faqs' => $faqModel->getFaq(),
             'admins' => $admins,
             'socialMediaModel' => model(SocialMedia::class),
-            'articles' => $articlesModel->getArticles()
+            'articles' => $articlesModel->getArticles(),
+            'errors' => []
         ];
 
         return view('frontend/templates/header', $data)
