@@ -32,62 +32,62 @@
             <!-- Carousel End -->
 
             <div class="wrapper"> <!--wrapper start -->
-            <div class="testimonials-section">
-            <div data-delay="4000" data-animation="slide" class="testimonial-slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true" role="region" aria-label="carousel">
-              <div class="testimonial-slider-component">
-                        <div class="testimonials-slider-mask w-slider-mask" id="w-slider-mask-0">
-                        <div class="testimonial-slide w-slide" aria-label="1 of 5" role="group" style="transform: translateX(0px); opacity: 1;">
-                        <div class="row">
-                                <div class="col-sm-3">
+            <div class="testimonial-slider-component">
+                <div class="row myServices">
+                        <div class="col-md-4 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.1s">
+                            <div class="featureBox">
+                            <div class="row">
+                                <div class="col-md-3">
                                 <img src="<?php echo base_url('backend/media/feature_icons/icon1/'.$feature_icon1)?>" loading="lazy" alt="5 stars" class="testimonial-item-stars">
                                 </div>
-                                <div class="col-sm-9">
+                                <div class="col-md-9">
                                     <h3 class="white-text"><?php echo $feature_title1; ?></h3>
                                 </div>
                         </div>
-                                    <div class="feature-text">
+                        <div class="feature-text">
                                     <p><?php echo $feature_desc1; ?></p>
                                 </div>
-                            </div>
-                            <div class="testimonial-slide w-slide" aria-label="1 of 5" role="group" style="transform: translateX(0px); opacity: 1;"> 
-                        <div class="row">
-                                <div class="col-sm-3">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow zoomIn" data-wow-duration="2s" data-wow-delay="1s">
+                            <div class="featureBox">
+                            <div class="row">
+                                <div class="col-md-3">
                                 <img src="<?php echo base_url('backend/media/feature_icons/icon2/'.$feature_icon2)?>" loading="lazy" alt="5 stars" class="testimonial-item-stars">
                                 </div>
-                                <div class="col-sm-9">
-                                    <h3 class="white-text"><?php echo $feature_title1; ?></h3>
+                                <div class="col-md-9">
+                                    <h3 class="white-text"><?php echo $feature_title2; ?></h3>
                                 </div>
                         </div>
-                                    <div class="feature-text">
+                        <div class="feature-text">
                                     <p><?php echo $feature_desc2; ?></p>
                                 </div>
-                            </div>
+                        </div>
+                    </div>
 
-                            <div class="testimonial-slide w-slide" aria-label="1 of 5" role="group" style="transform: translateX(0px); opacity: 1;">
+                    <div class="col-md-4 wow zoomIn" data-wow-duration="2s" data-wow-delay="1.6s">
+                            <div class="featureBox">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                 <img src="<?php echo base_url('backend/media/feature_icons/icon3/'.$feature_icon3)?>" loading="lazy" alt="5 stars" class="testimonial-item-stars">
                                 </div>
-                                <div class="col-sm-9">
-                                    <h3 class="white-text"><?php echo $feature_title1; ?></h3>
+                                <div class="col-md-9">
+                                    <h3 class="white-text"><?php echo $feature_title3; ?></h3>
                                 </div>
                         </div>
-                                    <div class="feature-text">
+                        <div class="feature-text">
                                     <p><?php echo $feature_desc3; ?></p>
                                 </div>
-                            </div>
-                            
-                        <div class="testimonials-arrow w-slider-arrow-right" role="button" tabindex="0" aria-controls="w-slider-mask-0" aria-label="next slide">
-                        <div class="testimonial-arrow-icon w-icon-slider-right"></div>
                         </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="testimonial-slider-gradient"></div>
-        </div>
-    </div>
             <!-- Feature End-->
 
         <!-- Team #1 Start -->
-        <div class="gradient-bg up big-testimonial-component">
+        <div class="gradient-bg up big-testimonial-component wow zoomIn" data-wow-duration="2s" data-wow-delay="1s">
         <div class="gradient-circle up"></div>
         <div class="gradient-line up"></div>
             <!-- <div class="myTeam wow fadeInUp" data-wow-delay="0.5s"> -->
@@ -107,7 +107,7 @@
     <!-- <div class="col-md-12 mt_50"> -->
         <div class="blog-carousel owl-carousel">
             <?php if (!empty($admins) && is_array($admins)) : ?>
-                <?php foreach ($admins as $admin) : ?>
+                <?php foreach ($admins as $index => $admin) : ?>
                     <?php
                     // Check the activation status
                     if ($admin['activation_name'] === 'active') :
@@ -115,7 +115,7 @@
                         $adminSocialMedia = $socialMediaModel->getSocialMedia($admin['admin_id']);
                     ?>
                         <!-- <div class="blog-item"> -->
-                            <div class="team-1 team-member">
+                            <div class="team-1 team-member wow zoomIn" data-wow-duration="2s" data-wow-delay="<?php echo ($index / 2 * 1.2).'s'; ?>">
                                 <a href="<?php echo base_url('team/' . $admin['user_name']); ?>">
                                     <div class="team-img">
                                         <img src="<?php echo base_url('backend/media/admin_images/' . $admin['avatar']) ?>" alt="Team Image">
@@ -158,7 +158,7 @@
         </div>
     </div>
 </div>
-        <div class="row">
+        <div class="row wow fadeInRight" data-wow-duration="2s" data-wow-delay="2s">
                         <div class="text-center">
                             <a class="btn btn-success" href="<?php echo base_url('team') ?>">Load More</a>
                         </div>
@@ -170,7 +170,7 @@
       <br>
 
 <!-- Services here -->
-<div class="w-container">
+<div class="w-container wow zoomIn" data-wow-duration="2s" data-wow-delay="1s">
 <div class="gradient-bg up big-testimonial-component">
 <div class="gradient-circle up"></div>
 <div class="gradient-line up"></div>
@@ -194,10 +194,10 @@
                         <div class="blog-carousel owl-carousel">
                             <?php
                         if (!empty($services) && is_array($services)) :
-                            foreach($services as $service) :
+                            foreach($services as $index => $service) :
                                 ?>
                                 <?php if($service['activation_name'] === 'active') : ?>
-					<div class="w-col">
+					<div class="w-col wow zoomIn" data-wow-duration="2s" data-wow-delay="<?php echo ($index / 2 * 1.2).'s'; ?>">
 						<div class="white-box transparent">
 							<img src="<?php echo base_url('backend/media/service_images/' . $service['service_img']) ?>"alt="" class="">
 							<h3 class="white-text"><?php echo $service['service_title']; ?></h3>
@@ -220,7 +220,7 @@
 
 <hr>
 
-<div class="w-container">
+<div class="w-container wow zoomIn" data-wow-duration="2s" data-wow-delay="1s">
 <div class="gradient-bg up big-testimonial-component">
 <div class="gradient-circle up"></div>
 <div class="gradient-line up"></div>
@@ -241,7 +241,7 @@
             <div class="col-md-12 mt_50">
                 <div class="blog-carousel owl-carousel">
                     <?php
-                    foreach ($articles as $article) {
+                    foreach ($articles as $index =>$article) {
 
                         $temp_arr = explode('.',$article['article_img']);
                         $temp_final = $temp_arr[0].'-thumb'.'.'.$temp_arr[1];
@@ -249,7 +249,7 @@
                         $dt = explode('-',$article['updated_at']);
                             if($article['activation_name'] === 'active'){
                         ?>
-                        <div class="newBlog-item wow fadeIn" data-wow-delay="0.1s">
+                        <div class="newBlog-item wow zoomIn" data-wow-duration="2s" data-wow-delay="<?php echo ($index / 2 * 1.2).'s'; ?>">
                             <a href="<?php echo base_url('team/'.$article['user_name'].'/'.$article['url_link']); ?>">
                                 <div class="blog-image">
                                     <img src="<?php echo base_url('backend/media/article_images/'. $article['article_img']); ?>" alt="Article Image">
@@ -366,7 +366,7 @@
  
             <div class="wrapper"> <!-- wrapper start -->
             <!-- Contact Start -->
-            <div class="contact wow fadeInUp">
+            <div class="contact">
                 <div class="container">
                 <!-- <div class="container"> -->
                     <div class="section-header text-center">
@@ -377,7 +377,7 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                       <div class="contact-img">
+                       <div class="contact-img wow zoomIn" data-wow-duration="2s" data-wow-delay="1s">
                         <img src="<?php echo base_url('images/icons/mine.png'); ?>" alt="">
                             <!-- <div class="contact-info">
                                 <div class="contact-item">
@@ -425,22 +425,22 @@
                                                     </div>
                                                     <?php endif; ?>
                                <form id= "contactForm" action="<?php echo base_url('sendMail');?>" method="post">
-                                    <div class="form-group">
+                                    <div class="form-group wow fadeInDown" data-wow-duration="2s" data-wow-delay="0.2s">
                                         <label for="name">Enter you full names</label>
                                         <input type="text" class="form-control" id="contact_name" value="<?php echo old('name');?>" name="name" placeholder="Your Name"/>
                                         <div class="error"></div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group wow fadeInDown" data-wow-duration="2s" data-wow-delay="0.8s">
                                         <label for="user_email">Enter a valid Email</label>
                                         <input type="text" class="form-control" id="contact_email" name="user_email" value="<?php echo old('user_email');?>" placeholder="Your Email"/>
                                         <div class="error"></div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group wow fadeInDown" data-wow-duration="2s" data-wow-delay="1.5s">
                                         <label for="subject">Enter Mail Subject</label>
                                         <input type="text" class="form-control" id="subject" name="subject" value="<?php echo old('subject');?>" placeholder="Subject"/>
                                         <div class="error"></div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group wow fadeInUp" data-wow-duration="2s" data-wow-delay="2s">
                                         <label for="message">Write you Message here</label>
                                         <textarea type="text" class="form-control contact-data" id="contact_message" name="message" placeholder="Type Your Message"> <?php echo old('message');?> </textarea>
                                         <div class="error"></div>

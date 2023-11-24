@@ -20,8 +20,9 @@
 
  <div class=" text-center text-capitalize col-sm-12 wow fadeInUp" data-wow-delay="0.2s">
         <h1 Style="color:forestgreen" class="modal-title" id="exampleModalLabel">BE AMONG OUR PROFESSIONAL TEAM TODAY</h1>
+        <div class="gradient-line down"></div>
       </div>
-    
+    <br>
  <div class="row">
         <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
        <?= form_open_multipart(base_url('team/membership'), ['class'=> 'adminRegForm admin-form-validation', 'id' => 'adminRegistrationForm'])?>
@@ -217,14 +218,17 @@
                                     This platform will provide you an account where you will upload the photos, add contents about you projects, and 
                                     extract links that will expose you work to the clients.
                                 </p>
+        
                             </div>
                     </li>
         <hr>
     </ul>
 
-                <br>
-                <div class="single mine sidebar-widget wow fadeInUp" data-wow-delay="0.3s">
-                                    <h2 class="widget-title">List of current Professionals </h2>
+                <div class="gradient-bg up big-testimonial-component wow zoomIn" data-wow-duration="1s" data-wow-delay="1s">
+                    <div class="gradient-circle up"></div>
+                    <div class="gradient-line up"></div>
+                <div class="single mine sidebar-widget wow zoomIn" data-wow-duration="2s" data-wow-delay="1s">
+                                    <h2 class="white-text widget-title">List of current Professionals </h2>
                                     <?php
                                         foreach ($admins as $admin) {
                                             if($admin['activation_name'] === 'active'){
@@ -264,6 +268,7 @@
                                         }
                                     ?>
                                 </div>
+                </div>
     </div>
  </div>
 

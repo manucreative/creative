@@ -34,7 +34,7 @@
                         <?php if(!empty($services) && is_array($services)) :?>
                             <?php foreach($services as $index => $service) :?>
                                 <?php if($service['activation_name'] === 'active') : ?>
-                        <div class="<?php echo $index % 2 !== 0 ? 'shop-local-wrapper':'shop-local-wrapper-inverse'?>  wow <?php echo $index % 2 !== 0 ? 'zoomIn':'zoomIn'?>" data-wow-duration="1s" data-wow-delay="<?php echo 1 * ($index); ?>">
+                        <div class="<?php echo $index % 2 !== 0 ? 'shop-local-wrapper':'shop-local-wrapper-inverse'?>  wow <?php echo $index % 2 !== 0 ? 'zoomIn':'zoomIn'?>" data-wow-duration="2s" data-wow-delay="<?php echo ($index / 2 * 1.2).'s'; ?>">
 						<div class="<?php echo $index % 2 !== 0 ? 'shop-local-left':'shop-local-right-inverse'?>" style="background-image: url('<?php echo base_url('backend/media/service_images/'. $service['service_img'])?>')"></div>
                                 <!-- <div class="gradient-bg up big-testimonial-component"> -->
 
@@ -78,7 +78,7 @@
                             <div id="accordion-1">
                                 <?php foreach ($faqs as $index => $faq): ?>
                                     <?php if ($index % 2 === 0): ?>
-                                            <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="<?php echo 0.1 * ($index / 2); ?>">
+                                            <div class="card wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="<?php echo ($index / 2 * 1.2).'s'; ?>">
                                                 <div class="card-header">
                                                     <a class="card-link collapsed" data-toggle="collapse" href="#collapse<?php echo $index; ?>">
                                                         <?php echo $faq['faq_question']; ?>
@@ -98,7 +98,7 @@
                                         <div id="accordion-2">
                                 <?php foreach ($faqs as $index => $faq): ?>
                                     <?php if ($index % 2 !== 0): ?>
-                                            <div class="card wow bounceInUp" data-wow-duration="2s" data-wow-delay="<?php echo 0.4 * (($index - 1) / 2); ?>">
+                                            <div class="card wow fadeInRight" data-wow-duration="1.2s" data-wow-delay="<?php echo ($index / 2 * 1.2).'s'; ?>">
                                                 <div class="card-header">
                                                     <a class="card-link collapsed" data-toggle="collapse" href="#collapse<?php echo $index; ?>">
                                                         <?php echo $faq['faq_question']; ?>

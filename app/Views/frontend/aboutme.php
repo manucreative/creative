@@ -16,7 +16,10 @@
             <!-- Page Header End -->
             <div class="wrapper">
             <div class="about wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="row align-items-center about-body">
+            <div class="gradient-bg up big-testimonial-component">
+        <div class="gradient-circle up"></div>
+        <div class="gradient-line up"></div>
+        <div class="row">
                     <div class="section-header text-center">
                         <h2 Style="text-decoration:underline;">MANWIX</h2>
                                 <h2 style="color: orangered;" >Modern Artisans Networks</h2>
@@ -31,14 +34,14 @@
                                 </p>
 
                                 <div class="col-header">
-                                        <h2>Benefits of becoming a Member</h2>
+                                        <h2 class="white-text">Benefits of becoming a Member</h2>
                                     </div>
 
                                     <br>
                                     <ul class="wow fadeInUp">
                                                     <li class="wow fadeInUp" data-wow-delay="0.3s">
                                                         <div class="myService-head">
-                                                            <h4><span>1)</span> Expose you Profession to clients</h4>
+                                                            <h4 class="white-text"><span>1)</span> Expose you Profession to clients</h4>
                                                             </div>
                                                             <div class="myService-body">
                                                                 <p>After successful profile updates you will be able to have a full resume profile that will showcase 
@@ -53,7 +56,7 @@
 
                                         <li class="wow fadeInUp" data-wow-delay="0.3s">
                                                         <div class="myService-head">
-                                                            <h4><span>2)</span> Add your own services </h4>
+                                                            <h4 class="white-text"><span>2)</span> Add your own services </h4>
                                                             </div>
                                                             <div class="myService-body">
                                                                 <p>
@@ -66,7 +69,7 @@
 
                                         <li class="wow fadeInUp" data-wow-delay="0.3s">
                                                         <div class="myService-head">
-                                                            <h4><span>3)</span> Write Articles and Educate others </h4>
+                                                            <h4 class="white-text"><span>3)</span> Write Articles and Educate others </h4>
                                                             </div>
                                                             <div class="myService-body">
                                                                 <p>
@@ -79,7 +82,7 @@
 
                                         <li class="wow fadeInUp" data-wow-delay="0.3s">
                                                         <div class="myService-head">
-                                                            <h4><span>4)</span> Add your Portfolio </h4>
+                                                            <h4 class="white-text"><span>4)</span> Add your Portfolio </h4>
                                                             </div>
                                                             <div class="myService-body">
                                                                 <p>
@@ -140,23 +143,25 @@
                                 <a class="btn" href="">Learn More</a>
                         </div>
                     </div>
+            </div>
 
         <div class="row" style="margin-top: 20px;">
             <div class="col-md-12">
                 <div class="main-headline">
                     <div class="headline">
-                        <h2> Projects and Services to deliver</h2>
-                        <hr>
+                        <h2 class="white-text"> Projects and Services to deliver</h2>
+                        <div class="gradient-line down"></div>
                     </div>
-                    <p> We have A lot of Services to offer</p>
+                    <p class="white-text"> We have A lot of Services to offer</p>
+                    <div class="gradient-line down"></div>
                 </div>
             </div>
         </div>
                     <div class="row myServices wow fadeInUp" data-wow-delay="0.3s">
                         <div class="col-md-4">
-                            <div class="box">
+                            <div class="featureBox">
                             <div class="myService-head">
-                                <h4>Software Development</h4>
+                                <h4 class="white-text">Software Development</h4>
                             </div>
                             <div class="myService-body">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolores dicta saepe, libero minima impedit, quibusdam vitae accusantium voluptatibus in beatae explicabo suscipit incidunt quas delectus nisi? Voluptates, harum sint?</p>
@@ -168,9 +173,9 @@
                     </div>
 
                         <div class="col-md-4">
-                        <div class="box">
+                        <div class="featureBox">
                             <div class="myService-head">
-                                <h4>Software Development</h4>
+                                <h4 class="white-text">Software Development</h4>
                             </div>
                             <div class="myService-body">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolores dicta saepe, libero minima impedit, quibusdam vitae accusantium voluptatibus in beatae explicabo suscipit incidunt quas delectus nisi? Voluptates, harum sint?</p>
@@ -182,9 +187,9 @@
                         </div>
 
                         <div class="col-md-4">
-                        <div class="box">
+                        <div class="featureBox">
                             <div class="myService-head">
-                                <h4>Software Development</h4>
+                                <h4 class="white-text">Software Development</h4>
                             </div>
                             <div class="myService-body">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolores dicta saepe, libero minima impedit, quibusdam vitae accusantium voluptatibus in beatae explicabo suscipit incidunt quas delectus nisi? Voluptates, harum sint?</p>
@@ -198,9 +203,9 @@
 
                 <div class="row myServices wow fadeInUp" data-wow-delay="0.3s">
                         <div class="col-md-4">
-                        <div class="box">
+                        <div class="featureBox">
                             <div class="myService-head">
-                                <h4>Software Development</h4>
+                                <h4 class="white-text">Software Development</h4>
                             </div>
                             <div class="myService-body">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolores dicta saepe, libero minima impedit, quibusdam vitae accusantium voluptatibus in beatae explicabo suscipit incidunt quas delectus nisi? Voluptates, harum sint?</p>
@@ -212,9 +217,9 @@
                         </div>
 
                         <div class="col-md-4">
-                        <div class="box">
+                        <div class="featureBox">
                             <div class="myService-head">
-                                <h4>Software Development</h4>
+                                <h4 class="white-text">Software Development</h4>
                             </div>
                             <div class="myService-body">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolores dicta saepe, libero minima impedit, quibusdam vitae accusantium voluptatibus in beatae explicabo suscipit incidunt quas delectus nisi? Voluptates, harum sint?</p>
@@ -226,9 +231,9 @@
                         </div>
 
                         <div class="col-md-4">
-                        <div class="box">
+                        <div class="featureBox">
                             <div class="myService-head">
-                                <h4>Software Development</h4>
+                                <h4 class="white-text">Software Development</h4>
                             </div>
                             <div class="myService-body">
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolores dicta saepe, libero minima impedit, quibusdam vitae accusantium voluptatibus in beatae explicabo suscipit incidunt quas delectus nisi? Voluptates, harum sint?</p>
